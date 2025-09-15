@@ -1,6 +1,6 @@
 site_name: Grapesea's Notebook
 repo_url: https://github.com/Grapesea/Notebook
-repo_name: Notes
+repo_name: Notebook
 theme: 
   name: material
   font:
@@ -80,18 +80,18 @@ nav:
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
     - CS70: 
-      - 课程计划: csdiy/1.cs70/index.md
-      - proof & stable matching: csdiy/1.cs70/1.md
-      - graph & number theory & RSA: csdiy/1.cs70/2.md
-      - counting & probability: csdiy/1.cs70/3.md
+      - 课程计划: csdiy/cs70/index.md
+      - Proof & Stable matching: csdiy/cs70/1.md
+      - Graph & Number theory & RSA: csdiy/cs70/2.md
+      - Counting & Probability: csdiy/cs70/3.md
     - CS188: 
-      - 课程计划: csdiy/2.cs188/index.md
-      - intro & search: csdiy/2.cs188/1.md
-      - A* search & Heuristics: csdiy/2.cs188/2.md
-      - CSPs: csdiy/2.cs188/3.md
-      - Game Trees: csdiy/2.cs188/4.md
-      - MDPs: csdiy/2.cs188/5.md
-      - Appendix:Logic: csdiy/2.cs188/appendix.md
+      - 课程计划: csdiy/cs188/index.md
+      - intro & search: csdiy/cs188/1.md
+      - A* search & Heuristics: csdiy/cs188/2.md
+      - CSPs: csdiy/cs188/3.md
+      - Game Trees: csdiy/cs188/4.md
+      - MDPs: csdiy/cs188/5.md
+      - Appendix:Logic: csdiy/cs188/appendix.md
   - CTF: 
     - 笔记目录: ctf/index.md
     - CTF101笔记: ctf/ctf101.md

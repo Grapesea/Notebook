@@ -6,8 +6,8 @@
 
     课程Calendar：
 
-    ![ca1](../photos/cs70/ca1.png)
+    ![ca1](cs70/ca1.png)
 
-    ![ca2](../photos/cs70/ca2.png)
+    ![ca2](cs70/ca2.png)
 
-    ![ca3](../photos/cs70/ca3.png)
+    ![ca3](cs70/ca3.png)
