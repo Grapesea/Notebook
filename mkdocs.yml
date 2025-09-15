@@ -1,6 +1,5 @@
 site_name: Grapesea's Notebook
-site_url: https://grapesea.github.io/notes/
-repo_url: https://github.com/grapesea/notes
+repo_url: https://github.com/Grapesea/Notebook
 repo_name: Notes
 theme: 
   name: material
