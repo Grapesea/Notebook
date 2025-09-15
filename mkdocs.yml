@@ -4,6 +4,9 @@ repo_url: https://github.com/grapesea/notes
 repo_name: Notes
 theme: 
   name: material
+  font:
+    text: "Times New Roman"
+    code: "Roboto Mono"
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -17,11 +20,11 @@ theme:
         icon: material/weather-sunny
         name: 亮色模式
   language: zh
-  logo: graph/logo.jpg
+  logo: graph/logo.png
 # pages:
 # - [index.md, Home]
 # - [about.md, About]
-  favicon: graph/logo.jpg
+  favicon: graph/logo.png
   features:
     - search.highlight
 #    - navigation.instant
@@ -41,38 +44,74 @@ markdown_extensions:
       guess_lang: false
   - toc:
       permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - footnotes
+  - attr_list
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 nav:
   - 首页: index.md
-  - 纳新面试: 
-    - 面试指引: interview/index.md
-    - 短信发送模板: interview/pre0.md
-    - 面试官礼仪: interview/pre1.md
-    - 面试问题: interview/problem.md
-    # - 个人向草稿: interview/draft.md
-  - 工作指南: 
-    - 前言：版本迭代记录与致谢: instruct/index.md
-    - 纸媒工作流程: instruct/1.workflow/index.md
-    - 文编工作: instruct/2.text/index.md
-    - 美编工作: instruct/3.art/index.md
-    - 杂志发放: instruct/4.distribute/index.md
-    - 二课分申请: instruct/5.score/index.md
-  - 管理条例: 
-    - 条例目录: rule/index.md
-    - 浙江大学竺可桢学院全媒体中心章程: rule/constitution/index.md
-    - 浙江大学竺可桢学院学生评价实施细则: rule/detail/index.md
-    - 竺可桢学院公共空间使用办法（试行）: rule/method/index.md
-  - 相关资源: 
-    - 资源目录: resource/index.md
-    - 全媒体资源: resource/media/index.md
-    - 字体资源: resource/font/index.md
-    - 图片资源: resource/photo/index.md
-    - 其它资源: resource/etc/index.md
-  - 风采展示:
-    - 风采展示: product/index.md
-    - 近期刊物: product/magazine.md
-    - 官方报道: product/report.md
-  - 贡献文档:
-    - 参考文档（前置知识）: build/index.md
-    - 文件夹结构: build/structure.md
-    - 如何对本文档进行修改: build/modify.md
-    - 如何本地构建文档并实时预览: build/localbuild.md
+  - ZJU课程笔记: 
+    - 导航栏: zju/index.md
+    - 资源整合: zju/mix_resource.md
+    - 培养计划: zju/course_info_blank.md
+    - 大一教训总结: zju/exp1.md
+    - 大二秋冬笔记: 
+      - 导航: zju/21/index.md
+      - 高级数据结构与算法分析: 
+        - 概述: zju/21/ads/index.md
+        - 数据结构: zju/21/ads/ds.md
+        - 算法分析: zju/21/ads/algorithm.md
+      - 计算机组成: 
+        - 概述: zju/21/co/index.md
+        - 计算机组成: zju/21/co/co.md
+      - 面向对象程序设计: zju/21/oop.md
+      - 概率论与数理统计: zju/21/prob.md
+      - 普通物理学II(H): zju/21/phy.md
+    - 大二春夏笔记: 
+      - 导航: zju/22/index.md
+      - 离散数学: zju/22/dm.md
+  - csdiy课程笔记: 
+    - csdiy课程笔记导航: csdiy/index.md
+    - CS70: 
+      - 课程计划: csdiy/1.cs70/index.md
+      - proof & stable matching: csdiy/1.cs70/1.md
+      - graph & number theory & RSA: csdiy/1.cs70/2.md
+      - counting & probability: csdiy/1.cs70/3.md
+    - CS188: 
+      - 课程计划: csdiy/2.cs188/index.md
+      - intro & search: csdiy/2.cs188/1.md
+      - A* search & Heuristics: csdiy/2.cs188/2.md
+      - CSPs: csdiy/2.cs188/3.md
+      - Game Trees: csdiy/2.cs188/4.md
+      - MDPs: csdiy/2.cs188/5.md
+      - Appendix:Logic: csdiy/2.cs188/appendix.md
+  - CTF: 
+    - 笔记目录: ctf/index.md
+    - CTF101笔记: ctf/ctf101.md
+    - crypto笔记: 
+      - 导航: ctf/crypto/index.md
+      - 校巴wp: ctf/crypto/zjusec.md
+      - cryptohack笔记: ctf/crypto/cryptohack.md
+      - CSACTF2025: ctf/crypto/csactf2025.md
+      - nssctf: ctf/crypto/nssctf.md
+    - misc笔记: 
+      - 导航: ctf/misc/index.md
+    - web笔记: 
+      - 导航: ctf/web/index.md
+    - reverse笔记: 
+      - 导航: ctf/reverse/index.md
+    - pwn笔记: 
+      - 导航: ctf/pwn/index.md
+  - 工具备忘:
+    - 工具目录: tools/index.md
+    - Markdown: tools/markdown.md
+    - Linux: tools/linux.md
+    - Python: tools/python.md

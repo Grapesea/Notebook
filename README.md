@@ -1,5 +1,5 @@
-# paperstudio
+# Grapesea' Notebook
 
-> 本站点建构参考了[全媒体中心视觉工作室的仓库](https://dustbin-li.github.io/2024visualstudio/)，向原作者[@Dustbin-Li](https://github.com/Dustbin-Li)致以感谢。
+> 本站点放置的是学习笔记，已经与[原先的博客](https://github.com/Grapesea/MyBlog)分离。
 
 
