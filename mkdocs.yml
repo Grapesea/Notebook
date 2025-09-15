@@ -1,0 +1,78 @@
+site_name: Grapesea's Notebook
+site_url: https://grapesea.github.io/notes/
+repo_url: https://github.com/grapesea/notes
+repo_name: Notes
+theme: 
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 亮色模式
+  language: zh
+  logo: graph/logo.jpg
+# pages:
+# - [index.md, Home]
+# - [about.md, About]
+  favicon: graph/logo.jpg
+  features:
+    - search.highlight
+#    - navigation.instant
+    - navigation.footer
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.prune
+    - navigation.indexes
+    - navigation.top
+    - header.autohide
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+nav:
+  - 首页: index.md
+  - 纳新面试: 
+    - 面试指引: interview/index.md
+    - 短信发送模板: interview/pre0.md
+    - 面试官礼仪: interview/pre1.md
+    - 面试问题: interview/problem.md
+    # - 个人向草稿: interview/draft.md
+  - 工作指南: 
+    - 前言：版本迭代记录与致谢: instruct/index.md
+    - 纸媒工作流程: instruct/1.workflow/index.md
+    - 文编工作: instruct/2.text/index.md
+    - 美编工作: instruct/3.art/index.md
+    - 杂志发放: instruct/4.distribute/index.md
+    - 二课分申请: instruct/5.score/index.md
+  - 管理条例: 
+    - 条例目录: rule/index.md
+    - 浙江大学竺可桢学院全媒体中心章程: rule/constitution/index.md
+    - 浙江大学竺可桢学院学生评价实施细则: rule/detail/index.md
+    - 竺可桢学院公共空间使用办法（试行）: rule/method/index.md
+  - 相关资源: 
+    - 资源目录: resource/index.md
+    - 全媒体资源: resource/media/index.md
+    - 字体资源: resource/font/index.md
+    - 图片资源: resource/photo/index.md
+    - 其它资源: resource/etc/index.md
+  - 风采展示:
+    - 风采展示: product/index.md
+    - 近期刊物: product/magazine.md
+    - 官方报道: product/report.md
+  - 贡献文档:
+    - 参考文档（前置知识）: build/index.md
+    - 文件夹结构: build/structure.md
+    - 如何对本文档进行修改: build/modify.md
+    - 如何本地构建文档并实时预览: build/localbuild.md
