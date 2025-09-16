@@ -9,6 +9,10 @@
 </thead>
 <tbody>
     <tr>
+        <td><a href="crypto/">CTF101课程笔记</a></td>
+        <td>CTF启蒙课程笔记</td> 
+    </tr>
+    <tr>
         <td><a href="crypto/">crypto笔记</a></td>
         <td>crypto相关</td> 
     </tr>
