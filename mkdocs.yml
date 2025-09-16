@@ -71,7 +71,9 @@ nav:
       - 计算机组成: 
         - 概述: zju/21/co/index.md
         - 计算机组成: zju/21/co/co.md
-      - 面向对象程序设计: zju/21/oop.md
+      - 面向对象程序设计: 
+        - 概述: zju/21/oop/index.md
+        - 笔记: zju/21/oop/oop.md
       - 概率论与数理统计: zju/21/prob.md
       - 普通物理学II(H): zju/21/phy.md
     - 大二春夏笔记: 
