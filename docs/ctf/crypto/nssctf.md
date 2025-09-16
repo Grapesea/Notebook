@@ -1,6 +1,3 @@
-
-##  NSSCTF刷题
-
 鹤城杯感觉看了一会全是工具题，没思路就直接翻题解然后get工具去了（：
 
 ### 453-[鹤城杯2021]easy_crypto
@@ -37,7 +34,7 @@ $ ciphey "4O595954494Q32515046324757595N534R52415653334357474R4N575955544R4O5N4Q
 
 即可获得：
 
-<center><img src="../photos/csactf_prep/ciphey_0.png" alt="rr" style="zoom: 75%;" /></center>
+<center><img src="../photos/nssctf/ciphey_0.png" alt="rr" style="zoom: 75%;" /></center>
 
 
 
@@ -111,7 +108,7 @@ UEsDBBQACAAIAAZUilYAAAAAAAAAACUAAAAVACAATWFnaWMgb2YgRW5jb2RpbmcudHh0VVQNAAdNkTNk
 
 丢到cyberchef里面是这样的：
 
-<center><img src="../photos/csactf_prep/magic_of_encoding.png" alt="rr" style="zoom: 50%;" /></center>
+<center><img src="../photos/nssctf/magic_of_encoding.png" alt="rr" style="zoom: 50%;" /></center>
 
 
 
@@ -131,25 +128,25 @@ $ hashcat -a 3 -m 0 496603d6953a15846cd7cc476f146771 LitCTF{md5can?a?a3de?arypt2
 
 重温一下这个点：
 
-> ##### TIP: 中国剩余定理
->
-> 考虑同余方程
-> 
->$$\begin{cases} x \equiv c_1 & (\operatorname{mod} n_1) \\  x \equiv c_2 & (\operatorname{mod} n_2) \\ & \vdots \\ x \equiv c_k & (\operatorname{mod} n_k)\end{cases}$$
-> 
->我们首先计算出$N = n_1 * n_2 *\cdots * n_k$，并得到列表
-> 
->$$ N_i = N // n_i$$
-> 
->再算出$N_i$模$n_i$的逆$inv_i$:
-> 
->$$inv_i = N_i^{-1} (\operatorname{mod}n_i)$$
-> 
->最后获得余数并对$N$取模，得到最终结果：
-> 
->$$x = \sum\limits_{i=1}^r c_i* N_i*inv_i (\operatorname{mod} N)$$
-> 
-{: .block-tip }
+!!! tips
+
+    中国剩余定理
+
+    考虑同余方程
+
+    $$\begin{cases} x \equiv c_1 & (\operatorname{mod} n_1) \\  x \equiv c_2 & (\operatorname{mod} n_2) \\ & \vdots \\ x \equiv c_k & (\operatorname{mod} n_k)\end{cases}$$
+
+    我们首先计算出$N = n_1 * n_2 *\cdots * n_k$，并得到列表
+
+    $$ N_i = N // n_i$$
+
+    再算出$N_i$模$n_i$的逆$inv_i$:
+
+    $$inv_i = N_i^{-1} (\operatorname{mod}n_i)$$
+
+    最后获得余数并对$N$取模，得到最终结果：
+
+    $$x = \sum\limits_{i=1}^r c_i* N_i*inv_i (\operatorname{mod} N)$$
 
 payload:
 
@@ -218,15 +215,15 @@ cipher = ARC4.new(tempkey)
 
 while True:
     print("Would you like to encrypt (E), decrypt (D), or quit (Q)?", flush=True)
-    l = input(">>> ").strip().upper()
-    if (len(l) > 1):
+    l = input(">>").strip().upper()
+    if (len(l) 1):
         print("You inputted more than one character...", flush=True)
     elif (l == "Q"):
         print("We hope you enjoyed!", flush=True)
         exit()
     elif (l == "E"):
         print("What would you like to encrypt?", flush=True)
-        I = input(">>> ").strip()
+        I = input(">>").strip()
         if (set(I.lower()) & set("flg!")): # You're not allowed to encrypt any of the characters in "flg!"
             print("You're never getting my flag!", flush=True)
             exit()
@@ -236,7 +233,7 @@ while True:
             print(c, flush=True)
     elif (l == "D"):
         print("What was the message?", flush=True)
-        I = input(">>> ").strip()
+        I = input(">>").strip()
         m = str(cipher.decrypt(binascii.unhexlify(I)))[2:-1]
         if (m == target_query):
             print("Passphrase accepted. Here's your flag:", flush=True)
@@ -272,7 +269,7 @@ for i in range(20):
     q = next_prime(p + delta)
     N = p*q
     print("Welcome to my supermarket\n")
-    while coins > 0:
+    while coins 0:
         choice = input('give me your choice\n')
         if choice == '1':
             space = int(input("What size of house would you like to purchase?\n"))
@@ -305,7 +302,7 @@ for i in range(20):
             print("You must have decorated a beautiful house.\n")
             assert coins >= 0
             for i in ls:
-                if i > 1 and i < N and N%i == 0:
+                if i 1 and i < N and N%i == 0:
                     success += 1
                     state = 1
                     print(f'wonderful!, still {coins} coins left\n')

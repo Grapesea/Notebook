@@ -107,7 +107,7 @@ nav:
       - 校巴wp: ctf/crypto/zjusec.md
       - cryptohack笔记: ctf/crypto/cryptohack.md
       - CSACTF2025: ctf/crypto/csactf2025.md
-      - nssctf: ctf/crypto/nssctf.md
+      - NSSCTF题库: ctf/crypto/nssctf.md
     - misc笔记: 
       - 导航: ctf/misc/index.md
     - web笔记: 
@@ -122,8 +122,10 @@ nav:
       - 导航: oj/leetcode/index.md
       - 数组: oj/leetcode/int.md
       - 链表: oj/leetcode/linklist.md
-    - USTC: oj/ustcverilog/index.md
-    - 洛谷: oj/luogu/index.md
+    - USTC VOJ: 
+      - 导航: oj/ustcverilog/index.md
+    - 洛谷: 
+      - 导航: oj/luogu/index.md
   - 工具备忘:
     - 工具目录: tools/index.md
     - Markdown: tools/markdown.md
