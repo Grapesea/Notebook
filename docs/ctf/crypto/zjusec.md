@@ -1,21 +1,10 @@
----
-title: ZJU校巴writeup
-date: 2025-07-01
-layout: post
-categories: [CTF]
-mermaid: true 
-mathjax: true
----
-
 本文主要是ZJU校巴题目的writeup，是自己的做题笔记.
 
 ## RSA
 
-### EndlessRSA1 & 
+### EndlessRSA1 & RSA Adventure
 
 参见
-
-
 
 ### EndlessRSA2-(校巴83)
 
@@ -66,3 +55,13 @@ Signature forgery is the act of creating or imitating someone else's signature w
 
 
 最终flag：`AAA{fff0rge_@_5ignature_vvith_fac7or1zation|bf6bfdc7}`
+
+
+
+## 杂题
+
+摆了，试过了都不太会做（：
+
+### 25-3DES
+
+### 30-base64-encrypt

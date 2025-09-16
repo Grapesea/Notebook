@@ -97,6 +97,11 @@ nav:
     - CTF101笔记: ctf/ctf101.md
     - crypto笔记: 
       - 导航: ctf/crypto/index.md
+      - RSA: ctf/crypto/rsa.md
+      - DSA: ctf/crypto/dsa.md
+      - Coppersmith: ctf/crypto/coppersmith.md
+      - PRNG: ctf/crypto/prng.md
+      - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
       - 校巴wp: ctf/crypto/zjusec.md
       - cryptohack笔记: ctf/crypto/cryptohack.md
       - CSACTF2025: ctf/crypto/csactf2025.md
