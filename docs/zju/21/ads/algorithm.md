@@ -16,8 +16,10 @@
     Approximation Algorithms:
 
     * NP-Completeness
-    * 
+    * Approximation Algorithms
+    * Randomized Algorithms
 
     Other Algorithms:
 
     * Parallel Algorithms
+    * External Sorting

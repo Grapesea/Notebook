@@ -74,8 +74,16 @@ nav:
       - 面向对象程序设计: 
         - 概述: zju/21/oop/index.md
         - 笔记: zju/21/oop/oop.md
-      - 概率论与数理统计: zju/21/prob.md
-      - 普通物理学II(H): zju/21/phy.md
+      - 概率论与数理统计: 
+        - 概述: zju/21/prob/index.md
+        - 概率论: zju/21/prob/prob.md
+        - 数理统计: zju/21/prob/statistic.md
+      - 普通物理学II(H): 
+        - 概述: zju/21/phy/index.md
+        - 电学: zju/21/phy/electricity/index.md  
+        - 磁学: zju/21/phy/magnetism/index.md
+        - 光学: zju/21/phy/optics/index.md
+        - 量子力学: zju/21/phy/quantum/index.md
     - 大二春夏笔记: 
       - 导航: zju/22/index.md
       - 离散数学: zju/22/dm.md

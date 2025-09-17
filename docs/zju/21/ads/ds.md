@@ -146,15 +146,29 @@ AVLNode* rlRotation(AVLNode* root){
 
 ### Splay Tree
 
+参考：[Splay tree - Wikipedia](https://en.wikipedia.org/wiki/Splay_tree)
+
 > 我们希望将任意的$M$次操作的时间复杂度降低至$O(M\log N)$.
 >
 > 核心idea: 每次访问完一个元素之后，把它移动到root位 
 
-（我们称 2次左旋/右旋 和 1次左旋和右旋的组合 分别为single/double rotation，命名原因是两次旋转之间方向是否有变换.）
+（我们称 2次左旋/右旋 和 1次左旋和右旋的组合 分别为single/double rotation，命名原因是**两次旋转之间方向是否有改变**.）
 
-访问后将目标$x$提升到root位的思路：
+访问后将目标$x$提升到root位的思路：$\text{Find}~x \Longrightarrow \text{judge rotation type} \Longrightarrow \text{rotate} \Longrightarrow x~\text{is the root}$
 
-$\text{Find}~x \Longrightarrow \text{judge rotation type} \Longrightarrow \text{rotate} \Longrightarrow x \text{is the root}$
+先前的Rotation对于特定形状的tree会出现比较坏的结果，比如：
+
+
+
+Splaying Operation：是由一系列的Splaying Step构成的，每一步都使得被访问的$x$移动到离$root$更近的地方
+
+
+
+
+
+
+
+
 
 
 
@@ -163,6 +177,8 @@ $\text{Find}~x \Longrightarrow \text{judge rotation type} \Longrightarrow \text{
 
 
 
+
+### Amortized Analysis
 
 
 
