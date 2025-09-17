@@ -1,4 +1,4 @@
-> 仓鼠属性大爆发攒下来的文档：[ZJU混合班/计算机专业/汉语言微辅修 学习资源整合](https://grapesea.github.io/Notebook/zju/mix_resource.html)
+> 仓鼠属性大爆发攒下来的文档：[ZJU混合班/计算机专业/汉语言微辅修 学习资源整合](https://grapesea.github.io/Notebook/zju/mix_resource)
 
 （本文写作时间跨度为9.2-9.11，有些时间点的表述会显得比较奇怪）
 

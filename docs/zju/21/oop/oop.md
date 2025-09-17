@@ -2,7 +2,7 @@
 
 Linux命令行编译cpp程序：
 
-<center><img src="../oop/1.png" style="zoom: 50%;" /></center>
+<img src="../photos/oop/1.png" style="zoom:70%;" />
 
 
 

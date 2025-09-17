@@ -5,5 +5,4 @@
 
     Grading Policy:
     
-    * lab 50%
-    * Final 50%
+    <center><img src="photos\index\1.png" style="zoom:30%;" /></center>
