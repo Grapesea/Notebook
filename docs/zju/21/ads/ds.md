@@ -146,7 +146,7 @@ AVLNode* rlRotation(AVLNode* root){
 
 ### Splay Tree
 
-参考：[Splay tree - Wikipedia](https://en.wikipedia.org/wiki/Splay_tree)
+参考：[Splay tree - Wikipedia](https://en.wikipedia.org/wiki/Splay_tree) $\quad$ [Wintermelon的笔记-lec1](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch1) 
 
 > 我们希望将任意的$M$次操作的时间复杂度降低至$O(M\log N)$.
 >

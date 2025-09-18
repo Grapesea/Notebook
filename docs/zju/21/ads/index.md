@@ -1,8 +1,9 @@
 本文将依照张国川老师的授课以及其余材料整理。
 
-其中涉及的代码我试图使用cpp手搓，放在了GitHub仓库：[Grapesea/ADS_code](https://github.com/Grapesea/ADS_code)里面.
+其中涉及的代码我试图手搓，放在了GitHub仓库：[Grapesea/ADS_code](https://github.com/Grapesea/ADS_code)里面.
 
-发现了一个有意思的网站：[数据结构可视化交互动画版](https://totuma.cn/)
+> 一些有意思和非常有用的网站：[数据结构可视化交互动画版](https://totuma.cn/)
+> 
 
 !!! tips
     数据结构：（占$\frac13$） 

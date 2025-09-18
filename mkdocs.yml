@@ -84,9 +84,14 @@ nav:
         - 磁学: zju/21/phy/magnetism/index.md
         - 光学: zju/21/phy/optics/index.md
         - 量子力学: zju/21/phy/quantum/index.md
+      - 马克思主义基本原理(H):
+        - 概述: zju/21/marx/index.md
+        - 笔记: zju/21/marx/marx.md
     - 大二春夏笔记: 
       - 导航: zju/22/index.md
-      - 离散数学: zju/22/dm.md
+      - 离散数学: 
+        - 概述: zju/22/dm/index.md
+        - 笔记: zju/22/dm/dm.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
     - CS70: 
