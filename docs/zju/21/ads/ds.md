@@ -1,4 +1,4 @@
-## Week 1: AVL Tree & Splay Tree & Amortized Analysis （摊还分析）
+## Lec 1: AVL Tree & Splay Tree & Amortized Analysis （摊还分析）
 
 ### AVL Tree
 
@@ -156,46 +156,46 @@ AVLNode* rlRotation(AVLNode* root){
 
 访问后将目标$x$提升到root位的思路：$\text{Find}~x \Longrightarrow \text{judge rotation type} \Longrightarrow \text{rotate} \Longrightarrow x~\text{is the root}$
 
-先前的Rotation对于特定形状的tree会出现比较坏的结果，比如：
-
-
-
 Splaying Operation：是由一系列的Splaying Step构成的，每一步都使得被访问的$x$移动到离$root$更近的地方
 
+现在需要对我们访问的X的父节点P进行分类讨论：
 
+* P 是根节点，则只需要进行zig操作来rotation X & P
 
+    <center><img src = "../ads/zig.jpg" style="zoom: 30%;"/></center>
 
+* P 不是根节点，则需要分情况，选择操作zig-zag(Double Rotation)或者zig-zig(Single Rotation)
 
-
-
-
-
-
-
-删除思路：
-
-
+    <center><img src = "../ads/dr.jpg" style="zoom: 30%;"/></center>
 
 
 
 ### Amortized Analysis
 
+这一想法的来源是我们希望估计某个数据结构经过一系列操作的平均花费时间
+
+Aggregate Analysis：找到时间开销最大的一种情形，计算$n$次操作之后的开销$T(n)$，则amortized cost是$\dfrac{T(n)}{n}$.
+
+!!! tips
+    举例：一个具有Multipop函数的大小为$k$的栈，从空栈开始只能选择push 1, pop 1, multipop三种操作，所以aggregate cost就是先压入$n-1$个元素，再进行一次Multipop，开销是$2n-2$，所以$\dfrac{T(n)}{n} = O(1)$.
+
+现在我们试图证明splay tree中，$T_{\text{amortized}} = O(\log{n})$.
 
 
 
 
 
 
-## Week 2
+## Lec 2
 
 
 
-## Week 3
+## Lec 3
 
 
 
-## Week 4
+## Lec 4
 
 
 
-## Week 5
+## Lec 5

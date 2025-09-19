@@ -1,5 +1,7 @@
 本文将根据曹超/Lim Lih-King两位老师的授课内容整理.
 
+实时更新的[课堂小测题目整理](https://www.overleaf.com/read/fsgjdnmbhyxd#5498f3)
+
 !!! tips
 
     Grading Policies:
