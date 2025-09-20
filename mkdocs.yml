@@ -138,10 +138,14 @@ nav:
       - 导航: oj/leetcode/index.md
       - 数组: oj/leetcode/int.md
       - 链表: oj/leetcode/linklist.md
-    - USTC VOJ: 
+    - USTC Verilog OJ: 
       - 导航: oj/ustcverilog/index.md
+      - 题解: oj/ustcverilog/writeup.md
     - 洛谷: 
       - 导航: oj/luogu/index.md
+    - 图灵完备(Turing Complete): 
+      - 导航: oj/turingcomplete/index.md
+      - 题解: oj/turingcomplete/writeup.md
   - 工具备忘:
     - 工具目录: tools/index.md
     - Markdown: tools/markdown.md
