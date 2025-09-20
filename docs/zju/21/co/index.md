@@ -11,7 +11,7 @@
 
     * 课后习题答案：
 
-        [【学习天地】计组课后习题答案（RISC-V）](https://www.cc98.org/topic/6037844 )
+        <a href="co_answer.pdf" download="CO_answer.pdf">点击下载</a>
 
     * 历年卷：
 
