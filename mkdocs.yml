@@ -70,7 +70,13 @@ nav:
         - 算法分析: zju/21/ads/algorithm.md
       - 计算机组成: 
         - 概述: zju/21/co/index.md
-        - 计算机组成: zju/21/co/co.md
+        - 课程笔记: zju/21/co/co.md
+        - lab0总结: zju/21/co/lab0.md
+        - lab1总结: zju/21/co/lab1.md
+        - lab2总结: zju/21/co/lab2.md
+        - lab3总结: zju/21/co/lab3.md
+        - lab4总结: zju/21/co/lab4.md
+        - lab5总结: zju/21/co/lab5.md
       - 面向对象程序设计: 
         - 概述: zju/21/oop/index.md
         - 笔记: zju/21/oop/oop.md

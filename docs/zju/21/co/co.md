@@ -1,4 +1,7 @@
-## Week 1: General Introduction
+## Chapter 1: Computer Abstractions and Technology
+
+!!! tips
+    Homework: 1.2,1.5,1.6,1.7,1.13
 
 * RISC Architecture (Reduced Instruction Set Computer)
   
@@ -8,9 +11,9 @@
 
     * Decomposability of  computer systems
 
-    <center><img src="../co/co0.png" alt="rr" style="zoom: 40%;" /></center>
+        <center><img src="../co/co0.png" alt="rr" style="zoom: 40%;" /></center>
 
-    <center><img src="../co/co01.png" alt="rr" style="zoom: 31%;" /></center>
+        <center><img src="../co/co01.png" alt="rr" style="zoom: 31%;" /></center>
 
     * Five Classic Components of Hardware
 
@@ -78,8 +81,6 @@
         <center><img src="../co/clkperiod.png" alt="rr" style="zoom: 40%;" /></center>
 
     4. Performance can be improved by reducing  number of clock cycles or increasing clock rate. Hardware designer must often trade off clock rate against cycle count (为了提升性能，硬件设计师经常需要在**时钟频率**和**周期数**之间做权衡取舍).
-
-## Week 2:
 
 * IC(Instruction Count) and CPI(Cycles per Instruction)
 
@@ -174,29 +175,49 @@
 
         不同类型的存储器具有不同的速度和容量，不同层次使用不同类型的存储器以提高性能并节约成本。
 
+        从底层(Bigger,slow)到顶层(Smaller,fast)：
+
         Disk / Tape -> Main Memory(DRAM) -> L2-Cache(SRAM) -> L1-Cache(On-Chip) -> Registers
 
     8. Dependability via Redundancy
 
         通过冗余设计来提高系统的可靠性，确保单点故障不会导致系统崩溃。
 
-## Week 3
+!!! tips
 
+    1.2 计算机体系结构中的八个伟大思想与其他领域的思想相似。请将计算机体系结构中的八个伟大思想——“面向摩尔定律的设计”“使用抽象简化设计”“加速经常性事件”“通过并行提高性能”“通过流水线提高性能”“通过预测提高性能”“存储器层次”“通过冗余提高可靠性”与其他领域的下列思想进行匹配：
 
+    a. 汽车制造中的组装生产线$\Longrightarrow$ Performance via Pipelining
 
+    b. 吊桥缆索$\Longrightarrow$Dependability via Redundancy
 
+    c. 采用风向信息的飞机和船舶导航系统$\Longrightarrow$Performance via Prediction
 
-## Week 4
+    d. 高楼中的高速电梯$\Longrightarrow$Make the Common Case Fast
 
+    e. 图书馆的存阅处$\Longrightarrow$Hierarchy of Memories
 
+    f. 通过增大 CMOS 晶体管的栅极面积来减少翻转时间$\Longrightarrow$Performance via Parallelism
 
+    g.增加电磁飞机弹射器(不同于当前的蒸汽驱动模型，它采用电驱动)，这可以通过新型反应堆技术增加的电能来实现$\Longrightarrow$Design for Moore’s Law
 
+    h.制造自动驾驶汽车，其控制系统是安装在汽车上的传感器系统。例如车道偏离检测系统和智能导航控制系统$\Longrightarrow$Use Abstraction to Simplify Design
 
-## Week 5
+## Chapter 2
 
+## Chapter 3: Arithmetic for Computer
 
+Computer words are composed of bits, thus one word is a vector of binary numbers. In RISC-V, there are 32bit/word or 64bits/word, in which 32 bits contains 4 bytes.
 
+Addition: adding bit by bit, carries $\rightarrow$ next digit
 
+Substraction: using 2's complement
 
-## Week 6
+overflow: 
+
+## Chapter 4
+
+## Chapter 5
+
+## Chapter 6
 

@@ -181,13 +181,48 @@ Aggregate Analysis：找到时间开销最大的一种情形，计算$n$次操�
 
 现在我们试图证明splay tree中，$T_{\text{amortized}} = O(\log{n})$.
 
+首先证明zig/zig-zag/zig-zig操作的开销上限（摊还成本）分别为：
 
+$$\text{zig}:~~ \hat{c_i} \leq 1+(R_2(X)-R_1(X))$$
 
+$$\text{zig-zag}: \hat{c_i} \leq 2(R_2(X)-R_1(X))$$
 
+$$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
 
+推导如下：
 
-## Lec 2
+<img src = "../ads/zig.jpg" style="zoom: 20%;"/>
 
+<img src = "../ads/zigzag.jpg" style="zoom: 30%;"/>
+
+<img src = "../ads/zigzig.jpg" style="zoom: 30%;"/>
+
+而假设$X$的高度是$H(X)$的情况下，可能的旋转次数是
+
+$$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} + 1 & H(X)\text{是奇数}\end{cases}$$
+
+即在高度为奇数时进行$\dfrac{H(X)-1}{2}$次的zig-zig/zig-zag，再进行1次zig将$X$转到root位；
+
+在高度为偶数时进行$\dfrac{H(X)}{2}$次的zig-zig/zig-zag.
+
+于是对于root为$T$的Splay Tree，想要找到它的$X$节点并进行splay操作，开销的摊还成本最大是$3(R(T)-R(X))+1 = O(\log(N))$，此时进行了1次zig和一堆zig-zig.
+
+!!! tips
+    Splay Tree的搜索、插入、删除操作的摊还复杂度都是$O(\log N)$.
+
+## Lec 2 Red-Black Tree & B+ Tree
+
+Black-Red Tree 是一个满足以下red-black property的BST：
+
+(1) Every node is red/black;
+
+(2) The root is black;
+
+(3) Every leaf is black;
+
+(4) If a node is red, then both its children are black;
+
+(5) For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 
 
 ## Lec 3
