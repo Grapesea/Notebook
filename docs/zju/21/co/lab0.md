@@ -1,3 +1,7 @@
+!!! warning
+
+    我使用的Vivado版本是2022.2，slides上面是2017年的版本，所以会有很多细节上的出入. 事实上，本文档也记录了很多版本出入上的困惑.
+
 > 可能会用到的资源：[2023年实验文档](https://artessay.github.io/ZJU-Computer-Organization-Lab-2023/#/)
 
 > [2024计算机组成与设计实验文档](https://guahao31.github.io/2024_CO/)
@@ -124,7 +128,70 @@ set_property PACKAGE_PIN E3 [get_ports CLK_i]
 set_property IOSTANDARD LVCMOS33 [get_ports CLK_i]
 ```
 
-实验文档里面怎么有一个不同约束文件的图？？？
+<del>实验文档里面怎么有一个不同约束文件的图？？？但是看起来并不是这次的板子，令人疑惑，是祖传的slides不修改吗？</del>
+
+接下来生成bitstream并program device之后就能看到流水灯效果了，是索引为3,2,1,0的四个端口出现了流水的效果.
+
+<a href="../co/lab0/water_led.mp4" download="water_led.mp4">点击下载效果视频</a>
 
 ## 自定义模块设计学习
 
+### IP核的生成
+
+这一模块首先需要完成的任务是：利用vivado完成对MUX2T1_5的设计和封装.
+
+首先新建一个项目，命名为MUX2T1_5，并新建`MUX2T1_5.v`文件，输入以下1bit MUX的代码：
+
+```verilog
+module MUX2T1_5(
+    input[4:0]I0,
+    input[4:0]I1,
+    input s,
+    output [4:0] o
+    );
+    assign o = s ? I1 : I0;
+endmodule
+```
+
+接着新建仿真文件`MUX2T1_5_tb.v`，输入：
+
+```verilog
+module MUX2T1_5_tb(
+    );
+    reg [4:0] I0;
+    reg [4:0] I1;
+    reg s;
+    
+    wire [4:0] o;
+    
+    MUX2T1_5 MUX2T1_5_test(
+        .I0(I0),
+        .I1(I1),
+        .s(s),
+        .o(o)
+    );
+    initial begin
+        s = 0;
+        I0 = 0;
+        I1 = 1;
+        #50;
+        s = 0;
+        #50;
+        s = 1;
+    end
+endmodule
+```
+
+跑出来结果：
+
+<center><img src = "../co/lab0/3.png" style = "zoom:60%"/></center>
+
+slides上面的仿真代码，从波形倒推来讲比较复杂. 看意思是只要能验证MUX的设计代码功能成立，就可以进入封装部分了.
+
+找到上面的`Tools->Create and Package New IP->Next`，一路点击底下的`Next>`至IP Location的选择，这里我的Vivado初始路径跟slides不是很一样，slides上面要求是`../mux2t1_5/mux2t1_5.srcs/sources_1/new`，而我这里是`../mux2t1_5/mux2t1_5.srcs`，所以还得往里面切2层找到目标路径.
+
+finish之后，在弹出的窗口中选择`Review and Package->Package IP`即可，这样封装就完成了.
+
+### 创建IP的流程（不含源文件）
+
+分为2步，一是网表文件`.edf`的生成，二是根据`.edf`文件进行IP封装

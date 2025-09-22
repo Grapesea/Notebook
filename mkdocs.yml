@@ -70,7 +70,12 @@ nav:
         - 算法分析: zju/21/ads/algorithm.md
       - 计算机组成: 
         - 概述: zju/21/co/index.md
-        - 课程笔记: zju/21/co/co.md
+        - chap1笔记: zju/21/co/co1.md
+        - chap2笔记: zju/21/co/co2.md
+        - chap3笔记: zju/21/co/co3.md
+        - chap4笔记: zju/21/co/co4.md
+        - chap5笔记: zju/21/co/co5.md
+        - chap6笔记: zju/21/co/co6.md
         - lab0总结: zju/21/co/lab0.md
         - lab1总结: zju/21/co/lab1.md
         - lab2总结: zju/21/co/lab2.md
