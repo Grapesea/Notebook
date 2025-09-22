@@ -4,8 +4,18 @@
 
 !!! tips
 
+    作业： [PTA](https://pintia.cn)
+
+    [cpp Reference](https://en.cppreference.com/w/cpp.html)
+
+    [C++ Tutorial](https://cplusplus.com/doc/tutorial/)
+
+!!! tips
+
     Outline:
 
     Grading Policy:
     
     <center><img src="photos\index\1.png" style="zoom:30%;" /></center>
+
+    期末斩杀线：40'

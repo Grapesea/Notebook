@@ -1,6 +1,8 @@
 本文将依照吴国桢老师授课以及教材等材料进行整理.
 
 !!! tips
+
+    教材：<a href="textbook.pdf" download="教材.pdf">点击下载</a>
     
     课程大纲：
 

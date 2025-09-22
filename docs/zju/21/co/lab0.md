@@ -84,11 +84,18 @@ module Water_LED_tb;
         CLK_i = 0;
         RSTn_i = 0;
         #100 RSTn_i = 1;
+        //Your code here.
         #4000000000 $finish;
     end    
     
 endmodule
 ```
+
+事实上只需要添加一行就行，不过记得延长一下仿真时间，否则会很快出结果且LED全为1，因为默认的$10^6$ps还不足以让LED产生进位.
+
+结果图大概长这样：
+
+<center><img src = "../co/lab0/2.png" style = "zoom:60%"/></center>
 
 ### 添加约束文件
 
@@ -96,7 +103,7 @@ endmodule
 
 #### 工具约束
 
-上学期并没有讲过这个部分，但其实不麻烦，是在RTL Analysis的Schematic一节来完成。在Run Synthesis之后，采用默认设置
+上学期并没有讲过这个部分，但其实不麻烦，是在RTL Analysis的Schematic一节来完成，具体参见Slides.
 
 #### 脚本约束
 

@@ -232,4 +232,49 @@
     endmodule
     ```
 
-15. 
+15. 向量拼接
+
+    最为简单暴力的做法：
+
+    ```verilog
+    module top_module (
+        input [4:0] a, b, c, d, e, f,
+        output [7:0] w, x, y, z );
+        assign {w,x,y,z} = { a, b, c, d, e, f,2'b11};
+    endmodule
+    ```
+
+16. 向量翻转
+
+    使用generate for循环语句：
+
+    ```verilog
+    module top_module(
+        input [7:0] in,
+        output [7:0] out
+    );
+        genvar k;
+        generate
+            for (k = 0; k < 8; k = k + 1) begin : bit_reverse // 事实上，: bit_reverse 可删除；
+                assign out[k] = in[7-k];
+            end
+        endgenerate
+    endmodule
+    ```
+
+    或者使用向量拼接的方法：
+
+    ```verilog
+    module top_module( 
+        input [7:0] in,
+        output [7:0] out
+    );
+        assign out = {in[0],in[1],in[2],in[3],in[4],in[5],in[6],in[7]};
+    endmodule
+    ```
+
+17. 复制算子
+
+    ```verilog
+    
+    ```
