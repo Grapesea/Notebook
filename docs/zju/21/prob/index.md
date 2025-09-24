@@ -46,7 +46,7 @@
         $\quad$
         <a href="quiz/4-new.pdf" download="24-25awquiz2new.pdf">2024-2025秋冬第2次小测新增</a>
 
-        <a href="quiz/5.pdf" download="24-25awquiz3.pdf">第3次小测往期总结</a>
+        <a href="quiz/5-all.pdf" download="24-25awquiz3.pdf">第3次小测往期总结</a>
         $\quad$
         <a href="quiz/5-Answer.pdf" download="24-25awquiz3-ans.pdf">第3次小测往期解析</a>
         $\quad$
