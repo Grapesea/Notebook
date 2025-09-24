@@ -66,22 +66,27 @@ nav:
       - 导航: zju/21/index.md
       - 高级数据结构与算法分析: 
         - 概述: zju/21/ads/index.md
-        - 数据结构: zju/21/ads/ds.md
+        - AVL Tree & Splay Tree & Red-Black Tree & B+ Tree: zju/21/ads/tree.md
+        - Leftist Heap & Skew Heap & Binomial Heap: zju/21/ads/heap.md 
         - 算法分析: zju/21/ads/algorithm.md
       - 计算机组成: 
         - 概述: zju/21/co/index.md
-        - chap1笔记: zju/21/co/co1.md
-        - chap2笔记: zju/21/co/co2.md
-        - chap3笔记: zju/21/co/co3.md
-        - chap4笔记: zju/21/co/co4.md
-        - chap5笔记: zju/21/co/co5.md
-        - chap6笔记: zju/21/co/co6.md
-        - lab0总结: zju/21/co/lab0.md
-        - lab1总结: zju/21/co/lab1.md
-        - lab2总结: zju/21/co/lab2.md
-        - lab3总结: zju/21/co/lab3.md
-        - lab4总结: zju/21/co/lab4.md
-        - lab5总结: zju/21/co/lab5.md
+        - 笔记:
+          - 导航: zju/21/co/note/index.md
+          - chap1笔记: zju/21/co/note/co1.md
+          - chap2笔记: zju/21/co/note/co2.md
+          - chap3笔记: zju/21/co/note/co3.md
+          - chap4笔记: zju/21/co/note/co4.md
+          - chap5笔记: zju/21/co/note/co5.md
+          - chap6笔记: zju/21/co/note/co6.md
+        - lab笔记:
+          - 导航: zju/21/co/lab/index.md
+          - lab0总结: zju/21/co/lab/lab0.md
+          - lab1总结: zju/21/co/lab/lab1.md
+          - lab2总结: zju/21/co/lab/lab2.md
+          - lab3总结: zju/21/co/lab/lab3.md
+          - lab4总结: zju/21/co/lab/lab4.md
+          - lab5总结: zju/21/co/lab/lab5.md
       - 面向对象程序设计: 
         - 概述: zju/21/oop/index.md
         - 笔记: zju/21/oop/oop.md

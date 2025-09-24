@@ -148,7 +148,11 @@ AVLNode* rlRotation(AVLNode* root){
 
 参考：[Splay tree - Wikipedia](https://en.wikipedia.org/wiki/Splay_tree) $\quad$ [Wintermelon的笔记-lec1](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch1) 
 
+#### 理论分析
+
 > 我们希望将任意的$M$次操作的时间复杂度降低至$O(M\log N)$.
+>
+>（这里其实不是很严谨，N可以指整个过程中节点总数量最大值.
 >
 > 核心idea: 每次访问完一个元素之后，把它移动到root位 
 
@@ -156,7 +160,7 @@ AVLNode* rlRotation(AVLNode* root){
 
 访问后将目标$x$提升到root位的思路：$\text{Find}~x \Longrightarrow \text{judge rotation type} \Longrightarrow \text{rotate} \Longrightarrow x~\text{is the root}$
 
-Splaying Operation：是由一系列的Splaying Step构成的，每一步都使得被访问的$x$移动到离$root$更近的地方
+Splaying Operation：是由一系列的Splaying Step构成的，每一步都使得被访问的$x$移动到离$root$更近的地方.
 
 现在需要对我们访问的X的父节点P进行分类讨论：
 
@@ -167,6 +171,16 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 * P 不是根节点，则需要分情况，选择操作zig-zag(Double Rotation)或者zig-zig(Single Rotation)
 
     <center><img src = "../ads/dr.jpg" style="zoom: 30%;"/></center>
+
+#### 搜索操作
+
+这个比较容易，是类似BST的操作.
+
+#### 删除操作
+
+
+
+#### 插入操作
 
 
 
@@ -191,7 +205,7 @@ $$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
 
 推导如下：
 
-<img src = "../ads/zig.jpg" style="zoom: 20%;"/>
+<img src = "../ads/zig1.jpg" style="zoom: 25%;"/>
 
 <img src = "../ads/zigzag.jpg" style="zoom: 30%;"/>
 
@@ -212,25 +226,17 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 ## Lec 2 Red-Black Tree & B+ Tree
 
-Black-Red Tree 是一个满足以下red-black property的BST：
+### Red-Black Tree
 
-(1) Every node is red/black;
+Red-Black Tree 是一个满足以下red-black property的BST：
 
-(2) The root is black;
+1. Every node is red/black;
 
-(3) Every leaf is black;
+2. The root is black;
 
-(4) If a node is red, then both its children are black;
+3. Every leaf is black;
 
-(5) For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
+4. If a node is red, then both its children are black;
 
+5. For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 
-## Lec 3
-
-
-
-## Lec 4
-
-
-
-## Lec 5

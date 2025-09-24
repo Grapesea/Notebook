@@ -43,3 +43,176 @@ int main(){
 }
 
 ```
+
+## Week 3 STL
+
+STL(Standard Template Library)，是C++标准库.
+
+STL分成三个部分：
+
+1. containers
+    class templates, common data structures
+
+2. Algorithms
+    Functions that operate on ranges of elements.
+
+3. Iterators
+    Generalization of pointers, access elements in a uniform manner.
+
+首先是Container:
+
+1. sequential: `array`(static), `vector`(dynamic)
+
+2. `deque`(double-ended queue)
+
+3. `forward_list`(single-linked), `list`(doubly-linked)
+
+Associative:
+
+1. `set`(collection of unique keys)
+
+2. `map`(collection of key-value pairs)
+
+3. `multiset`, `multimap`
+
+Unordered associative:
+
+1. hashed by keys
+
+2. `unordered_set`,`unordered_map`
+
+3. `unordered_multiset`,`unordered_multimap`
+
+Adaptors:
+
+1. `stack`, `queue`, `priority_queue`
+
+Using the vector:
+
+```cpp
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main(){
+    vector<int> x;
+    for (int a = 0; a < 1000; a++)
+        x.push_back(a);
+    // push 0,1,…,999 into the vector 
+
+    vector<int>::iterator p;
+    for (p = x.begin(); p < x.end(); p++)
+        cout << *p << " ";
+}
+```
+
+Basic operations for `vector`:
+
+1. Constructor/Destructor
+
+    `at`,`operator[]`,`front`,`back`,`data`
+
+2. Element access
+
+    begin, end, cbegin, cend
+
+3. Iterators
+
+    empty, size, reserve, capacity
+
+4. Capacity
+
+    clear, erase, insert, push_back
+
+5. Modifiers
+
+vector举例：
+
+```cpp
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main(){
+    vector<int> evens {2,4,6,8};
+    evens.push_back(20);
+    evens.push_back(22);
+    evens.insert(evens.begin()+4,5,10);
+    
+    for (int i = 0; i < evens.size(); ++i)
+        cout << evens[i] << ' ';
+    cout << endl;
+
+    //输出结果是2 4 6 8 10 10 10 10 10，所以上面的函数的意义是在begin+4开始插入5个10.
+
+    //另一种迭代方式：
+    for (vector<int>::iterator it = evens.begin(); it < evens.end(); ++it)
+        cout << *it << ' ';
+    cout << endl;
+
+    // auto: 让编译器自己推导数据类型
+    for (auto it = evens.begin(); it < evens.end(); ++it)
+        cout << *it << ' ';
+    cout << endl;
+
+    // 将evens取出
+    for (int e: evens)
+        cout << e << ' ';
+    cout << endl;
+    //以上都是C++11的功能
+
+    //值得说明的一点是，以下代码成立：
+    vector<int> x;
+    for (int a = 0;  < 1000; a++)
+        x.push_back(a);
+    vector<int>::iterator p;
+    for (p = x.begin(); p < x.end(); p++)
+        cout << *p << " ";
+    // 这里使用 < x.end()是成立的，因为vector内存是连续的
+
+    return 0;
+}
+```
+
+list举例：
+
+```cpp
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main(){
+
+    list <string> s;
+    s.push_back("Hello");
+    s.push_back("world");
+    s.push_bacl("stl");
+
+    list<string>::iterator p;
+    for (p = s.begin(); p != s.end(); p++)
+        cout << *p << " ";
+    return 0; 
+}
+```
+
+map举例：
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main(){
+    map<string, float> price;
+    price["snapple"] = 0.75;
+    price["coke"] = 0.50;
+
+    string item;
+    double total = 0;
+    while (cin >> item)
+        total += price[item];
+}
+```

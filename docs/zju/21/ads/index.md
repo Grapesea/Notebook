@@ -6,6 +6,20 @@
 
 !!! tips
 
+    资源列表：[修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/)
+    $\quad$
+    [WintermelonC的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/)
+    $\quad$
+    [StarStone的笔记](https://starstone3.github.io/incourse/ADS/)
+
+    摘自[罹魂梦蝶的经验帖](https://www.cc98.org/topic/5647034)：
+
+    > 学习情况：​我选的是bjj的班，老师本身上课的话可能并没有像myc或者zgc那样花费了很多时间投入，我本人也并没有认真听过几次课。从我个人的学习情况来看，基本就是上完课当天去听陈越老师在MOOC上的课程链接，然后自己整理笔记，整理完之后再看看作业题(ps.bjj老师每年的作业题都基本一样，所以如果平时作业分数想高一点的话……)
+
+    > ​对于project，这学期ads同组有一个非常强的大佬基本carry了代码工作，我和另一个同学就是写写注释、文档之类的活，对于文档，我做了一份[报告模板](https://github.com/lhmd/ZJU-course/tree/master/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/%E6%8A%A5%E5%91%8A%E6%A8%A1%E6%9D%BF)每次展示的PPT是用reveal.js做的，这里附上我做的PPT[链接1](https://lhmd.top/MyReveal/ADS_P8/#/) [链接2](https://lhmd.top/MyReveal/ADS_P3/#/)，这种方法可以快速产生简洁帅气的PPT，我还是很喜欢的，如果有同学想学的话可以参考[xy的笔记链接](https://note.isshikih.top/others/reveal-md2Slides/).
+
+    > 考前补天：借用wrt的一句话，ads如果考前你还在看知识点，已经可以准备明年的考试了。ads适当做一些题目是很重要的，刷刷历年卷能极大的提高自己对题目的熟悉程度，考场上面猜也好猜~还有推荐一下我自己的[笔记链接](https://github.com/lhmd/ZJU-course/tree/master/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/%E7%AC%94%E8%AE%B0).
+
     摘编自[Miracle96的CC98经验帖](https://www.cc98.org/topic/6082358)：
 
     > 提前学习动态规划等经典算法，做做 leetcode 题。
