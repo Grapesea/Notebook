@@ -43,11 +43,11 @@ Computer words are composed of bits, thus one word is a vector of binary numbers
 
     1 bit ALU:
 
-    <center><img src = "../co/3/1.png" style="zoom: 40%" /></center>
+    <center><img src = "../3/1.png" style="zoom: 40%" /></center>
 
     于是减法可以用如下的ALU实现：
 
-    <center><img src = "../co/3/2.png" style="zoom: 40%" /></center>
+    <center><img src = "../3/2.png" style="zoom: 40%" /></center>
 
     于是我们得到了第4个指令：sub.
 
