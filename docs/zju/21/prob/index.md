@@ -52,7 +52,7 @@
         $\quad$
         <a href="quiz/5-new.pdf" download="24-25awquiz3-appendix.pdf">2024-2025秋冬第3次小测新增</a>
 
-        > 来源：
+        > 来源：（感谢CC98用户@CSGISBME, @黎辉的整理）
 
         > [2024-2025春夏赵敏智周四678第一次小测](https://www.cc98.org/topic/6158411)
         $\quad$
@@ -76,8 +76,7 @@
         $\quad$
         <a href="exam/3.pdf" download="21-22ss.pdf">21-22春夏+答案</a>
 
-
-        > 来源：
+        > 来源：（感谢CC98用户@Akino, @高爆山雀， @Texas的整理）
 
         > [【学习天地】概统版搜历年卷合集（24-25春夏考试前）（tag：概率论与数理统计、概统、历年卷、期末）](https://www.cc98.org/topic/6185391)
 

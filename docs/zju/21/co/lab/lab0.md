@@ -20,26 +20,6 @@
 
         2. ppt79-94以及ppt142-149中自定义IP模块的封装和调用可以先做了解
 
-!!! tips
-
-    可能会用到的资源：[2023年实验文档](https://artessay.github.io/ZJU-Computer-Organization-Lab-2023/#/)
-    $\quad$
-    [2024计算机组成与设计实验文档](https://guahao31.github.io/2024_CO/)
-
-    [Vivado使用相关内容](https://birchtree2.github.io/%E5%B7%A5%E5%85%B7/%E7%A1%AC%E4%BB%B6%E7%9B%B8%E5%85%B3/vivado.html)
-
-本学期的lab换用了新的板子，更加便携（在某宝上查了一下大概￥2600？）. 板子型号是：
-`xc7a100tcsg324-1`，意味着该型号的一些参数：
-
-```plaintext
-Family: Artix7
-Device: XC7A100T
-Package: csg324
-Speed Grade: -1
-```
-
-Lab Slides以及给出的文件多为适配Vivado2017.4版本的，直接用我的Vivado2022.4版本打开整个项目会报错，挺恶心的.
-
 ## 预热
 
 ### 流水灯Water_LED的仿真代码书写
@@ -153,6 +133,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports CLK_i]
 <a href="../lab/lab0/water_led.mp4" download="water_led.mp4">点击下载效果视频</a>
 
 ## 自定义模块设计学习
+
+!!! tips
+
+    这个模块操作过于老旧，可以不做.
+
 
 ### IP核的生成
 
@@ -476,9 +461,11 @@ finish之后，在弹出的窗口中选择`Review and Package->Package IP`即可
     endmodule
     ```
 
-然后就是体力活部分：全部生成IP核. 略.
-
 ### 任务2：生成IP并初始化存储内容
+
+!!! tips
+
+    这个模块中的IP Core生成操作过于老旧，可以不做.
 
 > 学习并利用Vivado生成Xilinx库中的IP，以存储器ROM,RAM为例，并完成其存储内容的初始化.
 
@@ -539,6 +526,10 @@ RAM your_instance_name (
     理由：默认的输出端口会勾选输出寄存器，导致数据会往后延迟一个时钟周期，所以应该不勾选.
 
 ## 正式任务2：利用自定义模块构建实验平台
+
+!!! tips
+
+    这个模块IP Core相关部分操作过于老旧，可以不做. 最好使用`.v`文件模块化打包的操作来实现.
 
 这个部分就更加混沌了，IP核的封装不太明白为什么不使用`.v`直接模块化打包进去，所幸助教哥哥的验收要求中规避了IP Core的生成.
 

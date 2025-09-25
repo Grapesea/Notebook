@@ -1,3 +1,23 @@
+!!! tips
+
+    可能会用到的资源：[2023年实验文档](https://artessay.github.io/ZJU-Computer-Organization-Lab-2023/#/)
+    $\quad$
+    [2024计算机组成与设计实验文档](https://guahao31.github.io/2024_CO/)
+
+    [Vivado使用相关内容](https://birchtree2.github.io/%E5%B7%A5%E5%85%B7/%E7%A1%AC%E4%BB%B6%E7%9B%B8%E5%85%B3/vivado.html)
+
+本学期的lab换用了新的板子，更加便携（在某宝上查了一下大概￥2600？）. 板子型号是：
+`xc7a100tcsg324-1`，意味着该型号的一些参数：
+
+```plaintext
+Family: Artix7
+Device: XC7A100T
+Package: csg324
+Speed Grade: -1
+```
+
+Lab Slides以及给出的文件多为适配Vivado2017.4版本的，直接用我的Vivado2022.4版本打开整个项目会报错，挺恶心的.
+
 <table>
 <thead>
     <tr>

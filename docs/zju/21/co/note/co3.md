@@ -2,6 +2,12 @@
 
 Computer words are composed of bits, thus one word is a vector of binary numbers. In RISC-V, there are 32bit/word or 64bits/word, in which 32 bits contains 4 bytes.
 
+!!! tips
+
+    林芃老师曰：“课上我们默认32bits是1 word，64bits叫做double word.
+
+    “教材上有一些用法混乱，之后会指出。”
+
 * 数字表示法：
 
     1. ASCII - text characters (External)

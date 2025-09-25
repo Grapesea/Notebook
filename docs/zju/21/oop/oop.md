@@ -216,3 +216,25 @@ int main(){
         total += price[item];
 }
 ```
+
+```cpp
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+
+int main(){
+    map<string, int> price_list;
+    price_list["apple"] = 3;
+    price_list["orange"] = 5;
+    price_list["banana"] = 1;
+    
+    string item;
+    int total = 0;
+    while (cin >> item)
+        total += price_list[item];
+
+    cout << total << endl;
+    
+}
+```
