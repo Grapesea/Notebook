@@ -16,7 +16,7 @@ Package: csg324
 Speed Grade: -1
 ```
 
-Lab Slides以及给出的文件多为适配Vivado2017.4版本的，直接用我的Vivado2022.4版本打开整个项目会报错，挺恶心的.
+Lab Slides以及给出的文件多为适配Vivado2017.4版本的，直接用我的Vivado2022.2版本打开整个项目会报错，挺恶心的.
 
 <table>
 <thead>
@@ -32,11 +32,11 @@ Lab Slides以及给出的文件多为适配Vivado2017.4版本的，直接用我�
     </tr>
     <tr>
         <td><a href="lab1">lab 1</a></td>
-        <td> Warm up </td> 
+        <td> Warm up </td>
     </tr>
     <tr>
         <td><a href="lab2">lab 2</a></td>
-        <td> CPU实验环境搭建 </td> 
+        <td> CPU实验环境搭建 </td>
     </tr>
     <tr>
         <td><a href="lab3">lab 3</a></td>
