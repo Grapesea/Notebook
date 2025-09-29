@@ -12,6 +12,8 @@
     $\quad$
     [StarStone的笔记](https://starstone3.github.io/incourse/ADS/)
 
+    [MIT 6.046J, 2015 spring](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/)
+
     摘自[罹魂梦蝶的经验帖](https://www.cc98.org/topic/5647034)：
 
     > 学习情况：​我选的是bjj的班，老师本身上课的话可能并没有像myc或者zgc那样花费了很多时间投入，我本人也并没有认真听过几次课。从我个人的学习情况来看，基本就是上完课当天去听陈越老师在MOOC上的课程链接，然后自己整理笔记，整理完之后再看看作业题(ps.bjj老师每年的作业题都基本一样，所以如果平时作业分数想高一点的话……)
@@ -39,7 +41,7 @@
     > 一些[历年卷](https://github.com/RyanFcr/ZJU_Course/tree/main/%E5%A4%A7%E4%BA%8C%E6%98%A5%E5%A4%8F/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90ADS/%E6%9C%9F%E6%9C%AB)
 
 !!! tips
-    数据结构：（占$\frac13$） 
+    数据结构：（占$\frac13$）
 
     * Balanced Search Trees: AVL Tree, Splay Tree, B+ Tree, Red-Black Tree
     * Leftist Heaps, Skew Heaps, Binomial Queue
@@ -62,4 +64,3 @@
     * MidTerm(10*，可以被Final Term覆盖)
 
     * Final Term (40*)
-

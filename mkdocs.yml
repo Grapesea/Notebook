@@ -67,6 +67,7 @@ nav:
       - 高级数据结构与算法分析: 
         - 概述: zju/21/ads/index.md
         - AVL Tree & Splay Tree & Red-Black Tree & B+ Tree: zju/21/ads/tree.md
+        - Inverted File Index: zju/21/ads/fileindex.md
         - Leftist Heap & Skew Heap & Binomial Heap: zju/21/ads/heap.md 
         - 算法分析: zju/21/ads/algorithm.md
       - 计算机组成: 

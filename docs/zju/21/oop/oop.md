@@ -127,7 +127,7 @@ Basic operations for `vector`:
 
 5. Modifiers
 
-vector举例：
+### vector举例
 
 ```cpp
 #include<iostream>
@@ -176,7 +176,7 @@ int main(){
 }
 ```
 
-list举例：
+### list举例
 
 ```cpp
 #include<iostream>
@@ -198,7 +198,7 @@ int main(){
 }
 ```
 
-map举例：
+### map举例
 
 ```cpp
 #include<iostream>
@@ -235,6 +235,66 @@ int main(){
         total += price_list[item];
 
     cout << total << endl;
-    
+    return 0;
 }
 ```
+
+### algorithm举例
+
+!!! tips
+    [STL算法模块举例](https://www.fluentcpp.com/getthemap/)
+
+### Typedefs
+
+* 长的名字不便于代码书写与阅读，因此可以用typedef来简化，如：
+
+    ```cpp
+    typedef map<Name, list<PhoneNum>> PB;
+    PB phonebook;
+    PB::iterator finger; 
+    ```
+
+    C++11中，可以使用auto, using等简化代码逻辑.
+
+* Using your own class
+
+    Might Need: `operator = ()`; default constructor
+
+    For sorted types, like `set`,`map`: less-than operator, `operator<()`.
+
+    示例：
+
+    ```cpp
+    class Student {
+        string name;
+        int score;
+    public:
+        // 默认构造函数
+        Student() : name(""), score(0) {}
+        
+        // 赋值运算符
+        Student& operator=(const Student& other) {
+            name = other.name;
+            score = other.score;
+            return *this;
+        }
+        
+        // 小于运算符（按分数排序）
+        bool operator<(const Student& other) const {
+            return score < other.score;
+        }
+    };
+    // 现在可以使用 set<Student> 了
+    ```
+
+???+ warning
+    C++有一种silent insertion的操作，如：
+    ```cpp
+    if (foo["bob"] == 1)
+    ```
+    这段代码如果没有找到"bob"，会自动插入一个键值对进入，所以正确的写法是：
+    ```cpp
+    if (foo.count("bob"))
+    // or
+    if (foo.contains("bob"))
+    ```

@@ -76,7 +76,7 @@
         $\quad$
         <a href="exam/3.pdf" download="21-22ss.pdf">21-22春夏+答案</a>
 
-        > 来源：（感谢CC98用户@Akino, @高爆山雀， @Texas的整理）
+        > 来源：（感谢CC98用户@Akino, @高爆山雀, @Texas的整理）
 
         > [【学习天地】概统版搜历年卷合集（24-25春夏考试前）（tag：概率论与数理统计、概统、历年卷、期末）](https://www.cc98.org/topic/6185391)
 

@@ -8,7 +8,7 @@
 
 Definition:
 
-(1)An empty binary tree is height balanced. 
+(1)An empty binary tree is height balanced.
 
 (2)If T is a nonempty binary tree with $T_L, T_R$ as its left and right subtrees, then $T$ is height balanced iff :
 
@@ -49,9 +49,14 @@ int calcBalanceFactor(AVLNode* node){
 
 #### 四种Rotation
 
-> 旋转的理解：按我个人来看，这四种旋转都是需要先找到"Trouble Maker",即从插入的节点出发，一直向上走**第一个不平衡的节点。然后，对这个节点做操作**，具体可以看下面的代码实现。另外，LR与RL其实是由LL与RR组成的。
->
-> （摘自[AVL树,Splay树,红黑树与B+树 - Starstone3's bed](https://starstone3.github.io/incourse/ADS/Tree/#avl树的特点与性质)）
+!!! tips
+    > 旋转操作是多数平衡树能够维持平衡的关键，能在不改变一棵合法 BST 中序遍历结果的情况下改变局部节点的深度。
+    >
+    > 摘自[OI wiki](https://oi-wiki.org/ds/rbtree/)
+    >
+    > 旋转的理解：按我个人来看，这四种旋转都是需要先找到"Trouble Maker",即从插入的节点出发，一直向上走**第一个不平衡的节点。然后，对这个节点做操作**，具体可以看下面的代码实现。另外，LR与RL其实是由LL与RR组成的。
+    >
+    > 摘自[AVL树,Splay树,红黑树与B+树 - Starstone3's bed](https://starstone3.github.io/incourse/ADS/Tree/#avl树的特点与性质)
 
 RR Rotation: 如果新插入一个元素在右子树的最右节点，导致破坏了AVL Tree（$h_R-h_L = 2$），则需要进行Rotation，将root的右节点旋转成为root.
 
@@ -146,7 +151,8 @@ AVLNode* rlRotation(AVLNode* root){
 
 ### Splay Tree
 
-参考：[Splay tree - Wikipedia](https://en.wikipedia.org/wiki/Splay_tree) $\quad$ [Wintermelon的笔记-lec1](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch1) 
+!!! tips
+    [Splay tree - Wikipedia](https://en.wikipedia.org/wiki/Splay_tree) $\quad$ [Wintermelon的笔记-lec1](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch1)
 
 #### 理论分析
 
@@ -154,7 +160,7 @@ AVLNode* rlRotation(AVLNode* root){
 >
 >（这里其实不是很严谨，N可以指整个过程中节点总数量最大值.
 >
-> 核心idea: 每次访问完一个元素之后，把它移动到root位 
+> 核心idea: 每次访问完一个元素之后，把它移动到root位
 
 （我们称 2次左旋/右旋 和 1次左旋和右旋的组合 分别为single/double rotation，命名原因是**两次旋转之间方向是否有改变**.）
 
@@ -178,11 +184,7 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 #### 删除操作
 
-
-
 #### 插入操作
-
-
 
 ### Amortized Analysis
 
@@ -205,11 +207,10 @@ $$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
 
 推导如下：
 
-<img src = "../ads/zig1.jpg" style="zoom: 25%;"/>
-
-<img src = "../ads/zigzag.jpg" style="zoom: 30%;"/>
-
-<img src = "../ads/zigzig.jpg" style="zoom: 30%;"/>
+???+ tips
+    <center><img src = "../ads/zig1.jpg" style="zoom: 25%;"/></center>
+    <center><img src = "../ads/zigzag.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "../ads/zigzig.jpg" style="zoom: 30%;"/></center>
 
 而假设$X$的高度是$H(X)$的情况下，可能的旋转次数是
 
@@ -226,17 +227,39 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 ## Lec 2 Red-Black Tree & B+ Tree
 
+!!! tips
+    [OI wiki](https://oi-wiki.org/ds/rbtree/)
+
 ### Red-Black Tree
 
 Red-Black Tree 是一个满足以下red-black property的BST：
 
-1. Every node is red/black;
+1. 节点非黑即红 Every node is red/black;
 
-2. The root is black;
+2. 根节点为黑 The root is black; （值得一提的是这一条并不需要满足，见OI wiki）
 
-3. Every leaf is black;
+3. 叶节点为黑 Every leaf(NIL) is black;
 
-4. If a node is red, then both its children are black;
+4. 红节点的所有孩子为黑 If a node is red, then both its children are black;
 
-5. For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
+5. 所有从某个节点到叶子的路径上的黑色节点数相同 For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 
+!!! tips
+    A red-black tree with \(n\) internal nodes has height at most 2\(\ln (N+1)\).
+    这可以由归纳法进行证明，略.
+
+#### 插入
+
+#### 删除
+
+### B+ Tree
+
+Definition:
+
+一个M序的B+ Tree 是具备以下结构特征的树：
+
+1. The root is either a leaf or has between 2 and \(M\) children.
+
+2. All nonleaf nodes (not root) have between \([\dfrac M 2]+1\) and \(M\) children.
+
+3. All leaves are at the same depth.

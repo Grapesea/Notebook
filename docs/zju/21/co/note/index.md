@@ -10,15 +10,15 @@
 <tbody>
     <tr>
         <td><a href="co1">Chapter 1</a></td>
-        <td>Computer Abstractions and Technology</td> 
+        <td>Computer Abstractions and Technology</td>
     </tr>
     <tr>
         <td><a href="co2">Chapter 2</a></td>
-        <td> </td> 
+        <td> </td>
     </tr>
     <tr>
         <td><a href="co3">Chapter 3</a></td>
-        <td>Arithmetic for Computer</td>
+        <td>Arithmetic for Computers</td>
     </tr>
     <tr>
         <td><a href="co4">Chapter 4</a></td>
