@@ -3,12 +3,12 @@
 Computer words are composed of bits, thus one word is a vector of binary numbers. In RISC-V, there are 32bit/word or 64bits/word, in which 32 bits contains 4 bytes.
 
 ???+ tips
-    [NoughtQ佬的笔记](https://note.noughtq.top/system/co/3)
+    [NoughtQ佬的笔记](https://note.noughtq.top/system/co/3)，讲得非常清晰，感觉比听智云效率高很多.
 
     Homework: 3.7, 3.20, 3.26, 3.27, 3.32
-
+    
     林芃老师曰：“课上我们默认32bits是1 word，64bits叫做double word.
-
+    
     “教材上有一些用法混乱，之后会指出。”
 
 * 数字表示法：
@@ -25,7 +25,7 @@ Computer words are composed of bits, thus one word is a vector of binary numbers
 
         eg.$1001_2$这个数字在Unsigned情况下值为9，在signed情况下值可能为-1或者-7
 
-* Arithmatic Operations:
+* Arithmetic Operations:
 
     Addition: adding bit by bit, carries $\rightarrow$ next digit
 
@@ -44,7 +44,7 @@ Computer words are composed of bits, thus one word is a vector of binary numbers
 
 ### ALU Design
 
-* ALU (Arithmatic Logic Unit):
+* ALU (Arithmetic Logic Unit):
 
     设计时采用模块化设计(Modular design)的思路.
 
@@ -73,33 +73,95 @@ Computer words are composed of bits, thus one word is a vector of binary numbers
 1. ripple carry adder（行波进位加法器）: slow
 
     原理推导：
-    $\begin{cases}
-            C_{i+1} = A_iB_i + B_iC_i + C_iA_i \\
+
+    $$\begin{cases}
+            C_{i+1} = A_iB_i + B_iC_i + C_iA_i\\
             S_i = A_i \oplus B_i \oplus C_i
-        \end{cases}$
+        \end{cases}$$
 
     原理图：
+
     <center><img src = "../3/3.png" style="zoom: 40%" /></center>
 
 2. Group Carry Lookahead Logic
 
     为了加快运算速度，考虑替换掉\(C_{1,2,etc.}\)，先定义：
-    $\begin{cases}
+
+    $$\begin{cases}
             G_i = A_iB_i & (\text{Carry generated})\\
             P_i = A_i \oplus B_i & (\text{Carry propagated})
-        \end{cases}$
+        \end{cases}$$
 
     原理推导：
-    $\begin{cases}
 
-        \end{cases}$
+    $$C_{i+1} = G_i + P_i \cdot C_i \Longrightarrow \begin{cases}
+        C_1 = G_0 + (P_0 \cdot C_0) \\
+        C_2 = G_1 + (P_1 \cdot G_0) + (P_1 \cdot P_0 \cdot C_0) \\
+        C_3 = G_2 + (P_2 \cdot G_1) + (P_2 \cdot P_1 \cdot G_0) + (P_2 \cdot P_1 \cdot P_0 \cdot C_0) \\
+        C_4 = G_3 + (P_3 \cdot G_2) + (P_3 \cdot P_2 \cdot G_1) + (P_3 \cdot P_2 \cdot P_1 \cdot G_0) + (P_3 \cdot P_2 \cdot P_1 \cdot P_0 \cdot C_0)
+        \end{cases}$$
 
-    原理：
+    所以对于当前位而言，如果$P_i = 1$，或者前面的位上存在 $P_j = 1$ 且该生成项$P_j$所在位到当前位之间的所有$G_k = 1(j\leq k\leq i)$，当前位的进位值为 1，否则为 0.
 
-3. Carry skip adder
+    <center><img src = "../3/cla.png" style="zoom: 50%" /></center>
 
-4. Carry select adder
+<del>Carry skip adder & Carry select adder 没搞懂，据说不考，先跳过了.</del>
 
 #### Multiplication
 
-    Group Carry Lookhead Logic
+Group Carry Lookhead Logic
+
+完整版看NoughtQ佬的笔记，此处只记录下自己在看V3版本的流程梳理：
+
+<center><img src = "../3/mul.png" style="zoom: 70%" /></center>
+
+然后是Booth算法来处理signed multiplication:
+
+核心思想：将连续的1串转换为一次减法和一次加法，如：0111 = 1000 - 0001（即8-1=7）. 这样连续的1只需要2次操作，而不是多次加法
+
+编码规则：检查乘数的当前位和前一位，分以下4种情况讨论：
+
+| 当前位 | 前一位 | 操作    | 含义      |
+| ------ | ------ | ------- | --------- |
+| 0      | 0      | 不做    | 0串的中间 |
+| 0      | 1      | +被乘数 | 1串的结束 |
+| 1      | 0      | -被乘数 | 1串的开始 |
+| 1      | 1      | 不做    | 1串的中间 |
+
+记每组操作为两个阶段：
+
+1. +M / -M / 不加不减；
+
+2. Shift Right
+
+从中我们可以看出，如果是$64\times 64bits$，则一共有64组操作.
+
+以$00100010 \times 11011011 = 34 \times (-37)$为例，其操作流程是：
+
+<center><img src = "../3/booth.png" style="zoom: 80%" /></center>
+
+RISC-V中的乘法指令：
+
+```assembly
+mul rd, rs1, rs2     // 64 位乘法，rd保存 128 位乘积的低 64 位
+mulh rd, rs1, rs2    // 64 位乘法，rd保存 128 位符号数之间的乘积的高 64 位
+mulhu rd, rs1, rs2   // 64 位乘法，rd保存 128 位无符号数之间的乘积的高 64 位
+mulhsu rd, rs1, rs2  // 64 位乘法，rd保存 128 位无符号数与符号数的乘积的高 64 位
+```
+
+#### Division
+
+RISC-V中的除法指令：
+
+```assembly
+div rd, rs1, rs2    // rd保存符号数除法的商
+divu rd, rs1, rs2   // rd保存无符号数除法的商
+rem rd, rs1, rs2    // rd保存符号数除法的余数
+remu rd, rs1, rs2   // rd保存无符号数除法的余数
+```
+
+### Floating Point Numbers
+
+#### Floating-Point Standard
+
+RISC-V浮点数标准来自IEEE 754标准，其将二进制数统一成了**规范化数**形式：$1.xxxxx_2 \times 2^{yyyy}$.

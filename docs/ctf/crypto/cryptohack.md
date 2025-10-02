@@ -125,14 +125,12 @@ flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
     这个题是Legendre的应用.
 
-  
-
 * [CryptoHack – Modular Arithmetic - Modular Binomials](https://cryptohack.org/courses/modular/bionomials/)
 
     化简：
 
     $$\begin{cases} c_1 \equiv (2p+3q)^{e_1} & (\operatorname{mod}N) \\ c_2 \equiv (5p+7q)^{e_2} & (\operatorname{mod}N) \end{cases} \Longrightarrow \begin{cases} c_1 \equiv (2p)^{e_1}+(3q)^{e_1} & (\operatorname{mod}N) \\ c_2 \equiv (5p)^{e_2}+(7q)^{e_2} & (\operatorname{mod}N) \end{cases} $$
-    
+
     $$\Longrightarrow \begin{cases} c_1^{e_2}5^{e_1e_2} \equiv (10p)^{e_1e_2}+(15q)^{e_1e_2} & (\operatorname{mod}N) \\ c_2^{e_1}2^{e_1e_2} \equiv (10p)^{e_1e_2}+(14q)^{e_1e_2} & (\operatorname{mod}N) \end{cases}$$
 
     $$ \Longrightarrow d = (15^{e_1e_2}-14^{e_1e_2})q^{e_1e_2} \equiv 5^{e_1e_2}c_1^{e_2}-2^{e_1e_2}c_2 ^{e_1} (\operatorname{mod}N)$$
@@ -141,7 +139,7 @@ flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
     payload:
     {% raw %}
-    
+
     ```python
     from math import gcd
     # 参数略
@@ -154,7 +152,7 @@ flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
 ### Public Key
 
-* [CryptoHack – Public-Key Cryptography - Factoring](https://cryptohack.org/courses/public-key/rsa_factoring/) 
+* [CryptoHack – Public-Key Cryptography - Factoring](https://cryptohack.org/courses/public-key/rsa_factoring/)
 
     直接factordb
 
@@ -164,12 +162,12 @@ flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
     这样的话，$\phi(N)$是非常好计算的，进而$d$也可以破解了.
 
-### Symmetirc cryptography
+### Symmetric cryptography
 
-- The mathematical term for a one-to-one correspondence:   $\textcolor{red}{Bijection}$.
+* The mathematical term for a one-to-one correspondence:   $\textcolor{red}{Bijection}$.
 
 * The best single-key attack against AES:   $\textcolor{red}{biclique}$
 
-
+* Structure of AES:
 
 ### RSA

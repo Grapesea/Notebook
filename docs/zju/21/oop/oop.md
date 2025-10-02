@@ -298,3 +298,37 @@ int main(){
     // or
     if (foo.contains("bob"))
     ```
+
+## Week 4 Memory Model
+
+```cpp
+int i;         // global vars
+static int j;  // static global vars
+
+void f()
+{
+    int k;          // local vars
+    static int l;   // static local vars
+    int *p = malloc(sizeof(int)); // allocated vars
+}
+```
+
+以上是5种变量定义；
+
+```cpp
+int globalx = 100;
+
+int main()
+{
+    static int staticx = 30;
+    int localx = 3;
+    int *px = (int*) malloc(sizeof(int));
+    
+    cout << "&globalx = " << &globalx << endl;
+    cout << "&staticx = " << &staticx << endl;
+    cout << "&localx = " << &localx << endl;
+    cout << "&px = " << &px << endl;
+    cout << "px = " << px << endl;
+
+}
+```

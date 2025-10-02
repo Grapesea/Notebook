@@ -1,4 +1,4 @@
-!!! tips
+???+ tips
 
     课程网页：[CS 70](https://www.eecs70.org/)
 

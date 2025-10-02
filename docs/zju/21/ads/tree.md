@@ -220,7 +220,7 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 在高度为偶数时进行$\dfrac{H(X)}{2}$次的zig-zig/zig-zag.
 
-于是对于root为$T$的Splay Tree，想要找到它的$X$节点并进行splay操作，开销的摊还成本最大是$3(R(T)-R(X))+1 = O(\log(N))$，此时进行了1次zig和一堆zig-zig.
+于是对于root为$T$的Splay Tree，想要找到它的$X$节点并进行splay操作，开销的摊还成本最大是$3(R(T)-R(X))+1 = O(\log(N))$，此时进行了1次zig和一堆zig-zig/zig-zag.
 
 !!! tips
     Splay Tree的搜索、插入、删除操作的摊还复杂度都是$O(\log N)$.
@@ -245,10 +245,24 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 5. 所有从某个节点到叶子的路径上的黑色节点数相同 For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 
 !!! tips
+    上面的定义比较抽象，可以参考这个示例图来理解：
+    <center><img src = "../ads/rbtree.png" style="zoom: 60%;"/></center>
     A red-black tree with \(n\) internal nodes has height at most 2\(\ln (N+1)\).
     这可以由归纳法进行证明，略.
 
 #### 插入
+
+此处介绍的是bottom-up的插入思路. 由于插入红色节点不会影响红黑树的平衡，但是黑色节点会让平衡破坏，所以所有插入节点$X$都默认设置为红色.
+
+以下的所有case都考虑的是自插入以后节点$X$向上移动过程中它附近局部的特征（主要考察跟grandparent, parent, uncle结点的关系），其中图示的黑色方框可以指的是NIL或者子树，但root一定是黑色的，这可以由刚插入时左右全是NIL节点，以及后续操作的染色处理来保证，看完操作之后这是不言自明的.
+
+最简单的一种情况是，$X$插入后其父亲节点本身就是黑色的，此时不需要旋转或者染色，我们直接可以休息了.
+
+于是只需要考虑$X$插入之后其父亲节点是红色的情况.
+
+为了叙述的方便，下面采用跟Isshikih修佬一样的顺序，从最简单的case3倒推到case1，进一步引出整个插入操作的状态机.
+
+首先是case3，只需要LL Rotation或者RR Rotation的情况：
 
 #### 删除
 

@@ -4,11 +4,23 @@
 
 !!! tips
 
-    作业： [PTA](https://pintia.cn)
+    * 作业： [PTA](https://pintia.cn)
 
-    [cpp Reference](https://en.cppreference.com/w/cpp.html)
+    * 官方文档：
+        [cpp Reference](https://en.cppreference.com/w/cpp.html)
+        $\quad$
+        [C++ Tutorial](https://cplusplus.com/doc/tutorial/)
 
-    [C++ Tutorial](https://cplusplus.com/doc/tutorial/)
+    * 资源合订本：
+        [【学习天地】2023-2024春夏 面向对象程序设计 期中（wk班）&期末回忆卷&历年卷考据（面向对象的程序设计/OOP）](https://www.cc98.org/topic/5928482)
+
+    * 笔记&PPT：
+
+        [【学习天地】一点OOP复习笔记（30%）](https://www.cc98.org/topic/6222435)
+
+        [【学习天地】分享一下OOP和FDS整理的全部复习笔记](https://www.cc98.org/topic/6222302)
+
+        [【学习天地】24-25秋冬oop/面向对象程序设计_李际军/ljj班PPT](https://www.cc98.org/topic/6103022)
 
 !!! tips
 

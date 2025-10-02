@@ -1,4 +1,4 @@
-!!! tips
+???+ tips
 
     课程网址：[CS 188 Spring 2025 Introduction to Artificial Intelligence at UC Berkeley](https://inst.eecs.berkeley.edu/~cs188/sp25/)
 
@@ -17,5 +17,3 @@
 > 为了个人理解方便，部分pseudocode是按Python的格式写的，如有错误请指正.
 >
 > 中英混搭是为了个人理解方便，虽然全篇看起来就跟说梦话一样.
-
-

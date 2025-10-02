@@ -109,9 +109,19 @@ nav:
         - 笔记: zju/21/life/life.md
     - 大二春夏笔记: 
       - 导航: zju/22/index.md
+      - 数据库系统: 
+        - 概述: zju/22/db/index.md
+        - 笔记: zju/22/db/db.md
+      - 计算机体系结构:
+        - 概述: zju/22/arch/index.md
       - 离散数学: 
         - 概述: zju/22/dm/index.md
         - 笔记: zju/22/dm/dm.md
+      - 工程图学(H):
+        - 概述: zju/22/eng/index.md
+      - 生命科学导论(H):
+        - 概述: zju/22/bio/index.md
+        - 笔记: zju/22/bio/bio.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
     - CS70: 
@@ -127,6 +137,14 @@ nav:
       - Game Trees: csdiy/cs188/4.md
       - MDPs: csdiy/cs188/5.md
       - Appendix:Logic: csdiy/cs188/appendix.md
+    - CS61C:
+      - 课程计划: csdiy/cs61c/index.md
+    - MIT 6.046J:
+      - 课程计划: csdiy/mit6046j/index.md
+    - CS106L:
+      - 课程计划: csdiy/cs106l/index.md
+    - CSAPP:
+      - 课程计划: csdiy/csapp/index.md
   - CTF: 
     - 笔记目录: ctf/index.md
     - CTF101笔记: ctf/ctf101.md
@@ -134,6 +152,7 @@ nav:
       - 导航: ctf/crypto/index.md
       - RSA: ctf/crypto/rsa.md
       - DSA: ctf/crypto/dsa.md
+      - AES: ctf/crypto/aes.md
       - Coppersmith: ctf/crypto/coppersmith.md
       - PRNG: ctf/crypto/prng.md
       - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
