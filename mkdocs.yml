@@ -107,6 +107,8 @@ nav:
       - 生命教育概论:
         - 概述: zju/21/life/index.md
         - 笔记: zju/21/life/life.md
+      - 经济法理论与实务:
+        - 概述: zju/21/eco/index.md
     - 大二春夏笔记: 
       - 导航: zju/22/index.md
       - 数据库系统: 
@@ -168,6 +170,9 @@ nav:
       - 导航: ctf/reverse/index.md
     - pwn笔记: 
       - 导航: ctf/pwn/index.md
+    - NewStarCTF2025:
+      - 导航: ctf/newstarctf2025/index.md
+      - 题解: ctf/newstarctf2025/writeup.md
   - OJ笔记:
     - OJ笔记导航: oj/index.md
     - LeetCode: 

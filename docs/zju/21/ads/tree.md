@@ -1,10 +1,19 @@
-## Lec 1: AVL Tree & Splay Tree & Amortized Analysis （摊还分析）
+???+ warning
+    以下是Cheating List，是对4种树的各类数值规模的总结：
+
+    |                 | AVL Tree                    | Splay Tree                  | RB Tree               | B+ Tree（$M-\text{order}$）                          |
+    | --------------- | --------------------------- | --------------------------- | --------------------- | ---------------------------------------------------- |
+    | 节点数/树高关系 | $h = \log N$                | 最坏$O(N)$，摊还$O(\log N)$ | $h \leq 2\log_2(N+1)$ | $h\leq \log_{\lceil \frac M2\rceil}N$                |
+    |                 | $F_{h+3}-1\leq N\leq 2^h-1$ |                             | $bh\geq \dfrac h2$    | $2\cdot (\lceil \frac M2\rceil)^{h-1}\leq N\leq M^h$ |
+    | 搜索            | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
+    | 插入            | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
+    | 删除            | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
+
+## Lec 1: AVL Tree & Splay Tree & Amortized Analysis(摊还分析)
 
 ### AVL Tree
 
-#### 定义
-
-主要思想：尽可能平衡
+是BST的改进版本之一，主要思想仍然是尽可能平衡.
 
 Definition:
 
@@ -178,13 +187,13 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
     <center><img src = "../ads/dr.jpg" style="zoom: 30%;"/></center>
 
-#### 搜索操作
+#### 搜索
 
 这个比较容易，是类似BST的操作.
 
-#### 删除操作
+#### 删除
 
-#### 插入操作
+#### 插入
 
 ### Amortized Analysis
 
@@ -264,6 +273,28 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 首先是case3，只需要LL Rotation或者RR Rotation的情况：
 
+<center><img src = "../ads/case3.jpg" style="zoom: 50%;"/></center>
+
+接着是case2，这里只需要进行一次LR/RL Rotation并且染色就能达到平衡：
+
+<center><img src = "../ads/case2.jpg" style="zoom: 50%;"/></center>
+
+最后是最为复杂的case1，我们针对节点G的上一级进行分类，由对称性化简，最后共分成4个小的case：
+
+<center><img src = "../ads/case1.jpg" style="zoom: 50%;"/></center>
+
+<center><img src = "../ads/case121.jpg" style="zoom: 50%;"/></center>
+
+<center><img src = "../ads/case122.jpg" style="zoom: 50%;"/></center>
+
+<center><img src = "../ads/case123.jpg" style="zoom: 50%;"/></center>
+
+<img src = "../ads/case124.jpg" style="zoom: 30%;"/>
+
+完整状态机：
+
+<center><img src = "../ads/statemachine.png" style="zoom: 70%;"/></center>
+
 #### 删除
 
 ### B+ Tree
@@ -277,3 +308,29 @@ Definition:
 2. All nonleaf nodes (not root) have between \([\dfrac M 2]+1\) and \(M\) children.
 
 3. All leaves are at the same depth.
+
+比如2-3-4树的举例如下：
+
+<center><img src = "../ads/bplus0.png" style="zoom: 50%;"/></center>
+
+其中所有数据存储在叶子节点中，拼接起来就是一个严格单调递增/减的数列；
+
+非叶子节点的第$i$个键值 = 第$(i+1)$颗子树的最小/大值，所以非叶节点最多存$M-1$个值.
+
+一颗$\text{order} = 4$的B+树也称为$2-3-4$树.
+
+!!! tips
+    B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最浪费深度的放置方法是每层\(\lceil \frac{M}{2} \rceil\)个节点.
+
+#### 搜索、插入
+
+搜索操作是极其简单的，只需要逐层搜索下去就行.
+
+插入操作的探讨要分成2部分，第一是插入之后的叶子节点内数量没有超过order，因而不需要split，此时已经结束；第二是需要split的情形，此时需要递归向上进行分裂.
+
+过程图如下：
+
+???+ tips
+    <center><img src = "../ads/bplus1.png" style="zoom: 80%;"/></center>
+    <center><img src = "../ads/bplus2.png" style="zoom: 80%;"/></center>
+    <center><img src = "../ads/bplus3.png" style="zoom: 80%;"/></center>
