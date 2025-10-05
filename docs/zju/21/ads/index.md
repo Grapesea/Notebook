@@ -13,6 +13,8 @@
     [StarStone的笔记](https://starstone3.github.io/incourse/ADS/)
 
     [MIT 6.046J, 2015 spring](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/)
+    $\quad$
+    <a href="wyh_ads_lec.pdf" download="wyh_ads_lec.pdf">点击下载wyh助教的ADS讲义</a>
 
     摘自[罹魂梦蝶的经验帖](https://www.cc98.org/topic/5647034)：
 

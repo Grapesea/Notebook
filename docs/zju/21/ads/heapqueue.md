@@ -27,5 +27,3 @@ $\text{dist}_{\text{node}} = \text{dist}_{\text{rightchild}}$
 ### Amortized Annalysis for Skew Heap
 
 ## Lec 4 Binomial Queue
-
-## Lec 5

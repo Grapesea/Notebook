@@ -4,4 +4,4 @@
     
     资源：
 
-    [国家时长监督管理总局合同示范文本库](https://htsfwb.samr.gov.cn/)
+    [国家市场监督管理总局合同示范文本库](https://htsfwb.samr.gov.cn/)

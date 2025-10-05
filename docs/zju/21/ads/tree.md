@@ -297,6 +297,18 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 #### 删除
 
+首先回顾BST的删除操作（假设被删掉的节点是$X$）：
+
+1. 如果$X$没有孩子，则直接删除即可；
+
+2. 如果$X$有1个孩子，则只需要让孩子接替$X$的位子即可；
+
+3. 如果$X$有2个孩子，则需要先让$X$与其左子树的最大节点或者右子树的最小节点交换，这样就可以转化成case 1或者2.
+
+红黑树的删除操作基于BST的分析，不过细节更多.
+
+首先是case3.当$X$有2个孩子的时候，我们只需要将$X$与其左子树最大节点或者右子树最小节点的**键值**交换，保持红黑属性不变，就可以转换成case1或者2.
+
 ### B+ Tree
 
 Definition:
@@ -334,3 +346,8 @@ Definition:
     <center><img src = "../ads/bplus1.png" style="zoom: 80%;"/></center>
     <center><img src = "../ads/bplus2.png" style="zoom: 80%;"/></center>
     <center><img src = "../ads/bplus3.png" style="zoom: 80%;"/></center>
+
+#### *删除
+
+!!! warning
+    ADS考试不要求掌握，DB可能需要掌握.
