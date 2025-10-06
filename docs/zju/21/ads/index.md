@@ -43,7 +43,7 @@
     > 一些[历年卷](https://github.com/RyanFcr/ZJU_Course/tree/main/%E5%A4%A7%E4%BA%8C%E6%98%A5%E5%A4%8F/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90ADS/%E6%9C%9F%E6%9C%AB)
 
 !!! tips
-    数据结构：（占$\frac13$）
+    数据结构：（占$\dfrac13$）
 
     * Balanced Search Trees: AVL Tree, Splay Tree, B+ Tree, Red-Black Tree
     * Leftist Heaps, Skew Heaps, Binomial Queue
@@ -51,12 +51,27 @@
 
     算法：
 
-    * Divide & Conquer
-    * Backtracking, Dynamic Programming
-    * Greedy Algorithms, Local Search
-    * NP-Completeness, Approximation Algorithms
-    * Randomized Algorithms, Parallel Algorithms
-    * Streaming Algorithm (External Sorting)
+    1. Exact Algorithms
+
+        * Divide and Conquer
+        * Backtracking
+        * Dynamic Programming
+
+    2. Heuristic Algorithms
+
+        * Greedy Algorithms
+        * Local Search (find a solution, then making subtle modification to find an optimal solution)
+
+    3. Approximation Algorithms
+
+        * NP-Completeness
+        * Approximation Algorithms
+        * Randomized Algorithms
+
+    4. Other Algorithms
+
+        * Parallel Algorithms
+        * External Sorting
 
     Grading Policy：（平时分60'，不溢出）
 
@@ -64,5 +79,4 @@
     * 讨论10'
     * Project 30' (2-3人，Presentation)
     * MidTerm(10*，可以被Final Term覆盖)
-
     * Final Term (40*)

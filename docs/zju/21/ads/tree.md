@@ -238,6 +238,10 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 !!! tips
     [OI wiki](https://oi-wiki.org/ds/rbtree/)
+    $\quad$
+    wyy的ADS讲义，这似乎指示着我需要去看看算法导论的讲解.
+    $\quad$
+    [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec02)
 
 ### Red-Black Tree
 
@@ -307,7 +311,40 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 红黑树的删除操作基于BST的分析，不过细节更多.
 
+总的思路分析：
+
+<center><img src = "../ads/rbdel0.jpg" style="zoom: 80%;"/></center>
+
 首先是case3.当$X$有2个孩子的时候，我们只需要将$X$与其左子树最大节点或者右子树最小节点的**键值**交换，保持红黑属性不变，就可以转换成case1或者2.
+
+而case1,2其实没有显著的不同，所以讨论的时候可以合并来看（以下已经注明，case1真包含于cases12.3，因为NIL节点是黑色的.）
+
+<center><img src = "../ads/rbdel1.jpg" style="zoom: 80%;"/></center>
+
+<center><img src = "../ads/rbdel2.jpg" style="zoom: 60%;"/></center>
+
+状态机：
+
+<center><img src = "../ads/rbdel3.jpg" style="zoom: 60%;"/></center>
+
+搜索到$X$节点需要的时间是$O(\log N)$，而向上转移所谓的双黑属性时间复杂度是$O(h) = O(\log N)$，每个转移操作的时间复杂度是$O(1)$，于是整个删除操作的复杂度是$O(\log N)$.
+
+总算是完成了红黑树的总结，接下来摘录吴一航学长在讲义中的一段话，这使我更加深入地了解了这几种树的学习中我究竟在为将来的学习做什么准备：
+
+!!! tips
+    2.1.4 再论 AVL 树和红黑树的区别
+
+    开头我们已经提到，AVL 树的平衡条件太严苛，因此更新树（即插入和删除）操作会更频繁，所以我们希望有一个条件更松的平衡要求但也能保证树高被控制在$O(log n)$的量级。除此之外，AVL 树和红黑树似乎都是通过旋转恢复平衡，没有很大的差别。但其实有一个很有趣的现象，又非常多的库函数在选择平衡搜索树实现功能的时候，会更常用红黑树，例如大家最熟悉的 C++ 的 `std::map`，以及 Java 8 开始的 HashMap 和 Microsoft .NET 框架的部分代码，甚至 Linux 内核中内存管理也使用了红黑树（可以参考[这个 GitHub 上的 Linux 文档](https://github.com/torvalds/linux/blob/master/Documentation/core-api/rbtree.rst)）。那这其中的原因可能是什么呢？
+
+    事实上这一问题应当是没有标准答案的，毕竟是当年工程师的多方面考虑综合后的选择，但我们可以通过这个问题看一看 AVL 树和红黑树的一些更细致的区别：
+
+    1. 我们都知道，AVL 树平衡条件更严格，推导 AVL 树高的时候我们用到了斐波那契数列，实际上，可以验证的是 AVL 树最差高度大约为 $1.44 \log n$，红黑树最差则可以达到 $2 \log n$，事实上讨论题 1 隐含了这一点，从这一层面来看，**如果对一棵树的查询操作居多，那么 AVL 树会是更好的选择**；
+
+    2. 但上一节我们提到，AVL 树虽然插入只需要常数次旋转即可，但在删除时可能需要$O(\log n)$次旋转，而红黑树插入和删除都是常数次，有人提到在代码实现时旋转是插入和删除最耗时的操作，因此如果插入删除操作多，AVL 树不如红黑树快速，而我们知道使用 `std::map` 时**的确可能遇到较多插入删除操作**；
+
+    3. AVL 树需要维护树高或者 balance factor 属性，这是一个整数的大小，而红黑树只需要 1 个 bit 存储颜色即可，因此**更省空间**；
+
+    4. 红黑树是**可持久化**的数据结构，因此在函数式编程中容易实现；并且红黑树也可以支持分裂、合并等操作，这使得它可以做批量并行的插入、删除操作（实际上这与讲义最后红黑树与 B 树的关联是相关的），具体已经超出课程范畴，不再详细讨论。
 
 ### B+ Tree
 
@@ -343,9 +380,9 @@ Definition:
 过程图如下：
 
 ???+ tips
-    <center><img src = "../ads/bplus1.png" style="zoom: 80%;"/></center>
-    <center><img src = "../ads/bplus2.png" style="zoom: 80%;"/></center>
-    <center><img src = "../ads/bplus3.png" style="zoom: 80%;"/></center>
+    <center><img src = "../ads/bplus0.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "../ads/bplus1.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "../ads/bplus2.jpg" style="zoom: 80%;"/></center>
 
 #### *删除
 

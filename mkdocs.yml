@@ -68,8 +68,10 @@ nav:
         - 概述: zju/21/ads/index.md
         - AVL Tree & Splay Tree & Red-Black Tree & B+ Tree: zju/21/ads/tree.md
         - Inverted File Index: zju/21/ads/fileindex.md
-        - Leftist Heap & Skew Heap & Binomial Queue: zju/21/ads/heapqueue.md 
-        - 算法分析: zju/21/ads/algorithm.md
+        - Leftist Heap & Skew Heap & Binomial Queue: zju/21/ads/heapqueue.md
+        - Backtracking: zju/21/ads/bt.md
+        - Divide and Conquer: zju/21/ads/dc.md
+        - Dynamic Programming: zju/21/ads/dp.md
       - 计算机组成: 
         - 概述: zju/21/co/index.md
         - 笔记:

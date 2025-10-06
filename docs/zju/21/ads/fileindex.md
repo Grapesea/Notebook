@@ -1,4 +1,4 @@
-## Inverted File Index
+## Lec 3 Inverted File Index
 
 !!! tips
 
@@ -12,11 +12,7 @@
 
 其核心思想是，将传统的"文档→词汇"映射关系反转为"词汇→文档"映射
 
-
-
 ### 倒排索引的构建
-
-
 
 ### 搜索引擎评价-Relevance
 
