@@ -24,7 +24,9 @@
 
 * **ADS**，至少冲4.5，希望allin莫辜负
 
-    在前6周看完所有课程lec1-16，已完成：1,2,3,4
+    在前6周看完所有课程lec1-16，已完成：1,2,3,4,5
+
+    Project 1, **2**, 3, 4
 
     刷Leetcode（按照代码随想录的顺序）
 
@@ -84,7 +86,7 @@
 
     尽可能刷完CTF wiki知识，校巴crypto和web方向做一做
 
-    NewStarCTF
+    NewStarCTF, crypto 目前 5/(10+5)，misc 目前 1/10
 
 * 实验室打工
 

@@ -66,7 +66,7 @@ nav:
       - 导航: zju/12/index.md
       - 数据结构基础: 
         - 概述: zju/12/fds/index.md
-        - Heap: zju/12/fds/Heap.md
+        - Heap: zju/12/fds/heap.md
     - 大二秋冬笔记: 
       - 导航: zju/21/index.md
       - 高级数据结构与算法分析: 
@@ -80,6 +80,9 @@ nav:
           - Backtracking: zju/21/ads/bt.md
           - Divide and Conquer: zju/21/ads/dc.md
           - Dynamic Programming: zju/21/ads/dp.md
+        - Project:
+          - Project 1-Comparing Different Search Trees: zju/21/ads/proj/1.md
+          - Project 2-Shortest Path Algorithm with Heaps: zju/21/ads/proj/2.md
       - 计算机组成: 
         - 概述: zju/21/co/index.md
         - 笔记:
@@ -90,14 +93,14 @@ nav:
           - chap4笔记: zju/21/co/note/co4.md
           - chap5笔记: zju/21/co/note/co5.md
           - chap6笔记: zju/21/co/note/co6.md
-        - lab笔记:
+        - lab总结:
           - 导航: zju/21/co/lab/index.md
-          - lab0总结: zju/21/co/lab/lab0.md
-          - lab1总结: zju/21/co/lab/lab1.md
-          - lab2总结: zju/21/co/lab/lab2.md
-          - lab3总结: zju/21/co/lab/lab3.md
-          - lab4总结: zju/21/co/lab/lab4.md
-          - lab5总结: zju/21/co/lab/lab5.md
+          - lab0:Vivado_Starter: zju/21/co/lab/lab0.md
+          - lab1:Warmup: zju/21/co/lab/lab1.md
+          - lab2:SCPU: zju/21/co/lab/lab2.md
+          - lab3:Multiplier/Divider/Floating-Point Adder: zju/21/co/lab/lab3.md
+          - lab4:CPU(Single Cycle): zju/21/co/lab/lab4.md
+          - lab5:PipelineCPU: zju/21/co/lab/lab5.md
       - 面向对象程序设计: 
         - 概述: zju/21/oop/index.md
         - 笔记: zju/21/oop/oop.md

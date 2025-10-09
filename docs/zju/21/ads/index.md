@@ -2,11 +2,10 @@
 
 其中涉及的代码我试图手搓，放在了GitHub仓库：[Grapesea/ADS_code](https://github.com/Grapesea/ADS_code)里面.
 
-> 一些有意思和非常有用的网站：[数据结构可视化交互动画版](https://totuma.cn/)
+???+ tips "资源列表 & 前人经验"
+    一些有意思且非常有用的网站：[数据结构可视化交互动画版](https://totuma.cn/)
 
-!!! tips
-
-    资源列表：[修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/)
+    [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/)
     $\quad$
     [WintermelonC的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/)
     $\quad$
@@ -42,7 +41,7 @@
 
     > 一些[历年卷](https://github.com/RyanFcr/ZJU_Course/tree/main/%E5%A4%A7%E4%BA%8C%E6%98%A5%E5%A4%8F/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90ADS/%E6%9C%9F%E6%9C%AB)
 
-!!! tips
+???+ tips "教学大纲 & 评分细则"
     数据结构：（占$\dfrac13$）
 
     * Balanced Search Trees: AVL Tree, Splay Tree, B+ Tree, Red-Black Tree

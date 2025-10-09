@@ -2,8 +2,9 @@
 
 Computer words are composed of bits, thus one word is a vector of binary numbers. In RISC-V, there are 32bit/word or 64bits/word, in which 32 bits contains 4 bytes.
 
-???+ tips
+???+ tips "资源"
     [NoughtQ佬的笔记](https://note.noughtq.top/system/co/3)，讲得非常清晰，感觉比听智云效率高很多.
+    但是需要注意一个问题，其中的Improved Version除法器原理图中，remainder寄存器在lp老师的slides上面是128bits而非129bits.
 
     Homework: 3.7, 3.20, 3.26, 3.27, 3.32
     
@@ -165,3 +166,19 @@ remu rd, rs1, rs2   // rd保存无符号数除法的余数
 #### Floating-Point Standard
 
 RISC-V浮点数标准来自IEEE 754标准，其将二进制数统一成了**规范化数**形式：$1.xxxxx_2 \times 2^{yyyy}$.
+
+浮点数表示法组成：符号$S$、指数(exponent)$E$、尾数(fraction)$F$.
+
+浮点数表示法（Sign and Magnitude）中的数字表示形式为：$$(-1)^S \times F \times 2^E$$
+
+单精度(float)下，数的范围是
+
+$$2.0_{10} \times 10^{-38} \to 2.0 \times 10^{38}$$
+
+<center><img src = "../3/float.png" style="zoom: 80%" /></center>
+
+双精度下，数的范围是
+
+$$2.0_{10}\times 10^{-308} \to 2.0_{10} \times 10^{308}$$
+
+<center><img src = "../3/double.png" style="zoom: 80%" /></center>

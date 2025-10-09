@@ -1,4 +1,4 @@
-???+ warning
+???+ warning "数值规模Cheating List"
     以下是Cheating List，是对4种树的各类数值规模的总结：
 
     |                 | AVL Tree                    | Splay Tree                  | RB Tree               | B+ Tree（$M-\text{order}$）                          |
@@ -54,22 +54,19 @@ int calcBalanceFactor(AVLNode* node){
 }
 ```
 
-<br/>
-
 #### 四种Rotation
 
-!!! tips
-    > 旋转操作是多数平衡树能够维持平衡的关键，能在不改变一棵合法 BST 中序遍历结果的情况下改变局部节点的深度。
-    >
-    > 摘自[OI wiki](https://oi-wiki.org/ds/rbtree/)
-    >
-    > 旋转的理解：按我个人来看，这四种旋转都是需要先找到"Trouble Maker",即从插入的节点出发，一直向上走**第一个不平衡的节点。然后，对这个节点做操作**，具体可以看下面的代码实现。另外，LR与RL其实是由LL与RR组成的。
-    >
-    > 摘自[AVL树,Splay树,红黑树与B+树 - Starstone3's bed](https://starstone3.github.io/incourse/ADS/Tree/#avl树的特点与性质)
+> 旋转操作是多数平衡树能够维持平衡的关键，能在不改变一棵合法 BST 中序遍历结果的情况下改变局部节点的深度。
+>
+> ——[OI wiki](https://oi-wiki.org/ds/rbtree/)
+>
+> 旋转的理解：按我个人来看，这四种旋转都是需要先找到"Trouble Maker",即从插入的节点出发，一直向上走**第一个不平衡的节点。然后，对这个节点做操作**，具体可以看下面的代码实现。另外，LR与RL其实是由LL与RR组成的。
+>
+> ——[AVL树,Splay树,红黑树与B+树 - Starstone3's bed](https://starstone3.github.io/incourse/ADS/Tree/#avl树的特点与性质)
 
 RR Rotation: 如果新插入一个元素在右子树的最右节点，导致破坏了AVL Tree（$h_R-h_L = 2$），则需要进行Rotation，将root的右节点旋转成为root.
 
-```c++
+```cpp
 AVLNode* rrRotation(AVLNode* root){  
     // root 是第一个出问题的节点，即troublemaker
     if (root == nullptr || root->right == nullptr){
@@ -88,7 +85,7 @@ AVLNode* rrRotation(AVLNode* root){
 
 LL Rotation类似，代码如下：
 
-```c++
+```cpp
 AVLNode* llRotation(AVLNode* root){
     if (root == nullptr || root->left == nullptr){
         return root;
@@ -116,7 +113,7 @@ LR Rotation过程：
 
 所以代码为：
 
-```c++
+```cpp
 AVLNode* lrRotation(AVLNode* root){
     if (root == nullptr || root->left == nullptr){
         return root;
@@ -128,7 +125,7 @@ AVLNode* lrRotation(AVLNode* root){
 
 类似地，RL Rotation为：
 
-```c++
+```cpp
 AVLNode* rlRotation(AVLNode* root){
     if (root == nullptr || root->right == nullptr){
         return root;
@@ -139,8 +136,6 @@ AVLNode* rlRotation(AVLNode* root){
 ```
 
 容易知道插入操作的效率是$T_P = O(h)$，rotation操作的效率是$O(1)$.
-
-<br/>
 
 #### AVL Tree 最小节点数计算推导
 
@@ -160,7 +155,7 @@ AVLNode* rlRotation(AVLNode* root){
 
 ### Splay Tree
 
-!!! tips
+!!! tips "资源"
     [Splay tree - Wikipedia](https://en.wikipedia.org/wiki/Splay_tree) $\quad$ [Wintermelon的笔记-lec1](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch1)
 
 #### 理论分析
@@ -201,8 +196,8 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 Aggregate Analysis：找到时间开销最大的一种情形，计算$n$次操作之后的开销$T(n)$，则amortized cost是$\dfrac{T(n)}{n}$.
 
-!!! tips
-    举例：一个具有Multipop函数的大小为$k$的栈，从空栈开始只能选择push 1, pop 1, multipop三种操作，所以aggregate cost就是先压入$n-1$个元素，再进行一次Multipop，开销是$2n-2$，所以$\dfrac{T(n)}{n} = O(1)$.
+!!! tips "举例"
+    一个具有Multipop函数的大小为$k$的栈，从空栈开始只能选择push 1, pop 1, multipop三种操作，所以aggregate cost就是先压入$n-1$个元素，再进行一次Multipop，开销是$2n-2$，所以$\dfrac{T(n)}{n} = O(1)$.
 
 现在我们试图证明splay tree中，$T_{\text{amortized}} = O(\log{n})$.
 
@@ -216,7 +211,7 @@ $$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
 
 推导如下：
 
-???+ tips
+???+ tips "手写的推导过程"
     <center><img src = "../ads/zig1.jpg" style="zoom: 25%;"/></center>
     <center><img src = "../ads/zigzag.jpg" style="zoom: 30%;"/></center>
     <center><img src = "../ads/zigzig.jpg" style="zoom: 30%;"/></center>
@@ -231,12 +226,11 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 于是对于root为$T$的Splay Tree，想要找到它的$X$节点并进行splay操作，开销的摊还成本最大是$3(R(T)-R(X))+1 = O(\log(N))$，此时进行了1次zig和一堆zig-zig/zig-zag.
 
-!!! tips
-    Splay Tree的搜索、插入、删除操作的摊还复杂度都是$O(\log N)$.
+**Splay Tree的搜索、插入、删除操作的摊还复杂度都是$O(\log N)$.**
 
 ## Lec 2 Red-Black Tree & B+ Tree
 
-!!! tips
+!!! tips "资源"
     [OI wiki](https://oi-wiki.org/ds/rbtree/)
     $\quad$
     wyy的ADS讲义，这似乎指示着我需要去看看算法导论的讲解.
@@ -257,7 +251,7 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 5. 所有从某个节点到叶子的路径上的黑色节点数相同 For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 
-!!! tips
+!!! tips "举例"
     上面的定义比较抽象，可以参考这个示例图来理解：
     <center><img src = "../ads/rbtree.png" style="zoom: 60%;"/></center>
     A red-black tree with \(n\) internal nodes has height at most 2\(\ln (N+1)\).
@@ -331,10 +325,9 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 总算是完成了红黑树的总结，接下来摘录吴一航学长在讲义中的一段话，这使我更加深入地了解了这几种树的学习中我究竟在为将来的学习做什么准备：
 
-!!! tips
-    2.1.4 再论 AVL 树和红黑树的区别
+!!! tips "2.1.4 再论 AVL 树和红黑树的区别"
 
-    开头我们已经提到，AVL 树的平衡条件太严苛，因此更新树（即插入和删除）操作会更频繁，所以我们希望有一个条件更松的平衡要求但也能保证树高被控制在$O(log n)$的量级。除此之外，AVL 树和红黑树似乎都是通过旋转恢复平衡，没有很大的差别。但其实有一个很有趣的现象，又非常多的库函数在选择平衡搜索树实现功能的时候，会更常用红黑树，例如大家最熟悉的 C++ 的 `std::map`，以及 Java 8 开始的 HashMap 和 Microsoft .NET 框架的部分代码，甚至 Linux 内核中内存管理也使用了红黑树（可以参考[这个 GitHub 上的 Linux 文档](https://github.com/torvalds/linux/blob/master/Documentation/core-api/rbtree.rst)）。那这其中的原因可能是什么呢？
+    开头我们已经提到，AVL 树的平衡条件太严苛，因此更新树（即插入和删除）操作会更频繁，所以我们希望有一个条件更松的平衡要求但也能保证树高被控制在$O(\log n)$的量级。除此之外，AVL 树和红黑树似乎都是通过旋转恢复平衡，没有很大的差别。但其实有一个很有趣的现象，又非常多的库函数在选择平衡搜索树实现功能的时候，会更常用红黑树，例如大家最熟悉的 C++ 的 `std::map`，以及 Java 8 开始的 HashMap 和 Microsoft .NET 框架的部分代码，甚至 Linux 内核中内存管理也使用了红黑树（可以参考[这个 GitHub 上的 Linux 文档](https://github.com/torvalds/linux/blob/master/Documentation/core-api/rbtree.rst)）。那这其中的原因可能是什么呢？
 
     事实上这一问题应当是没有标准答案的，毕竟是当年工程师的多方面考虑综合后的选择，但我们可以通过这个问题看一看 AVL 树和红黑树的一些更细致的区别：
 
@@ -368,7 +361,7 @@ Definition:
 
 一颗$\text{order} = 4$的B+树也称为$2-3-4$树.
 
-!!! tips
+!!! tips "深度估计"
     B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最浪费深度的放置方法是每层\(\lceil \frac{M}{2} \rceil\)个节点.
 
 #### 搜索、插入
@@ -379,7 +372,7 @@ Definition:
 
 过程图如下：
 
-???+ tips
+???+ tips "B+树搜索插入操作"
     <center><img src = "../ads/bplus0.jpg" style="zoom: 80%;"/></center>
     <center><img src = "../ads/bplus1.jpg" style="zoom: 80%;"/></center>
     <center><img src = "../ads/bplus2.jpg" style="zoom: 80%;"/></center>

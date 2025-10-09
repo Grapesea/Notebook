@@ -1,6 +1,12 @@
-!!! tips
+!!! warning "免责声明"
 
-    可能会用到的资源：[2023年实验文档](https://artessay.github.io/ZJU-Computer-Organization-Lab-2023/#/)
+    此文档仅为2025-2026学年秋冬学期林芃老师班的lab记录；
+
+    请遵守Honor Code原则，作者不为可能引发的后果负责.
+
+!!! tips "可能会用到的资源"
+
+    [2023年实验文档](https://artessay.github.io/ZJU-Computer-Organization-Lab-2023/#/)
     $\quad$
     [2024计算机组成与设计实验文档](https://guahao31.github.io/2024_CO/)
 
