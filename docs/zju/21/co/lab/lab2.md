@@ -20,4 +20,6 @@
 
     注意PPT P89的复位按键，可以将PC置0，即demo程序从头开始运行.
 
+参考文献：[瓜豪的2024CO文档](https://guahao31.github.io/2024_CO/Lab2/Lab2/)
+
 ## IP核集成SOC设计——建立CPU调试、测试与应用环境

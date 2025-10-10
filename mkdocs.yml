@@ -152,6 +152,31 @@ nav:
       - Game Trees: csdiy/cs188/4.md
       - MDPs: csdiy/cs188/5.md
       - Appendix:Logic: csdiy/cs188/appendix.md
+    - Datawhale Mathematical Modeling:
+      - 课程计划: csdiy/datawhale_mm/index.md
+      - Chap 1:解析方法与几何模型: csdiy/datawhale_mm/1.md
+      - Chap 2:微分方程与动力系统: csdiy/datawhale_mm/2.md
+      - Chap 3:函数极值与规划模型: csdiy/datawhale_mm/3.md
+      - Chap 4:复杂网络与图论模型: csdiy/datawhale_mm/4.md
+      - Chap 5:进化计算与群体智能: csdiy/datawhale_mm/5.md
+      - Chap 6:数据处理与拟合模型: csdiy/datawhale_mm/6.md
+      - Chap 7:权重生成与评价模型: csdiy/datawhale_mm/7.md
+      - Chap 8:时间序列与投资模型: csdiy/datawhale_mm/8.md
+      - Chap 9:机器学习与统计模型: csdiy/datawhale_mm/9.md
+      - Chap 10:图像、文本与信号数据: csdiy/datawhale_mm/10.md
+    - Datawhale Mathematics for Artificial Intelligence:
+      - 课程计划: csdiy/datawhale_m4ai/index.md
+      - Chap 2:线性代数: csdiy/datawhale_m4ai/2.md
+      - Chap 3:解析几何: csdiy/datawhale_m4ai/3.md
+      - Chap 4:矩阵分解: csdiy/datawhale_m4ai/4.md
+      - Chap 5:向量微积分: csdiy/datawhale_m4ai/5.md
+      - Chap 6:概率与统计: csdiy/datawhale_m4ai/6.md
+      - Chap 7:连续优化: csdiy/datawhale_m4ai/7.md
+      - Chap 8:当模型遇上数据: csdiy/datawhale_m4ai/8.md
+      - Chap 9:线性回归: csdiy/datawhale_m4ai/9.md
+      - Chap 10:降维与主成分分析: csdiy/datawhale_m4ai/10.md
+      - Chap 11:密度估计和Gauss混合模型: csdiy/datawhale_m4ai/11.md
+      - Chap 12:分类和支持向量机: csdiy/datawhale_m4ai/12.md
     - CS61C:
       - 课程计划: csdiy/cs61c/index.md
     - MIT 6.046J:
