@@ -80,6 +80,10 @@
 
     目前看不到自己学的时间，但是挺多东西是ADS也覆盖了的，所以还是试图啃下来吧
 
+* **CS106L 2022spring**
+
+    assignment 1,2
+
 ## 竞赛科研
 
 * crypto学习
@@ -88,7 +92,7 @@
 
     尽可能刷完CTF wiki知识，校巴crypto和web方向做一做
 
-    NewStarCTF, crypto 目前 5/(10+5)，misc 目前 1/10
+    <del>NewStarCTF, crypto 目前 5/(10+5)，misc 目前 2/10</del>
 
 * 实验室打工
 

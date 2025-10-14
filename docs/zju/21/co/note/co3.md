@@ -169,7 +169,9 @@ RISC-V浮点数标准来自IEEE 754标准，其将二进制数统一成了**规�
 
 浮点数表示法组成：符号$S$、指数(exponent)$E$、尾数(fraction)$F$.
 
-浮点数表示法（Sign and Magnitude）中的数字表示形式为：$$(-1)^S \times F \times 2^E$$
+浮点数表示法（Sign and Magnitude）中的数字表示形式为：
+
+$$(-1)^S \times F \times 2^E$$
 
 单精度(float)下，数的范围是
 

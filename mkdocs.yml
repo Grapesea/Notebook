@@ -67,6 +67,7 @@ nav:
       - 数据结构基础: 
         - 概述: zju/12/fds/index.md
         - Heap: zju/12/fds/heap.md
+        - Graph: zju/12/fds/graph.md
     - 大二秋冬笔记: 
       - 导航: zju/21/index.md
       - 高级数据结构与算法分析: 
@@ -87,12 +88,12 @@ nav:
         - 概述: zju/21/co/index.md
         - 笔记:
           - 导航: zju/21/co/note/index.md
-          - chap1笔记: zju/21/co/note/co1.md
-          - chap2笔记: zju/21/co/note/co2.md
-          - chap3笔记: zju/21/co/note/co3.md
-          - chap4笔记: zju/21/co/note/co4.md
-          - chap5笔记: zju/21/co/note/co5.md
-          - chap6笔记: zju/21/co/note/co6.md
+          - Chap1笔记: zju/21/co/note/co1.md
+          - Chap2笔记: zju/21/co/note/co2.md
+          - Chap3笔记: zju/21/co/note/co3.md
+          - Chap4笔记: zju/21/co/note/co4.md
+          - Chap5笔记: zju/21/co/note/co5.md
+          - Chap6笔记: zju/21/co/note/co6.md
         - lab总结:
           - 导航: zju/21/co/lab/index.md
           - lab0:Vivado_Starter: zju/21/co/lab/lab0.md

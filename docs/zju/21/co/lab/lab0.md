@@ -138,7 +138,6 @@ set_property IOSTANDARD LVCMOS33 [get_ports CLK_i]
 
     这个模块操作过于老旧，可以不做.
 
-
 ### IP核的生成
 
 这一模块首先需要完成的任务是：利用vivado完成对MUX2T1_5的设计和封装.
@@ -465,13 +464,13 @@ finish之后，在弹出的窗口中选择`Review and Package->Package IP`即可
 
 !!! tips
 
-    这个模块中的IP Core生成操作过于老旧，可以不做.
+    这个模块中的IP Core生成操作过于老旧，暂时可以不做，但是lab2还是要进行这个操作的.
 
 > 学习并利用Vivado生成Xilinx库中的IP，以存储器ROM,RAM为例，并完成其存储内容的初始化.
 
 #### ROM_D IP Core的生成
 
-点击左侧的IP Catalog，在打开的窗口搜索栏中输入`mamory generator`，选择`Block Memory Generator`或者`Distributed Memory Generator`. 其中前者是同步访问，后者是异步访问.
+点击左侧的IP Catalog，在打开的窗口搜索栏中输入`memory generator`，选择`Block Memory Generator`或者`Distributed Memory Generator`. 其中前者是同步访问，后者是异步访问.
 
 先双击打开`Distributed Memory Generator`，`Depth`输入1024，`Data Width`输入32，存储类型调成ROM -> OK，接着在操作窗口中选择跟memory config同级的RST & Initialization，你需要点击Browse按钮来添加Coefficients File并查验.
 
@@ -519,7 +518,7 @@ RAM your_instance_name (
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 ```
 
-!!! tips
+???+ questions
 
     RAM IP Core的生成过程中有一个问题，为什么不能勾选`Primitives Output Register`？
 

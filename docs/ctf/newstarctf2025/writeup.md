@@ -234,8 +234,228 @@ apt指的是 Advanced Persistent Threat，此处是kimsuky.
 
 综合起来就能得到正确答案: `flag{kimsuky_alps.travelmountain.ml_2021-03-31}`.
 
+### [Easy]OSINT-天空Belong
+
+<center><img src = "../figures/osint1.jpg" style = "zoom:40%"/></center>
+
+直接打开wsl获取信息：
+
+```wsl
+$ file 1.jpg
+1.jpg: JPEG image data, Exif standard: [TIFF image data, big-endian, direntries=14, height=0, manufacturer=Xiaomi, orientation=upper-right, datetime=2025:08:17 15:03:47, GPS-Data, yresolution=209, xresolution=217], baseline, precision 8, 1920x1080, components 3
+```
+
+可以知道这张图片是小米手机拍摄，并且拍摄时间为2025:08:17 15:03:47.
+
+<center><img src = "../figures/osint2.jpg" style = "zoom:30%"/></center>
+
+进一步通过飞机的右翼编号，在航旅纵横和Flightera上面查出来是
+[地址](https://www.flightera.net/zh/flight_details/Urumqi+Air/UQ3574/ZSJN/2025-08-17)
+
+然后就比较离谱了，这张照片究竟是在哪拍的？我习惯性以为是长沙，结果居然错了，答案是湖北湖南边界，还没到湖北.
+
+所以flag是`flag{UQ3574_武汉市_Xiaomi}`.
+
 ### [Easy]Music(音频隐写：MIDI格式)
 
 [参考链接](https://www.cnblogs.com/Hardworking666/p/15866111.html)
 
-###
+### [Hard]前有文字，所以搜索很有用
+
+#### Track 1
+
+首先关注到隐写段落，使用脚本看出里面的不可见字符为`U+200B`,`U+200C`,`U+200D`,`U+200E`,`U+FEFF`：
+
+打开bing搜索到这个帖子：[零宽字符隐写](https://blog.csdn.net/qq_45927266/article/details/120423818)
+
+按下面的方法进入[隐写工具](https://330k.github.io/misc_tools/unicode_steganography.html)勾选并处理：
+
+并将得到的字符串丢进cyberchef里面.
+
+所以flag第一部分是`flag{you_`.
+
+#### Track 2
+
+Track2的key是brainfuck代码，丢进cyberchef里面得到的结果是`brainfuckisgooooood`.
+
+接下来端详这个.docx文件，首先有一个不明所以的加红的“雪”字，接着发现每句话后面都有一些莫名其妙的空格，所以打开'显示/隐藏编辑标记'功能，可以看到如下场景：
+
+#### Track3
+
+提示我需要统计一下字符，所以让Claude写了一下代码:
+
+```python
+import os
+def count_characters(file_path):
+    """
+    统计txt文件中所有字符的出现次数
+    
+    参数:
+        file_path: txt文件的路径
+    
+    返回:
+        字典，键为字符，值为出现次数
+    """
+    char_count = {}
+    
+    try:
+        # 打开文件并读取内容
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            
+            # 遍历每个字符并统计
+            for char in content:
+                if char in char_count:
+                    char_count[char] += 1
+                else:
+                    char_count[char] = 1
+        
+        return char_count
+    
+    except FileNotFoundError:
+        print(f"错误：找不到文件 '{file_path}'")
+        return {}
+    except Exception as e:
+        print(f"读取文件时发生错误：{e}")
+        return {}
+
+# 使用示例
+if __name__ == "__main__":
+    # 将默认路径解析为与此脚本同目录下的 3.txt，避免当前工作目录不同导致找不到文件
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    default_path = os.path.join(script_dir, "3.txt")
+
+    # 如果需要，你也可以把这里改成绝对路径或通过命令行参数传入
+    file_path = default_path
+    print(f"尝试打开的文件路径: {file_path}")
+    
+    # 调用函数统计字符
+    result = count_characters(file_path)
+    
+    # 打印结果
+    if result:
+        print(f"共统计到 {len(result)} 种不同字符\n")
+        print("字符统计结果：")
+        
+        # 按出现次数降序排列并打印
+        sorted_result = sorted(result.items(), key=lambda x: x[1], reverse=True)
+        for char, count in sorted_result:
+            # 特殊字符的显示处理
+            if char == '\n':
+                display_char = '\\n (换行)'
+            elif char == '\t':
+                display_char = '\\t (制表符)'
+            elif char == ' ':
+                display_char = '(空格)'
+            else:
+                display_char = char
+            
+            print(f"'{display_char}': {count} 次")
+    else:
+        print("未能成功统计字符")
+```
+
+得到：
+
+```bash
+共统计到 95 种不同字符
+
+字符统计结果：
+'c': 1500 次
+'H': 1450 次
+'@': 1400 次
+'1': 1350 次
+'L': 1300 次
+'e': 1250 次
+'n': 1200 次
+'G': 1150 次
+'3': 1100 次
+'s': 1050 次
+'}': 1000 次
+'w': 659 次
+'!': 648 次
+'i': 637 次
+'V': 635 次
+'F': 632 次
+'K': 631 次
+'Q': 631 次
+'A': 629 次
+'.': 627 次
+'v': 627 次
+'9': 626 次
+'d': 625 次
+';': 625 次
+'&': 622 次
+']': 621 次
+'m': 619 次
+'Y': 619 次
+'>': 619 次
+'h': 618 次
+'t': 617 次
+'5': 613 次
+')': 612 次
+'k': 612 次
+'#': 610 次
+'6': 608 次
+'r': 607 次
+'T': 607 次
+'u': 606 次
+'C': 605 次
+'4': 605 次
+'0': 601 次
+'J': 601 次
+'x': 600 次
+'Z': 599 次
+':': 598 次
+'E': 597 次
+'M': 597 次
+'<': 597 次
+'q': 597 次
+'z': 596 次
+'o': 596 次
+'P': 594 次
+'/': 594 次
+'U': 594 次
+'"': 594 次
+'b': 593 次
+'+': 593 次
+'|': 592 次
+'p': 592 次
+'B': 591 次
+'{': 591 次
+'y': 590 次
+'$': 590 次
+'?': 588 次
+'7': 587 次
+'a': 585 次
+'%': 584 次
+'(空格)': 584 次
+'*': 583 次
+'~': 582 次
+',': 581 次
+'-': 579 次
+'^': 579 次
+'[': 579 次
+'l': 577 次
+'2': 576 次
+'_': 575 次
+'(': 573 次
+'R': 573 次
+'f': 571 次
+'\': 571 次
+''': 566 次
+'O': 565 次
+'W': 563 次
+'=': 560 次
+'`': 559 次
+'g': 557 次
+'I': 557 次
+'8': 556 次
+'X': 556 次
+'D': 556 次
+'S': 553 次
+'j': 547 次
+'N': 539 次
+```
+
+这明显能看出，flag最后一段是：`cH@1LenG3s}`.
