@@ -19,6 +19,14 @@
         <td>CS188 UC Berkley: Introduction to Artificial Intelligence, 2025 Spring</td>
     </tr>
     <tr>
+        <td><a href="datawhale_mm/">Datawhale Mathematical Modeling课程笔记</a></td>
+        <td>Datawhale数学建模导论开源课程</td>
+    </tr>
+    <tr>
+        <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence课程笔记</a></td>
+        <td>Datawhale人工智能数学基础开源课程</td>
+    </tr>
+    <tr>
         <td><a href="cs61c/">CS61C笔记</a></td>
         <td>CS61C UC Berkley: Computer Architecture (Machine Structures), 2025 Fall</td>
     </tr>

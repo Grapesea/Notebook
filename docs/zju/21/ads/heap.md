@@ -160,11 +160,10 @@ Node *del(Node *cur, ElementType x)
 }
 ```
 
-???+ tips
+??? tips ""
     After inserting a node into a Leftist heap H (which is equivalent to merging a one-node Leftist heap with H), we need to swap the children of at most 1 node to make the resulting tree a Leftist heap.
 
-    这句话是错误的，考虑以下情况：
-    <center><center>
+    这句话是对的
 
 ### Skew Heap
 
@@ -179,7 +178,7 @@ Skew Heap放弃了左偏属性，在[wiki](https://en.wikipedia.org/wiki/Skew_he
 > Skew heaps may be described with the following recursive definition:
 >
 > * A heap with only one element is a skew heap.
-
+>
 > * The result of skew merging two skew heaps $sh_1$ and $sh_2$ is also a skew heap.
 
 #### Merge

@@ -75,6 +75,8 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
     C.We must perform “cascading merge” right after inserting a key into a Binomial queue of odd size.<br>
     D.Consider the case that we perform consecutive insertions into a Binomial queue. Assume that we have performed “cascading merge” after inserting a key. Then in the next 3 insertions, we do not have to perform “cascading merge”.
 
+    答案是AD，B不可能出现cascading，因为
+
 ???+ tips "(2.3-8) Multiple Answers"
 
     Consider a binomial queue Q of n nodes with binomial trees $B_1,\cdots,B_k$. To delete the minimum key from Q, there are the following four steps to go.
