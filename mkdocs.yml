@@ -84,6 +84,8 @@ nav:
         - Project:
           - Project 1-Comparing Different Search Trees: zju/21/ads/proj/1.md
           - Project 2-Shortest Path Algorithm with Heaps: zju/21/ads/proj/2.md
+          - Project 3-Recover the Design: zju/21/ads/proj/3.md
+          - Project 4-Matrix Multiplication: zju/21/ads/proj/4.md
       - 计算机组成: 
         - 概述: zju/21/co/index.md
         - 笔记:
