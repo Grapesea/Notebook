@@ -22,6 +22,42 @@
 
 参考文献：[瓜豪的2024CO文档](https://guahao31.github.io/2024_CO/Lab2/Lab2/)
 
+??? notes "如何使用Tcl Console进行综合"
+
+    Synthesis:
+
+    ```bash
+    reset_run synth_1
+    launch_runs synth_1 -jobs 4
+    wait_on_run synth_1
+    # 检查综合是否真的在运行
+    # 运行综合后，在 Tcl Console 中应该看到类似输出：
+    launch_runs synth_1 -jobs 4
+    [Sat Oct 18 XX:XX:XX 2025] Launched synth_1...
+    Run output will be captured here: ...
+    ```
+
+    Implementation:
+    
+    ```bash
+    # 重置 implementation 运行
+    reset_run impl_1
+
+    # 运行 implementation
+    launch_runs impl_1 -jobs 4
+
+    # 等待完成
+    wait_on_run impl_1
+    ```
+
+!!! warning "实验吐槽"
+
+    首先是犯下了傲慢之罪的Windows，得益于他们的更新，我的Vivado驱动被删除了；
+
+    其次是糟糕的Vivado版本兼容问题，我为了不踩坑，把曾经嫌弃的Vivado 2024.2下载回来了，然后IP Core全部都要重新生成一遍；
+
+    最后是设备，我没招了，经常连接不好……一个原本能10.14完成的lab硬是多拖了5天.
+
 ## IP核集成SOC设计——建立CPU调试、测试与应用环境
 
 ### 添加文件

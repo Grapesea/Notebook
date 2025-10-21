@@ -8,7 +8,7 @@
 
     刷历年题
 
-    <del>w2 lab0</del>
+    <del>w2 lab0,1</del>
 
 * **CO**，冲4.5，莫辜负
 
@@ -24,9 +24,13 @@
 
 * **ADS**，至少冲4.5，希望allin莫辜负
 
-    在前6周看完所有课程lec1-16，已完成：1,2,3,4,5
+    在前6周看完所有课程lec1-16，已完成：1,2,3,4,5,6
 
-    Project 1, **2**, 3, 4
+    Project 1, <del>**2**</del>, 3, 4
+
+    Homework <del>1,2</del>,3
+
+    Homework Review: 1,2,3
 
     刷Leetcode（按照代码随想录的顺序）
 
