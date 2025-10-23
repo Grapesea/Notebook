@@ -1,6 +1,6 @@
 ??? tips "验收要求"
 
-    实验目的：建立一个调试CPU模块的环境，后续lab4会对SCPU模块单独构造，然后替换lab2实验中的SCPU部分，再在本实验中搭建的环境中测试SCPU功能。即lab2只需要在顶层模块中组织各子模块即可，各子模块功能只需要大概了解即可.
+    实验目的：建立一个调试CPU模块的环境，后续lab4会对SCPU模块单独构造，然后替换lab2实验中的SCPU部分，再在本实验中搭建的环境中测试SCPU功能.即lab2只需要在顶层模块中组织各子模块即可，各子模块功能只需要大概了解即可.
 
     验收需要在数码管和VGA上显示`I_mem.coe`的功能：
 
@@ -85,207 +85,205 @@
 ??? tips "CSSTE.v完整代码"
     ```verilog
     module CSSTE(
-        input         clk_100mhz,
-        input         RSTN,
-        input  [3:0]  BTN_y,
-        input  [15:0] SW,
-        output [3:0]  Blue,
-        output [3:0]  Green,
-        output [3:0]  Red,
-        output        HSYNC,
-        output        VSYNC,
-        output [15:0] LED_out,
-        output [7:0] AN,
-        output [7:0] segment
-    );
-    wire [3:0] BTN_OK;
-    wire [15:0] SW_OK;
-    wire rst;
+            input         clk_100mhz,
+            input         RSTN,
+            input  [3:0]  BTN_y,
+            input  [15:0] SW,
+            output [3:0]  Blue,
+            output [3:0]  Green,
+            output [3:0]  Red,
+            output        HSYNC,
+            output        VSYNC,
+            output [15:0] LED_out,
+            output [7:0] AN,
+            output [7:0] segment
+        );
+        wire [3:0] BTN_OK;
+        wire [15:0] SW_OK;
+        wire rst;
 
-    SAnti_jitter U9(
-        .clk(clk_100mhz), 
-        .RSTN(RSTN), 
-        .readn(1'b0), 
-        .Key_y(BTN_y), 
-        .Key_x(), 
-        .SW(SW), 
-        .Key_out(), 
-        .Key_ready(Key_ready), 
-        .pulse_out(), 
-        .BTN_OK(BTN_OK), 
-        .SW_OK(SW_OK), 
-        .CR(), 
-        .rst(rst)
-    );
-    
-    wire [31:0] clkdiv;
-    wire Clk_CPU;
-    
-    clk_div U8(
-        .clk(clk_100mhz),
-        .rst(rst),
-        .SW2(SW_OK[0]),
-        .SW8(SW_OK[0]),
-        .STEP(SW_OK[0]),
-        .clkdiv(clkdiv),
-        .Clk_CPU(Clk_CPU)
-    );
-    wire [31:0] Cpu_data4bus;
-    wire MemRW;
-    wire [31:0] Addr_out;
-    wire [31:0] Data_out;
-    wire [31:0] PC_out;
-    wire [31:0] inst_in;
-    wire CPU_MIO;
-    wire MIO_ready;
-    
-    SCPU U1(
-        .clk(Clk_CPU),
-        .rst(rst),
-        .Data_in(Cpu_data4bus),
-        .inst_in(inst_in),
-        .MIO_ready(MIO_ready),
-        .MemRW(MemRW),
-        .Addr_out(Addr_out),
-        .Data_out(Data_out),
-        .PC_out(PC_out),
-        .CPU_MIO(CPU_MIO)
-    );
-    
-    wire [31:0] data_ram_we;
-    wire [9:0] ram_addr;
-    wire [31:0] ram_data_in;
-    wire [31:0] ram_data_out;
-    wire [31:0] douta;
-    wire [31:0] Peripheral_in;
-    wire counter_we;
-    wire [1:0] counter_set;
-    wire [31:0] counter_out;
-    wire counter0_OUT;
-    wire counter1_OUT;
-    wire counter2_OUT;
-    wire EN;
-    wire FN;
+        SAnti_jitter U9(
+            .clk(clk_100mhz), 
+            .RSTN(RSTN), 
+            .readn(1'b0), 
+            .Key_y(BTN_y), 
+            .Key_x(), 
+            .SW(SW), 
+            .Key_out(), 
+            .Key_ready(Key_ready), 
+            .pulse_out(), 
+            .BTN_OK(BTN_OK), 
+            .SW_OK(SW_OK), 
+            .CR(), 
+            .rst(rst)
+        );
+        
+        wire [31:0] clkdiv;
+        wire Clk_CPU;
+        
+        clk_div U8(
+            .clk(clk_100mhz),
+            .rst(rst),
+            .SW2(SW_OK[2]),
+            .SW8(SW_OK[8]),
+            .STEP(SW_OK[10] | BTN_OK[0]),
+            .clkdiv(clkdiv),
+            .Clk_CPU(Clk_CPU)
+        );
+        wire [31:0] Cpu_data4bus;
+        wire MemRW;
+        wire [31:0] Addr_out;
+        wire [31:0] Data_out;
+        wire [31:0] PC_out;
+        wire [31:0] inst_in;
+        SCPU U1(
+            .clk(Clk_CPU),
+            .rst(rst),
+            .Data_in(Cpu_data4bus),
+            .inst_in(inst_in),
+            .MIO_ready(1'b0),
+            .MemRW(MemRW),
+            .Addr_out(Addr_out),
+            .Data_out(Data_out),
+            .PC_out(PC_out),
+            .CPU_MIO()
+        );
+        
+        wire [31:0] data_ram_we;
+        wire [9:0] ram_addr;
+        wire [31:0] ram_data_in;
+        wire [31:0] ram_data_out;
+        wire [31:0] douta;
+        wire [31:0] Peripheral_in;
+        wire counter_we;
+        wire [1:0] counter_set;
+        wire [31:0] counter_out;
+        wire counter0_OUT;
+        wire counter1_OUT;
+        wire counter2_OUT;
+        wire EN;
+        wire FN;
 
-    MIO_BUS U4(
-        .clk(clk_100mhz), 
-        .rst(rst), 
-        .BTN(BTN_OK), 
-        .SW(SW_OK), 
-        .mem_w(MemRW), 
-        .Cpu_data2bus(Data_out), 
-        .addr_bus(Addr_out), 
-        .ram_data_out(ram_data_out), 
-        .led_out(LED_out), 
-        .counter_out(counter_out), 
-        .counter0_out(counter0_OUT), 
-        .counter1_out(counter1_OUT), 
-        .counter2_out(counter2_OUT), 
-        .Cpu_data4bus(Cpu_data4bus), 
-        .ram_data_in(ram_data_in), 
-        .ram_addr(ram_addr), 
-        .data_ram_we(data_ram_we), 
-        .GPIOf0000000_we(FN), 
-        .GPIOe0000000_we(EN), 
-        .counter_we(counter_we),
-        .Peripheral_in(Peripheral_in)
+        MIO_BUS U4(
+            .clk(clk_100mhz), 
+            .rst(rst), 
+            .BTN(BTN_OK), 
+            .SW(SW_OK), 
+            .mem_w(MemRW), 
+            .Cpu_data2bus(Data_out), 
+            .addr_bus(Addr_out), 
+            .ram_data_out(ram_data_out), 
+            .led_out(LED_out), 
+            .counter_out(counter_out), 
+            .counter0_out(counter0_OUT), 
+            .counter1_out(counter1_OUT), 
+            .counter2_out(counter2_OUT), 
+            .Cpu_data4bus(Cpu_data4bus), 
+            .ram_data_in(ram_data_in), 
+            .ram_addr(ram_addr), 
+            .data_ram_we(data_ram_we), 
+            .GPIOf0000000_we(FN), 
+            .GPIOe0000000_we(EN), 
+            .counter_we(counter_we),
+            .Peripheral_in(Peripheral_in)
     );
 
     Counter_x U10(
-        .clk(~Clk_CPU), 
-        .rst(rst), 
-        .clk0(clkdiv[6]), 
-        .clk1(clkdiv[9]), 
-        .clk2(clkdiv[11]), 
-        .counter_we(counter_we), 
-        .counter_val(Peripheral_in), 
-        .counter_ch(counter_set), 
-        .counter0_OUT(counter0_OUT),
-        .counter1_OUT(counter1_OUT), 
-        .counter2_OUT(counter2_OUT), 
-        .counter_out(counter_out)
+            .clk(~Clk_CPU), 
+            .rst(rst), 
+            .clk0(clkdiv[6]), 
+            .clk1(clkdiv[9]), 
+            .clk2(clkdiv[11]), 
+            .counter_we(counter_we), 
+            .counter_val(Peripheral_in), 
+            .counter_ch(counter_set), 
+            .counter0_OUT(counter0_OUT),
+            .counter1_OUT(counter1_OUT), 
+            .counter2_OUT(counter2_OUT), 
+            .counter_out(counter_out)
     );
-   
+    
     wire [7:0] LE_out;
     wire [31:0] Disp_num;
     wire [7:0] point_out;
 
     Multi_8CH32 U5(
-        .clk(~Clk_CPU), 
-        .rst(rst), 
-        .EN(EN), 
-        .Test(SW_OK[7:5]), 
-        .point_in({clkdiv[31:0],clkdiv[31:0]}), 
-        .LES(64'b0), 
-        .Data0(Peripheral_in), 
-        .data1({2'b0,PC_out[31:2]}), 
-        .data2(inst_in), 
-        .data3(counter_out),
-        .data4(Addr_out), 
-        .data5(Data_out), 
-        .data6(Cpu_data4bus), 
-        .data7(PC_out), 
-        .point_out(point_out), 
-        .LE_out(LE_out), 
-        .Disp_num(Disp_num)
+            .clk(~Clk_CPU), 
+            .rst(rst), 
+            .EN(EN), 
+            .Test(SW_OK[7:5]), 
+            .point_in({clkdiv[31:0],clkdiv[31:0]}), 
+            .LES(64'b0), 
+            .Data0(Peripheral_in), 
+            .data1({2'b0,PC_out[31:2]}), 
+            .data2(inst_in), 
+            .data3(counter_out),
+            .data4(Addr_out), 
+            .data5(Data_out), 
+            .data6(Cpu_data4bus), 
+            .data7(PC_out), 
+            .point_out(point_out), 
+            .LE_out(LE_out), 
+            .Disp_num(Disp_num)
     );
-   
+    
     Seg7_Dev_0 U6(
-        .disp_num(Disp_num),
-        .point(point_out),
-        .les(LE_out),
-        .scan({clkdiv[18],clkdiv[17],clkdiv[16]}),
-        .AN(AN),
-        .segment(segment)
+            .disp_num(Disp_num),
+            .point(point_out),
+            .les(LE_out),
+            .scan({clkdiv[18],clkdiv[17],clkdiv[16]}),
+            .AN(AN),
+            .segment(segment)
     );
-   
+    
     SPIO U7(
-        .clk(~Clk_CPU),
-        .rst(rst),
-        .Start(clkdiv[20]),
-        .EN(FN),
-        .P_Data(Peripheral_in),
-        .counter_set(counter_set),
-        .LED_out(LED_out),
-        .led_clk(),
-        .led_sout(),
-        .led_clrn(),
-        .LED_PEN(),
-        .GPIOf0()
+            .clk(~Clk_CPU),
+            .rst(rst),
+            .Start(clkdiv[20]),
+            .EN(FN),
+            .P_Data(Peripheral_in),
+            .counter_set(counter_set),
+            .LED_out(LED_out),
+            .led_clk(),
+            .led_sout(),
+            .led_clrn(),
+            .LED_PEN(),
+            .GPIOf0()
     );
 
     VGA U11(
-        .clk_25m(clkdiv[1]),
-        .clk_100m(clk_100mhz),
-        .rst(rst),
-        .pc(PC_out),
-        .inst(inst_in),
-        .alu_res(Addr_out),
-        .mem_wen(MemRW),
-        .dmem_o_data(ram_data_out),
-        .dmem_i_data(ram_data_in),
-        .dmem_addr(Addr_out),
-        .hs(HSYNC),
-        .vs(VSYNC),
-        .vga_r(Red),
-        .vga_g(Green),
-        .vga_b(Blue)
+            .clk_25m(clkdiv[1]),
+            .clk_100m(clk_100mhz),
+            .rst(rst),
+            .pc(PC_out),
+            .inst(inst_in),
+            .alu_res(Addr_out),
+            .mem_wen(MemRW),
+            .dmem_o_data(ram_data_out),
+            .dmem_i_data(ram_data_in),
+            .dmem_addr(Addr_out),
+            .hs(HSYNC),
+            .vs(VSYNC),
+            .vga_r(Red),
+            .vga_g(Green),
+            .vga_b(Blue)
     );
-   
+    
     RAM_B U3(
-        .clka(~clk_100mhz),
-        .wea(data_ram_we),
-        .addra(ram_addr),
-        .dina(ram_data_in),
-        .douta(ram_data_out)
+            .clka(~clk_100mhz),
+            .wea(data_ram_we),
+            .addra(ram_addr),
+            .dina(ram_data_in),
+            .douta(ram_data_out)
     );
-   
+    
     I_mem U2(
-        .a(PC_out[11:2]),
-        .spo(inst_in)
+            .a(PC_out[11:2]),
+            .spo(inst_in)
     );
 
     endmodule
+
     ```
 
 ## VGA处理
@@ -342,3 +340,31 @@
 ```
 
 ## 下板
+
+???+ tips "按钮说明"
+
+    SW[8]SW[2] 用于控制 CPU 时钟.
+
+    SW[8]SW[2]=00: CPU 全速时钟 100MHZ.
+    
+    SW[8]SW[2]=01: CPU 自动单步时钟.
+    
+    SW[8]SW[2]=1X: CPU 手动单步时钟.
+    
+    SW[10] 用于手动时钟模式.此时拨一下 SW[10]（即从 0 拨到 1）时钟增加一个周期，相应地我们也会执行一条指令.
+    
+    SW[7:5] 用于控制七段数码管的显示.
+    
+    SW[7:5]=001: 显示 CPU 指令字地址 PC_out[31:2]，即我们下一条要执行的指令的地址.
+    
+    SW[7:5]=010: 显示 ROM 指令输出 Inst_in，即我们正在执行的指令.
+    
+    SW[7:5]=100: 显示 CPU 数据存储地址 addr_bus，在 Lab4 中你将会了解到 addr_bus 实际上就是 ALU 的运算结果.
+    
+    SW[7:5]=101: 显示 CPU 数据输出 Cpu_data2bus，在 Lab4 中你将会了解到 Cpu_data2bus 实际上就是寄存器 B 的值（假设每个周期从寄存器堆中读取 A、B 寄存器）.
+    
+    SW[7:5]=110: 显示 CPU 数据输入 Cpu_data4bus，在 Lab4 中你将会了解到 Cpu_data4bus 实际上就是 RAM 的输出，即从内存中读出来的值.
+    
+    SW[7:5]=111: 显示 CPU 指令字地址 PC_out.
+
+这个部分看课程slides的最后部分就可以了.
