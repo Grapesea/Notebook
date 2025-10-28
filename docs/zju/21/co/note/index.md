@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td><a href="co2">Chapter 2</a></td>
-        <td> </td>
+        <td>Instructions: Language of the Computer</td>
     </tr>
     <tr>
         <td><a href="co3">Chapter 3</a></td>
@@ -22,15 +22,15 @@
     </tr>
     <tr>
         <td><a href="co4">Chapter 4</a></td>
-        <td> </td>
+        <td>The Processor</td>
     </tr>
     <tr>
         <td><a href="co5">Chapter 5</a></td>
-        <td> </td>
+        <td>Large and Fast: Exploiting Memory Hierarchy</td>
     </tr>
     <tr>
         <td><a href="co6">Chapter 6</a></td>
-        <td> </td>
+        <td>Parallel Processors from Client to Cloud</td>
     </tr>
 </tbody>
 </table>

@@ -107,6 +107,10 @@ nav:
       - 面向对象程序设计: 
         - 概述: zju/21/oop/index.md
         - 笔记: zju/21/oop/oop.md
+        - 课程作业题干: 
+          - Lab 1: zju/21/oop/lab/1.md
+          - Lab 2: zju/21/oop/lab/2.md
+          - Lab 3: zju/21/oop/lab/3.md
       - 概率论与数理统计: 
         - 概述: zju/21/prob/index.md
         - 概率论: zju/21/prob/prob.md
@@ -186,6 +190,8 @@ nav:
       - 课程计划: csdiy/mit6046j/index.md
     - CS106L:
       - 课程计划: csdiy/cs106l/index.md
+      - Lec1-Brief Introduction: csdiy/cs106l/intro.md
+      - Lec2-Types and Struct: csdiy/cs106l/types.md
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
   - CTF: 

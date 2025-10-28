@@ -64,7 +64,7 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 
 ### PTA习题
 
-???+ tips "(2.3-7) Multiple Answers"
+??? tips "(2.3-7) Multiple Answers"
 
     Right after we perform some operation (Merging, Insertion or DeleteMin) on a Binomial queue, we may have to merge some pairs of the resulting Binomial trees to make the resulting forest a Binomial queue.<br>
     Suppose that $B_{i1},B_{i2},B_{i3}$ of size $2^{k−1},2^{k-1},2^k(k\geq 1)$ respectively are Binomial trees to merge. Consider the case that $B_{i1}$ is merged with $B_{i2}$, and the resulting Binomial tree is then merged with $B_{i3}$. We call this case “cascading merge”.<br>
@@ -77,7 +77,7 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 
     答案是AD，B不可能出现cascading，因为
 
-???+ tips "(2.3-8) Multiple Answers"
+??? tips "(2.3-8) Multiple Answers"
 
     Consider a binomial queue Q of n nodes with binomial trees $B_1,\cdots,B_k$. To delete the minimum key from Q, there are the following four steps to go.
 
