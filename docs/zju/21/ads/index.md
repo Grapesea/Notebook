@@ -3,7 +3,7 @@
 其中涉及的代码我试图手搓，放在了GitHub仓库：[Grapesea/ADS_code](https://github.com/Grapesea/ADS_code)里面.
 
 ???+ tips "资源列表 & 前人经验"
-    一些有意思且非常有用的网站：[数据结构可视化交互动画版](https://totuma.cn/)
+    一些有意思且非常有用的网站：[数据结构可视化:usfca版](https://www.cs.usfca.edu/~galles/visualization/)
 
     [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/)
     $\quad$
@@ -49,27 +49,23 @@
     * Inverted File Index（看起来简单实则极易丢分）
 
     算法：
-
-    1. Exact Algorithms
-
-        * Divide and Conquer
-        * Backtracking
+    
+    1. Exact Algorithms<br>
+        * Divide and Conquer<br>
+        * Backtracking<br>
         * Dynamic Programming
 
-    2. Heuristic Algorithms
-
-        * Greedy Algorithms
+    2. Heuristic Algorithms<br>
+        * Greedy Algorithms<br>
         * Local Search (find a solution, then making subtle modification to find an optimal solution)
 
-    3. Approximation Algorithms
-
-        * NP-Completeness
-        * Approximation Algorithms
+    3. Approximation Algorithms<br>
+        * NP-Completeness<br>
+        * Approximation Algorithms<br>
         * Randomized Algorithms
 
-    4. Other Algorithms
-
-        * Parallel Algorithms
+    4. Other Algorithms<br>
+        * Parallel Algorithms<br>
         * External Sorting
 
     Grading Policy：（平时分60'，不溢出）

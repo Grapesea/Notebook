@@ -159,6 +159,32 @@ AVLNode* rlRotation(AVLNode* root){
 
     是错的，因为新插入的节点本身是叶子节点，其平衡因子为0（左右子树高度都是0），父节点不会立即出现问题. 失衡只可能发生在祖先节点上（祖父节点或更高层），而不是直接父节点
 
+??? notes "1.1-2"
+
+    For every AVL tree, there exists a sequence of nodes such that we can obtain this AVL tree by inserting the nodes in the sequence one by one into an initiallly empty tree.
+
+    这句话的意思是，我们能通过逐一插入节点到一棵空树中，来获得这个最终的树.
+
+    是对的，比如：
+
+    ```plaintext
+        4
+       / \
+      2   6
+     / \ / \
+    1  3 5  7
+    ```
+
+    考虑前序遍历的方式，按4,2,6,1,3,5,7就能得到这棵树.
+
+??? notes "1.3-2"
+
+    Among the following analyses of insertions and deletions of AVL trees, which is/are correct? We assume that "performing 1 rotation" means performing an LL, an LR, an RL or an RR rotation.<br>
+    A.After inserting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
+    B.After deleting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
+    C.The time complexity of insertion is \(O(1)\).<br>
+    D.The time complexity of deletion is \(O(1)\).
+
 ### Splay Tree
 
 !!! tips "资源"
@@ -166,11 +192,9 @@ AVLNode* rlRotation(AVLNode* root){
 
 #### 理论分析
 
-> 我们希望将任意的$M$次操作的时间复杂度降低至$O(M\log N)$.
->
->（这里其实不是很严谨，N可以指整个过程中节点总数量最大值.
->
-> 核心idea: 每次访问完一个元素之后，把它移动到root位
+我们希望将任意的$M$次操作的时间复杂度降低至$O(M\log N)$.（这里其实不是很严谨，N可以指整个过程中节点总数量最大值）
+
+**核心idea: 每次访问完一个元素之后，把它移动到root位.**
 
 （我们称 2次左旋/右旋 和 1次左旋和右旋的组合 分别为single/double rotation，命名原因是**两次旋转之间方向是否有改变**.）
 

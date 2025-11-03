@@ -226,6 +226,9 @@ nav:
       - 导航: oj/leetcode/index.md
       - 数组: oj/leetcode/int.md
       - 链表: oj/leetcode/linklist.md
+      - 回溯: oj/leetcode/backtrack.md
+      - 动态规划: oj/leetcode/dp.md
+      - 贪心: oj/leetcode/greedy.md
     - USTC Verilog OJ: 
       - 导航: oj/ustcverilog/index.md
       - 题解: oj/ustcverilog/writeup.md

@@ -1,6 +1,6 @@
 本文将依照林芃老师授课以及教材等材料进行整理.
 
-!!! tips
+???+ tips "前人经验"
 
     摘编自[Miracle96的经验帖](https://www.cc98.org/topic/6082358)：
 
@@ -10,7 +10,7 @@
 
     > 笔记： 看马德ppt并抄到A4上,或参考这篇博客
 
-    > A4：个人感觉这次抄的比较全，基本没有A4 miss的情况(笑) A4纸下载
+    > A4：个人感觉这次抄的比较全，基本没有A4 miss的情况(笑)
 
     > IEEE754浮点数，特别是NaN和inf
 
@@ -22,7 +22,7 @@
 
     > I/O抄了 三种方式(polling,interrupt-driven,DMA)的定义, 硬盘读取时间的计算，Amdahl's Law, 同步和异步总线
 
-!!! tips
+???+ tips "资源汇总"
 
     * 笔记
 
@@ -51,7 +51,7 @@
 
         [【学习天地】计算机组成 / 计组 A4 参考](https://www.cc98.org/topic/6092970)
 
-!!! tips
+???+ tips "课程大纲"
     Outline：
 
     <center><img src="co/sche0.png" alt="rr" style="zoom: 40%;" /></center>

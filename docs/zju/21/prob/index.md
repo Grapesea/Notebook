@@ -1,8 +1,10 @@
 本文将依照吴国桢老师授课以及教材等材料进行整理.
 
-!!! tips
+???+ tips "基础信息"
 
-    教材：<a href="textbook.pdf" download="教材.pdf">点击下载</a>
+    教材：<a href="textbook.pdf" download="教材.pdf">点击下载</a> <br>
+
+    教材答案（来源：微信公众号“路老师的nonsense collection”）：<a href="textbook_answer.pdf" download="教材答案.pdf">点击下载</a>
     
     课程大纲：
 
@@ -24,7 +26,9 @@
 
     <center><img src="index/4.png" style="zoom:30%;" /></center>
 
-!!! tips
+!!! tips "资源汇总"
+
+    * 推荐阅读：[cx大神的概统笔记](https://www.cc98.org/topic/6317810)
 
     * 小测：（点击即可下载）
 
@@ -52,13 +56,17 @@
         $\quad$
         <a href="quiz/5-new.pdf" download="24-25awquiz3-appendix.pdf">2024-2025秋冬第3次小测新增</a>
 
-        > 来源：（感谢CC98用户@CSGISBME, @黎辉的整理）
+        <a href="quiz/6.pdf" download="25-26awquiz1.pdf">2025-2026秋冬第1次小测，与之前可能有重复</a>
+
+        > 来源：（感谢CC98用户@CSGISBME, @黎辉, @左提嘉, @沈谛夫King的整理）
 
         > [2024-2025春夏赵敏智周四678第一次小测](https://www.cc98.org/topic/6158411)
         $\quad$
         [2024-2025春夏赵敏智周四678第一次小测答案](https://www.cc98.org/topic/6165120)
 
         > [【学习天地】概率论与数理统计第三次小测汇总（含答案）概统小测](https://www.cc98.org/topic/6092300)
+
+        > [【学习天地】25秋冬概统zzh第一次小测](https://www.cc98.org/topic/6331224)
 
     * 历年卷：（点击即可下载）
 
