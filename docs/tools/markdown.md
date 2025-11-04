@@ -1,59 +1,49 @@
 > 用markdown写markdown备忘录，这行为怎么看起来这么抽象。
 
-## 语法备忘
+??? tips "多种Admonition语法类型"
 
-空行符：
+    信息类：
 
-``` markdown
-<br/>
-```
+    - `note` - 笔记/注释
+    - `abstract` / `summary` / `tldr` - 摘要
+    - `info` / `todo` - 信息/待办
 
-## 多种Admonition语法类型
+    成功/提示类：
 
-信息类：
+    - `tip` / `hint` / `important` - 提示/重要信息
+    - `success` / `check` / `done` - 成功/完成
 
-- `note` - 笔记/注释
-- `abstract` / `summary` / `tldr` - 摘要
-- `info` / `todo` - 信息/待办
+    警告类：
 
-成功/提示类：
+    - `question` / `help` / `faq` - 问题/帮助
+    - `warning` / `caution` / `attention` - 警告/注意
+    - `failure` / `fail` / `missing` - 失败/缺失
+    - `danger` / `error` - 危险/错误
 
-- `tip` / `hint` / `important` - 提示/重要信息
-- `success` / `check` / `done` - 成功/完成
+    其他：
 
-警告类：
+    - `bug` - Bug 说明
+    - `example` - 示例
+    - `quote` / `cite` - 引用
 
-- `question` / `help` / `faq` - 问题/帮助
-- `warning` / `caution` / `attention` - 警告/注意
-- `failure` / `fail` / `missing` - 失败/缺失
-- `danger` / `error` - 危险/错误
+    - 基本语法
 
-其他：
+    ```markdown
+    !!! note "自定义标题"
+        这是内容
 
-- `bug` - Bug 说明
-- `example` - 示例
-- `quote` / `cite` - 引用
+    !!! warning
+        这是警告内容（使用默认标题）
 
-- 基本语法
+    ??? info "可折叠的框"
+        点击展开才能看到内容
 
-```markdown
-!!! note "自定义标题"
-    这是内容
+    ???+ tip "默认展开的可折叠框"
+        默认是展开状态
+    ```
 
-!!! warning
-    这是警告内容（使用默认标题）
+    - 语法变体
 
-??? info "可折叠的框"
-    点击展开才能看到内容
-
-???+ tip "默认展开的可折叠框"
-    默认是展开状态
-```
-
-- 语法变体
-
-- `!!!` - 普通框
-- `???` - 可折叠框（默认折叠）
-- `???+` - 可折叠框（默认展开）
-
-这些类型都有不同的图标和颜色，可以根据内容性质选择合适的类型使用。
+    - `!!!` - 普通框
+    - `???` - 可折叠框（默认折叠）
+    - `???+` - 可折叠框（默认展开）

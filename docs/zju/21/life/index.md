@@ -1,4 +1,4 @@
-!!! tips
+!!! tips "资源汇总"
 
     摘自[日斤的经验帖](https://www.cc98.org/topic/6227386)：
 
@@ -16,7 +16,7 @@
 
     [知识点整理](https://www.cc98.org/topic/5925967)
 
-!!! tips
+!!! tips "评分规则"
 
     评分政策：
 

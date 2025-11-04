@@ -4,6 +4,30 @@
 
 ## Chap 3 多维随机变量及其分布
 
+### 二维离散型随机变量
+
+定义：$P(X = x_i,Y = y_i) = p_{ij},\quad i,j = 1,2,...$为$(X,Y)$的联合概率分布律（联合分布律），也可以列表来表示.
+
+性质：$p_{ij} \geq 0$; $\quad \sum\limits_i \sum\limits_j p_{ij} = 1$.
+
+边际分布律：$P(X = x_i) = \sum\limits_{j=1}^{+\infty} p_{ij} = p_{i\cdot}$ $\quad$ $P(Y = y_i) = \sum\limits_{i=1}^{+\infty} p_{ij} = p_{\cdot j}$
+
+条件分布：当$P(Y = y_j) \neq 0$时，$P(X = x_i|Y = y_j) = \dfrac{P(X = x_i, Y = y_j)}{P(Y = y_j)} = \dfrac{p_{ij}}{p_{\cdot j}}$。
+
+同理$P(Y = y_j|X = x_i) = \dfrac{P(X = x_i, Y = y_i)}{P(X = X_i)} = \dfrac{p_{ij}}{p_{i\cdot}}$
+
+### 二维随机变量的分布函数
+
+定义：对于二维随机变量$(X,Y)$，称
+
+$$F(x,y) = P(X\leq x, Y \leq y)$$
+
+是关于$(X,Y)$的联合概率分布函数.
+
+性质：
+
+1.
+
 ## Chap 4 随机变量的数字特征
 
 ### 数学期望
@@ -120,7 +144,7 @@ $X,Y$相关 $\Longrightarrow$ $X,Y$不独立；
 
 ??? notes "B33-矩阵与正态分布"
 
-    B33. 已知三维正态变量 $\mathbf{X} = (X_1, X_2, X_3)^T \sim N(\mathbf{a}, \mathbf{B})$，其中 $\mathbf{a} = (0, 0, 1)^T$，$\mathbf{B} = \begin{pmatrix} 1 & 2 & -1 \\ 2 & 16 & 0 \\ -1 & 0 & 4 \end{pmatrix}$.<br>
+    已知三维正态变量 $\mathbf{X} = (X_1, X_2, X_3)^T \sim N(\mathbf{a}, \mathbf{B})$，其中 $\mathbf{a} = (0, 0, 1)^T$，$\mathbf{B} = \begin{pmatrix} 1 & 2 & -1 \\ 2 & 16 & 0 \\ -1 & 0 & 4 \end{pmatrix}$.<br>
     (1) 写出 $\mathbf{X}$ 的每个分量的分布；<br>
     (2) 判别 $X_1, X_2, X_3$ 的相关性与独立性；<br>
     (3) 若 $Y_1 = X_1 - X_2, Y_2 = X_2 - X_3$，求 $\mathbf{Y} = (Y_1, Y_2)^T$ 的分布；

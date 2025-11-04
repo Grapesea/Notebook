@@ -1,31 +1,29 @@
 ## 语法
 
-### re模块（正则表达式）
+??? tips "re模块（正则表达式）"
 
-可以使用正则表达式，用于处理字符串。
+    可以使用正则表达式，用于处理字符串。
 
-`re.match()` 从字符串的起始位置匹配正则表达式
+    `re.match()` 从字符串的起始位置匹配正则表达式
 
-`match.group()`返回的是
+    `match.group()`返回的是
 
-```python
-import re
+    ```python
+    import re
 
-pattern = r"world"
-text = "hello world"
+    pattern = r"world"
+    text = "hello world"
 
-match = re.search(pattern, text)
-if match:
-    print("Right", match.group())
-else:
-    print("Wrong")
-```
+    match = re.search(pattern, text)
+    if match:
+        print("Right", match.group())
+    else:
+        print("Wrong")
+    ```
 
 ## 文档与图片处理
 
-### 提取pdf首页的图片
-
-??? tips "python处理代码"
+??? tips "提取pdf首页的图片:Python方法"
 
     ```bash
     pip install PyMuPDF Pillow

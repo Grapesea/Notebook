@@ -5,6 +5,8 @@
 ???+ tips "资源列表 & 前人经验"
     一些有意思且非常有用的网站：[数据结构可视化:usfca版](https://www.cs.usfca.edu/~galles/visualization/)
 
+    [Algorithm Design-Princeton](https://www.cs.princeton.edu/~wayne/kleinberg-tardos/)
+
     [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/)
     $\quad$
     [WintermelonC的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/)

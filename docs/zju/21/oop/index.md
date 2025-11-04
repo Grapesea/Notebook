@@ -2,7 +2,7 @@
 
 课堂代码等课程相关的代码文件放在了仓库[Grapesea/OOP_code](https://github.com/Grapesea/OOP_code)中.
 
-!!! tips
+!!! tips "资源汇总"
 
     * 作业： [PTA](https://pintia.cn)
 
@@ -14,6 +14,8 @@
     * 资源合订本：
         [【学习天地】2023-2024春夏 面向对象程序设计 期中（wk班）&期末回忆卷&历年卷考据（面向对象的程序设计/OOP）](https://www.cc98.org/topic/5928482)
 
+        [图灵班指南](https://zju-turing.github.io/TuringCourses/major/object_oriented_programming)
+        
     * 笔记&PPT：
 
         [【学习天地】一点OOP复习笔记（30%）](https://www.cc98.org/topic/6222435)
@@ -22,7 +24,7 @@
 
         [【学习天地】24-25秋冬oop/面向对象程序设计_李际军/ljj班PPT](https://www.cc98.org/topic/6103022)
 
-!!! tips
+!!! tips "课程大纲及评分标准"
 
     Outline:
 

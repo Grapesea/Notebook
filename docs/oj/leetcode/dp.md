@@ -10,9 +10,9 @@
 * 确定遍历顺序；
 * 用样例检验一下代码逻辑是否正确.
 
-??? tips "509.斐波那契"
+## 基础1-10
 
-    [地址](https://leetcode.com/problems/fibonacci-number/)
+??? tips "[509.斐波那契](https://leetcode.com/problems/fibonacci-number/)"
 
     ```cpp
     class Solution {
@@ -34,11 +34,9 @@
 
     70.同理，略.
 
-??? tips "746.Min Cost Climbing Stairs"
+??? tips "[746.Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/description/)"
 
-    [地址](https://leetcode.com/problems/min-cost-climbing-stairs/description/)
-
-    首先，可以把cost数组理解成
+    首先，可以把cost数组理解成跳跃后的花费.
 
     ```cpp
     class Solution {
@@ -56,3 +54,120 @@
     ```
 
     时间空间复杂度均为\(O(n)\).
+
+??? tips "[62.Unique Path I](https://leetcode.com/problems/unique-paths) & [63. Unique Path II](https://leetcode.com/problems/unique-paths-ii/)"
+
+    这2个是较为简单的动规.
+
+    ```cpp
+    class Solution {
+    public:
+        int uniquePaths(int m, int n) {
+            vector<vector<int>> dp(m, vector<int>(n, 0)); // Initialize a m \times n array with all elements filled with 0.
+            for (int i = 0; i < m; i++) dp[i][0] = 1;
+            for (int j = 0; j < n; j++) dp[0][j] = 1;
+            for (int i = 1; i < m; i++) {
+                for (int j = 1; j < n; j++) {
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                }
+            }
+            return dp[m - 1][n - 1];
+        }
+    };
+    ```
+
+    还有一个数论方法，但是需要注意溢出的处理：
+
+    ```cpp
+    class Solution {
+    public:
+        int uniquePaths(int m, int n) {
+            long long numerator = 1; // 分子
+            int denominator = m - 1; // 分母
+            int count = m - 1;
+            int t = m + n - 2;
+            while (count--) {
+                numerator *= (t--);
+                while (denominator != 0 && numerator % denominator == 0) {
+                    numerator /= denominator;
+                    denominator--;
+                }
+            }
+            return numerator;
+        }
+    };
+    ```
+
+    63这题要注意数组初始化，我一开始没意识到，然后出问题了.
+
+    ```cpp
+    class Solution {
+    public:
+        int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+            int m = obstacleGrid.size();
+            int n = obstacleGrid[0].size();
+            vector<vector<int>> dp(m,vector<int>(n,0));
+            if (obstacleGrid[0][0]) return 0;
+            if (m == 1 && n == 1) return 1;
+            int i = 1, j = 1;
+            int f = 1;
+            while (i < m){
+                if (obstacleGrid[i][0]) f = 0;
+                dp[i][0] = f;
+                i++;
+            }
+            f = 1;
+            while (j < n){
+                if (obstacleGrid[0][j]) f = 0;
+                dp[0][j] = f;
+                j++;
+            }
+            for (int i = 1; i < m; i++)
+                for (int j = 1; j < n; j++)
+                    dp[i][j] = (obstacleGrid[i][j] ? 0 : (dp[i-1][j] + dp[i][j-1]));
+            return dp[m-1][n-1];
+        }
+    };
+    ```
+
+??? tips "[343.Integer Break](https://leetcode.com/problems/integer-break/)"
+
+    ```cpp
+    class Solution {
+    public:
+        int integerBreak(int n) {
+            vector<int> dp(n+1,1);
+            for (int i = 3; i <= n; i++){
+                for (int j = 1; j <= i/2; j++)
+                    dp[i] = max(dp[i], max((i - j) * j, dp[i - j] * j)); //这里不能忘记加上对(i - j) * j的取max.
+            }
+            return dp[n];
+        }
+    };
+    ```
+
+??? tips "[96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)"
+
+    ```cpp
+    class Solution {
+    public:
+        int numTrees(int n) {
+            vector<int> dp(n+1,0);
+            if (n == 1) return 1;
+            dp[0] = 1;
+            dp[1] = 1;
+            dp[2] = 2;
+            for (int i = 3; i <= n; i++)
+                for (int j = 0; j < i; j++)
+                    dp[i] += (dp[j] * dp[i-j-1]);
+            return dp[n];
+        }
+    };
+    ```
+
+## 背包问题
+
+??? tips ""
+
+    这是0-1背包.
+    s
