@@ -81,7 +81,7 @@ AVLNode* rrRotation(AVLNode* root){
 }
 ```
 
-<center><img src="../ads/rr.png" alt="rr" style="zoom: 75%;" /></center>
+<center><img src="../figures/ads/rr.png" alt="rr" style="zoom: 75%;" /></center>
 
 LL Rotation类似，代码如下：
 
@@ -105,11 +105,11 @@ AVLNode* llRotation(AVLNode* root){
 
 LR Rotation过程：
 
-<center><img src="../ads/lr-1.jpg" alt="lr" style="zoom: 75%;" /></center>
+<center><img src="../figures/ads/lr-1.jpg" alt="lr" style="zoom: 75%;" /></center>
 
 **LR rotation过程可以看作是一次RR Rotation和一次LL Rotation的叠加**，拆解如下：
 
-<center><img src="../ads/lr-2.jpg" alt="lr" style="zoom: 75%;" /></center>
+<center><img src="../figures/ads/lr-2.jpg" alt="lr" style="zoom: 75%;" /></center>
 
 所以代码为：
 
@@ -206,11 +206,11 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 * P 是根节点，则只需要进行zig操作来rotation X & P
 
-    <center><img src = "../ads/zig.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "../figures/ads/zig.jpg" style="zoom: 30%;"/></center>
 
 * P 不是根节点，则需要分情况，选择操作zig-zag(Double Rotation)或者zig-zig(Single Rotation)
 
-    <center><img src = "../ads/dr.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "../figures/ads/dr.jpg" style="zoom: 30%;"/></center>
 
 #### 搜索
 
@@ -242,9 +242,9 @@ $$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
 推导如下：
 
 ???+ tips "手写的推导过程"
-    <center><img src = "../ads/zig1.jpg" style="zoom: 25%;"/></center>
-    <center><img src = "../ads/zigzag.jpg" style="zoom: 30%;"/></center>
-    <center><img src = "../ads/zigzig.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "../figures/ads/zig1.jpg" style="zoom: 25%;"/></center>
+    <center><img src = "../figures/ads/zigzag.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "../figures/ads/zigzig.jpg" style="zoom: 30%;"/></center>
 
 而假设$X$的高度是$H(X)$的情况下，可能的旋转次数是
 
@@ -304,7 +304,7 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 !!! tips "举例"
     上面的定义比较抽象，可以参考这个示例图来理解：
-    <center><img src = "../ads/rbtree.png" style="zoom: 60%;"/></center>
+    <center><img src = "../figures/ads/rbtree.png" style="zoom: 60%;"/></center>
     A red-black tree with \(n\) internal nodes has height at most 2\(\ln (N+1)\).
     这可以由归纳法进行证明，略.
 
@@ -322,27 +322,27 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 首先是case3，只需要LL Rotation或者RR Rotation的情况：
 
-<center><img src = "../ads/case3.jpg" style="zoom: 50%;"/></center>
+<center><img src = "../figures/ads/case3.jpg" style="zoom: 50%;"/></center>
 
 接着是case2，这里只需要进行一次LR/RL Rotation并且染色就能达到平衡：
 
-<center><img src = "../ads/case2.jpg" style="zoom: 50%;"/></center>
+<center><img src = "../figures/ads/case2.jpg" style="zoom: 50%;"/></center>
 
 最后是最为复杂的case1，我们针对节点G的上一级进行分类，由对称性化简，最后共分成4个小的case：
 
-<center><img src = "../ads/case1.jpg" style="zoom: 50%;"/></center>
+<center><img src = "../figures/ads/case1.jpg" style="zoom: 50%;"/></center>
 
-<center><img src = "../ads/case121.jpg" style="zoom: 50%;"/></center>
+<center><img src = "../figures/ads/case121.jpg" style="zoom: 50%;"/></center>
 
-<center><img src = "../ads/case122.jpg" style="zoom: 50%;"/></center>
+<center><img src = "../figures/ads/case122.jpg" style="zoom: 50%;"/></center>
 
-<center><img src = "../ads/case123.jpg" style="zoom: 50%;"/></center>
+<center><img src = "../figures/ads/case123.jpg" style="zoom: 50%;"/></center>
 
-<img src = "../ads/case124.jpg" style="zoom: 30%;"/>
+<img src = "../figures/ads/case124.jpg" style="zoom: 30%;"/>
 
 完整状态机：
 
-<center><img src = "../ads/statemachine.png" style="zoom: 70%;"/></center>
+<center><img src = "../figures/ads/statemachine.png" style="zoom: 70%;"/></center>
 
 #### 删除
 
@@ -358,19 +358,19 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 总的思路分析：
 
-<center><img src = "../ads/rbdel0.jpg" style="zoom: 80%;"/></center>
+<center><img src = "../figures/ads/rbdel0.jpg" style="zoom: 80%;"/></center>
 
 首先是case3.当$X$有2个孩子的时候，我们只需要将$X$与其左子树最大节点或者右子树最小节点的**键值**交换，保持红黑属性不变，就可以转换成case1或者2.
 
 而case1,2其实没有显著的不同，所以讨论的时候可以合并来看（以下已经注明，case1真包含于cases12.3，因为NIL节点是黑色的.）
 
-<center><img src = "../ads/rbdel1.jpg" style="zoom: 80%;"/></center>
+<center><img src = "../figures/ads/rbdel1.jpg" style="zoom: 80%;"/></center>
 
-<center><img src = "../ads/rbdel2.jpg" style="zoom: 60%;"/></center>
+<center><img src = "../figures/ads/rbdel2.jpg" style="zoom: 60%;"/></center>
 
 状态机：
 
-<center><img src = "../ads/rbdel3.jpg" style="zoom: 60%;"/></center>
+<center><img src = "../figures/ads/rbdel3.jpg" style="zoom: 60%;"/></center>
 
 搜索到$X$节点需要的时间是$O(\log N)$，而向上转移所谓的双黑属性时间复杂度是$O(h) = O(\log N)$，每个转移操作的时间复杂度是$O(1)$，于是整个删除操作的复杂度是$O(\log N)$.
 
@@ -404,7 +404,7 @@ Definition:
 
 比如2-3-4树的举例如下：
 
-<center><img src = "../ads/bplus0.png" style="zoom: 50%;"/></center>
+<center><img src = "../figures/ads/bplus0.png" style="zoom: 50%;"/></center>
 
 其中所有数据存储在叶子节点中，拼接起来就是一个严格单调递增/减的数列；
 
@@ -423,9 +423,9 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 过程图如下：
 
 ???+ tips "B+树搜索插入操作"
-    <center><img src = "../ads/bplus0.jpg" style="zoom: 80%;"/></center>
-    <center><img src = "../ads/bplus1.jpg" style="zoom: 80%;"/></center>
-    <center><img src = "../ads/bplus2.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "../figures/ads/bplus0.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "../figures/ads/bplus1.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "../figures/ads/bplus2.jpg" style="zoom: 80%;"/></center>
 
 #### *删除
 

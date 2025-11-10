@@ -18,13 +18,17 @@
 
     [【学习天地】MOTIS: 一款专注于辅助浙江大学学生优化选课课表的软件](https://www.cc98.org/topic/6106514 )
 
-* **雪灾浙大相关应用：**
+    [【电脑医院】Lazuli -新时代浙江大学教务系统增强插件](https://www.cc98.org/topic/5821806)
+
+* **雪灾浙大和智云课堂相关应用：**
 
     [【学习天地】ZTA：zjuer的桌面端时间管理神器](https://www.cc98.org/topic/5988983 )
 
     [【学习天地】ZLA：帮你快速下载所有课件😋  [更新：v0.3.8] (tag：学在浙大 智云课堂)](https://www.cc98.org/topic/5860105 )
 
     [【学习天地】火灾浙大：高速的雪灾浙大第三方 (tags: 学在浙大，简化软件)](https://www.cc98.org/topic/6114449 )
+
+    [【学习天地】ZLA-pptclean，适用于zju-learning-assistant的，快速将智云ppt重复图片清理](https://www.cc98.org/topic/6329611)
 
 #### CS学习
 
@@ -34,7 +38,7 @@
 
     [【学习天地】CS61A网站登录相关（已经解决）](https://www.cc98.org/topic/6096168 )
 
-* **cs排版：**
+* **排版：**
 
     [【学习天地】VSCode+MPE：远比LaTeX容易上手的排版工具——一份面向小白的Markdown排版教程](https://www.cc98.org/topic/6090584 )
 
@@ -42,17 +46,23 @@
 
     [【学习天地】Markdown 报告模板](https://www.cc98.org/topic/5983795)
 
-    [【新生宝典】迈出LaTeX第一步，边学边用的Overleaf使用指南 & 四个模版分享  (tag: 实验报告、通识、论文、军理、思政)](https://www.cc98.org/topic/5929587 )
+    [【新生宝典】迈出LaTeX第一步，边学边用的Overleaf使用指南 & 四个模版分享  (tag: 实验报告、通识、论文、军理、思政)](https://www.cc98.org/topic/5929587)
 
-    [【学习天地】适用于我校实验报告的 Typst 模板（如 FDS/ADS 大作业、数逻/计组实验报告等）](https://www.cc98.org/topic/5840106 )
+    [【学习天地】适用于我校实验报告的 Typst 模板（如 FDS/ADS 大作业、数逻/计组实验报告等）](https://www.cc98.org/topic/5840106)
 
 * AI：
 
-    [【学习天地】一个数学ai模型（from FDU）](https://www.cc98.org/topic/6189388 )
+    [【学习天地】一个数学ai模型（from FDU）](https://www.cc98.org/topic/6189388)
+
+#### 实用工具
+
+* RAG:
+
+    [【学习天地】基于CherryStudio RAG知识库 的考前抱佛脚教程](https://www.cc98.org/topic/6162154)
 
 #### 外语学习
 
-​[【学习天地】24-25春夏 托福写作笔记](https://www.cc98.org/topic/6203655) 
+​[【学习天地】24-25春夏 托福写作笔记](https://www.cc98.org/topic/6203655)
 
 ### 思政类资源整合
 
@@ -124,7 +134,7 @@ LALU的GitHub仓库：[yhwu-is/Linear-Algebra-Left-Undone: 线性代数：未竟
 
 [【学习天地】C程（24-25秋冬竺院yj C程）](https://www.cc98.org/topic/6093837 )
 
-[【学习天地】程算/程设/C尖/C程/程序设计与算法基础 PTA作业题/实验题整理 ](https://www.cc98.org/topic/6082745 )
+[【学习天地】程算/程设/C尖/C程/程序设计与算法基础 PTA作业题/实验题整理](https://www.cc98.org/topic/6082745 )
 
 [竺院辅学官网](https://ckc-agc.bowling233.top/programming/ )
 
@@ -168,7 +178,7 @@ Miracle前辈的资源整理：
 
 [【学习天地】大一春夏 混合 课程总结（tag:普通物理学I（H）/普物/线代/电工训/数分/普化实验/混研/生科导/工图/体素/普物实验/常微分方程/游泳(初级)/形策/经济法理论与实务/新中国史)](https://www.cc98.org/topic/6222811 )
 
-[【学习天地】计科 大一下 课程总结与分享（tags：数分2H / 线代2H / 普物1H / 数据结构基础 / 计算机系统I / 离散数学理论基础 / 职业生涯与发展规划）](https://www.cc98.org/topic/6227797 ) 
+[【学习天地】计科 大一下 课程总结与分享（tags：数分2H / 线代2H / 普物1H / 数据结构基础 / 计算机系统I / 离散数学理论基础 / 职业生涯与发展规划）](https://www.cc98.org/topic/6227797 )
 
 [【学习天地】大一小登500帖&混合班计科 大一学年 课程总结与资源分享（tag：混计/数分1H/数分2H/线代1H/线代2H/普化H/普物1H/普化实验/普物实验1/离散数学/程算/fds/数逻/社发史/百万立方/心理学及应用/经济法/心理卫生/博弈论）](https://www.cc98.org/topic/6228525 )
 
@@ -283,7 +293,7 @@ Miracle前辈的资源整理：
     [【学习天地】2024秋冬 大学物理实验报告（tag：大学物理实验，大物实验，实验报告）](https://www.cc98.org/topic/6192967 )
 
 * 历年卷：
-    * 往年
+  * 往年
 
         [【日用交易】求大物实验/普物实验1历年卷](https://www.cc98.org/topic/5621286 )  看2L
 
@@ -305,7 +315,7 @@ Miracle前辈的资源整理：
         >
         > [大学物理实验/大物实验 资源索引](https://www.cc98.org/topic/5862194) （后面有一些历年卷）
 
-    * 2024级
+  * 2024级
 
         [【学习天地】普通物理学实验 /普物/ 期末/回忆卷 （已更新](https://www.cc98.org/topic/6222009 )
 
@@ -323,7 +333,7 @@ Miracle前辈的资源整理：
 
 [【学习天地】【普通化学实验（乙）】实验报告（Tag：普化实验 普化乙）](https://www.cc98.org/topic/6077564)
 
-**回忆卷：** 
+**回忆卷：**
 
 * 24-25春夏：
 
@@ -347,7 +357,7 @@ Miracle前辈的资源整理：
 
     [【学习天地】23-24普化实验乙回忆卷](https://www.cc98.org/topic/5793955)
 
-    [【学习天地】23秋冬普化实验（乙）回忆](https://www.cc98.org/topic/5793964) 
+    [【学习天地】23秋冬普化实验（乙）回忆](https://www.cc98.org/topic/5793964)
 
 * 21-22春夏：
 
@@ -379,7 +389,7 @@ TonyCrane前辈的[笔记](https://note.tonycrane.cc/cs/algorithm/ds/)
 
 咸鱼暄前辈提供的[入门路线](https://xuan-insr.github.io/math_ds_algo/getting_started/ )
 
-**[这里](https://wintermelonc.github.io/WintermelonC_Docs/zju/basic_courses/data_structure/ )有cx班24年的真题**： 
+**[这里](https://wintermelonc.github.io/WintermelonC_Docs/zju/basic_courses/data_structure/ )有cx班24年的真题**：
 
 小角龙前辈的笔记里面也有一部分题目 [理论题整理](https://lhxcs.github.io/note/cs/ds/pta/)
 
@@ -437,7 +447,7 @@ USTC教程：
 
 [【学习天地】2022-2023 秋冬 数字逻辑设计 回忆卷（数逻）](https://www.cc98.org/topic/5515784 )
 
-[【学习天地】混合 大一下 期末复习资料整理（关键词：形策  线代Ⅱ  数逻  数分Ⅱ  普物实验  普化实验  普物I） ](https://www.cc98.org/topic/5923936 ) 有两份真题卷
+[【学习天地】混合 大一下 期末复习资料整理（关键词：形策  线代Ⅱ  数逻  数分Ⅱ  普物实验  普化实验  普物I）](https://www.cc98.org/topic/5923936 ) 有两份真题卷
 
 Winmelon前辈的资料库里有近5年的真题回忆卷.
 
@@ -574,7 +584,7 @@ cm老师的小测合订本：
 
     2. 混合实验
 
-        [【学习天地】普物实验二电子版混合实验报告LaTeX模板](https://www.cc98.org/topic/5983253) 
+        [【学习天地】普物实验二电子版混合实验报告LaTeX模板](https://www.cc98.org/topic/5983253)
 
         [【学习天地】普通物理学实验Ⅱ/物理学实验Ⅱ/普物实验Ⅱ 实验报告与经验分享](https://www.cc98.org/topic/6095189)
 
@@ -631,4 +641,3 @@ cm老师的小测合订本：
 ------
 
 > 最后更新时间：2025.9.17
-

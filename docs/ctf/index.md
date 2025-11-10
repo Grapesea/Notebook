@@ -9,7 +9,7 @@
 </thead>
 <tbody>
     <tr>
-        <td><a href="ctf101.md">CTF101课程笔记</a></td>
+        <td><a href="ctf101">CTF101课程笔记</a></td>
         <td>CTF启蒙课程笔记</td>
     </tr>
     <tr>
@@ -80,7 +80,7 @@
 
     修改`C:\Windows\System32\drivers\etc`路径下的hosts文件，添加：
 
-    ```bash
+    ```plaintext
     140.82.112.3 github.com
     140.82.112.3 api.github.com
     185.199.108.153 assets-cdn.github.com

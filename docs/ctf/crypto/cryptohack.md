@@ -1,8 +1,6 @@
 ### Introduction
 
-只有这个传递json有点记录的意义：
-
-!!! tips
+??? tips "传递json"
 
     Several of the challenges are dynamic and require you to talk to our challenge servers over the network. This allows you to perform man-in-the-middle attacks on people trying to communicate, or directly attack a vulnerable service. To keep things consistent, our interactive servers always send and receive JSON objects.
 
@@ -47,33 +45,33 @@
     print(response)
     ```
 
-只需要交互的时候写个`{"buy": "flag"}`就能得到flag.
+    只需要交互的时候写个`{"buy": "flag"}`就能得到flag.
 
 ### General
 
-#### You either know, XOR you don't
+??? tips "You either know, XOR you don't"
 
-```
-I've encrypted the flag with my secret key, you'll never be able to guess it.
-Remember the flag format and how it might help you in this challenge!
-0e0b213f26041e480b26217f27342e175d0e070a3c5b103e2526217f27342e175d0e077e263451150104
-```
+    ```plaintext
+    I've encrypted the flag with my secret key, you'll never be able to guess it.
+    Remember the flag format and how it might help you in this challenge!
+    0e0b213f26041e480b26217f27342e175d0e070a3c5b103e2526217f27342e175d0e077e263451150104
+    ```
 
-丢到cyberchef里面，
+    丢到cyberchef里面，
 
-<center><img src="../photos/cryptohack/xor_cc0.png" alt="rr" style="zoom: 50%;" /></center>
+    <center><img src="../photos/cryptohack/xor_cc0.png" alt="rr" style="zoom: 50%;" /></center>
 
-可以看到myXORkey了，然后把这个放到左边的框里面就行了：
+    可以看到myXORkey了，然后把这个放到左边的框里面就行了：
 
-<center><img src="../photos/cryptohack/xor_cc1.png" alt="rr" style="zoom: 50%;" /></center>
+    <center><img src="../photos/cryptohack/xor_cc1.png" alt="rr" style="zoom: 50%;" /></center>
 
-flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
+    flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
 ### modulo
 
 * Quadratic Residues:
 
-    We say that an integer *x* is a *Quadratic Residue* if there exists an a*a* such that $a^2\equiv x (\operatorname{mod}p)$. If there is no such solution, then the integer is a *Quadratic Non-Residue*.
+    We say that an integer $x$ is a *Quadratic Residue* if there exists an $a$ such that $a^2\equiv x (\operatorname{mod}p)$. If there is no such solution, then the integer is a *Quadratic Non-Residue*.
 
     一般来说*Quadratic Residue*是成对出现的.
 
@@ -99,7 +97,7 @@ flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
     (2)如果$p = 4k+1$，那么直接使用Sagemath，不要犹豫！！！
   
-* eg. [CryptoHack – Modular Arithmetic - Adrien's Signs](https://cryptohack.org/courses/modular/adrien/)
+??? tips "[CryptoHack – Modular Arithmetic - Adrien's Signs](https://cryptohack.org/courses/modular/adrien/)"
 
     ```python
     lis = # too long to display
@@ -125,7 +123,7 @@ flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
     这个题是Legendre的应用.
 
-* [CryptoHack – Modular Arithmetic - Modular Binomials](https://cryptohack.org/courses/modular/bionomials/)
+??? tips "[CryptoHack – Modular Arithmetic - Modular Binomials](https://cryptohack.org/courses/modular/bionomials/)"
 
     化简：
 
@@ -152,11 +150,11 @@ flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 
 ### Public Key
 
-* [CryptoHack – Public-Key Cryptography - Factoring](https://cryptohack.org/courses/public-key/rsa_factoring/)
+??? tips "[CryptoHack – Public-Key Cryptography - Factoring](https://cryptohack.org/courses/public-key/rsa_factoring/)"
 
     直接factordb
 
-* [CryptoHack – Public-Key Cryptography - Monoprime](https://cryptohack.org/courses/public-key/monoprime/)
+??? tips "[CryptoHack – Public-Key Cryptography - Monoprime](https://cryptohack.org/courses/public-key/monoprime/)"
 
     指出了一个问题：为什么RSA中$N$一定要是$p\times q$?如果$N$是一个大素数呢？
 

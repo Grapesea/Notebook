@@ -45,6 +45,20 @@
 </tbody>
 </table>
 
+??? tips "UCB课程资源访问"
+    以下tips来自CC98用户：@曲终人散场 和 @77携爱敬上，[链接](https://www.cc98.org/topic/6096168)
+
+    > 在访问UCB的课程（如CS61A）时会发现，Berkeley把前面几次的网站都锁掉了，想看需要有Berkeley账号，提供两个解决方法：
+    >
+    > 1、用 <https://web.archive.org/> 搜索<br>
+    > 2、找copy的版本比如<https://www.learncs.site/docs/curriculum-resource/cs61a>
+    >
+    > 不用登网站，可以在B站看视频、在 <https://cs61a.org> 上面下载hw lab project资源的 网站有时候直连上不去 需要挂梯子
+    >
+    > 在本地跑自动评分程序的时候记得在后面加一个--local 在本地跑 否则会让你填ucb的邮箱
+
+<br/>
+
 > 造神的钢印打在土壤里时，塑像的地基已经建立了起来，像泥河，像细菌，像细胞……在琐碎又粘稠的生态中，土和沙，人和物，生和长……聚散着，卷进浓烟里，再随长流打掉脱落的釉质，磨成细粉，散在茶余饭后。
 
 > ——[《烟之暗面-The Dark Side of the Smoke》](https://www.bilibili.com/video/BV1CnKLz1Ez2)

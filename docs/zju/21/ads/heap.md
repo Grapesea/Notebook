@@ -83,7 +83,7 @@ Node *merge(Node *X, Node *Y){
 
 流程图实例：
 
-<center><img src = "../ads/recmerge.jpg" style = "zoom:30%"/></center>
+<center><img src = "../figures/ads/recmerge.jpg" style = "zoom:30%"/></center>
 
 迭代式：这个部分的思路跟归并排序差不多，都需要双指针来动态移动.
 
@@ -134,9 +134,9 @@ Node *_merge(Node *X_, Node *Y_) // iterative merge
 
 流程图实例：
 
-<center><img src = "../ads/itemerge0.jpg" style = "zoom:30%"/></center>
+<center><img src = "../figures/ads/itemerge0.jpg" style = "zoom:30%"/></center>
 
-<center><img src = "../ads/itemerge1.jpg" style = "zoom:30%"/></center>
+<center><img src = "../figures/ads/itemerge1.jpg" style = "zoom:30%"/></center>
 
 #### Insertion
 
@@ -195,11 +195,11 @@ ADS课程的merge是对wiki等地方的定义做出了一点修改的（……�
 >
 > !: **if H merges with a NULL node, in leftist heap we just need to return H, but in skew heap we should swap ls and rs.**
 
-<center><img src = "../ads/sh0.jpg" style = "zoom:30%"/></center>
+<center><img src = "../figures/ads/sh0.jpg" style = "zoom:30%"/></center>
 
-<center><img src = "../ads/sh1.jpg" style = "zoom:30%"/></center>
+<center><img src = "../figures/ads/sh1.jpg" style = "zoom:30%"/></center>
 
-<center><img src = "../ads/sh2.jpg" style = "zoom:30%"/></center>
+<center><img src = "../figures/ads/sh2.jpg" style = "zoom:30%"/></center>
 
 skew heap的删除和插入节点方法与leftist heap原理上基本一致，略去.
 

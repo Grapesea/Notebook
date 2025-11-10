@@ -15,7 +15,7 @@
 
 其图示如下：
 
-<center><img src = "../ads/bt0.png" style = "zoom:30%"/></center>
+<center><img src = "../figures/ads/bt0.png" style = "zoom:30%"/></center>
 
 于是有：
 
@@ -31,7 +31,7 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 
 于是构成为：
 
-<center><img src = "../ads/bq0.png" style = "zoom:50%"/></center>
+<center><img src = "../figures/ads/bq0.png" style = "zoom:50%"/></center>
 
 ### Findmin
 
@@ -44,13 +44,13 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 > 1. 树/堆的纬度，具体观察数据的转移与变化过程；<br>
 > 2. 二进制的纬度，将$k$阶二项树抽象为 bit vector 第$k$位的 1，从二进制加法的角度理解；
 
-<center><img src = "../ads/bqmerge.jpg" style = "zoom:50%"/></center>
+<center><img src = "../figures/ads/bqmerge.jpg" style = "zoom:50%"/></center>
 
 ### Insertion
 
 类似之前的heap，插入操作看作是与一个结点的二项堆的merge.
 
-<center><img src = "../ads/bqinsert.jpg" style = "zoom:50%"/></center>
+<center><img src = "../figures/ads/bqinsert.jpg" style = "zoom:50%"/></center>
 
 If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i + 1)$. Performing $N$ Insertions on an initially empty binomial queue will take $O(N)$ worst-case time.  Hence the average time is $O(1)$.
 
