@@ -106,11 +106,17 @@ nav:
           - lab5:PipelineCPU: zju/21/co/lab/lab5.md
       - 面向对象程序设计: 
         - 概述: zju/21/oop/index.md
-        - 笔记: zju/21/oop/oop.md
+        - 笔记: 
+          - Week1: zju/21/oop/1.md
+          - Week2: zju/21/oop/2.md
+          - Week3: zju/21/oop/3.md
+          - Week4: zju/21/oop/4.md
+          - Week5: zju/21/oop/5.md
         - 课程作业题干: 
           - Lab 1: zju/21/oop/lab/1.md
           - Lab 2: zju/21/oop/lab/2.md
           - Lab 3: zju/21/oop/lab/3.md
+          - Lab 4: zju/21/oop/lab/4.md
       - 概率论与数理统计: 
         - 概述: zju/21/prob/index.md
         - 概率论: zju/21/prob/prob.md
