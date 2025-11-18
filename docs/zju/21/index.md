@@ -15,17 +15,17 @@
     <tr>
         <td><a href="co/">计算机组成（CO）笔记</a></td>
         <td><a href="phy/">普通物理学II(H)笔记</a></td>
-        <td><a href="life/">生命教育概论</a></td>
+        <td><a href="life/">生命教育概论资源</a></td>
     </tr>
     <tr>
         <td><a href="oop/">面向对象程序设计（OOP）笔记</a></td>
-        <td></td>
-        <td><a href="eco/">经济法理论与实务</a></td>
+        <td><a href="phylab/">普通物理学实验II报告/论文</a></td>
+        <td><a href="eco/">经济法理论与实务资源</a></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
-        <td><a href="physec/">万物运转的奥秘</a></td>
+        <td><a href="physec/">万物运转的奥秘（已退课）</a></td>
     </tr>
 </tbody>
 </table>

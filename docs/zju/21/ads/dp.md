@@ -96,3 +96,103 @@ $$W_{n} = \max \{W_{n-1},W_{n-2}+\omega_n\} \Longrightarrow W_{i} = \max \{W_{i-
         cout << maxcnt << endl;
     }
     ```
+
+## 矩阵相乘
+
+现在需要对4个矩阵进行乘法操作：
+
+$$M_{1(10\times20)} \times M_{2(20\times50)} \times M_{3(50\times1)} \timesM_{4(1\times100)}$$
+
+需要找到最佳的顺序，使得开销时间最小.
+
+<center><img src = "../figures/dp/matrix_mul.jpg" style = "zoom:60%"/></center>
+
+伪代码如下：
+
+```c
+void OptMatrix( const long r[ ], int N, TwoDimArray M ) 
+{   int i, j, k, L; 
+    long ThisM; 
+    for(i = 1; i <= N; i++)   
+        M[i][i] = 0; 
+    for(k = 1; k < N; k++ ){ /* k = j - i */ 
+        for( i = 1; i <= N - k; i++) { /* For each position */ 
+            j = i + k;    
+            M[i][j] = Infinity; 
+            for( L = i; L < j; L++ ) { 
+                ThisM = M[i][L]+ M[L+1][j]+ r[i-1]* r[L]* r[j]; 
+                if ( ThisM < M[i][j] )  /* Update min */ 
+                    M[i][j] = ThisM; 
+            }  /* end for-L */
+        }  /* end for-Left */
+    }
+}
+```
+
+时间复杂度：$O(N^3)$.
+
+## Optimal Binary Search Tree
+
+将$N$个word($w_i$对应的被搜索到的概率是$p_i$，单词序上 $w_1< w_2 < \cdots <w_N$ ) 放入一个BST中，找到最佳的顺序使得所有word被搜索到的期望时间之和最小.
+
+首先可以看出，期望时间之和运算公式是$T(N) = \sum\limits_{i=1}^N p_i(1+d_i)$.
+
+<center><img src = "../figures/dp/tree.jpg" style = "zoom:60%"/></center>
+
+## All-Pairs Shortest Path
+
+单源算法：$|V|$次，$T=O(|V|^3)$.
+
+伪代码：
+
+```cpp
+/* A[ ] contains the adjacency matrix with A[ i ][ i ] = 0 */ 
+/* D[ ] contains the values of the shortest path */ 
+/* N is the number of vertices */ 
+/* A negative cycle exists iff D[ i ][ i ] < 0 */ 
+void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N ) 
+{   
+
+}
+```
+
+## Product Assembly
+
+生产线选择问题
+
+代码：
+
+???+ tips "DP代码以及路径重建代码"
+    ```cpp
+    vector<vector<int>> f(2,vector<int>(N+1));
+    f[0][0] = 0; f[1][0] = 0;
+    for (stage = 1; stage <= N; stage++){
+        for (line = 0; line <= 1; line++){
+            f[line][stage] = f[line][stage-1]+t_process[line][stage-1];
+        }
+    }
+    solution = min(f[0][n],f[1][n]);
+    ```
+
+```cpp
+vector<vector<int>> f(2,vector<int>(N+1));
+f[0][0] = 0;
+f[1][0] = 0;
+for (stage = 1; stage <= N; stage++){
+    for(line = 0; line <=1; line++){
+        f_stay = f[line][stage-1] + t_process[line][stage-1];
+        f_move = f[1-line][stage-1] + t_transit[1-line][stage-1];
+        if (f_stay < f_move){
+            f[line][stage] = f_stay;
+        }
+        else{
+            f[line][stage] = f_move;
+        }
+    }
+}
+line = f[0][N] < f[1][N] ? 0:1;
+for (stage = n; stage > 0; stage --){
+    plan[stage] = line;
+    line = L[line][stage];
+}
+```

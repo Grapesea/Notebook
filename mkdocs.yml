@@ -81,6 +81,7 @@ nav:
           - Backtracking: zju/21/ads/bt.md
           - Divide and Conquer: zju/21/ads/dc.md
           - Dynamic Programming: zju/21/ads/dp.md
+          - Greedy Algorithm: zju/21/ads/greedy.md
         - Project:
           - Project 1-Comparing Different Search Trees: zju/21/ads/proj/1.md
           - Project 2-Shortest Path Algorithm with Heaps: zju/21/ads/proj/2.md
@@ -112,6 +113,7 @@ nav:
           - Week3: zju/21/oop/3.md
           - Week4: zju/21/oop/4.md
           - Week5: zju/21/oop/5.md
+          - Week6: zju/21/oop/6.md
         - 课程作业题干: 
           - Lab 1: zju/21/oop/lab/1.md
           - Lab 2: zju/21/oop/lab/2.md
@@ -127,15 +129,16 @@ nav:
         - 磁学: zju/21/phy/magnetism/index.md
         - 光学: zju/21/phy/optics/index.md
         - 量子力学: zju/21/phy/quantum/index.md
+      - 普通物理学实验II:
+        - 概述: zju/21/phylab/index.md
       - 马克思主义基本原理(H):
         - 概述: zju/21/marx/index.md
-        - 笔记: zju/21/marx/marx.md
       - 生命教育概论:
         - 概述: zju/21/life/index.md
         - 笔记: zju/21/life/life.md
       - 经济法理论与实务:
         - 概述: zju/21/eco/index.md
-      - 万物运转的奥秘:
+      - 万物运转的奥秘（已退课）:
         - 概述: zju/21/physec/index.md
     - 大二春夏笔记: 
       - 导航: zju/22/index.md

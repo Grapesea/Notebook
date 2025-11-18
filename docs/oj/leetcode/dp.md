@@ -165,9 +165,41 @@
     };
     ```
 
-## 背包问题
+## 0-1背包问题
 
-??? tips ""
+??? tips "ADS-hw5-PTA"
 
-    这是0-1背包.
-    s
+    这是0-1背包的基础板子.
+
+    ```cpp
+    #include<iostream>
+    #include<vector>
+    #include<algorithm>
+    using namespace std;
+    int main(){
+        int N,V;
+        cin >> N >> V;
+        vector<int> value(N);
+        vector<int> weight(N);
+        for (int i = 0; i < N; i++){
+            cin >> weight[i] >> value[i];
+        }
+
+        vector<vector<int>> dp(N,vector<int>(V+1,0));
+        for (int i = 0; i < N; i++)
+            dp[i][0] = 0;
+        for (int i = 0; i < value[0];i++)
+            dp[0][i] = 0;
+        for (int i = weight[0];i <= V;i++)
+            dp[0][i] = value[0];
+        for (int i = 1; i < N; i++){
+            for (int j = 1; j <= V; j++){
+                if(j >= weight[i])
+                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i]]+value[i]);
+                else
+                    dp[i][j] = dp[i-1][j];
+            }
+        }
+        cout << dp[N-1][V] << endl;
+    }
+    ```

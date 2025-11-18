@@ -34,3 +34,11 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
     F. $T(n) = \Theta(\sqrt n \log\log n)$<br>
 
     选E.
+
+## 实际应用案例
+
+### PTA习题
+
+??? tips "3.3-1"
+
+    <center><img src = "../figures/dc/1.png" style = "zoom:60%"/></center>

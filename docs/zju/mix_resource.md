@@ -592,6 +592,8 @@ cm老师的小测合订本：
 
         [Shrike505的实验报告](https://github.com/shrike-505/ZJU-GeneralPhysicsExperiment2-Report)
 
+        [【学习天地】普物实验II的一些实验报告](https://www.cc98.org/topic/6295649)
+
     3. 小课题
 
 ## 大二下
