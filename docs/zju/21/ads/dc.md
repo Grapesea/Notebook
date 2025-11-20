@@ -2,6 +2,8 @@
 
     [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec07)
 
+> 绝望的文盲决定使用代入法乱凑瞎蒙.
+
 分治法的核心公式如下:
 
 $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \geq 1, b > 1$$
@@ -72,6 +74,14 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
     B.$T(n)=T(n/5)+T(7n/10)+n$. Then $T(n)=O(n\log n)$<br>
     C.$T(n)=4T(n/2)+n^2/\log n$. Then $T(n)=O(n^2)$<br>
     D.$T(n)=3T(n/3)+n/\log n$. Then $T(n)=O(n\log \log n)$
+
+??? tips "xyx-1"
+
+    <center><img src = "../figures/dc/xyx-1.png" style = "zoom:60%"/></center>
+
+    来自豆包：
+
+    <center><img src = "../figures/dc/xyx-2.png" style = "zoom:60%"/></center>
 
 ## 实际应用案例
 

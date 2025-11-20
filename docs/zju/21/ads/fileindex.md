@@ -55,3 +55,23 @@
     While accessing a term stored in a B+ tree in an inverted file index, range searches are expensive.
 
     错，开销并不大.
+
+??? tips "xyx-1"
+
+    Among the following groups of concepts, which group is not totally relevant to a search engine?<br>
+    A. thresholding, dynamic programming, precision<br>
+    B. word stemming, compression, recall<br>
+    C. distributed index, hashing, inverted file index<br>
+    D. stop words, posting list, dynamic indexing
+
+    选A,没有用到dp的知识.
+
+    (T) In data retrieval, the response time is more important than the relevance of the answer set.<br>
+    (T) When measuring the relevancy of the answer set, if the precision is low but the recall is high, it means that most of the relevant documents are retrieved, but too many irrelevant documents are returned as well.<br>
+    (T) When measuring the relevancy of the answer set, if the precision is high but the recall is low, it means that most of the relevant documents are missing, but most of the retrieved documents are relevant. <br>
+    (F) Word stemming is to eliminate the commonly used words from the original documents. <br>
+    (T) While accessing a term, hashing is faster than search trees.
+
+    第4句话的意思是stemming去除了commonly used words，但是Word stemming（词干提取）是将词汇还原到词根形式，将不同形式的同一个词统一处理；Stop words removal（停用词去除）是删除常用的无意义词. 题目描述的其实是停用词去除，不是词干提取.
+
+    

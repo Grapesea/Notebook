@@ -249,6 +249,16 @@ function AlphaBeta(state, depth, α, β, isMaxPlayer):
 
 ### PTA习题
 
+??? tips "xyx-1"
+
+    <center><img src = "../figures/bt/xyx-1.png" style="zoom: 50%;"/></center>
+
+    都是c.如果忘了算法也可以通过分析得出，从左向右自顶向下预设某个节点的值未知，去推导该值会不会对结果产生影响.
+    
+    * α-β 剪枝的核心：max 层维护 α（下界），min 层维护 β（上界）<br>
+    * β 剪枝：在 max 节点，如果找到的值 ≥ β，则剪枝<br>
+    * α 剪枝：在 min 节点，如果找到的值 ≤ α，则剪枝
+
 ## 回溯算法补充问题
 
 ### PTA习题
