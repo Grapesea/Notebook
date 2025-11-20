@@ -74,14 +74,15 @@ nav:
         - 概述: zju/21/ads/index.md
         - 高级数据结构:
           - AVL Tree & Splay Tree & Red-Black Tree & B+ Tree: zju/21/ads/tree.md
+          - Amortized Analysis: zju/21/ads/amortized.md
           - Inverted File Index: zju/21/ads/fileindex.md
-          - Leftist Heap & Skew Heap: zju/21/ads/heap.md
-          - Binomial Queue: zju/21/ads/bq.md
+          - Leftist Heap & Skew Heap & Binomial Queue: zju/21/ads/heap.md
         - 算法分析:
           - Backtracking: zju/21/ads/bt.md
           - Divide and Conquer: zju/21/ads/dc.md
           - Dynamic Programming: zju/21/ads/dp.md
           - Greedy Algorithm: zju/21/ads/greedy.md
+          - P&NP Completeness: zju/21/ads/np.md
         - Project:
           - Project 1-Comparing Different Search Trees: zju/21/ads/proj/1.md
           - Project 2-Shortest Path Algorithm with Heaps: zju/21/ads/proj/2.md

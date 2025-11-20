@@ -174,25 +174,28 @@ void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N )
     solution = min(f[0][n],f[1][n]);
     ```
 
-```cpp
-vector<vector<int>> f(2,vector<int>(N+1));
-f[0][0] = 0;
-f[1][0] = 0;
-for (stage = 1; stage <= N; stage++){
-    for(line = 0; line <=1; line++){
-        f_stay = f[line][stage-1] + t_process[line][stage-1];
-        f_move = f[1-line][stage-1] + t_transit[1-line][stage-1];
-        if (f_stay < f_move){
-            f[line][stage] = f_stay;
-        }
-        else{
-            f[line][stage] = f_move;
+    ```cpp
+    vector<vector<int>> f(2,vector<int>(N+1));
+    f[0][0] = 0;
+    f[1][0] = 0;
+    for (stage = 1; stage <= N; stage++){
+        for(line = 0; line <=1; line++){
+            f_stay = f[line][stage-1] + t_process[line][stage-1];
+            f_move = f[1-line][stage-1] + t_transit[1-line][stage-1];
+            f[line][stage] = min(f_stay,f_move);
         }
     }
-}
-line = f[0][N] < f[1][N] ? 0:1;
-for (stage = n; stage > 0; stage --){
-    plan[stage] = line;
-    line = L[line][stage];
-}
-```
+    line = f[0][N] < f[1][N] ? 0:1;
+    for (stage = n; stage > 0; stage --){
+        plan[stage] = line;
+        line = L[line][stage];
+    }
+    ```
+
+## PTA习题
+
+??? tips "2025fall-ch-mid"
+
+    <center><img src = "../figures/dp/chmid3-3.png" style="zoom: 50%;"/></center>
+
+    答案：`int j = 0; j < i; j++`, `dp[i] = max(dp[i], dp[j]+1)`

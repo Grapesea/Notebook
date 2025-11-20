@@ -179,11 +179,22 @@ AVLNode* rlRotation(AVLNode* root){
 
 ??? notes "1.3-2"
 
-    Among the following analyses of insertions and deletions of AVL trees, which is/are correct? We assume that "performing 1 rotation" means performing an LL, an LR, an RL or an RR rotation.<br>
-    A.After inserting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
-    B.After deleting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
-    C.The time complexity of insertion is \(O(1)\).<br>
-    D.The time complexity of deletion is \(O(1)\).
+    <center><img src="../figures/ads/1.3-2.png" style="zoom: 60%;" /></center>
+
+    A. 画图可知.
+
+    After inserting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
+
+??? notes "xyx-1"
+    <center><img src="../figures/ads/xyx1-1.png" style="zoom: 60%;" /></center>
+
+    举一个例子.
+
+??? tips "2021mid"
+
+    <center><img src="../figures/ads/2021mid-avl.png" style="zoom: 60%;" /></center>
+
+    iff是“当且仅当”的意思.
 
 ### Splay Tree
 
@@ -194,7 +205,7 @@ AVLNode* rlRotation(AVLNode* root){
 
 我们希望将任意的$M$次操作的时间复杂度降低至$O(M\log N)$.（这里其实不是很严谨，N可以指整个过程中节点总数量最大值）
 
-**核心idea: 每次访问完一个元素之后，把它移动到root位.**
+**核心idea: 每次访问（`Find`）完一个元素之后，把它移动到root位.**
 
 （我们称 2次左旋/右旋 和 1次左旋和右旋的组合 分别为single/double rotation，命名原因是**两次旋转之间方向是否有改变**.）
 
@@ -212,72 +223,51 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
     <center><img src = "../figures/ads/dr.jpg" style="zoom: 30%;"/></center>
 
-#### 搜索
+#### 搜索、插入
 
 这个比较容易，是类似BST的操作.
 
 #### 删除
 
-#### 插入
+将节点$X$删去分成4步：
 
-### Amortized Analysis
+1. Find X, 此时X被放到了root位置；<br>
+2. remove X, 这样产生了左子树$T_L$和右子树$T_R$;<br>
+3. findmax($T_L$), 将其旋到root位;<br>
+4. 把$T_R$变成$T_L$根节点的右孩子，这样相当于merge操作，但是很简明，因为root在左子树最大保证了右孩子节点为空，所以直接把右子树挂上去就可以了.
 
-这一想法的来源是我们希望估计某个数据结构经过一系列操作的平均花费时间
+#### PTA习题
 
-Aggregate Analysis：找到时间开销最大的一种情形，计算$n$次操作之后的开销$T(n)$，则amortized cost是$\dfrac{T(n)}{n}$.
+??? tips "1.3-3"
 
-!!! tips "举例"
-    一个具有Multipop函数的大小为$k$的栈，从空栈开始只能选择push 1, pop 1, multipop三种操作，所以aggregate cost就是先压入$n-1$个元素，再进行一次Multipop，开销是$2n-2$，所以$\dfrac{T(n)}{n} = O(1)$.
+    <center><img src = "../figures/ads/1.3-3.png" style="zoom: 60%;"/></center>
 
-现在我们试图证明splay tree中，$T_{\text{amortized}} = O(\log{n})$.
+    全选.
 
-首先证明zig/zig-zag/zig-zig操作的开销上限（摊还成本）分别为：
+??? tips "[xyx-1](https://www.yuque.com/xianyuxuan/coding/ads_exam_1)"
 
-$$\text{zig}:~~ \hat{c_i} \leq 1+(R_2(X)-R_1(X))$$
+    <center><img src = "../figures/ads/xyx1-2.png" style="zoom: 60%;"/></center>
 
-$$\text{zig-zag}: \hat{c_i} \leq 2(R_2(X)-R_1(X))$$
+    <center><img src = "../figures/ads/xyx1-3.jpg" style="zoom: 60%;"/></center>
 
-$$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
+    All of the Zig, Zig-zig, and Zig-zag rotations not only move the accessed node to the root, but also roughly half the depth of most nodes on the path. <br>
+    这是对的，并且是Splay的核心特性.
 
-推导如下：
+    <center><img src = "../figures/ads/xyx1-3.png" style="zoom: 60%;"/></center>
 
-???+ tips "手写的推导过程"
-    <center><img src = "../figures/ads/zig1.jpg" style="zoom: 25%;"/></center>
-    <center><img src = "../figures/ads/zigzag.jpg" style="zoom: 30%;"/></center>
-    <center><img src = "../figures/ads/zigzig.jpg" style="zoom: 30%;"/></center>
+    选D，流程应该是如下的：
 
-而假设$X$的高度是$H(X)$的情况下，可能的旋转次数是
+    <center><img src = "../figures/ads/xyx1-4.jpg" style="zoom: 60%;"/></center>
 
-$$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} + 1 & H(X)\text{是奇数}\end{cases}$$
+    <center><img src = "../figures/ads/xyx1-6.png" style="zoom: 60%;"/></center>
 
-即在高度为奇数时进行$\dfrac{H(X)-1}{2}$次的zig-zig/zig-zag，再进行1次zig将$X$转到root位；
+    <center><img src = "../figures/ads/xyx1-6.jpg" style="zoom: 60%;"/></center>
 
-在高度为偶数时进行$\dfrac{H(X)}{2}$次的zig-zig/zig-zag.
+??? tips "2025fall-ch-mid"
 
-于是对于root为$T$的Splay Tree，想要找到它的$X$节点并进行splay操作，开销的摊还成本最大是$3(R(T)-R(X))+1 = O(\log(N))$，此时进行了1次zig和一堆zig-zig/zig-zag.
+    <center><img src = "../figures/ads/2025midch-1.png" style="zoom: 60%;"/></center>
 
-**Splay Tree的搜索、插入、删除操作的摊还复杂度都是$O(\log N)$.**
-
-#### PTA作业题整理
-
-??? notes "1.1-3"
-
-    For a Splay tree that is non-empty in the initial state, the amortized cost of $m$ finite operations is $O(m \log n)$, assuming that the maximum number of nodes in the Splay tree is $n$.
-
-    是错的，这个界限不够精确，正确的表述应该是：
-
-    对于初始包含$n_0$个节点的Splay树，执行$m$次操作（操作过程中最多有$n$个节点），总的摊还代价是$O((m+n_0)\log ⁡n)$或$O(m \log n + n_0 \log n)$. 如果初始树包含$n_0$个节点，这些节点的初始势能需要计算在内，而常见的$\Phi = \sum\limits_{x \in T} \log(\text{size}(x))$，初始势能约为$O(n_0 \log n_0)$
-
-    所以，对于任意初始状态的Splay树（包含 $n_0 \leq n$个节点），$m$次操作的摊还代价是$O((m + n) \log n)$.
-
-??? notes "1.2-3"
-
-    For a Splay tree contains $k$ nodes in the initial state, assuming that the maximum number of nodes in the Splay tree is $n$. What’s the amortized cost of $m$ operations? ($k \gg m$)
-
-    A.$O(m \log(n+k))$<br>
-    B.$O(mn)$<br>
-    C.$O(m\log n)$<br>
-    D.$O(m\log k)$
+    <center><img src = "../figures/ads/2025midch-1.jpg" style="zoom: 50%;"/></center>
 
 ## Lec 2 Red-Black Tree & B+ Tree
 
@@ -390,6 +380,35 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
     4. 红黑树是**可持久化**的数据结构，因此在函数式编程中容易实现；并且红黑树也可以支持分裂、合并等操作，这使得它可以做批量并行的插入、删除操作（实际上这与讲义最后红黑树与 B 树的关联是相关的），具体已经超出课程范畴，不再详细讨论。
 
+#### PTA习题
+
+??? tips "2025fall-yy-mid"
+
+    After deleting 10 from the red-black tree given in the figure, which one of the following statements must be FALSE?
+
+    <center><img src = "../figures/ads/yymid1.png" style="zoom: 50%;"/></center>
+
+    A. 8 is the parent of 6, and 6 is black<br>
+    B. 6 is the parent of 8, and 8 is red<br>
+    C. 11 is the parent of 15, and 15 is black<br>
+    D. 13 is the parent of 14, and 13 is black
+
+    选B.红黑树的节点删除之后有两种处理方法：把左子树最大的移动过来/右子树最小的移动过来.
+
+    <center><img src = "../figures/ads/yymid1-1.jpg" style="zoom: 30%;"/></center>
+
+??? tips "xyx-1"
+
+    <center><img src = "../figures/ads/xyx15.png" style="zoom: 50%;"/></center>
+
+    <center><img src = "../figures/ads/xyx1-5.png" style="zoom: 50%;"/></center>
+
+??? tips "2021mid"
+
+    In a red-black tree, if an internal black node is of degree 1, then it must have only 1 descendant node.
+
+    对.
+
 ### B+ Tree
 
 Definition:
@@ -448,7 +467,7 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 
     After inserting a node into a Leftist heap $H$ (which is equivalent to merging a one-node Leftist heap with $H$), we need to swap the children of at most $1$ node to make the resulting tree a Leftist heap.
 
-??? notes
+??? notes "2.2-2"
 
     Insert 1,6,7,3,5,2 one by one into an initially empty 2-3 tree (B+ tree of order 3). Which of the following statements is true? We assume that the height of a single node is 1.
 
@@ -459,7 +478,7 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 
     选D
 
-??? tips
+??? notes "2.3-2"
 
     Consider a 2-3 tree. Initially, it has 2 leaves, with keys 1,2,5 and 11,17,19 respectively. Now we perform the following operations one by one:
     <center>Insert 15;  Insert 21;  Insert 22;  Delete 15;  Delete 5.</center>
@@ -471,3 +490,40 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
     D.The height of the tree decreases after 15 is deleted.<br>
     E.Some key in some internal node changes after 15 is deleted.<br>
     F.The height of the tree decreases after 5 is deleted.
+
+??? notes "2025fall-yy-mid"
+
+    In a B+ tree, internal nodes store both index keys and actual data records.
+
+    这是错的，不包含data records.
+
+??? notes "2025fall-yy-mid"
+
+    Insert 10, 20, 30, 40, 50, 60, 70, 80 into an initially empty 3-order B+ tree (i.e., each internal node can hold at most 2 keys). After all insertions, which of the following statements is TRUE?
+    
+    A. There are 3 leaf nodes<br>
+    B. The root node contains key 60<br>
+    C. The height of the tree is 3<br>
+    D. The leftmost leaf node contains keys [10, 20, 30]
+
+    选C.
+    
+    <center><img src = "../figures/ads/yymid2.png" style="zoom: 50%;"/></center>
+
+    来源：[USFCA可视化板-B+树](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
+
+??? tips "xyx-1"
+
+    A B+ tree of order 3 with 21 numbers has at least __ nodes of degree 2. 
+
+    答案是0.
+
+    Which of the following statements concerning a B+ tree of order $M$ is TRUE?
+    A.the root always has between $2$ and $M$ children<br>
+    B.not all leaves are at the same depth<br>
+    C.leaves and nonleaf nodes have some key values in common<br>
+    D.all nonleaf nodes have between $\lceil M/2 \rceil$ and $M$ children
+
+    选C.<br>
+    A: The root is either a leaf or has between $2$ and $M$ children.<br>
+    D: All nonleaf nodes (except the root) have between $\lceil M/2 \rceil$ and $M$ children.

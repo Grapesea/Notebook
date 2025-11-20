@@ -1,4 +1,3 @@
-
 ## Turnpike Reconstruction Problem
 
 给定$\dfrac{N^2-N}{2}$个距离值，重建$N$个点的坐标，使得这些点两两距离恰好是给定的距离集合. 假设$x_1= 0$.
@@ -247,3 +246,26 @@ function AlphaBeta(state, depth, α, β, isMaxPlayer):
     最好情况：$O(b^(d/2))$（剪枝一半深度）<br>
     $b =$ 分支因子，$d =$ 树深度
 3. **节省时间**：对于井字棋等简单游戏效果明显，对于复杂游戏（如国际象棋）至关重要.
+
+### PTA习题
+
+## 回溯算法补充问题
+
+### PTA习题
+
+??? tips "2025fall-yy-mid"
+
+    <center><img src = "../figures/bt/yymid3-1.png" style="zoom: 50%;"/></center>
+
+    <center><img src = "../figures/bt/yymid3-2.png" style="zoom: 50%;"/></center>
+
+    答案是`fabs(2 * sum - total)`和`sum -= a[p]`
+
+??? tips "2025fall-ch-mid"
+
+    <center><img src = "../figures/bt/chmid3-1.png" style="zoom: 70%;"/></center>
+
+    <center><img src = "../figures/bt/chmid3-2.png" style="zoom: 70%;"/></center>
+
+    答案：`i >= 0 && j <= N-1 ; i--, j++`, `board;row+1`, `board[row][col] = 0`.
+    
