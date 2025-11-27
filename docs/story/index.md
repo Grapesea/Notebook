@@ -1,3 +1,5 @@
+## 校内
+
 ### 前辈故事
 
 !!! tips
@@ -31,3 +33,7 @@
 * 2023级：
 
     [一个低能量人士的升级日志](https://mp.weixin.qq.com/s/KFxXD-wW2dI5mbsLpkQTPg)
+
+## 人世间
+
+[自我分析（11.13） - 吉太的文章 - 知乎](https://zhuanlan.zhihu.com/p/1973358870240981687)

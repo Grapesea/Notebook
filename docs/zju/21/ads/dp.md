@@ -137,7 +137,17 @@ void OptMatrix( const long r[ ], int N, TwoDimArray M )
 
 首先可以看出，期望时间之和运算公式是$T(N) = \sum\limits_{i=1}^N p_i(1+d_i)$.
 
-<center><img src = "../figures/dp/tree.jpg" style = "zoom:60%"/></center>
+<center><img src = "../figures/dp/tree.jpg" style = "zoom:50%"/></center>
+
+### PTA习题
+
+??? tips "2025fall-zgc-mid"
+
+    <center><img src = "../figures/dp/zgcmid-4.png" style="zoom: 50%;"/></center>
+
+    弥补了进考场前看不到OBST的遗憾.
+
+    答案是ABD.
 
 ## All-Pairs Shortest Path
 
@@ -199,3 +209,42 @@ void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N )
     <center><img src = "../figures/dp/chmid3-3.png" style="zoom: 50%;"/></center>
 
     答案：`int j = 0; j < i; j++`, `dp[i] = max(dp[i], dp[j]+1)`
+
+??? tips "2025fall-zgc-mid"
+
+    <center><img src = "../figures/dp/zgcmid-1.png" style="zoom: 50%;"/></center>
+
+    <center><img src = "../figures/dp/zgcmid-2.png" style="zoom: 50%;"/></center>
+
+    以下是我临场写的比较笨拙的代码，考场上只有一个样例点没过（空字符串输入，所以遗憾-1，下面的代码已经补上这个问题了）.另外值得吐槽的是，平时作业可以使用C++，本着在学OOP的原则所以我好久没用过C了，结果这次期中只能用C，所以你可以看到我写的依托可笑代码:
+
+    ```c
+    #include<stdlib.h>
+    int chartoint(char s){
+        return (s - '0');
+    }
+    int Decode( char NumStr[] ){
+        int p = 0;
+        while (NumStr[p]) p++;
+        if (p == 0) return 0;  // 这个判断值1分，因为下面的dp[0]初值赋了1.
+        int* dp = malloc(sizeof(int) * (p+1));
+        dp[0] = 1;
+        dp[1] = 1;
+        int in1 = chartoint(NumStr[0]);
+        int in2 = chartoint(NumStr[1]);
+        int s = in1 * 10 + in2;
+        dp[2] = (s <= 25 && s >= 10) ? 2 : 1;
+        
+        for (int i = 2; i <= p; i++){
+            int pre = chartoint(NumStr[i-2]);
+            int cur = chartoint(NumStr[i-1]);
+            int sum = pre*10+cur;
+            if (sum >= 10 && sum <= 25){
+                dp[i] = (dp[i-1] + dp[i-2])%1000000007;
+            }else{
+                dp[i] = dp[i-1] % 1000000007;
+            }
+        }
+        return (dp[p]%1000000007);
+    }
+    ```

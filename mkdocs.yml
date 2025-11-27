@@ -83,11 +83,14 @@ nav:
           - Dynamic Programming: zju/21/ads/dp.md
           - Greedy Algorithm: zju/21/ads/greedy.md
           - P&NP Completeness: zju/21/ads/np.md
+          - Approximation Algorithm: zju/21/ads/approx.md
+          - Local Search: zju/21/ads/local.md
         - Project:
           - Project 1-Comparing Different Search Trees: zju/21/ads/proj/1.md
           - Project 2-Shortest Path Algorithm with Heaps: zju/21/ads/proj/2.md
           - Project 3-Recover the Design: zju/21/ads/proj/3.md
           - Project 4-Matrix Multiplication: zju/21/ads/proj/4.md
+          - Project 5-Three Partition: zju/21/ads/proj/5.md
       - 计算机组成: 
         - 概述: zju/21/co/index.md
         - 笔记:
@@ -171,9 +174,13 @@ nav:
       - Game Trees: csdiy/cs188/4.md
       - MDPs: csdiy/cs188/5.md
       - Appendix:Logic: csdiy/cs188/appendix.md
+    - 李沐动手学深度学习:
+      - 课程计划: csdiy/d2l/index.md
+      - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
+      - Note 2:数学基础: csdiy/d2l/mathbasics.md
     - Datawhale Mathematical Modeling:
       - 课程计划: csdiy/datawhale_mm/index.md
-      - Chap 1:解析方法与几何模型: csdiy/datawhale_mm/1.md
+      - Chap 1:解析方法与几何模型: csdiy/datawhale_mm/1.md  
       - Chap 2:微分方程与动力系统: csdiy/datawhale_mm/2.md
       - Chap 3:函数极值与规划模型: csdiy/datawhale_mm/3.md
       - Chap 4:复杂网络与图论模型: csdiy/datawhale_mm/4.md
@@ -244,8 +251,6 @@ nav:
     - USTC Verilog OJ: 
       - 导航: oj/ustcverilog/index.md
       - 题解: oj/ustcverilog/writeup.md
-    - 洛谷: 
-      - 导航: oj/luogu/index.md
     - 图灵完备(Turing Complete): 
       - 导航: oj/turingcomplete/index.md
       - 题解: oj/turingcomplete/writeup.md
@@ -254,4 +259,4 @@ nav:
     - Markdown: tools/markdown.md
     - Linux: tools/linux.md
     - Python: tools/python.md
-    - Windows命令行: tools/bash.md
+    - Windows Bash: tools/bash.md

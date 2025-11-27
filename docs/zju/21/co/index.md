@@ -30,7 +30,6 @@
         $\quad$
         [mem佬的笔记](https://mem.ac/course/co/)
 
-
     * 课后习题答案：
 
         <a href="co_answer.pdf" download="CO_answer.pdf">点击下载</a>
