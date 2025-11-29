@@ -260,3 +260,4 @@ nav:
     - Linux: tools/linux.md
     - Python: tools/python.md
     - Windows Bash: tools/bash.md
+    - Windows小tips: tools/windows.md

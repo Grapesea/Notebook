@@ -10,7 +10,7 @@
     <tr>
         <td><a href="ads/">高级数据结构与算法分析（ADS）课程笔记</a></td>
         <td><a href="prob/">概率论与数理统计笔记</a></td>
-        <td><a href="marx/">马克思主义基本原理(H)笔记</a></td>
+        <td><a href="marx/">马克思主义基本原理(H)</a></td>
     </tr>
     <tr>
         <td><a href="co/">计算机组成（CO）笔记</a></td>
