@@ -37,7 +37,9 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 
 ??? tips "PTAS/FPTAS举例"
 
-    PTAS但不是FPTAS: $O(n^{\frac{2}{\epsilon}})$  FPTAS: $O(\dfrac{1}{\epsilon^2}n^3)$
+    PTAS但不是FPTAS: $O(n^{\frac{2}{\epsilon}})$  
+    
+    FPTAS: $O(\dfrac{1}{\epsilon^2}n^3)$
 
 ### PTA习题
 
@@ -48,6 +50,10 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 ## 实际应用
 
 ### Approximate Bin Packing
+
+这是一个很接近[Project 5 Three-Partition](../ads/proj/5.md)的$\textbf{NP}-\text{hard}$问题，描述如下：
+
+> Given $N$ items of sizes  $S_1 , S_2 , \cdots , S_N$ , such that $0 < S_i \leq 1, \forall 1 \leq i \leq N$. Pack these items in the fewest number of bins, each of which has unit capacity.
 
 #### Next Fit Algorithm
 
