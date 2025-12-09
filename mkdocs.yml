@@ -208,8 +208,19 @@ nav:
       - 课程计划: csdiy/mit6046j/index.md
     - CS106L:
       - 课程计划: csdiy/cs106l/index.md
-      - Lec1-Brief Introduction: csdiy/cs106l/intro.md
-      - Lec2-Types and Struct: csdiy/cs106l/types.md
+      - Lec1-Brief Introduction: csdiy/cs106l/1intro.md
+      - Lec2-Types and Struct: csdiy/cs106l/2types.md
+      - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
+      - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
+      - Lec7-Classes: csdiy/cs106l/7classes.md
+      - Lec8-Template Classes and Const Correctness: csdiy/cs106l/8templates.md
+      - Lec9-Template Functions: csdiy/cs106l/9templatefuncs.md
+      - Lec10-Functions and Lambdas: csdiy/cs106l/10functions.md
+      - Lec11-Operators: csdiy/cs106l/11operators.md
+      - Lec12-Special Member Functions: csdiy/cs106l/12specialmembers.md
+      - Lec13-Move Semantics: csdiy/cs106l/13movesemantics.md
+      - Lec14-std::optional and Type Safety: csdiy/cs106l/14optional.md
+      - Lec15-RAII, Smart Pointers, and Building C++ Projects: csdiy/cs106l/15raii.md
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
   - CTF: 

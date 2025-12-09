@@ -127,9 +127,3 @@ auto c = 'x';
 auto d = "Hello";
 auto e = std::make_pair(3,"Hello");
 ```
-
-## Stream
-
-an abstraction for input/output. STreams convert between data and the string representation of data.
-
-主要是`std::cout`和`std::cin`的用法.
