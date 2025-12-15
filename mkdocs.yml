@@ -85,6 +85,9 @@ nav:
           - P&NP Completeness: zju/21/ads/np.md
           - Approximation Algorithm: zju/21/ads/approx.md
           - Local Search: zju/21/ads/local.md
+          - Randomized Algorithm: zju/21/ads/random.md
+          - Parallel Algorithm: zju/21/ads/parallel.md
+          - External Sort: zju/21/ads/exsort.md
         - Project:
           - Project 1-Comparing Different Search Trees: zju/21/ads/proj/1.md
           - Project 2-Shortest Path Algorithm with Heaps: zju/21/ads/proj/2.md
@@ -191,11 +194,7 @@ nav:
       - Chap 10:图像、文本与信号数据: csdiy/datawhale_mm/10.md
     - Datawhale Mathematics for Artificial Intelligence:
       - 课程计划: csdiy/datawhale_m4ai/index.md
-      - Chap 2:线性代数: csdiy/datawhale_m4ai/2.md
-      - Chap 3:解析几何: csdiy/datawhale_m4ai/3.md
-      - Chap 4:矩阵分解: csdiy/datawhale_m4ai/4.md
-      - Chap 5:向量微积分: csdiy/datawhale_m4ai/5.md
-      - Chap 6:概率与统计: csdiy/datawhale_m4ai/6.md
+      - Chap 2-6:线性代数/解析几何/矩阵分解/向量微积分/概率与统计: csdiy/datawhale_m4ai/2-6.md
       - Chap 7:连续优化: csdiy/datawhale_m4ai/7.md
       - Chap 8:当模型遇上数据: csdiy/datawhale_m4ai/8.md
       - Chap 9:线性回归: csdiy/datawhale_m4ai/9.md
@@ -238,14 +237,6 @@ nav:
       - cryptohack笔记: ctf/crypto/cryptohack.md
       - CSACTF2025: ctf/crypto/csactf2025.md
       - NSSCTF题库: ctf/crypto/nssctf.md
-    - misc笔记: 
-      - 导航: ctf/misc/index.md
-    - web笔记: 
-      - 导航: ctf/web/index.md
-    - reverse笔记: 
-      - 导航: ctf/reverse/index.md
-    - pwn笔记: 
-      - 导航: ctf/pwn/index.md
     - NewStarCTF2025:
       - 导航: ctf/newstarctf2025/index.md
       - 题解: ctf/newstarctf2025/writeup.md
@@ -271,3 +262,8 @@ nav:
     - Python: tools/python.md
     - Windows Bash: tools/bash.md
     - Windows小tips: tools/windows.md
+    - JavaScript语言: tools/JavaScript.md
+  - 友链:
+    - Grapesea的朋友们: friends/friends.md
+    - Grapesea的其他联系方式: friends/contact.md
+    

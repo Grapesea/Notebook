@@ -44,7 +44,6 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 ### PTA习题
 
 ??? tips "6.1-7/8/9"
-
     <center><img src = "../figures/approx/1.789.png" style="zoom: 50%;"/></center>
 
 ## 实际应用
@@ -57,20 +56,84 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 
 #### Next Fit Algorithm
 
+策略：只考虑上一个打开的箱子。如果新物品能放入上一个箱子，就放入；否则，立即打开一个新箱子，并将新物品作为新的``上一''物品.
+
+```pseudocode
+void NextFit ( )
+{   read item1;
+    while ( read item2 ) {
+        if ( item2 can be packed in the same bin as item1 )
+            place item2 in the bin;
+        else
+            create a new bin for item2;
+        item1 = item2;
+    } /* end-while */
+}
+```
+
+定理：Let $M$ be the optimal number of bins required to pack a list I of items. Then next fit never uses more than $2M – 1$ bins. There exist sequences such that next fit uses $2M – 1$ bins.
+
+证明：反证，用不等式构造矛盾.
+
+#### First Fit Algorithm
+
+策略：扫描所有已打开的箱子，将新物品放入第1个足够大的箱子中. 如果所有已开箱子都不够大，则创建一个新箱子.
+
+```pseudocode
+void FirstFit ( )
+{   while ( read item ) {
+        scan for the first bin that is large enough for item;
+        if ( found )
+            place item in that bin;
+        else
+            create a new bin for item;
+    } /* end-while */
+}
+```
+
+效率: 可以实现为 $O(N \log N)$ 的时间复杂度.
+
+是不稳定的算法，如果在一个序列中所需的箱子数量是\(M\)，去掉一个箱子之后，所需的箱子数
+也可能$>M$.
+
+举例：
+
+\(\text{Bin Size} =1, L = \{0.55,0.7,0.55,0.1,0.45,0.15,0.3,0.2\}\), \(L' = \{0.55,0.7,0.55,0.45,0.15,0.3,0.2\}\)
+
+#### Best Fit Algorithm
+
+策略：扫描所有已打开的箱子，将新物品放入其中放入后最接近capcity的箱子中. 如果所有已开箱子都不够大，则创建一个新箱子.
+
+相比First Fit而言，是稳定的.
+
+#### Online Algorithm
+
+Place an item before processing the next one, and can NOT change decision.
+
+也就是说获得一个输入之后必须马上决策，无法看到后面的输入.
+
+No on-line algorithm can always give an optimal solution. **There are inputs that force any on-line bin-packing algorithm to use at least $\dfrac53$ the optimal number of bins.**
+
+举例：
+
+#### Offline Algorithm
+
+View the entire item list before producing an answer.
+
 #### PTA习题
 
 ??? tips "6.2-2/3"
-
     <center><img src = "../figures/approx/2.23.png" style="zoom: 50%;"/></center>
 
 ### The Knapsack Problem(背包问题)
 
 ### The K-center Problem(K中心问题)
 
+给定平面上的一系列site（即点），在平面中找出\(k\)个不同的 center，记\(\text{site}_i\)到离它最近的 center的距离为\(\text{dis}_i\)，求\(\max\{\text{dis}_i\}\)的最小值.
+
 #### PTA习题
 
 ??? tips "6.2-4"
-
     <center><img src = "../figures/approx/2.4.png" style="zoom: 50%;"/></center>
 
 ### 杂题
@@ -78,5 +141,4 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 #### PTA习题
 
 ??? tips "6.2-5"
-
     <center><img src = "../figures/approx/2.5.png" style="zoom: 50%;"/></center>
