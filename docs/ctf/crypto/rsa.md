@@ -1,10 +1,12 @@
-!!! tips
+???+ tips "资源与工具"
 
     资源：[buuctf中的RSA刷题 - 骁隆's Blog](https://www.onctf.com/posts/d38358f9.html)
 
     [『CTF』史上最全 RSA 题目总结 - FreeBuf网络安全行业门户](https://www.freebuf.com/articles/web/287854.html)
 
-    Dan Boneh. Twenty years of attacks on the RSA cryptosystem. *Notices of the American Mathematical Society (AMS)*, 46(2):203–213, 1999.
+    Dan Boneh. Twenty years of attacks on the RSA cryptosystem. *Notices of the American Mathematical Society (AMS)*, 46(2):203–213, 1999. $\quad$[解读1](https://mzhang.io/posts/2018-10-26-twenty-years-of-rsa-attacks/) 
+    $\quad$
+    [解读2](https://harper-yuan.github.io/2022/10/29/RSA%E5%8A%A0%E5%AF%86%E7%B3%BB%E7%BB%9F%E7%9A%8420%E5%B9%B4/)
 
     工具：RsaCtfTools
 
@@ -12,7 +14,7 @@
 
 根据[cryptohack](https://cryptohack.org/challenges/rsa/)的指导，按部就班学习一下RSA加密算法的过程：
 
-!!! tips
+??? tips "RSA基础知识"
 
     * RSA概念与定义：
 
@@ -250,8 +252,6 @@ print(m)
 conn.sendline(hex(m)[2:])
 ```
 
-
-
 第三关：
 
 ```bash
@@ -277,8 +277,6 @@ phi = (p-1)*(q-1)*q
 d = gmpy2.invert(e,phi)
 m = pow(c,d,n)
 ```
-
-
 
 第四关：
 
@@ -360,8 +358,6 @@ q = 1298819391313162447668517581156289816051788840583884106158895512501043895384
 payload略
 
 另一个做法：[RSA的dp泄露](https://blog.csdn.net/weixin_45859850/article/details/109559190)
-
-
 
 第五关：
 

@@ -238,7 +238,6 @@ nav:
       - CSACTF2025: ctf/crypto/csactf2025.md
       - NSSCTF题库: ctf/crypto/nssctf.md
     - NewStarCTF2025:
-      - 导航: ctf/newstarctf2025/index.md
       - 题解: ctf/newstarctf2025/writeup.md
   - OJ笔记:
     - OJ笔记导航: oj/index.md
