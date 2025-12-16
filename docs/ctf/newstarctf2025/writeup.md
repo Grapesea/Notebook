@@ -1,3 +1,5 @@
+[比赛网站，可惜截止之后无法再回看了](https://newstar.wiki/guide/2025/)
+
 ## Crypto
 
 ### [Easy]Sagemath使用指哪？

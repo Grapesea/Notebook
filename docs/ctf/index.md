@@ -23,6 +23,18 @@
 </tbody>
 </table>
 
+???+ info "刷题网站"
+
+    [BUUCTF](https://buuoj.cn/challenges)
+    $\quad$
+    [CryptoHack](https://cryptohack.org/challenges)
+
+???+ info "一些价值极高的密码学博客/文章"
+
+    [稀有气体(Higashi)-zhihu](https://www.zhihu.com/column/c_1190932930565013504)，主讲格密码与同态加密
+    $\quad$
+    [RSA攻击的不全收集](https://blog.csdn.net/wuyunfeng233/article/details/142326133)
+
 ??? tips "环境准备"
 
     不知道为什么本地网络经常刷新，有时一下子不能连接上靶机.
