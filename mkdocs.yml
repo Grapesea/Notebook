@@ -211,8 +211,7 @@ nav:
       - Lec2-Types and Struct: csdiy/cs106l/2types.md
       - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
       - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
-      - Lec7-Classes: csdiy/cs106l/7classes.md
-      - Lec8-Template Classes and Const Correctness: csdiy/cs106l/8templates.md
+      - Lec7&8-Classes, Template Classes: csdiy/cs106l/7_8classes_templates.md
       - Lec9-Template Functions: csdiy/cs106l/9templatefuncs.md
       - Lec10-Functions and Lambdas: csdiy/cs106l/10functions.md
       - Lec11-Operators: csdiy/cs106l/11operators.md
@@ -234,7 +233,7 @@ nav:
       - PRNG: ctf/crypto/prng.md
       - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
       - 校巴wp: ctf/crypto/zjusec.md
-      - cryptohack笔记: ctf/crypto/cryptohack.md
+      - cryptohack基础章节笔记: ctf/crypto/cryptohack_basic.md
       - CSACTF2025: ctf/crypto/csactf2025.md
       - NSSCTF题库: ctf/crypto/nssctf.md
     - NewStarCTF2025:

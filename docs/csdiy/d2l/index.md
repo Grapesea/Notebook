@@ -11,3 +11,9 @@
     [课程论坛讨论](https://discuss.d2l.ai/c/16/)
 
     [PyTorch论坛](https://discuss.pytorch.org/)
+
+??? tips "开始学习"
+
+    ```powershell
+    $ jupyter notebook
+    ```

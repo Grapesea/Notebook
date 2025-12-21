@@ -35,6 +35,18 @@
     $\quad$
     [RSA攻击的不全收集](https://blog.csdn.net/wuyunfeng233/article/details/142326133)
 
+??? tips "新电脑环境说明"
+
+    sagemath环境配在WSL中，进入后先：
+
+    ```powershell
+    $ conda env list
+    $ conda activate sage
+    $ sage
+    ```
+
+    就可以使用了.
+
 ??? tips "环境准备"
 
     不知道为什么本地网络经常刷新，有时一下子不能连接上靶机.

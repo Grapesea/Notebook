@@ -12,6 +12,8 @@
     [WintermelonC的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/)
     $\quad$
     [StarStone的笔记](https://starstone3.github.io/incourse/ADS/)
+    $\quad$
+    [BruceJqs的笔记](https://brucejqs.github.io/MyNotebook/blog/Computer%20Science/ADS/Chapter%2014/)
 
     [MIT 6.046J, 2015 spring](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/)
     $\quad$

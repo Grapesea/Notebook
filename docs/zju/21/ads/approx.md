@@ -5,7 +5,7 @@
     [HobbitQia助教哥哥的笔记](https://note.hobbitqia.cc/ADS/)
     $\quad$
     [Starstone的笔记本](https://starstone3.github.io/incourse/ADS/Approximation/)
-
+    
     [wikipedia](https://zh.wikipedia.org/wiki/%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95)
 
 ## 近似算法基本定义
@@ -93,12 +93,12 @@ void FirstFit ( )
 
 效率: 可以实现为 $O(N \log N)$ 的时间复杂度.
 
-是不稳定的算法，如果在一个序列中所需的箱子数量是\(M\)，去掉一个箱子之后，所需的箱子数
+是不稳定的算法，如果在一个序列中所需的箱子数量是$M$，去掉一个箱子之后，所需的箱子数
 也可能$>M$.
 
 举例：
 
-\(\text{Bin Size} =1, L = \{0.55,0.7,0.55,0.1,0.45,0.15,0.3,0.2\}\), \(L' = \{0.55,0.7,0.55,0.45,0.15,0.3,0.2\}\)
+$\text{Bin Size} =1, L = \{0.55,0.7,0.55,0.1,0.45,0.15,0.3,0.2\}$, $L' = \{0.55,0.7,0.55,0.45,0.15,0.3,0.2\}$
 
 #### Best Fit Algorithm
 
@@ -129,7 +129,7 @@ View the entire item list before producing an answer.
 
 ### The K-center Problem(K中心问题)
 
-给定平面上的一系列site（即点），在平面中找出\(k\)个不同的 center，记\(\text{site}_i\)到离它最近的 center的距离为\(\text{dis}_i\)，求\(\max\{\text{dis}_i\}\)的最小值.
+给定平面上的一系列site（即点），在平面中找出$k$个不同的 center，记$\text{site}_i$到离它最近的 center的距离为$\text{dis}_i$，求$\max\{\text{dis}_i\}$的最小值.
 
 #### PTA习题
 

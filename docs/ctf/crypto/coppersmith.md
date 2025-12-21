@@ -8,10 +8,7 @@
 
 沉寂已久的Coppersmith出现了，我以为lab2就会用到的，然后想得过于复杂折磨死了自己，但现在还在做单变量Coppersmith的阅读理解.
 
-!!! tips
-
-    Coppersmith方法的理论基础
-
+???+ tips "Coppersmith方法的理论基础"
     * Coppersmith引理：
 
         对mod N下度数为$d$的首一多项式$f$，若$n$是$N$的因子，$n N^{\beta}, 0 < \beta \leq 1$，则可以**在多项式时间内**求出mod N下$\vert x_0\vert < N^{\frac{\beta^2}{d}}$的根.
@@ -41,30 +38,32 @@
 
 Coppersmith下的RSA，但是题目描述很谜语人：
 
-Et en amour, il est plus facile de renoncer à un sentiment que de perdre une habitude.
-在爱情中，放弃一种感情比改掉一个习惯更容易。
+???+ tips "题干"
 
-```python
-from Crypto.Util.number import getPrime
-from gmpy2 import next_prime
-from random import getrandbits
+    Et en amour, il est plus facile de renoncer à un sentiment que de perdre une habitude.
+    在爱情中，放弃一种感情比改掉一个习惯更容易。
 
-flag = ?
+    ```python
+    from Crypto.Util.number import getPrime
+    from gmpy2 import next_prime
+    from random import getrandbits
 
-p=getPrime(1024)
-q=next_prime(p+(p&((1<<600)-1))^getrandbits(200))
-n=p*q
-e=65537
- 
-m=int(flag.hex(),16)
-assert m<n
-c=pow(m,e,n)
+    flag = ?
 
-with open("output.txt","w") as f:
-    f.write("n = "+str(n)+"\nc = "+str(c))
-```
+    p=getPrime(1024)
+    q=next_prime(p+(p&((1<<600)-1))^getrandbits(200))
+    n=p*q
+    e=65537
+    
+    m=int(flag.hex(),16)
+    assert m<n
+    c=pow(m,e,n)
 
-output.txt中就是$n,c$的值.
+    with open("output.txt","w") as f:
+        f.write("n = "+str(n)+"\nc = "+str(c))
+    ```
+
+    output.txt中就是$n,c$的值.
 
 
 
