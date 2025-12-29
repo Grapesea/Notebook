@@ -1,6 +1,4 @@
-本文将依照张国川老师的授课以及其余材料整理。
-
-其中涉及的代码我试图手搓，放在了GitHub仓库：[Grapesea/ADS_code](https://github.com/Grapesea/ADS_code)里面.
+本文将依照张国川老师的授课以及其余材料整理.
 
 ???+ tips "资源列表 & 前人经验"
     一些有意思且非常有用的网站：[数据结构可视化:usfca版](https://www.cs.usfca.edu/~galles/visualization/)

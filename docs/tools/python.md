@@ -1,4 +1,4 @@
-## 语法
+## 语法和库函数汇总
 
 ??? tips "re模块（正则表达式）"
 
@@ -19,6 +19,37 @@
         print("Right", match.group())
     else:
         print("Wrong")
+    ```
+
+??? tips "Encode & Decode"
+
+    `encode()`是将`str`变成bytes，`decode()`是将bytes变成`str`.
+
+    ```python
+    # Encoding a string to bytes
+    text = "Hello, Python!"
+    encoded_text = text.encode('utf-8')
+    print("Encoded:", encoded_text) # Output: b'Hello, Python!'
+    # Decoding bytes back to a string
+    decoded_text = encoded_text.decode('utf-8')
+    print("Decoded:", decoded_text) # Output: Hello, Python!
+    ```
+
+    Key Details:
+
+    * `encode(encoding='utf-8', errors='strict')`: Converts a string into bytes using the specified encoding (default is UTF-8). The errors parameter handles encoding errors ('strict', 'ignore', 'replace').
+
+    * `decode(encoding='utf-8', errors='strict')`: Converts bytes back into a string using the specified encoding. The errors parameter handles decoding errors similarly.
+    
+    ```python
+    # Encoding with ASCII (supports only basic English characters)
+    text = "Café"
+    encoded = text.encode('ascii', errors='replace') # Unsupported characters replaced
+    print(encoded) # Output: b'Caf?'
+
+    # Decoding with different error modes
+    print(encoded.decode('ascii', errors='ignore')) # Output: Caf
+    print(encoded.decode('ascii', errors='replace')) # Output: Caf?
     ```
 
 ## 文档与图片处理

@@ -2,6 +2,10 @@
 
 > [Writeup](https://lianjinlll.cn/2025/02/18/Cryptohack-SymmetricCiphers-wp-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/)
 
+* The mathematical term for a one-to-one correspondence:   $\textcolor{red}{Bijection}$.
+
+* The best single-key attack against AES:   $\textcolor{red}{biclique}$
+
 AES是一种块加密算法，大致流程如下图所示（图源CTFwiki）：
 
 <center><img src="../photos/cryptohack/aes_details.jpg" alt="rr" style="zoom: 50%;" /></center>
@@ -452,7 +456,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
             break
     ```
 
-[ECB_oracle](https://cryptohack.org/courses/symmetric/ecb_oracle/)
+### [ECB_oracle](https://cryptohack.org/courses/symmetric/ecb_oracle/)
 
 这个题目根本没想到是逐byte爆破，看了题解才知道是怎么回事.当然，看的题解其实是需要一点修正的，不能完全复现出来情况.
 
@@ -592,7 +596,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
     print(f"solved in {rcount} HTTP requests!")
     ```
 
-[ECBCBCWTF](https://cryptohack.org/courses/symmetric/ecbcbcwtf/)
+### [ECBCBCWTF](https://cryptohack.org/courses/symmetric/ecbcbcwtf/)
 
 <center><img src="../photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
 
@@ -625,7 +629,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
     print(long_to_bytes(int(iv,16)^int(dec1,16))+long_to_bytes(int(enc1,16)^int(dec2,16)))
     ```
 
-[Flipping Cookie](https://cryptohack.org/courses/symmetric/flipping_cookie/)
+### [Flipping Cookie](https://cryptohack.org/courses/symmetric/flipping_cookie/)
 
 也是一个数学推导的题目，我们已经知道了cookie的返回值是由16bytes的iv和一段P1构成.
 
@@ -664,7 +668,7 @@ $$\begin{cases}
     print(flag)
     ```
 
-[Symmetry](https://cryptohack.org/courses/symmetric/symmetry/)
+### [Symmetry](https://cryptohack.org/courses/symmetric/symmetry/)
 
 <center><img src="../photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
 
@@ -696,7 +700,124 @@ $$\begin{cases}
 
 [Bean_counter](https://cryptohack.org/courses/symmetric/bean_counter/)
 
-<center><img src="../photos/cryptohack/ctr.png" style="zoom: 50%;" /></center>
+<center><img src="../photos/cryptohack/ctr.png" style="zoom: 100%;" /></center>
 
 ??? tips "题解"
 
+    ```python
+    import requests
+    from Crypto.Cipher import AES
+    from Crypto.Util.number import *
+
+    url = 'https://aes.cryptohack.org/bean_counter/'
+    request = requests.get(url + 'encrypt/')
+    C = request.json()["encrypted"]
+    print(C)
+
+    # self.newIV = hex(int(self.value, 16) - self.stup) 一直执行
+    # 所以每次结束之后value = newIV[2:], newIV = hex(int(value,16))
+    # keystream = encrypt(bytes.fromhex(value.zfill(32)))
+
+    pnghead='89504E470D0A1A0A0000000D49484452'
+
+    key=int(pnghead,16)^int(C[:32],16)
+    print(key)
+
+    with open('flag.png','wb') as f:
+        for i in range(0,len(C),32):
+            flag=hex(int(C[i:i+32],16)^key)[2:].zfill(32)
+            print(flag)
+            f.write(bytes.fromhex(flag))
+    ```
+
+### [Lazy_CBC](https://aes.cryptohack.org/lazy_cbc/)
+
+> 你可能感兴趣的：[之江大学2025年12月23日“四缺育人平台”课表抓取漏洞](https://www.cc98.org/topic/6381376/14#8)
+
+这题的破绽在于令`iv = key`，使得可以被数学推导出来攻击方法.
+
+假设decrypt函数输入的是$C_0+C_1+C_2$，其中$C_0,C_1,C_2$都是16bytes，接收到的“明文”是$P_0+P_1+P_2$，其中$P_0,P_1,P_2$都是16bytes，那么：
+
+$$\begin{cases}
+P_0 = de(C_0) \oplus iv \\
+P_1 = de(C_1) \oplus C_0 \\
+P_2 = de(C_2) \oplus C_1 \\
+\end{cases}
+$$
+
+我们构造一段$C_1=0,C_2=C_0$的输入，则：
+
+$$\begin{cases}
+    P_0 = de(C_0) \oplus iv \\
+    P_1 = de(C_1) \oplus C_0 \\
+    P_2 = de(C_2) \oplus C_1 \\
+    \end{cases} \overset{\text{代入}C_1=0,C_2=C_0}{\Longrightarrow}
+\begin{cases}
+    P_0 = de(C_0) \oplus iv \\
+    P_1 = de(0) \oplus C_0 \\
+    P_2 = de(C_0) \oplus 0 \\
+\end{cases} \overset{\text{将1,3两式子左右分别相异或}}{\Longrightarrow}
+    P_0 \oplus P_2 = de(C_0) \oplus iv \oplus de(C_0) \oplus 0 = iv \Longrightarrow \boxed{KEY = iv = P_0 \oplus P_2}
+$$
+
+首先是一个从正常原理上做但是做得稍显麻烦的方法. 一开始我没看懂作者为什么要调用encrypt函数，还以为自己理解错了，后来意识到作者只是构思了一个中间全0，$C_2 = C_0$的输入，但大可不必如此的：
+
+??? tips "Writeup-1"
+
+    ```python
+    from Crypto.Cipher import AES
+    from Crypto.Util.number import *
+    import requests
+
+    url='https://aes.cryptohack.org/lazy_cbc/'
+
+    test = '0' * 96
+    response = requests.get(url+'encrypt/'+test) 
+    enc=response.json()['ciphertext']
+    print(enc)
+    response.close()
+
+    enc1 = enc[:32]
+    enc2 = enc[32:64]
+    enc3 = enc[64:]
+
+    m = enc1 + '0' * 32 + enc1
+    response = requests.get(url+'receive/'+m)
+    dec = response.json()
+    print(dec)
+
+    de = '000000000000000000000000000000002f7a8bd90ece5a242e5d7ae2d34d8be14d66727acc9652f2abc06f1718c76464' # 从上面的print(dec)结果里面复制的
+    iv = int(de[64:],16) ^ int('0' * 32, 16)
+
+    response = requests.get(url+'get_flag/'+hex(iv)[2:])
+    flag=response.json()['plaintext']
+    response.close()
+    print(bytes.fromhex(flag))
+    ```
+
+接下来是最佳办法，依照的就是上面写的数学推导：
+
+??? tips "Writeup-2"
+
+    ```python
+    from Crypto.Cipher import AES
+    from Crypto.Util.number import *
+    import requests
+
+    url='https://aes.cryptohack.org/lazy_cbc/'
+
+    test = '0' * 96
+    response = requests.get(url+'receive/'+test)
+    dec = response.json()
+    print(dec)
+    p = '9dc430985e62876e56b8e0d59f10ba99d0a242e292f4d59cfd788fc287d7defdd0a242e292f4d59cfd788fc287d7defd'
+    p0 = p[:32]
+    p1 = p[32:64]
+    p2 = p[64:]
+    iv = int(p0,16) ^ int(p2,16)
+
+    response = requests.get(url+'get_flag/'+hex(iv)[2:])
+    flag=response.json()['plaintext']
+    response.close()
+    print(bytes.fromhex(flag))
+    ```

@@ -8,6 +8,10 @@
     
     [wikipedia](https://zh.wikipedia.org/wiki/%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95)
 
+???+ tips "期末补天须知"
+
+
+
 ## 近似算法基本定义
 
 近似算法是基于$\textbf{P} \neq \textbf{NP}$假设的，为最优化问题寻找近似解的算法. 该类算法找到的近似解与最优解之间的差值需能证明不超过某个值（后面会记作近似比）.
@@ -136,9 +140,12 @@ View the entire item list before producing an answer.
 ??? tips "6.2-4"
     <center><img src = "../figures/approx/2.4.png" style="zoom: 50%;"/></center>
 
-### 杂题
+### 图论与树
 
 #### PTA习题
 
 ??? tips "6.2-5"
     <center><img src = "../figures/approx/2.5.png" style="zoom: 50%;"/></center>
+
+??? tips "6.3-2"
+    <center><img src = "../figures/approx/3.2.png" style="zoom: 50%;"/></center>

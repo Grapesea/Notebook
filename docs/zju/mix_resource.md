@@ -30,6 +30,8 @@
 
     [【学习天地】ZLA-pptclean，适用于zju-learning-assistant的，快速将智云ppt重复图片清理](https://www.cc98.org/topic/6329611)
 
+    [【学习天地】PDF-Duplicate-Page-Remover：将zju-learning-assistant导出的pdf格式的智云课堂课件进行重复图片清理](https://www.cc98.org/topic/6382960)
+
 #### CS学习
 
 * **cs学习经验：（含非科班前辈自学/国外课程自学经验）**

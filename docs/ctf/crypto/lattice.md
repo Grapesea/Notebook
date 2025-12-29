@@ -1,3 +1,18 @@
+## Lattice, LWE, NTRU etc.
+
+???+ info "资源总结"
+
+    
+
+### Lattice基础
+
+### [NTRU](https://courses.zjusec.com/slides/crypto-lec3/#/4/1)
+
+??? info "参考资源"
+
+    [NTRU密码系统 - 卓越成就的文章 - 知乎](https://zhuanlan.zhihu.com/p/664635742) $\quad$
+    [独奏的blog](https://hasegawaazusa.github.io/NTRU-note.html)
+
 ## Coppersmith方法(sagemath的使用)
 
 摘自自己的crypto lab3 report
@@ -11,7 +26,7 @@
 ???+ tips "Coppersmith方法的理论基础"
     * Coppersmith引理：
 
-        对mod N下度数为$d$的首一多项式$f$，若$n$是$N$的因子，$n N^{\beta}, 0 < \beta \leq 1$，则可以**在多项式时间内**求出mod N下$\vert x_0\vert < N^{\frac{\beta^2}{d}}$的根.
+        对mod N下度数为$d$的首一多项式$f$，若$n$是$N$的因子，$n > N^{\beta}, 0 < \beta \leq 1$，则可以**在多项式时间内**求出mod N下$\vert x_0\vert < N^{\frac{\beta^2}{d}}$的根.
 
         * $n = N: \vert x_0\vert < N^{\frac{1}{d}}$
         * RSA中，$p \approx N^{0.5}$，所以可以求出$ \vert x_0\vert < N^{\frac{1}{4d}}$.

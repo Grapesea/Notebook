@@ -226,16 +226,18 @@ nav:
     - CTF101笔记: ctf/ctf101.md
     - crypto笔记: 
       - 导航: ctf/crypto/index.md
+      - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
+      - cryptohack基础: ctf/crypto/cryptohack_basic.md
       - RSA: ctf/crypto/rsa.md
       - DSA: ctf/crypto/dsa.md
       - AES: ctf/crypto/aes.md
-      - Coppersmith: ctf/crypto/coppersmith.md
+      - Lattice: ctf/crypto/lattice.md
       - PRNG: ctf/crypto/prng.md
-      - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
-      - 校巴wp: ctf/crypto/zjusec.md
-      - cryptohack基础章节笔记: ctf/crypto/cryptohack_basic.md
-      - CSACTF2025: ctf/crypto/csactf2025.md
+      - Hash Function: ctf/crypto/hash.md
+      - ZJUSEC题库: ctf/crypto/zjusec.md
       - NSSCTF题库: ctf/crypto/nssctf.md
+      - CSACTF2025: ctf/crypto/csactf2025.md
+      - 长城杯2025: ctf/crypto/ccb2025.md
     - NewStarCTF2025:
       - 题解: ctf/newstarctf2025/writeup.md
   - OJ笔记:

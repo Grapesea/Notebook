@@ -3,7 +3,7 @@
 
 摘自自己的crypto lab1 report
 
-!!! tips "DSA签名算法的过程"
+???+ tips "DSA签名算法的过程"
 
     密钥选取：
 
@@ -54,6 +54,8 @@ s_2 \equiv (k_1+1)^{-1}(H(m) + xr_2) & (\operatorname{mod} q)\end{cases}$$
 
 ### [DSA Revenge](https://zjusec.com/challenges/118)
 
+> Undone
+
 类似上题DSA的$k$复用情况，我的破解思路：
 
 当$m_1 = m_2$时，有$H(m_1) = H(m_2)$，设为$H(m)$
@@ -65,4 +67,4 @@ s_2 \equiv [(ak+b)\%c>>160]^{-1}(H(m) + xr_2) & (\operatorname{mod} q) \end{case
 
 解得 $x \equiv ??? (\operatorname{mod} q)$
 
-需要看论文
+需要看论文.
