@@ -10,8 +10,6 @@
 
 ???+ tips "期末补天须知"
 
-
-
 ## 近似算法基本定义
 
 近似算法是基于$\textbf{P} \neq \textbf{NP}$假设的，为最优化问题寻找近似解的算法. 该类算法找到的近似解与最优解之间的差值需能证明不超过某个值（后面会记作近似比）.
@@ -60,7 +58,7 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 
 #### Next Fit Algorithm
 
-策略：只考虑上一个打开的箱子。如果新物品能放入上一个箱子，就放入；否则，立即打开一个新箱子，并将新物品作为新的``上一''物品.
+策略：只考虑上一个打开的箱子. 如果新物品能放入上一个箱子，就放入；否则，立即打开一个新箱子，并将新物品作为新的``上一''物品.
 
 ```pseudocode
 void NextFit ( )
@@ -131,18 +129,83 @@ View the entire item list before producing an answer.
 
 ### The Knapsack Problem(背包问题)
 
+#### fractional ver
+
+非常简单，只需要依照maximum profit density的原则去贪心就可以了.
+
+假设profit序列$\{p_i\}$，weight序列$\{w_i\}$，率先装尽density序列$\{d_i = \dfrac{p_i}{w_i}\}之中最大的，依次装包直至装满.
+
+#### 0-1 ver
+
+**结论：是$\textbf{NP-hard}$，近似比是2.**
+
+证明：
+
+$$\begin{cases}
+p_{max} \leq P_{opt} \leq P_{frac} \\
+p_{max} \leq P_{greedy} \\
+P_{opt} \leq P_{greedy} + p_{max}
+\end{cases} \Longrightarrow
+\dfrac{P_{opt}}{P_{greedy}} \leq 1+\dfrac{p_{max}}{P_{greedy}} \leq 2$$
+
+动态规划下的时间复杂度是$O(n^2p_{max})$，其中$p_{max}$是最终规划出来的最大利润.
+
 ### The K-center Problem(K中心问题)
 
 给定平面上的一系列site（即点），在平面中找出$k$个不同的 center，记$\text{site}_i$到离它最近的 center的距离为$\text{dis}_i$，求$\max\{\text{dis}_i\}$的最小值.
+
+一个(不可行的)贪心策略是，刚开始把第一个中心放在最可能的位置，之后不断地添加中心，使得covering radius不断被降低. 但是这样不能解决局部聚集成“团”而“团”之间距离极大的问题.
+
+#### $2r$-Greedy
+
+$K$-Center 问题的贪心算法（通常被称为 Gonzalez's Algorithm）.
+
+* 初始化： 随便选一个点作为第一个中心加入集合 $C$.
+* 循环： 在剩下的所有点中，找到距离当前中心集合 $C$ 最远的那个点 $s$（即 $s$ 到 $C$ 中最近点的距离最大）.
+* 加入： 把这个“最远”的点 $s$ 加入中心集合 $C$.
+* 终止： 重复直到选够了 $K$ 个中心.
+
+结论：$2$-approximation.
+
+```c
+Centers  Greedy-2r ( Sites S[ ], int n, int K, double r )
+{   Sites  S’[ ] = S[ ]; /* S’ is the set of the remaining sites */
+    Centers  C[ ] = \infty;
+    while ( S’[ ] != \infty ) {
+        Select any s from S’ and add it to C;
+        Delete all s’ from S’ that are at dist(s’, s) <= 2r;
+    }
+    if ( |C| <= K ) return C;
+    else ERROR(No set of K centers with covering radius at most r);
+}
+```
+
+#### Thresholding & Binary Search
+
+另一种思路是，如果我们猜测一个半径 $r$，能不能判断是否存在 $K$ 个中心能覆盖所有点？
+
+二分搜索优化:
+
+* 我们不知道最优半径 $r(C^*)$ 是多少，于是使用二分搜索来猜 $r$. 首先设定搜索范围 $(0, r_{max})$，取中间值 $r = \dfrac{(0 + r_{max})}2$
+
+* 运行上面的判定逻辑：如果能用 $K$ 个中心覆盖（覆盖半径 $2r$），说明 $r$ 可能偏大，往左半区搜（尝试更小的 $r$）；如果不能覆盖（需要 $>K$ 个中心），说明 $r$ 太小，往右半区搜.
+
+这种方法同样能给出一个 2-Approximation 的解.
+
+需要注意的是，无法给出更好的近似结果：
+
+在 $\textbf{P} \neq \textbf{NP}$ 的假定下，利用支配集问题 (Dominating Set, $\textbf{NP-complete}$)进行归约.
+
+构造方法是，给定一个图$G$，我们构造一个 $K$-Center 问题,如果两个点在原图中有边相连，距离设为 1; 如果没有边相连，距离设为 2.
+
+这里产生了逻辑矛盾：如果原图存在大小为 $K$ 的支配集 $\Longrightarrow$ $K$-Center 问题的最优半径为 1；如果原图不存在大小为 $K$ 的支配集 $K$-Center 问题的最优半径至少为 2（必须跨越不相连的点）.
 
 #### PTA习题
 
 ??? tips "6.2-4"
     <center><img src = "../figures/approx/2.4.png" style="zoom: 50%;"/></center>
 
-### 图论与树
-
-#### PTA习题
+### 图论与树PTA习题
 
 ??? tips "6.2-5"
     <center><img src = "../figures/approx/2.5.png" style="zoom: 50%;"/></center>

@@ -144,7 +144,7 @@ $$\textbf{P} = \{ L \subseteq \{0, 1\}^* : \text{there exists an algorithm}~A~\t
 
 $$L = \{ x \in \{0, 1\}^* : ~\text{there exists}~y \in \{0, 1\}^*~\text{such that}~ A(x, y) = 1\}.$$
 
-于是NP问题的新定义是：
+于是 $\textbf{NP}$ 问题的新定义是：
 
 A language $L$ belongs to $\textbf{NP}$ iff there exist a two-input polynomial-time algorithm $A$ and a constant $c$ such that
 
@@ -154,7 +154,7 @@ We say that algorithm $A$ verifies language $L$ in polynomial time.
 
 进一步地，语言的多项式约化如下：
 
-A language $L_1$ is polynomial-time reducible to a language $L_2$ ( $L_1 \leq_P L_2 )$ if there exists a polynomial-time computable function $f: \{0, 1\}^* \to \{0,1\}^*$ such that $\forall x \in \{0, 1\}^*, x \in L_1$ iff $f(x) \in L_2$.
+A language $L_1$ is polynomial-time reducible to a language $L_2 (L_1 \leq_P L_2)$ if there exists a polynomial-time computable function $f: \{0, 1\}^* \to \{0,1\}^*$ such that $\forall x \in \{0, 1\}^*, x \in L_1$ iff $f(x) \in L_2$.
 
 We call the function $f$ the **reduction function**, and a polynomial-time algorithm $F$ that computes $f$ is called a **reduction algorithm**.
 
@@ -166,12 +166,12 @@ We call the function $f$ the **reduction function**, and a polynomial-time algor
 
     这里的`co`是complement的意思.
 
-    NP问题的特征：
+    $\textbf{NP}$问题的特征：
 
     * `YES`实例容易验证（有多项式时间可验证的证书）<br>
     * `NO`实例难以验证（可能需要穷举）
 
-    co-NP问题的特征：
+    $\textbf{co-NP}$问题的特征：
     
     * `NO`实例容易验证（有多项式时间可验证的证书）<br>
     * `YES`实例难以验证
@@ -180,37 +180,56 @@ We call the function $f$ the **reduction function**, and a polynomial-time algor
 
     <center><img src = "../figures/np/conp.png" style="zoom: 70%;"/></center>
 
-根据上面的规约，定义语言$L\subseteq \{0,1\}^* \in \textbf{NP}\text{-complete}$当且仅当
+根据上面的规约，定义语言$L\subseteq \{0,1\}^* \in \textbf{NP-complete}$当且仅当
 
 * $L \in \textbf{NP}$;
 * $\forall L' \in\textbf{NP}, L' \leq_p L$.
 
-??? tips "举例：Hamilton Cycle"
+### Hamilton Cycle (哈密顿回路问题)
 
-    哈密顿回路问题 (Hamilton Cycle)
+$\textbf{NP}$ 版本："图$G$有哈密顿回路吗？"(属于NP)
+
+* `YES`实例：$G$有哈密顿回路<br>
+* 证书：一个回路序列<br>
+* 验证：$O(n)$时间检查是否是有效回路<br>
+
+$\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属于 $\textbf{co-NP}$)
+
+* `YES`实例：$G$没有哈密顿回路<br>
+* 证书：需要验证（需要证明所有可能都不是）<br>
+* 验证：困难！需要检查所有$n!$种可能<br>
+
+### Clique Problem (最大团问题) 向 Vertex Cover Problem (顶点覆盖问题-存在性)的规约
+
+<del>PPT叽里咕噜说什么呢好费解</del>
+
+首先给出上面两个问题的定义：
+
+* Clique Problem: 给定无向图 $G=(V,E)$ 和整数 $K$，判断 $G$ 是否包含大小为 $K$ 的完全子图（即任意两个顶点间都有边相连的子图）.
+
+* Vertex Cover Problem：给定无向图 $G=(V,E)$ 和整数 $K$，判断 $G$ 是否包含大小为 $K$ 的顶点集合 $V' \subseteq V$，使得 $G$ 的每条边至少有一个端点属于 $V'$.
+
+假设我们已经知道了Clique Problem是 $\textbf{NP-complete}$，如何规约证明Vertex Cover Problem也是 $\textbf{NP-complete}$？
+
+???+ tips "Proof"
+
+    <center><img src = "../figures/np/pr2.png" style="zoom: 78%;"/></center>
+    <center><img src = "../figures/np/pr1.png" style="zoom: 70%;"/></center>
+
+    首先，Vertex Cover Problem 属于 $\textbf{NP}$（验证算法的时间复杂度为 $O(N^3)$）.
+
+    对于 Clique Problem 的实例 $(G, K)$， 构造补图 $G'=(V, E')：E'$ 包含所有 $G$ 中不存在的边（即 $(u,v) \in E' \iff (u,v) \notin E$）.
+
+    将 Clique Problem 的参数 $K$ 转换为 Vertex Cover Problem 的参数 $K' = |V| - K$.
+
+    证明等价性（$G$ 有大小为 $K$ 的 Clique $\iff$ $G'$ 有大小为 $K'$ 的 Vertex Cover）：
+
+    * 必要性 ：若 $G$ 有大小为 $K$ 的 Clique $C$，则 $V \setminus C$ 是 $G'$ 的 Vertex Cover. 对 $G'$ 中的任意边 $(u,v)$，因 $(u,v) \notin E$（补图定义），故 $u,v$ 不能同时属于 $C$（否则 $C$ 不是完全子图），因此至少有一个属于 $V \setminus C$，即 $V \setminus C$ 覆盖 $G'$ 的所有边。
+
+    * 充分性 ：若 $G'$ 有大小为 $K'$ 的 Vertex Cover $V'$，则 $V \setminus V'$ 是 $G$ 的 Clique.
     
-    $\textbf{NP}$版本："图$G$有哈密顿回路吗？"(属于NP)
-
-    * `YES`实例：$G$有哈密顿回路<br>
-    * 证书：一个回路序列<br>
-    * 验证：$O(n)$时间检查是否是有效回路<br>
-    
-    $\textbf{co-NP}$版本："图$G$没有哈密顿回路吗？"(不知道是否属于$\textbf{co-NP}$)
-    
-    * `YES`实例：$G$没有哈密顿回路<br>
-    * 证书：需要验证（需要证明所有可能都不是）<br>
-    * 验证：困难！需要检查所有$n!$种可能<br>
-    
-??? tips "Clique Problem"
-
-    <del>PPT叽里咕噜说什么呢？</del>
-
-    <center><img src = "../figures/np/cli1.png" style="zoom: 70%;"/></center>
-
-    <center><img src = "../figures/np/cli2.png" style="zoom: 70%;"/></center>
-
-## 补充问题
+        对 $V \setminus V'$ 中的任意两个顶点 $u$ 和 $v$，因 $(u,v) \notin E'$（否则 $V'$ 需包含 $u$ 或 $v$，与 $u,v \notin V'$ 矛盾），故 $(u,v) \in E$，即 $V \setminus V'$ 是完全子图，大小为 $|V| - |V'| = K$.
 
 ## PTA习题
 
-??? tips "6"
+??? tips "6."

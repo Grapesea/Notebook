@@ -18,7 +18,7 @@ $N(S)$: neighborhood of $S$ – the set $\{ S': S \sim S' \}$.
 
 ??? tips "pseudocode"
 
-    ```pseudocode
+    ```c
     SolutionType Gradient_descent()
     {   
         Start from a feasible solution S in FS;
@@ -75,8 +75,8 @@ $N(S)$: neighborhood of $S$ – the set $\{ S': S \sim S' \}$.
 
 从上面的分析中也可以看出，温度选择非常重要. 如果陷入了两种极端中：
 
-* $T$ 很高时 ：$e^{-\Delta \text{cost}/(kT)} \approx 1$，几乎总是接受坏解. 此时算法容易“上坡”（跳到更差的解），但也易在局部最优的“底部”（如 case 0 的对称坏解）之间来回震荡. 因总是接受坏解，无法稳定. 
-* $T$ 接近 0 时 ：$e^{-\Delta \text{cost}/(kT)} \approx 0$，几乎不接受坏解，使得算法退化为“梯度下降法”——只接受更优的解，无法跳出局部最优.
+* $T$ 很高时 ：$e^{-\Delta \text{cost}/(kT)} \approx 1$，几乎总是接受坏解. 此时算法容易“上坡”（跳到更差的解），但也易在局部最优的“底部”（如 case 0 的对称坏解）之间来回震荡. 因总是接受坏解，无法稳定.
+* $T$ 接近 0 时 ：$e^{-\Delta \text{cost}/(kT)} \approx 0$，几乎不接受坏解，使得算法退化为“梯度下降法”，即只接受更优的解，无法跳出局部最优.
 
 ```c
 SolutionType Metropolis(){   
@@ -99,7 +99,7 @@ SolutionType Metropolis(){
 }
 ```
 
-#### 模拟退火算法(simulated annealing)
+#### 模拟退火算法(Simulated Annealing)
 
 是Metropolis的进一步延申.
 
@@ -130,10 +130,91 @@ SolutionType SimulatedAnnealing(){
     * 最大独立集问题：在无向图 $G=(V, E)$ 中，独立集$I$是顶点集 $V$ 的一个子集 ，使得其中任意两个顶点之间都没有边相连. 找到包含顶点数最多的独立集，即最大独立集.
     * 最大团问题：团（Clique）是顶点集 $V$ 的一个子集 $C$，使得 $C$ 中任意两个不同的顶点之间都有边相连（即诱导子图是一个完全图）. 找到图中规模最大的团，即最大团.
 
-## Hopfield 神经网络问题
+## Hopfield  Neural Networks (神经网络问题)
 
-给定图$G=(V,E)$（边权$w$可正可负），节点需满足“$w<0$时同状态、$w>0$时不同状态”. 模拟退火通过调整温度 $T$，随机翻转节点状态，逐步寻找稳定配置（所有节点满足状态要求）.
+给定图$G=(V,E)$（边权$w$可正可负），定义每个节点 $u$ 的状态 $s_u$取值为$\pm 1$，每条边 $e = (u, v)$有一个整数权重 $w_e$（正或负）.
 
+定义：
+
+* Configuration $S$中的一条edge $e = (u,v)$是"好的(good)"，如果 $w_es_us_v < 0$（即 $w_e < 0$ 时 $s_u = s_v$）；否则是"坏的(bad)"；
+
+* 节点$u$ 是satisfied，如果对于包含$u$的所有边构成的集合$E$，good edge的权重总和大于bad edge，即：
+
+    $$\sum\limits_{\{\forall v \mid e = (u,v) \in E\}} w_eS_uS_v \leq 0$$
+
+* Configuration $S$是stable的，如果所有的node都是satisfied.
+
+    比如下面这张图里的config就是satisfied：
+
+    <center><img src="../figures/local/satis.png" style="zoom: 50%;" /></center>
+
+### State-flipping Algorithm (状态翻转算法)
+
+从任意配置 $S$ 开始，不断翻转不满意节点的状态，直到所有节点都满意.
+
+```c
+ConfigType State_flipping(S_init){
+    S = S_init;
+    while (!IsStable(S)){
+        u = get_unsatisfied_node(S);
+        u.state = -u.state;
+    }
+    return S;
+}
+```
+
+**该算法在最多$\sum|w_e|$次迭代后终止**，因为每次翻转都会增加好边权重之和，且该和有上界$\sum|w_e|$.
+
+证明：
+
+<center><img src="../figures/local/sfpr.png" style="zoom: 50%;" /></center>
+
+实际应用上，可用于解决组合优化问题（如最大割问题），但可能无法找到全局最优解. 但是得出来的所有目标是让 $\phi = \sum\limits_{e\text{ is good}} |w_e|$ 最大的局部最优解必定是stable configuration.
+
+该算法是否为多项式时间算法目前尚无定论.
+
+## Maximum Cut Problem
+
+对于一个所有边有正整数权重$w_e$的无向图$G = (V,E)$，找到一个节点的分割方式$(A,B)$，使得所有经过这个割的边的权重之和最大. 即让
+
+$$w(A,B) = \sum\limits_{u\in A,v\in B}w_{uv}$$
+
+最大.
+
+实际上这是Hopfield问题的特殊形式，因为$\forall w_e>0$，并且可以证明，这里的local optimum是$\dfrac12$：
+
+??? tips "证明"
+
+    由$(A,B)$是local optimal partition，得到
+
+    $$\sum\limits_{v\in A}w_{uv} \leq \sum\limits_{v\in B}w_{uv}, \quad \forall u \in A$$
+
+    对所有$u \in A$进行求和，得到：
+
+    $$2 \sum\limits_{(u,v)\subseteq A}w_{uv} = \sum\limits_{u\in A}\sum\limits_{v\in A}w_{uv} \leq \sum\limits_{u\in A}\sum\limits_{v\in B}w_{uv} = w(A,B)$$
+
+    同理
+
+    $$2 \sum\limits_{(u,v)\subseteq B}w_{uv} \leq w(A,B)$$
+
+    所以
+
+    $$w(A^*,B^*) \leq \sum\limits_{(u,v)\subseteq A}w_{uv} + \sum\limits_{(u,v)\subseteq B}w_{uv} + w(A,B) \leq 2w(A,B) \quad \hfill \ensuremath{\blacksquare}$$
+
+### Big-improvement-flip
+
+选取的节点必须满足在flip之后能够将目标函数值（如割值）增加至少 $\dfrac{2\epsilon}{|V|} w(A,B)$ 的权值，其中$w(A,B)$ 表示当前割值，$|V|$ 是图中节点的数量，$\epsilon$ 是一个预先设定的参数.
+
+这样的算法是具有性能保证的：
+
+* 终止时，算法返回的割 $(A,B)$ 满足 $(2+\epsilon)w(A,B) \geq w(A^*,B^*)$，其中 $(A^*,B^*)$ 是全局最优割；
+* 时间复杂度 ：该算法在最多 $O(\dfrac{n}{\epsilon} \log W)$ 次翻转后终止，其中 $n$ 是节点数量，$W$ 是图中边的最大权重.
+
+### （疑似不会考）A better local
+
+> 实质上是Local Beam Search.
+
+<center><img src="../figures/local/betterlocal.png" style="zoom: 50%;" /></center>
 
 ## PTA习题
 

@@ -8,6 +8,8 @@
 
     课堂导论Slides：
 
+    [Crypto工具资源清单-2024CTF101](https://ljcppp.github.io/mySlides/crypto_2024/site/#/5/2)
+
     [Crypto基础 - 2025安全攻防实践](https://courses.zjusec.com/slides/crypto-lec1/#/)
     $\quad$
     [Crypto专题1 - 2025安全攻防实践](https://courses.zjusec.com/slides/crypto-lec2/)

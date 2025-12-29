@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td><a href="newstarctf2025/">NewStar CTF2025 Crypto/Misc Writeup</a></td>
-        <td></td>
+        <td>入门级个人比赛</td>
     </tr>
 </tbody>
 </table>
@@ -90,7 +90,9 @@
 
     * 如果GitHub突然git clone不下来，显示`recv failure: connection was reset`
 
-        修改`C:\Windows\System32\drivers\etc`路径下的hosts文件，添加：
+        新办法： Clash Verge全局代理检查一下.
+
+        旧办法： 修改`C:\Windows\System32\drivers\etc`路径下的hosts文件，添加：
 
         ```plaintext
         140.82.112.3 github.com
