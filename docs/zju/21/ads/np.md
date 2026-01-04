@@ -10,40 +10,49 @@
 
     [希尔伯特问题、图灵判定问题与DNA中的「自指」 - gwave的文章 - 知乎](https://zhuanlan.zhihu.com/p/452735420)
 
+???+ warning "期末补天"
+
+    是$\textbf{NP-complete}$: Vertex cover problem & Hamiltonian cycle problem & Satisfiability problem.
+    Halting problem是$\textbf{NP-hard}$，但是并非$\textbf{NP}$.
+
 ## 定义
 
 $\textbf{P}$和$\textbf{NP}$是对一类问题解的描述. 虽然单看缩写仿佛是对立的，但指涉的问题范围上二者“几乎”一致（事实上，当前未验证的猜想是$\textbf{P} \neq \textbf{NP}$是否成立）.
 
 $\textbf{P}$: the set of problems that are solvable in polynomial time. If the problem
-has size $n$, the problem should be solved in $n^{O(1)}$.
+has size $n$, the problem should be solved in $n^{O(1)}$. 如果一个判定问题属于$\textbf{P}$，则具有一个多项式时间算法输出`YES`或者`NO`的问题答案.
 
 $\textbf{NP}$: Nondeterministic Polynomial Problem. the set of decision problems solvable in nondeterministic polynomial time.
 The output of these problems is a `YES` or `NO` answer. Nondeterministic refers
 to the fact that a solution can be guessed out of polynomially many options in
-O(1) time. If any guess is a YES instance, then the nondeterministic algorithm
+$O(1)$ time. If any guess is a YES instance, then the nondeterministic algorithm
 will make that guess. 翻译成中文之后的等价命题是，该问题的解能够在多项式时间内验证其正确性. 所以我们可以先进行一堆猜测，然后逐一验证其合理性来试图获得`YES`的结果.
 
 需要注意的是，针对某个问题的解的正确/错误输入是非对称的(asymmetry).
 
-如果问题$X$是$\textbf{NP}-\text{complete}$，则$X\in \textbf{NP}$且$X$是$\textbf{NP}-\text{hard}$.
+如果问题$X$是$\textbf{NP-complete}$，则$X\in \textbf{NP}$且$X$是$\textbf{NP-hard}$.
 
-为了定义$\textbf{NP}-\text{hard}$，首先引入reduction的概念:
+为了定义$\textbf{NP-hard}$，首先引入reduction的概念:
 
 A reduction from problem $A$ to problem $B$ is a polynomial-time algorithm that converts inputs to problem $A$ into equivalent inputs to problem $B$. Equivalent means that both problem $A$ and problem $B$ must output the same `YES` or `NO`
 answer for the input and converted input.
 
 于是可以得到，如果$B\in\textbf{P}$或者$B\in\textbf{NP}$，都能推出$A \in \textbf{NP}$.
 
-$\textbf{NP}-\text{hard}$: 如果对于所有的$Y \in \textbf{NP}$，都存在规约的方法达到$X$，则称$X$是$\textbf{NP}-\text{hard}$.
+$\textbf{NP-hard}$: 如果对于所有的$Y \in \textbf{NP}$，都存在规约的方法达到$X$，则称$X$是$\textbf{NP-hard}$.
 
 在$\textbf{P} \neq \textbf{NP}$的条件下，$X \notin \textbf{P}$.
 
-如果能够在多项式时间内解决所有的$\textbf{NP}-\text{complete}$问题，则我们能够在多项式时间内解决所有的$\textbf{NP}$问题，那么就有$\textbf{P} = \textbf{NP}$.
+如果能够在多项式时间内解决所有的$\textbf{NP-complete}$问题，则我们能够在多项式时间内解决所有的$\textbf{NP}$问题，那么就有$\textbf{P} = \textbf{NP}$.
+
+关系图：
+
+<center><img src = "../figures/np/np.png" style="zoom: 70%;"/></center>
 
 ???+ tips "举例: Traveling salesman problem/ Hamiltonian cycle problem"
     Hamilton cycle problem: Given a graph $G=(V, E)$, is there a simple cycle that visits all vertices?
 
-    Traveling salesman problem: Given a complete graph $G=(V, E)$, with edge costs, and an integer $K$, is there a simple cycle that visits all vertices and has total cost $K$?
+    Traveling salesman problem: Given a **complete** graph $G=(V, E)$, with edge costs $w_i$, and an integer $K$, is there a simple cycle that visits all vertices and has total cost $K$?
 
     Hamiltonian Cycle的寻找是指数规模的时间复杂度，验证解是多项式时间复杂度，所以$\in\textbf{NP}$.
 
@@ -54,10 +63,6 @@ $\textbf{NP}-\text{hard}$: 如果对于所有的$Y \in \textbf{NP}$，都存在�
     我们在把一个图拓展为完全图时，将图原来就有的边权值定义为1，新添加的边权值定义为2，那么对于原来的图是否有Hamiltonian cycle，就可以转换为拓展后的完全图在TSP问题上是否有解的问题(令$K = |v|$).
 
     由于完全图的边数为$\dfrac{n^2+n}{2}$,因此这个转换过程是多项式时间复杂度的. 综上，我们从Hamiltonian cycle是$\textbf{NPC}$问题推出了TSP是$\textbf{NPC}$问题.
-
-???+ tips "举例：大数的质因数分解问题"
-
-    是一个开放问题，目前没有找到$\textbf{P}$的算法，
 
 ## Halting Problem
 
@@ -81,7 +86,7 @@ Turing Machine定义:
 
 ## 3SAT 问题
 
-第一个被发现的$\textbf{NP}-\text{complete}~\text{problem}$是3SAT问题，描述如下：
+第一个被发现的$\textbf{NP-complete}~\text{problem}$是3SAT问题，描述如下：
 
 > Given a boolean formula of the form: $(x_1 \lor x_3 \lor \bar{x_6}) \land ( \bar{x_2} \lor x_3 \lor \bar{x_7}) \land \cdots$ is there an assignment of variables to `True` and `False`, such that the entire formula evaluates to True?
 
@@ -201,6 +206,8 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 
 ### Clique Problem (最大团问题) 向 Vertex Cover Problem (顶点覆盖问题-存在性)的规约
 
+> 实际上二者可以互相规约，这可以从证明的互推看出来.
+
 <del>PPT叽里咕噜说什么呢好费解</del>
 
 首先给出上面两个问题的定义：
@@ -232,4 +239,19 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 
 ## PTA习题
 
-??? tips "6."
+??? tips "xyx-2"
+
+    <center><img src = "../figures/np/xyx-2-1.png" style="zoom: 70%;"/></center>
+
+??? tips "Final Practice 2 2-11"
+
+    <center><img src = "../figures/np/f2.2-11.png" style = "zoom:60%"/></center>
+
+    复习一下英语语法：
+
+    **All problems are not easy. 不是所有的问题都很简单（√）** 所有的问题都不简单（×）<br>
+    **Not all decidable problems are in $\textbf{NP}$. 不是所有的可判定问题都属于$\textbf{NP}$.**
+
+    B错，因为根据$\textbf{NPC}的定义，所有$\textbf{NP}问题都可以归约到任何一个$\textbf{NP-complete}$问题
+    
+    D对，因为Decidable只意味着存在算法可以判定，不限制时间复杂度.

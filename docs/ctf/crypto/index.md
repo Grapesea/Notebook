@@ -30,22 +30,20 @@
     
     [随波逐流信息安全网](http://1o1o.xyz/index.html)
 
-    payload import开头：
+    payload import 常用开头：
 
     ```python
     import hashlib
     import itertools
     import string
-    import re
-    import gmpy2
-    import math
-    import requests  # 如果在WSL中需要删掉这行
-    from pwn import *
-    import numpy as np
-    from math import isqrt, gcd
-    from fractions import Fraction
-    from Crypto.Util.number import long_to_bytes, bytes_to_long
-    import sympy
-    from Crypto.Cipher import AES
-    # from sage.all import *
+    import re                                                       # 正则
+    import requests                                                 # 交互库 
+    from pwn import *                                               # pwntools
+    import numpy as np                                              # numpy库
+    from math import *                                              # 数学库1
+    from sympy import *                                             # 数学库2
+    import gmpy2                                                    # 数学库3
+    from fractions import Fraction                                  # 连分数展开
+    from Crypto.Util.number import long_to_bytes,bytes_to_long      # 互化 
+    from Crypto.Cipher import AES, RSA                              # AES,RSA直接调取
     ```

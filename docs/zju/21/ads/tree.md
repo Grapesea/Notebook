@@ -196,6 +196,329 @@ AVLNode* rlRotation(AVLNode* root){
 
     iff是“当且仅当”的意思.
 
+??? tips "Final Practice 1 Code Completion"
+
+    An AVL tree is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more than one, rebalancing is done to restore this property. Figures 1-4 illustrate the rotation rules.
+
+    ![F1.jpg](https://images.ptausercontent.com/3fb1ef21-3ece-4adf-ae42-00bfeeaf6f86.jpg)
+
+    ![F2.jpg](https://images.ptausercontent.com/d8528f9d-2d3b-480b-93f5-358209fe2f5b.jpg)
+
+    ![F3.jpg](https://images.ptausercontent.com/958bb922-0eaf-4cc3-ab73-ce74b5f2fbc3.jpg)
+
+    ![F4.jpg](https://images.ptausercontent.com/d26bb82b-1f4b-41ea-8514-584e513f1f92.jpg)
+
+    Now given a sequence of insertions, you are supposed to build the AVL tree. Then given a sequence of statements about the structure of the resulting tree, you are supposed to tell if they are correct or not. A statment is one of the following:
+
+    (1) A is the root  
+    (2) A and B are siblings  
+    (3) A is the parent of B  
+    (4) A is the left child of B  
+    (5) A is the right child of B
+
+    Format of functions:
+
+    ```c
+    Tree Build_AVL ( int input[ ], int n );
+    int Judge ( Tree T, int type, int A, int B );
+    ```
+
+    The function `Build_AVL` is supposed to build an AVL tree according to the input sequence.
+
+    Here `Tree` is defined as the following:
+
+    ```
+    typedef struct TNode *Tree;
+    struct TNode {
+        int key;    //key of the node
+        int height; //height of the subtree with this node as the root
+        Tree left, right; //pointing to the left and right children of this node
+    };
+    ```
+
+    The array `input` contains `n` (a positive integer) distinct keys to be inserted in order into an initially empty AVL tree. The root pointer of the resulting tree is supposed to be returned by `Build_AVL`.
+
+    The function `Judge` is supposed to test if a given statement for an AVL tree `T` is correct or not, and return `1` if the result is true, or `0` otherwise. The parameter `type` is an integer in \[1, 5\], which gives the index of a statement, as listed in the problem description; and `A` and `B` are the corresponging key values. For type 1, the value of `B` can be ignored. It is guaranteed that both `A` and `B` in the statements are in the tree.
+
+    Sample program of judge:
+
+    ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    typedef struct TNode *Tree;
+    struct TNode {
+        int key;    //key of the node
+        int height; //height of the subtree with this node as the root
+        Tree left, right; //pointing to the left and right children of this node
+    };
+
+    Tree Build_AVL ( int input[ ], int n );
+    int Judge ( Tree T, int type, int A, int B );
+
+    int main()
+    {
+        int n, *input;
+        int m, type, A, B, i;
+        Tree T;
+
+        scanf("%d", &n);
+        input = (int *)malloc(sizeof(int) * n);
+        for (i=0; i<n; i++) scanf("%d", &input[i]);
+        T = Build_AVL(input, n);
+        scanf("%d", &m);
+        for (i=0; i<m; i++) {
+            scanf("%d %d", &type, &A);
+            if (type != 1) scanf("%d", &B);
+            if (Judge(T, type, A, B)) printf("Yes\n");
+            else printf("No\n");
+        }
+        return 0;
+    }
+
+    /* Your function will be put here */
+    ```
+
+    Sample Input 1 (Figure 1):
+
+    ```in
+    3
+    88 70 61
+    8
+    1 70
+    1 61
+    2 61 88
+    2 88 70
+    3 88 70
+    3 70 61
+    4 88 70
+    5 88 70
+    ```
+
+    Sample Output 1:
+
+    ```out
+    Yes
+    No
+    Yes
+    No
+    No
+    Yes
+    No
+    Yes
+    ```
+
+    Sample Input 2 (Figure 2):
+
+    ```in
+    5
+    88 70 61 96 120
+    7
+    1 70
+    2 96 88
+    3 96 120
+    4 88 70
+    4 88 96
+    5 120 96
+    5 88 70
+    ```
+
+    Sample Output 2:
+
+    ```out
+    Yes
+    No
+    Yes
+    No
+    Yes
+    Yes
+    No
+    ```
+
+    Sample Input 3 (Figure 3):
+
+    ```in
+    6
+    88 70 61 96 120 90
+    8
+    1 70
+    1 88
+    2 90 61
+    3 70 61
+    3 96 70
+    4 90 96
+    5 90 88
+    5 96 88
+    ```
+
+    Sample Output 3:
+
+    ```out
+    No
+    Yes
+    No
+    Yes
+    No
+    Yes
+    No
+    Yes
+    ```
+
+    Sample Input 4 (Figure 4):
+
+    ```in
+    7
+    88 70 61 96 120 90 65
+    7
+    1 88
+    2 96 70
+    2 61 70
+    3 61 65
+    4 65 88
+    4 70 88
+    5 70 65
+    ```
+
+    Sample Output 4:
+
+    ```out
+    Yes
+    No
+    Yes
+    No
+    Yes
+    No
+    Yes
+    ```
+
+    解答：
+    
+    ```c
+    int getHeight(Tree T) {
+        if (T == NULL) return 0;
+        return T->height;
+    }
+
+    void updateHeight(Tree T) {
+        if (T == NULL) return;
+        int leftHeight = getHeight(T->left);
+        int rightHeight = getHeight(T->right);
+        T->height = (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
+    }
+
+    Tree createNode(int key) {
+        Tree newNode = (Tree)malloc(sizeof(struct TNode));
+        newNode->key = key;
+        newNode->height = 1;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
+    }
+
+    Tree LL(Tree T) {
+        Tree newRoot = T->left;
+        T->left = newRoot->right;
+        newRoot->right = T;
+        updateHeight(T);
+        updateHeight(newRoot);
+        return newRoot;
+    }
+
+    Tree RR(Tree T) {
+        Tree newRoot = T->right;
+        T->right = newRoot->left;
+        newRoot->left = T;
+        updateHeight(T);
+        updateHeight(newRoot);
+        return newRoot;
+    }
+    Tree LR(Tree T) {
+        T->left = RR(T->left);
+        return LL(T);
+    }
+    Tree RL(Tree T) {
+        T->right = LL(T->right);
+        return RR(T);
+    }
+
+    Tree insert(Tree T, int key) {
+        if (T == NULL) 
+            return createNode(key);
+        
+        if (key < T->key) {
+            T->left = insert(T->left, key);
+        } else if (key > T->key) {
+            T->right = insert(T->right, key);
+        }
+        
+        updateHeight(T);
+        
+        int balanceFactor = getHeight(T->left) - getHeight(T->right);
+
+        if (balanceFactor > 1 && key < T->left->key)
+            return LL(T);
+        if (balanceFactor < -1 && key > T->right->key)
+            return RR(T);
+        if (balanceFactor > 1 && key > T->left->key)
+            return LR(T);
+        if (balanceFactor < -1 && key < T->right->key)
+            return RL(T);
+        return T;
+    }
+
+    Tree Build_AVL(int input[], int n) {
+        Tree T = NULL;
+        for (int i = 0; i < n; i++)
+            T = insert(T, input[i]);
+        return T;
+    }
+
+    Tree findNode(Tree T, int key) {
+        if (T == NULL) return NULL;
+        if (T->key == key) return T;
+        if (key < T->key) return findNode(T->left, key);
+        return findNode(T->right, key);
+    }
+
+    Tree findParent(Tree T, int key) {
+        if (T == NULL || T->key == key) return NULL;
+        
+        if ((T->left && T->left->key == key) || (T->right && T->right->key == key))
+            return T;
+        
+        if (key < T->key) return findParent(T->left, key);
+        return findParent(T->right, key);
+    }
+
+    int Judge(Tree T, int type, int A, int B) {
+        if (type == 1) return (T != NULL && T->key == A);
+        
+        Tree nodeA = findNode(T, A);
+        Tree nodeB = findNode(T, B);
+        
+        if (nodeA == NULL || nodeB == NULL) return 0;
+        
+        switch (type) {
+            case 2: { // A and B are siblings
+                Tree parentA = findParent(T, A);
+                Tree parentB = findParent(T, B);
+                return (parentA != NULL && parentA == parentB);
+            }
+            case 3: { // A is the parent of B
+                Tree parentB = findParent(T, B);
+                return (parentB != NULL && parentB->key == A);
+            }
+            case 4: { // A is the left child of B
+                return (nodeB->left != NULL && nodeB->left->key == A);
+            }
+            case 5: { // A is the right child of B
+                return (nodeB->right != NULL && nodeB->right->key == A);
+            }
+        }
+        return 0;
+    }
+    ```
+
 ### Splay Tree
 
 !!! tips "资源"
@@ -268,6 +591,18 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
     <center><img src = "../figures/ads/2025midch-1.png" style="zoom: 60%;"/></center>
 
     <center><img src = "../figures/ads/2025midch-1.jpg" style="zoom: 50%;"/></center>
+
+??? tips "Final Practice 2 2-17"
+
+    <center><img src = "../figures/ads/f2.2-17.png" style = "zoom:60%"/></center>
+
+    1错2对3错.
+    
+    4错，如果不旋上去是没有意义的（？）
+
+    5错，因为zigzig先把P旋转上去，之后把X旋上去，并不是upward twice.
+
+    6对，看知识点即可.
 
 ## Lec 2 Red-Black Tree & B+ Tree
 
@@ -408,6 +743,13 @@ Red-Black Tree 是一个满足以下red-black property的BST：
     In a red-black tree, if an internal black node is of degree 1, then it must have only 1 descendant node.
 
     对.
+
+??? tips "Final Practice 2 2-6"
+
+    <center><img src = "../figures/ads/f2.2-6.png" style = "zoom:60%"/></center>
+
+    self-adjusting structure指的是splay, skew/leftist heap这些，balanced指的是AVL, rb tree.
+    **注意审题.**
 
 ### B+ Tree
 

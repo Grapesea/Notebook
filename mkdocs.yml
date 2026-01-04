@@ -60,7 +60,6 @@ nav:
   - ZJU课程笔记: 
     - 导航栏: zju/index.md
     - 资源整合: zju/mix_resource.md
-    - 培养计划: zju/course_info_blank.md
     - 大一教训总结: zju/exp1.md
     - 大一笔记拾遗: 
       - 导航: zju/12/index.md
@@ -263,9 +262,16 @@ nav:
     - Markdown: tools/markdown.md
     - Linux: tools/linux.md
     - Python: tools/python.md
-    - Windows Bash: tools/bash.md
+    - Windows Command Line: tools/bash.md
     - Windows小tips: tools/windows.md
     - JavaScript语言: tools/JavaScript.md
+  - 储物柜:
+    - Grapesea的小创作: 
+      - 目录: gadgets/article/index.md
+      - 2025个人向新年献词: gadgets/article/2025ny.md
+      - 2026个人向新年展望: gadgets/article/2026ny.md
+    - 摄影从0开始:
+      - 资源目录: gadgets/photography/index.md
   - 友链:
     - Grapesea的朋友们: friends/friends.md
     - Grapesea的其他联系方式: friends/contact.md

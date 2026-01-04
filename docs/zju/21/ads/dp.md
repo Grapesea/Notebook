@@ -248,3 +248,119 @@ void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N )
         return (dp[p]%1000000007);
     }
     ```
+
+??? tips "Final Practice 2 Code Completion"
+
+    Suppose you are a baker planning to bake some hand-made cream breads.
+
+    To bake a cream bread, we need to use one slice of bread and one kind of cream. Each hand-made cream bread has a taste score to describe how delicious it is, which is obtained by multiplying the taste score for bread and the taste score for cream. (The taste scores could be negative, howerver, two negative tast scores can still produce delicious cream bread.)
+
+    The bread and cream are stored separately.
+
+    The constraint is that you need to examine the breads in a given order, and for each piece of bread, you have to decide immediately (without looking at the remaining breads) whether you would like to take it.
+
+    After you are finished with breads, you will take the same amount of cream in the same manner. The breads and creams you take will be paired in the same order as you take them.
+
+    Given $N$ taste scores for bread and $M$ taste scores for cream, you are supposed to calculate the maximum total taste scores for all hand-made cream bread.
+
+    Input Specification:
+
+    Each input file contains one test case. For each case, the first line contains two integers $N$ and $M(1\leq N, M\leq 10^3)$, which are the numbers of bread and cream, respectively.
+
+    The second line gives $N$ taste scores for bread.
+
+    The third line gives $M$ taste scores for cream.
+
+    The taste scores are integers in $\[-10^3,10^3\]$.
+
+    All the numbers in a line are separated by a space.
+
+    Output Specification:
+
+    Print in a line the maximum total taste score.
+
+    Sample Input:
+
+    ```in
+    3 4
+    -1 10 8
+    10 8 11 9
+    ```
+
+    Sample Output:
+
+    ```out
+    188
+    ```
+
+    Hint:
+
+    The maximum total taste score for the sample case is $188$.
+
+    ![hint.png](https://images.ptausercontent.com/39dabd46-4c84-4862-b386-9d38664b86c9.png)
+
+    **题解：**
+
+    C语言真恶心，还是cpp好，但是考试不给用.
+
+    ```c
+    #include<stdio.h>
+    #include<stdlib.h>
+    int max(int a, int b){
+        return a>b?a:b;
+    }
+
+    int max_of(int a, int b, int c){
+        return max(max(a,b),c);
+    }
+
+    int main(){
+        int N,M;
+        scanf("%d %d", &N,&M);
+        int* bread = (int*) malloc(sizeof(int) * N);
+        int* cream = (int*) malloc(sizeof(int) * M);
+        
+        for (int i = 0; i < N; i++)
+            scanf("%d",&bread[i]);
+        for (int i = 0; i < M; i++)
+            scanf("%d",&cream[i]);
+
+        int** dp = (int**) malloc((N+1) * sizeof(int*));
+        for (int i = 0; i <= N; i++)
+            dp[i] = (int*) malloc((M+1) * sizeof(int));
+
+        for (int i = 1; i <= N; i++)
+            for (int j = 1; j <= M; j++)
+                dp[i][j] = 0;
+
+        for (int i = 1; i <= N; i++)
+            for (int j = 1; j <= M; j++)
+                dp[i][j] = max_of(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]+bread[i-1]*cream[j-1]);
+        printf("%d\n", dp[N][M]);
+    }
+    ```
+
+    ```cpp
+    #include<iostream>
+    #include<vector>
+    #include<algorithm>
+
+    using namespace std;
+    int main(){
+        int N,M;
+        cin >> N >> M;
+        vector<int> bread(N);
+        vector<int> cream(M);
+        for (int i = 0; i < N; i++)
+            cin >> bread[i];
+        for (int i = 0; i < M; i++)
+            cin >> cream[i];
+
+        vector<vector<int>> dp(N+1, vector<int>(M+1,0));
+        for (int i = 1; i <= N; i++) 
+            for (int j = 1; j <= M; j++) 
+                // 视作 三种选择：不选当前面包 或 不选当前奶油 或 选当前面包和当前奶油配对
+                dp[i][j] = max({dp[i-1][j], dp[i][j-1], dp[i-1][j-1] + bread[i-1] * cream[j-1]});
+        cout << dp[N][M];
+    }    
+    ```

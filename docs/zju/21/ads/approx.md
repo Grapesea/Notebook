@@ -8,13 +8,21 @@
     
     [wikipedia](https://zh.wikipedia.org/wiki/%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95)
 
-???+ tips "期末补天须知"
+???+ warning "期末补天须知"
+
+    Binpacking Problem: 假设最优是$M$个pack，则
+
+    * NextFit (如果前一个bin能放下就放，放不下新开一个): $\text{worst} = 2M-1$<br>
+    * BestFit (放进去以后剩余空间最少的bin): $\text{worst} = 1.7M-1.7$<br>
+    * FirstFit (第一个能放下的bin): $\text{worst} = 1.7M$<br>
+    * Online: $\geq \dfrac{5M}{3}$<br>
+    * Offline: $\dfrac{11M}{9} + \dfrac{2}{3}$
 
 ## 近似算法基本定义
 
 近似算法是基于$\textbf{P} \neq \textbf{NP}$假设的，为最优化问题寻找近似解的算法. 该类算法找到的近似解与最优解之间的差值需能证明不超过某个值（后面会记作近似比）.
 
-已经证明是$\textbf{NP}\text{-completeness}$的时间复杂度极高的优化问题，学界广泛认为不具备多项式时间算法，所以很难获得精确解. 于是转而使用近似算法来获得局部区间的近似最优.
+已经证明是$\textbf{NP-completeness}$的时间复杂度极高的优化问题，学界广泛认为不具备多项式时间算法，所以很难获得精确解. 于是转而使用近似算法来获得局部区间的近似最优.
 
 **近似比(Approximation Ratio):**An algorithm has an approximation ratio of $\rho(n)$ if, for any input of size $n$, the cost $C$ of the solution produced by the algorithm is within a factor of $\rho(n)$ of the cost $C^*$ of an optimal solution:
 
@@ -29,13 +37,13 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 
 对于最大化问题，算法解$C$与最优解$C^{*}$满足$C \geq (1-\epsilon)C^*$，$\epsilon$称为误差参数，越小则解越接近最优.
 
-**PTAS(polynomial-time approximation scheme,多项式时间近似算法)**: an approximation scheme which for any fixed $\epsilon > 0$, the scheme runs in time polynomial in the size $n$ of its input instance.
+**PTAS(polynomial-time approximation scheme,多项式时间近似方案)**: an approximation scheme which for any fixed $\epsilon > 0$, the scheme runs in time polynomial in the size $n$ of its input instance.
 
 一个优化问题有PTAS，意味着对于任意给定的$\epsilon > 0$，存在算法$A_{\epsilon}$是一个$(1+\epsilon)$-近似算法，其中运行时间关于输入规模$n$是多项式.
 
 形式化表示：运行时间$T(n, \epsilon) = O(n^{f(\epsilon)})$，其中$n$是输入规模，$f(\epsilon)$是关于$\epsilon$的任意函数（可以非常大，但对固定的$\epsilon$，$T(n, \epsilon)$关于$n$是多项式.
 
-**FPTAS**: 完全多项式时间近似方案，定义更为严苛：在上面的基础上，要求运行时间关于$n$和$\dfrac1\epsilon$都是多项式.
+**FPTAS(Fully-polynomial-time approximation scheme, 完全多项式时间近似方案)**: ，定义更为严苛：在上面的基础上，要求运行时间关于$n$和$\dfrac1\epsilon$都是多项式.
 
 ??? tips "PTAS/FPTAS举例"
 
@@ -46,32 +54,62 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 ### PTA习题
 
 ??? tips "6.1-7/8/9"
+
     <center><img src = "../figures/approx/1.789.png" style="zoom: 50%;"/></center>
+
+??? tips "xyx-2"
+
+    <center><img src = "../figures/approx/xyx-2-1.png" style="zoom: 50%;"/></center>
 
 ## 实际应用
 
 ### Approximate Bin Packing
 
-这是一个很接近[Project 5 Three-Partition](../ads/proj/5.md)的$\textbf{NP}-\text{hard}$问题，描述如下：
+这是一个很接近[Project 5 Three-Partition](../ads/proj/5.md)的$\textbf{NP-hard}$问题，描述如下：
 
 > Given $N$ items of sizes  $S_1 , S_2 , \cdots , S_N$ , such that $0 < S_i \leq 1, \forall 1 \leq i \leq N$. Pack these items in the fewest number of bins, each of which has unit capacity.
 
 #### Next Fit Algorithm
 
-策略：只考虑上一个打开的箱子. 如果新物品能放入上一个箱子，就放入；否则，立即打开一个新箱子，并将新物品作为新的``上一''物品.
+策略：只考虑上一个打开的箱子. 如果新物品能放入上一个箱子，就放入；否则，立即打开一个新箱子，并将新物品作为新的“上一”物品.
 
-```pseudocode
-void NextFit ( )
-{   read item1;
-    while ( read item2 ) {
-        if ( item2 can be packed in the same bin as item1 )
-            place item2 in the bin;
-        else
-            create a new bin for item2;
-        item1 = item2;
-    } /* end-while */
-}
-```
+???+ tips "代码示例"
+
+    ```cpp
+    #include <iostream>
+    #include <vector>
+    using namespace std;
+
+    #define max 100
+    double bins[max];
+    int cnt = 0;
+
+    void nf(vector<double> item){
+        int lastbin = -1;
+        for (int j = 0; j < item.size(); j++){
+            if (lastbin >= 0 && bins[lastbin] >= item[j]){
+                bins[lastbin] -= item[j];
+                cout << "item " << item[j] << " packed into " << lastbin << "-th bin" << endl;
+            }
+            else if(cnt < max){
+                bins[cnt] = 1.0 - item[j];
+                lastbin = cnt;
+                cnt++;
+                cout << "item " << item[j] << " packed into a new bin numbered " << (cnt-1) << endl;
+            }
+            else{
+                cerr << "No free bins" << endl;
+                return;
+            }
+        }
+    }
+
+    int main(){
+        vector<double> item = {.42, .25, .27, .07, .72, .09, .86, .44, .50, .68, .73, .31, .78, .17, .79, .37, .73, .23, .30};
+        nf(item);
+        return 0;
+    }
+    ```
 
 定理：Let $M$ be the optimal number of bins required to pack a list I of items. Then next fit never uses more than $2M – 1$ bins. There exist sequences such that next fit uses $2M – 1$ bins.
 
@@ -81,32 +119,105 @@ void NextFit ( )
 
 策略：扫描所有已打开的箱子，将新物品放入第1个足够大的箱子中. 如果所有已开箱子都不够大，则创建一个新箱子.
 
-```pseudocode
-void FirstFit ( )
-{   while ( read item ) {
-        scan for the first bin that is large enough for item;
-        if ( found )
-            place item in that bin;
-        else
-            create a new bin for item;
-    } /* end-while */
-}
-```
+???+ tips "代码示例"
+
+    ```cpp
+    #include <iostream>
+    #include <vector>
+    using namespace std;
+
+    #define max 100
+    double bins[max];
+    int cnt = 0;
+
+    void ff(vector<double> item){
+        for (int j = 0; j < item.size(); j++){
+            int f = 0;
+            for (int i = 0; i < cnt; i++){
+                if (bins[i] >= item[j]){
+                    bins[i] -= item[j];
+                    cout << "item " << item[j] << " packed into " << i << "-th bin" << endl;
+                    f = 1;
+                    break;
+                }
+            }
+            if (!f && cnt < max){
+                bins[cnt] = 1.0 - item[j];
+                cnt++;
+                cout << "item " << item[j] << " packed into a new bin numbered " << (cnt-1) << endl;
+            }else if (!f){
+                cerr << "No free bins" << endl;
+                return;
+            }
+        }
+    }
+
+    int main(){
+        vector<double> item = {.42, .25, .27, .07, .72, .09, .86, .44, .50, .68, .73, .31, .78, .17, .79, .37, .73, .23, .30};
+        ff(item);
+        return 0;
+    }
+    ```
 
 效率: 可以实现为 $O(N \log N)$ 的时间复杂度.
 
-是不稳定的算法，如果在一个序列中所需的箱子数量是$M$，去掉一个箱子之后，所需的箱子数
-也可能$>M$.
+是不稳定的算法，如果在一个序列中所需的箱子数量是$M$，去掉一个箱子之后，所需的箱子数也可能$>M$.
 
 举例：
 
-$\text{Bin Size} =1, L = \{0.55,0.7,0.55,0.1,0.45,0.15,0.3,0.2\}$, $L' = \{0.55,0.7,0.55,0.45,0.15,0.3,0.2\}$
+???+ tips "xyx-2"
+    <center><img src = "../figures/approx/xyx-2-2.png" style="zoom: 50%;"/></center>
+
+    $\text{Bin Size} =1, L = \{0.55,0.7,0.55,0.1,0.45,0.15,0.3,0.2\}$, $L' = \{0.55,0.7,0.55,0.45,0.15,0.3,0.2\}$
+
+    可以得出第一种需要3个pack，第二种需要4个pack，反而劣化了.
 
 #### Best Fit Algorithm
 
-策略：扫描所有已打开的箱子，将新物品放入其中放入后最接近capcity的箱子中. 如果所有已开箱子都不够大，则创建一个新箱子.
+策略：扫描所有已打开的箱子，将新物品放入其中放入后最接近capacity的箱子中. 如果所有已开箱子都不够大，则创建一个新箱子.
 
 相比First Fit而言，是稳定的.
+
+???+ tips "代码示例"
+
+    ```cpp
+    #include <iostream>
+    #include <vector>
+    using namespace std;
+
+    #define max 100
+    double bins[max];
+    int cnt = 0;
+
+    void bf(vector<double> item){
+        for (int j = 0; j < item.size(); j++){
+            int aim = -1;
+            for (int i = 0; i < cnt; i++)
+                if (bins[i] >= item[j] && (bins[i] <= bins[aim] || aim < 0))
+                    aim = i;   
+            if (aim != -1){
+                bins[aim] -= item[j];
+                cout << "item " << item[j] << " packed into " << aim << "-th bin" << endl;
+            }
+            else{
+                if (cnt < max){
+                    bins[cnt] = 1.0 - item[j];
+                    cnt++;                
+                    cout << "item " << item[j] << " packed into a new bin numbered " << (cnt-1) << endl;
+                }else {
+                    cerr << "No free bins" << endl;
+                    return;
+                }
+            }
+        }   
+    }
+
+    int main(){
+        vector<double> item = {.42, .25, .27, .07, .72, .09, .86, .44, .50, .68, .73, .31, .78, .17, .79, .37, .73, .23, .30};
+        bf(item);
+        return 0;
+    }
+    ```
 
 #### Online Algorithm
 
@@ -126,35 +237,62 @@ View the entire item list before producing an answer.
 
 ??? tips "6.2-2/3"
     <center><img src = "../figures/approx/2.23.png" style="zoom: 50%;"/></center>
+    2-2选C，因为NF只与前一个有关，样例特殊时也不会提升比率;<br>
+
+    2-3选C，考虑$\{0.9,0.2,0.9,0.2\}$.
+
+??? tips "xyx-2"
+    <center><img src = "../figures/approx/xyx-2-3.png" style="zoom: 50%;"/></center>
+    <center><img src = "../figures/approx/xyx-2-3ex.jpg" style="zoom: 50%;"/></center>
+
+??? tips "Final Practice 2 2-1"
+
+    A. The expected number of balls in a box is calculated by dividing the total number of balls (\(m\)) by the total number of boxes (\(m\)), which is 1. So, this option is true .
+    
+    B. The probability that a particular box is empty after \(m\) independent and uniform random assignments is \((1 - \frac{1}{m})^m\). As \(m\) approaches infinity, \((1 - \frac{1}{m})^m\) approaches \(\frac{1}{e}\). Therefore, the expected number of empty boxes is \(m \times \frac{1}{e} = \frac{m}{e}\). This option is true .
+
+    C. In the case where each box can only contain one ball, the number of rejected balls follows a Poisson distribution with mean \(\frac{m}{e}\). So, this option is true .
+    
+    D. For a box to contain exactly two balls, we need to consider the binomial distribution. The probability that a box contains exactly two balls is \(\binom{m}{2} (\frac{1}{m})^2 (1 - \frac{1}{m})^{m - 2}\). As \(m\) approaches infinity, this probability is not \(\frac{1}{e}\).
+
+---
 
 ### The Knapsack Problem(背包问题)
 
-#### fractional ver
+#### fractional ver.
 
 非常简单，只需要依照maximum profit density的原则去贪心就可以了.
 
-假设profit序列$\{p_i\}$，weight序列$\{w_i\}$，率先装尽density序列$\{d_i = \dfrac{p_i}{w_i}\}之中最大的，依次装包直至装满.
+假设profit序列$\{p_i\}$，weight序列$\{w_i\}$，率先装尽density序列$\{d_i = \dfrac{p_i}{w_i}\}$之中最大的，依次装包直至装满.
 
-#### 0-1 ver
+#### 0-1 ver.
 
 **结论：是$\textbf{NP-hard}$，近似比是2.**
 
 证明：
 
 $$\begin{cases}
-p_{max} \leq P_{opt} \leq P_{frac} \\
-p_{max} \leq P_{greedy} \\
-P_{opt} \leq P_{greedy} + p_{max}
+p_{\max} \leq P_{opt} \leq P_{frac} \\
+p_{\max} \leq P_{greedy} \\
+P_{opt} \leq P_{greedy} + p_{\max}
 \end{cases} \Longrightarrow
-\dfrac{P_{opt}}{P_{greedy}} \leq 1+\dfrac{p_{max}}{P_{greedy}} \leq 2$$
+\dfrac{P_{opt}}{P_{greedy}} \leq 1+\dfrac{p_{\max}}{P_{greedy}} \leq 2$$
 
-动态规划下的时间复杂度是$O(n^2p_{max})$，其中$p_{max}$是最终规划出来的最大利润.
+动态规划下的时间复杂度是$O(n^2p_{\max})$，其中$p_{\max}$是最终规划出来的最大利润.
+
+??? tips "xyx-2"
+
+    For the 0-1 version of the Knapsack problem, if we are greedy on taking the maximum profit or profit density, then the resulting profit must be bounded below by the optimal solution minus the maximum profit. (F)
+
+    原因是，
+
+---
 
 ### The K-center Problem(K中心问题)
 
 给定平面上的一系列site（即点），在平面中找出$k$个不同的 center，记$\text{site}_i$到离它最近的 center的距离为$\text{dis}_i$，求$\max\{\text{dis}_i\}$的最小值.
 
-一个(不可行的)贪心策略是，刚开始把第一个中心放在最可能的位置，之后不断地添加中心，使得covering radius不断被降低. 但是这样不能解决局部聚集成“团”而“团”之间距离极大的问题.
+一个(不可行的)贪心策略是，刚开始把第一个中心放在最可能的位置，之后不断地添加中心，使得covering radius不断被降低. 这个策略不能解决局部聚集成“团”而“团”之间距离极大的问题，因而是不可行的.
 
 #### $2r$-Greedy
 

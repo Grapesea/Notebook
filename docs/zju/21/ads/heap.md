@@ -323,6 +323,43 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 
 <center><img src = "../figures/ads/bqmerge.jpg" style = "zoom:50%"/></center>
 
+下面是这个函数具体的实现代码：
+
+???+ tips "merge代码"
+
+    ```c
+    BinQueue Merge( BinQueue H1, BinQueue H2 ){
+        BinTree T1, T2, Carry = NULL;
+        int i, j;
+        if ( H1->CurrentSize + H2-> CurrentSize > Capacity )  ErrorMessage();
+        H1->CurrentSize += H2-> CurrentSize;
+        for ( i=0, j=1; j<= H1->CurrentSize; i++, j*=2 ) {
+            T1 = H1->TheTrees[i]; T2 = H2->TheTrees[i]; /*current trees */
+            switch( 4*!!Carry + 2*!!T2 + !!T1 ) {
+            case 0: /* 000 */
+            case 1: /* 001 */  break;
+            case 2: /* 010 */  H1->TheTrees[i] = T2; H2->TheTrees[i] = NULL; break;
+            case 4: /* 100 */  H1->TheTrees[i] = Carry; Carry = NULL; break;
+            case 3: /* 011 */  Carry = CombineTrees( T1, T2 );
+                            H1->TheTrees[i] = H2->TheTrees[i] = NULL; break;
+            case 5: /* 101 */  Carry = CombineTrees( T1, Carry );
+                            H1->TheTrees[i] = NULL; break;
+            case 6: /* 110 */  Carry = CombineTrees( T2, Carry );
+                            H2->TheTrees[i] = NULL; break;
+            case 7: /* 111 */  H1->TheTrees[i] = Carry;
+                            Carry = CombineTrees( T1, T2 );
+                            H2->TheTrees[i] = NULL; break;
+            } /* end switch */
+        } /* end for-loop */
+        return H1;
+    }
+    ```
+
+    这里我们将`T1,T2,Carry`的是否为空视作二进制bit组合起来，考察需要进行的操作. 
+
+    * 如果`T1`存在但是`Carry`和`T2`不存在，则循环已经可以终止，表明合并结束了;
+    * 如果`T1,T2`均存在，
+
 ### Insertion
 
 类似之前的heap，插入操作看作是与一个结点的二项堆的merge.

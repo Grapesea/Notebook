@@ -1,6 +1,6 @@
 ???+ info "推荐资源"
 
-    [Parallel](https://brucejqs.github.io/MyNotebook/blog/Computer%20Science/ADS/Chapter%2014/)
+    [Brucejqs的ads笔记-Parallel](https://brucejqs.github.io/MyNotebook/blog/Computer%20Science/ADS/Chapter%2014/)
  
 ## Parallel Algorithm的基础模型
 
@@ -103,6 +103,14 @@ $$W(n) = \text{total number of operations}, T(n) = \text{worst-case running time
 根据Brent's Theorem可以导出以下的**WD-presentation Sufficiency Theorem**：
 
 > **如果有一个工作量是 $W(n)$ ，时间是 $T(n)$ 的并行算法，则算法的开销为$O(\dfrac{W(n)}{P(n)} + T(n))$.**
+
+### PTA习题
+
+??? tips "Final Practice 2 2-7"
+
+    <center><img src = "../figures/parallel/f2.2-7.png" style = "zoom:60%"/></center>
+
+    据上面的分析，有$n$组并行任务，每个并行任务的复杂度（即单个处理器所需的时间$D$）是二分的复杂度$O(\log n)$，所以$W(n) = O(\log n) \times n = O(n\log n), D(n) = \log n$.
 
 ## 前缀和问题（Prefix-Sums）
 

@@ -179,3 +179,9 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
     C的推导：记第1个值是$A[0]$. 如果它就是max，那么最终返回的结果一定不是max，概率是$\dfrac1n$; 否则：
 
     $$P(\text{Find Max}) = $$
+
+??? tips "Final Practice 1 1-1"
+
+    <center><img src = "../figures/random/f1-1.png" style="zoom: 50%;"/></center>
+
+    并没有“好的”输入这种事情，因为随机化消除了输入的特性，期望值不会因此而改变. 任意输入序列，对应的效率期望值是恒定的，永远是$O(n\log n)$.

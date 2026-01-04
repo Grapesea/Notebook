@@ -83,6 +83,12 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
     <center><img src = "../figures/dc/xyx-2.png" style = "zoom:60%"/></center>
 
+??? tips "Final Practice 2 2-2"
+
+    <center><img src = "../figures/dc/f2.2-2.png" style = "zoom:60%"/></center>
+
+    <center><img src = "../figures/dc/f2.2-2ex.jpg" style = "zoom:60%"/></center>
+
 ## 实际应用案例
 
 ### PTA习题
