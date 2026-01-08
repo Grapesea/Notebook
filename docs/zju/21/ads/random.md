@@ -8,6 +8,19 @@
     
 相比本学期其他数据结构和算法考虑优化的是平均效率和摊还效率，randomized algorithm更关心算法的期望效率.
 
+两个特例：
+
+* Las Vegas算法: efficient randomized algorithms that only need to yield the correct answer with high probability 随机运行，期望时间是$T$，输出结果总是正确.<br>
+* Monte Carlo算法：randomized algorithms that are always correct, and run efficiently in expectation
+    有概率$P$输出的答案是错误，运行时间固定为$T$.
+
+???+ tips "23-24Final"
+    <center><img src = "../figures/random/cy.png" style="zoom: 50%;"/></center>
+
+    只有当**验证（Verification）**一个解的正确性的复杂度不高于算法本身的复杂度时，这种转换才成立.
+
+    需要加上这个条件：在有效时间内（例如 $O(n^2)$ 内）能够验证蒙特卡罗算法给出的答案是否正确
+
 ## Hiring problem
 
 雇佣1个秘书，一共$N$个候选者，可以按照任意顺序进行面试，总共花费$N$天完成面试.
@@ -20,7 +33,7 @@
 
 直接遍历，考虑最坏情形是后一个人始终比前一个人优秀，从而不得不花费$NC_h$的成本.
 
-??? tips "pseudocode"
+???+ tips "pseudocode"
 
     ```pseudocode
     int Hiring ( EventType C[ ], int N )
@@ -110,7 +123,7 @@ $$\dfrac{k}{N}\ln \dfrac{N-1}{k-1}<\sum\limits_{i=k}^{N-1} \dfrac{1}{i}< \dfrac{
 
 我们已经学过deterministic quicksort，可以通过[usfca画板](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)和[资料1](https://www.geeksforgeeks.org/dsa/quick-sort-algorithm/),[wiki]()回顾一下.
 
-??? tips "C++代码"
+???+ tips "C++代码"
 
     ```cpp
     int partition(vector<int>& arr, int low, int high){
@@ -152,25 +165,29 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
 
 在上面的取法中我们不难发现，把问题切成小问题时，我们至少抛弃了$\dfrac14$的子问题大小，但是在计算总的时间复杂度上仍然相当棘手. 因为每次递归切分的比例不一样（虽然保证了至少切掉$\dfrac14$，但具体是切掉 30% 还是 50% 是不确定的），直接加总所有步骤的时间会非常混乱.
 
-**引入 Type j 的目的是为了对这些大小不一的子问题进行“分类”或“分层”，以便于统计总工作量.**其定义如下：
+**引入 Type $j$ 的目的是为了对这些大小不一的子问题进行“分类”或“分层”，以便于统计总工作量.**其定义如下：
 
 如果一个子问题的大小 $S$ 满足 $N(\dfrac34)^{j+1} \leq |S| \leq N(\dfrac34)^{j}$，我们就把它标记为 Type j.
 
-我们可以把 Type j 理解为**子问题的“代”或者“层级”**，其中 Type 0 是原始问题的较大子问题，Type 1 是切分一次后变小的问题，以此类推. 这实际上是利用了 **Central Splitter** 的性质：每次切分，子问题的规模**至多**变为原来的$\dfrac34$.
+我们可以把 Type $j$ 理解为**子问题的“代”或者“层级”**，其中 Type 0 是原始问题的较大子问题，Type 1 是切分一次后变小的问题，以此类推. 这实际上是利用了 **Central Splitter** 的性质：每次切分，子问题的规模**至多**变为原来的$\dfrac34$.
 
-因为每一层Type j的工作量是$(\dfrac34)^{j+1}$，并且每次规模缩小$3/4$导致层数大约是$\log_{4/3}N$，所以总工作量是$O(N\log N)$级别的.
+因为每一层 Type $j$ 的工作量是$(\dfrac34)^{j+1}$，并且每次规模缩小$3/4$导致层数大约是$\log_{4/3}N$，所以总工作量是$O(N\log N)$级别的.
 
 所以我们完成了期望值的推导，也可以看出这跟递归树的分析非常相近.
 
+## Skip-List
+
+`find`, `insert`, `delete` 的期望时间是$O(\log n)$.
+
 ## PTA习题
 
-??? tips "7.1-4,5"
+???+ tips "7.1-4,5"
 
     <center><img src = "../figures/random/7.1-4,5.png" style="zoom: 50%;"/></center>
 
     4的正确表述是，如果$b = (b_1,b_2,\cdots,b_n)$表示$a$排完序之后的结果，那么任意两个元素被比较过的次数最多是1，并且$b_i$和$b_j$被比较过的概率是$\dfrac{2}{j−i+1}, j>i$,如果$b_i$或者$b_j$被当作了pivot.
 
-??? tips "7.3-1"
+???+ tips "7.3-1"
 
     <center><img src = "../figures/random/7.3-1.png" style="zoom: 50%;"/></center>
 
@@ -180,7 +197,7 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
 
     $$P(\text{Find Max}) = $$
 
-??? tips "Final Practice 1 1-1"
+???+ tips "Final Practice 1 1-1"
 
     <center><img src = "../figures/random/f1-1.png" style="zoom: 50%;"/></center>
 

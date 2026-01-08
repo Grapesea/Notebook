@@ -44,19 +44,19 @@
 
 ### PTA习题
 
-??? tips "2024mid"
+???+ tips "2024mid"
 
     <center><img src = "../figures/ads/2024mid2.png" style = "zoom:50%"/></center>
 
     选D
 
-??? tips "2021mid"
+???+ tips "2021mid"
 
     While accessing a term stored in a B+ tree in an inverted file index, range searches are expensive.
 
     错，开销并不大.
 
-??? tips "xyx-1"
+???+ tips "xyx-1"
 
     Among the following groups of concepts, which group is not totally relevant to a search engine?<br>
     A. thresholding, dynamic programming, precision<br>

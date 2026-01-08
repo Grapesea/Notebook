@@ -1,7 +1,0 @@
-### Electrostatics
-
-
-
-
-
-### DC Circuits

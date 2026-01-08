@@ -45,7 +45,7 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 
 **FPTAS(Fully-polynomial-time approximation scheme, 完全多项式时间近似方案)**: ，定义更为严苛：在上面的基础上，要求运行时间关于$n$和$\dfrac1\epsilon$都是多项式.
 
-??? tips "PTAS/FPTAS举例"
+???+ tips "PTAS/FPTAS举例"
 
     PTAS但不是FPTAS: $O(n^{\frac{2}{\epsilon}})$  
     
@@ -53,11 +53,11 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 
 ### PTA习题
 
-??? tips "6.1-7/8/9"
+???+ tips "6.1-7/8/9"
 
     <center><img src = "../figures/approx/1.789.png" style="zoom: 50%;"/></center>
 
-??? tips "xyx-2"
+???+ tips "xyx-2"
 
     <center><img src = "../figures/approx/xyx-2-1.png" style="zoom: 50%;"/></center>
 
@@ -235,17 +235,17 @@ View the entire item list before producing an answer.
 
 #### PTA习题
 
-??? tips "6.2-2/3"
+???+ tips "6.2-2/3"
     <center><img src = "../figures/approx/2.23.png" style="zoom: 50%;"/></center>
     2-2选C，因为NF只与前一个有关，样例特殊时也不会提升比率;<br>
 
     2-3选C，考虑$\{0.9,0.2,0.9,0.2\}$.
 
-??? tips "xyx-2"
+???+ tips "xyx-2"
     <center><img src = "../figures/approx/xyx-2-3.png" style="zoom: 50%;"/></center>
     <center><img src = "../figures/approx/xyx-2-3ex.jpg" style="zoom: 50%;"/></center>
 
-??? tips "Final Practice 2 2-1"
+???+ tips "Final Practice 2 2-1"
 
     A. The expected number of balls in a box is calculated by dividing the total number of balls (\(m\)) by the total number of boxes (\(m\)), which is 1. So, this option is true .
     
@@ -280,7 +280,7 @@ P_{opt} \leq P_{greedy} + p_{\max}
 
 动态规划下的时间复杂度是$O(n^2p_{\max})$，其中$p_{\max}$是最终规划出来的最大利润.
 
-??? tips "xyx-2"
+???+ tips "xyx-2"
 
     For the 0-1 version of the Knapsack problem, if we are greedy on taking the maximum profit or profit density, then the resulting profit must be bounded below by the optimal solution minus the maximum profit. (F)
 
@@ -304,6 +304,8 @@ $K$-Center 问题的贪心算法（通常被称为 Gonzalez's Algorithm）.
 * 终止： 重复直到选够了 $K$ 个中心.
 
 结论：$2$-approximation.
+
+> Theorem: Unless $\textbf{P} = \textbf{NP}$, there is no $\rho-$approximation algorithm for center-selection problem for any $\rho < 2$. 
 
 ```c
 Centers  Greedy-2r ( Sites S[ ], int n, int K, double r )
@@ -340,13 +342,32 @@ Centers  Greedy-2r ( Sites S[ ], int n, int K, double r )
 
 #### PTA习题
 
-??? tips "6.2-4"
+???+ tips "6.2-4"
     <center><img src = "../figures/approx/2.4.png" style="zoom: 50%;"/></center>
+
+???+ tips "xyx-2"
+    (T) The K-center problem can be solved optimally in polynomial time if K is a given constant. 
+
+    分析：一个圆可以由 2 个点（直径）或者 3 个点（三角形）确定，不妨认为是 3. 那么，我们总共可以找到 $C_n^3 \simeq n^3$ 种 3 个点的组合方式，计算其构成的圆的半径. 
+    最优解即为在上述组合方式中每次选出 $K$ 个，判定是否覆盖所有点，记录满足条件的最小结果（半径），因此组合方式是 $C_{C_n^3}^{K} \simeq C_{n^3}^{K} \simeq n^{3K}$ 个. 
+    如果认为 $K$ 是常数，则这是一个多项式级别的算法. 但是 $K$ 最多可达 $n$ 的大小，因此在最大情况下为 $n^{3n}$，这不是多项式级别的. 
+
+???+ tips "xyx-2评论区的题目"
+
+    <center><img src = "../figures/approx/xyx2-c.png" style="zoom: 50%;"/></center>
+
+### TSP问题（Traveling Salesman Problem）
+
+有1.5/2-approximation两种算法需要掌握.
+
+#### 1.5-approximation
+
+#### 2-approximation
 
 ### 图论与树PTA习题
 
-??? tips "6.2-5"
+???+ tips "6.2-5"
     <center><img src = "../figures/approx/2.5.png" style="zoom: 50%;"/></center>
 
-??? tips "6.3-2"
+???+ tips "6.3-2"
     <center><img src = "../figures/approx/3.2.png" style="zoom: 50%;"/></center>

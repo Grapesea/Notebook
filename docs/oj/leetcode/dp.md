@@ -203,3 +203,156 @@
         cout << dp[N-1][V] << endl;
     }
     ```
+
+## House Robber
+
+[198. House Robber](https://leetcode.com/problems/house-robber/)
+
+??? tips "sol"
+
+    ```c
+    int max(int* nums, int* sum, int pos){
+        return (sum[pos-2] + nums[pos] > sum[pos-1]) ? sum[pos-2] + nums[pos] : sum[pos-1];
+    }
+
+    int rob(int* nums, int numsSize) {
+        int* sum = (int*) malloc(numsSize * sizeof(int));
+        sum[0] = nums[0];
+        if (numsSize == 1) return sum[0];
+
+        sum[1] = (nums[0] < nums[1]) ? nums[1] : nums[0];
+        if (numsSize == 2) return sum[1];
+        sum[2] = (nums[0] + nums[2] > nums[1]) ? nums[0] + nums[2] : nums[1];
+
+        for (int i = 3; i < numsSize; i++){
+            sum[i] = max(nums, sum, i);
+        }
+        return sum[numsSize-1];
+    }
+    ```
+
+[House Robber II](https://leetcode.com/problems/house-robber-ii/)
+
+这里需要注意的是max函数传入时`st`参数也需进入，否则会丢失信息造成样例错误.
+
+??? tips "sol"
+
+    ```c
+    int max(int* nums, int st, int* sum, int pos){
+        if (sum[pos-2] + nums[st + pos] > sum[pos-1])
+            return sum[pos-2] + nums[st + pos];
+        else 
+            return sum[pos-1];
+    }
+
+    int rob_s(int* nums, int st, int ed){
+        int numsSize = ed - st + 1;
+        
+        int* sum = (int*) malloc(numsSize * sizeof(int));
+        sum[0] = nums[st];
+        if (numsSize == 1) {
+            int result = sum[0];
+            free(sum);
+            return result;
+        }
+        
+        sum[1] = (nums[st] < nums[st+1]) ? nums[st+1] : nums[st];
+        if (numsSize == 2) {
+            int result = sum[1];
+            free(sum);
+            return result;
+        }
+        
+        if (nums[st] + nums[st+2] > nums[st+1])
+            sum[2] = nums[st] + nums[st+2];
+        else
+            sum[2] = nums[st+1];
+        
+        for (int i = 3; i < numsSize; i++)
+            sum[i] = max(nums, st, sum, i);
+        
+        int result = sum[numsSize-1];
+        free(sum);
+        return result;
+    }
+
+    int rob(int* nums, int numsSize) {
+        if (numsSize == 0) return 0;
+        if (numsSize == 1) return nums[0];
+        
+        int result1 = rob_s(nums, 0, numsSize-2);
+        int result2 = rob_s(nums, 1, numsSize-1);
+        
+        return result1 > result2 ? result1 : result2;
+    }
+    ```
+
+[House Robber III](https://leetcode.com/problems/house-robber-iii/)
+
+树形dp：用`size=2`的sum数组进行dp，sum[0]表示不取，sum[1]表示取走，后序遍历整棵树来获得最终信息.
+
+??? tips "sol"
+
+    ```c
+    /**
+    * Definition for a binary tree node.
+    * struct TreeNode {
+    *     int val;
+    *     struct TreeNode *left;
+    *     struct TreeNode *right;
+    * };
+    */
+
+    int *rob_t(struct TreeNode *node){
+        int* sum = (int*) malloc(sizeof(int) * 2);
+        memset(sum, 0, sizeof(int) * 2);
+        if (!node) return sum;
+        int* left = rob_t(node->left);
+        int* right = rob_t(node->right);
+        sum[0] = fmax(left[0],left[1]) + fmax(right[0],right[1]); 
+        //fmax: return the maximum between 2 float numbers.
+        sum[1] = node->val + left[0] + right[0];
+        // 0表示不偷当前节点，1表示偷当前节点.
+        return sum;
+    }
+
+    int rob(struct TreeNode* root) {
+        int* dp = rob_t(root);
+        return fmax(dp[0],dp[1]);
+    }
+    ```
+
+## 股票交易
+
+[121. 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
+创建了一个二维dp数组，其中pricesSize个行，2个列. 列用于表示交易或者不交易之后的最优利润值.
+
+??? tips "sol"
+
+    ```c
+    int maxProfit(int* prices, int pricesSize) {
+        if (pricesSize == 0) return 0;
+
+        int** dp = (int**) malloc(sizeof(int*) * pricesSize);
+        for(int i = 0; i < pricesSize; i++){
+            dp[i] = malloc(sizeof(int)*2);
+        }
+
+        dp[0][0] = -prices[0];
+        dp[0][1] = 0;
+        for (int i = 1; i < pricesSize; i++){
+            dp[i][0] = fmax(-prices[i], dp[i-1][0]);
+            dp[i][1] = fmax(prices[i] + dp[i][0], dp[i-1][1]);
+        }
+        return dp[pricesSize - 1][1];
+    }
+    ```
+
+[122. 买卖股票的最佳时机II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
+
+??? tips "sol"
+
+    ```c
+
+    ```

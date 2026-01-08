@@ -16,7 +16,7 @@
 
 $N(S)$: neighborhood of $S$ – the set $\{ S': S \sim S' \}$.
 
-??? tips "pseudocode"
+???+ tips "pseudocode"
 
     ```c
     SolutionType Gradient_descent()
@@ -132,7 +132,7 @@ SolutionType SimulatedAnnealing(){
 
 ### PTA习题
 
-??? tips "Final Practice 2 2-10"
+???+ tips "Final Practice 2 2-10"
 
     <center><img src = "../figures/local/f2.2-10.png" style = "zoom:60%"/></center>
 
@@ -191,7 +191,7 @@ $$w(A,B) = \sum\limits_{u\in A,v\in B}w_{uv}$$
 
 实际上这是Hopfield问题的特殊形式，因为$\forall w_e>0$，并且可以证明，这里的local optimum是$\dfrac12$：
 
-??? tips "证明"
+???+ tips "证明"
 
     由$(A,B)$是local optimal partition，得到
 
@@ -226,7 +226,7 @@ $$w(A,B) = \sum\limits_{u\in A,v\in B}w_{uv}$$
 
 ## PTA习题
 
-??? tips "7.2-1"
+???+ tips "7.2-1"
 
     <center><img src="../figures/local/2.1.png" style="zoom: 50%;" /></center>
 

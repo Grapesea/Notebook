@@ -22,6 +22,8 @@
 
 对于一个活动序列$S = \{a_1,a_2,\cdots,a_n\}, a_i = [s_i,f_i)$表示起始和结束时间. 称$a_i,a_j$是兼容的（compatible），如果$s_i \geq f_j \text{或者} s_j \leq f_i$（即活动时间段没有重合）. 求最大兼容活动子序列（即活动数量最多）.
 
+DP思路：$O(N^2)$.
+
 正确的贪心思路之一是不断选取没有冲突且最早结束的activity. 与之对称的方法是，不断选取最晚开始的时间.
 
 **定理**：如果$a_m$是子问题$S_k$中最早结束的，那么$a_m$一定属于$S_k$的某个最大兼容子序列.
@@ -34,7 +36,9 @@
 
     Since $f_m \leq f_{ef}$, $A_{k'}$ is another optimal solution.
 
-算法效率是$O(N\log N)$.
+**算法效率是$O(N\log N)$.**
+
+如果给活动带上权值，则DP仍然成立，但Greedy会失效，有2-approximation的算法.
 
 两个判断题：
 
@@ -57,7 +61,7 @@ Huffman Code(哈夫曼编码)是用于文件压缩的一种前缀码(Prefix code
 
 Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\text{字符深度}\times\text{字符频率})$（深度即编码长度）. 通过将高频字符分配短编码 、低频字符分配长编码 ，实现总代价最小. 例如，字符`a`频率为 $10$（深度 $3$）、`e`频率为 $15$（深度 $2$），则代价为 $3\times 10 + 2\times 15 = 60$.
 
-??? tips "pseudocode"
+???+ tips "pseudocode"
     ```c
     void Huffman ( PriorityQueue  heap[ ],  int  C )
     {   consider the C characters as C single node binary trees,
@@ -78,11 +82,11 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 
 <center><img src = "../figures/greedy/huffeg.png" style="zoom: 50%;"/></center>
 
-??? tips "贪心正确性证明"
+???+ tips "贪心正确性证明"
     <center><img src = "../figures/greedy/pr1.png" style="zoom: 50%;"/></center>
     <center><img src = "../figures/greedy/pr2.png" style="zoom: 50%;"/></center>
 
-??? tips "2025fall-zgc-mid"
+???+ tips "2025fall-zgc-mid"
 
     <center><img src = "../figures/greedy/zgcmid-1.png" style="zoom: 50%;"/></center>
 
@@ -90,13 +94,13 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 
 ## PTA习题
 
-??? tips "xyx-2"
+???+ tips "xyx-2"
 
     <center><img src = "../figures/greedy/xyx-2-1.png" style="zoom: 50%;"/></center>
 
     反例：$[1,2], [4,5], [1,3], [2,5,6]$，如果按照Greedy 1的思路走是$[1,2], [4,5] \quad [1,3] \quad [2.5,6]$三组，但是按照Greedy 2的思路只需要2组：$[1,2], [2.5,6]\quad [1,3], [4,5]$.
 
-??? tips "5.2-1"
+???+ tips "5.2-1"
 
     <center><img src = "../figures/greedy/5.2-1.png" style="zoom: 50%;"/></center>
 
@@ -108,9 +112,8 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
     
     最优解： 选 $4, 4$. 方案：4, 4 (共 2 枚硬币). 由于贪心算法给出的解 (4枚) 不是最优解 (2枚)，所以陈述 (III) 是错误的.
 
-??? tips "5.5-1"
-
-    设有n个独立的作业$\{1,2,\cdots,n\}$，由$m$台相同的机器$\{1,2,\cdots,m\}$进行加工处理；作业$$i$ 所需的处理时间为$t_i（1\leq i\leq n）$，每个作业均可在任何一台机器上加工处理，但未完工前不允许中断，任何作业也不能拆分成更小的子作业.
+???+ tips "5.5-1"
+    设有 $n$ 个独立的作业 $\{1,2,\cdots,n\}$ ，由 $m$ 台相同的机器 $\{1,2,\cdots,m\}$ 进行加工处理；作业 $i$ 所需的处理时间为 $t_i (1\leq i\leq n)$，每个作业均可在任何一台机器上加工处理，但未完工前不允许中断，任何作业也不能拆分成更小的子作业.
 
     该多机调度问题要求给出一种贪心法作业调度方案，把$n$个作业按用时长从大到小顺序安排在最先空闲的机器上加工处理.
 
@@ -211,7 +214,7 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
     答案：
     1.`index = i` 2.`get_min(machine)` 3.`+= A[j].t`
 
-??? tips "2020mid"
+???+ tips "2020mid"
 
     <center><img src = "../figures/greedy/2020mid1.png" style="zoom: 50%;"/></center>
     <center><img src = "../figures/greedy/2020mid2.png" style="zoom: 50%;"/></center>

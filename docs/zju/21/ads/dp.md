@@ -69,7 +69,7 @@ $$W_{n} = \max \{W_{n-1},W_{n-2}+\omega_n\} \Longrightarrow W_{i} = \max \{W_{i-
 
 ### PTA习题
 
-??? tips "4.7-1 Missile Interception(最长递减子序列问题)"
+???+ tips "4.7-1 Missile Interception(最长递减子序列问题)"
 
     ```cpp
     #include<iostream>
@@ -101,11 +101,11 @@ $$W_{n} = \max \{W_{n-1},W_{n-2}+\omega_n\} \Longrightarrow W_{i} = \max \{W_{i-
 
 现在需要对4个矩阵进行乘法操作：
 
-$$M_{1(10\times20)} \times M_{2(20\times50)} \times M_{3(50\times1)} \timesM_{4(1\times100)}$$
+$$M_{1(10\times 20)} \times M_{2(20\times 50)} \times M_{3(50\times 1)} \times M_{4(1\times 100)}$$
 
 需要找到最佳的顺序，使得开销时间最小.
 
-<center><img src = "../figures/dp/matrix_mul.jpg" style = "zoom:60%"/></center>
+<center><img src = "../figures/dp/matrix_mul.jpg" style = "zoom:40%"/></center>
 
 伪代码如下：
 
@@ -139,9 +139,13 @@ void OptMatrix( const long r[ ], int N, TwoDimArray M )
 
 <center><img src = "../figures/dp/tree.jpg" style = "zoom:50%"/></center>
 
+在PPT上的图递推逻辑：
+
+<center><img src = "../figures/dp/obst.jpg" style="zoom: 30%;"/></center>
+
 ### PTA习题
 
-??? tips "2025fall-zgc-mid"
+???+ tips "2025fall-zgc-mid"
 
     <center><img src = "../figures/dp/zgcmid-4.png" style="zoom: 50%;"/></center>
 
@@ -153,22 +157,35 @@ void OptMatrix( const long r[ ], int N, TwoDimArray M )
 
 单源算法：$|V|$次，$T=O(|V|^3)$.
 
-伪代码：
+DP伪代码：
 
 ```cpp
 /* A[ ] contains the adjacency matrix with A[ i ][ i ] = 0 */ 
 /* D[ ] contains the values of the shortest path */ 
 /* N is the number of vertices */ 
 /* A negative cycle exists iff D[ i ][ i ] < 0 */ 
-void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N ) 
-{   
-
+void AllPairs( TwoDimArray A, TwoDimArray D, int N ) {   
+    int i, j, k;
+    for (i = 0; i < N; i++)  /* Initialize D */ 
+        for(j = 0; j < N; j++)
+            D[i][j] = A[i][j]; 
+    for (k = 0; k < N; k++)  /* add one vertex k into the path */
+        for (i = 0; i < N; i++) 
+            for (j = 0; j < N; j++) 
+                if (D[i][k] + D[k][j] < D[i][j]) 
+                    D[i][j] = D[i][k] + D[k][j]; // Update shortest path
 }
 ```
+
+**成立条件：有负权边仍成立, 但是如果有负权的cycle就会失效.（相比之下，Dijkstra更弱一点，必须要求所有边的权值非负.**
+
+$T(N) = O(N^3)$，但是在稠密图中速度更快一点.
 
 ## Product Assembly
 
 生产线选择问题
+
+<center><img src = "../figures/dp/assembly.jpg" style="zoom: 30%;"/></center>
 
 代码：
 
@@ -204,13 +221,13 @@ void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N )
 
 ## PTA习题
 
-??? tips "2025fall-ch-mid"
+???+ tips "2025fall-ch-mid"
 
     <center><img src = "../figures/dp/chmid3-3.png" style="zoom: 50%;"/></center>
 
     答案：`int j = 0; j < i; j++`, `dp[i] = max(dp[i], dp[j]+1)`
 
-??? tips "2025fall-zgc-mid"
+???+ tips "2025fall-zgc-mid"
 
     <center><img src = "../figures/dp/zgcmid-1.png" style="zoom: 50%;"/></center>
 
@@ -249,7 +266,7 @@ void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N )
     }
     ```
 
-??? tips "Final Practice 2 Code Completion"
+???+ tips "Final Practice 2 Code Completion"
 
     Suppose you are a baker planning to bake some hand-made cream breads.
 
@@ -271,7 +288,7 @@ void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N )
 
     The third line gives $M$ taste scores for cream.
 
-    The taste scores are integers in $\[-10^3,10^3\]$.
+    The taste scores are integers in $[-10^3,10^3]$.
 
     All the numbers in a line are separated by a space.
 
@@ -297,7 +314,7 @@ void AllPairs(vector<vector<int>> A, vector<vector<int>> D, int N )
 
     The maximum total taste score for the sample case is $188$.
 
-    ![hint.png](https://images.ptausercontent.com/39dabd46-4c84-4862-b386-9d38664b86c9.png)
+    <center><img src = "https://images.ptausercontent.com/39dabd46-4c84-4862-b386-9d38664b86c9.png" style="zoom: 30%;"/></center>
 
     **题解：**
 

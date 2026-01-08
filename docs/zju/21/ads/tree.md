@@ -1,13 +1,15 @@
 ???+ warning "数值规模Cheating List"
     以下是Cheating List，是对4种树的各类数值规模的总结：
 
-    |                 | AVL Tree                    | Splay Tree                  | RB Tree               | B+ Tree（$M-\text{order}$）                          |
-    | --------------- | --------------------------- | --------------------------- | --------------------- | ---------------------------------------------------- |
-    | 节点数/树高关系 | $h = \log N$                | 最坏$O(N)$，摊还$O(\log N)$ | $h \leq 2\log_2(N+1)$ | $h\leq \log_{\lceil \frac M2\rceil}N$                |
-    |                 | $F_{h+3}-1\leq N\leq 2^h-1$ |                             | $bh\geq \dfrac h2$    | $2\cdot (\lceil \frac M2\rceil)^{h-1}\leq N\leq M^h$ |
-    | 搜索            | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
-    | 插入            | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
-    | 删除            | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
+    |                    | AVL Tree                    | Splay Tree                  | RB Tree               | B+ Tree（$M-\text{order}$）                          |
+    | ------------------ | --------------------------- | --------------------------- | --------------------- | ---------------------------------------------------- |
+    | 节点数/树高关系    | $h = \log N$                | 最坏$O(N)$，摊还$O(\log N)$ | $h \leq 2\log_2(N+1)$ | $h\leq \log_{\lceil \frac M2\rceil}N$                |
+    |                    | $F_{h+3}-1\leq N\leq 2^h-1$ |                             | $bh\geq \dfrac h2$    | $2\cdot (\lceil \frac M2\rceil)^{h-1}\leq N\leq M^h$ |
+    | 搜索               | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
+    | 插入               | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
+    | 删除               | $O(\log N)$                 | 最坏$O(N)$，摊还$O(\log N)$ | $O(\log N)$           | $O(h\log M) = O(\log N)$                             |
+    | rotation数量(插入) | $\leq 2$                    |                             | $\leq 2$              |                                                      |
+    | rotation数量(删除) | $O(\log N)$                 |                             | $\leq 3$              |                                                      |
 
 ## Lec 1: AVL Tree & Splay Tree & Amortized Analysis(摊还分析)
 
@@ -153,20 +155,20 @@ AVLNode* rlRotation(AVLNode* root){
 
 #### PTA作业题整理
 
-??? notes "1.1-1"
+???+ notes "1.1-1"
 
     Consider an AVL tree. Immediately after we insert a node (without restoring the tree balance), the parent of the newly inserted node may become imbalanced. 
-
+    
     是错的，因为新插入的节点本身是叶子节点，其平衡因子为0（左右子树高度都是0），父节点不会立即出现问题. 失衡只可能发生在祖先节点上（祖父节点或更高层），而不是直接父节点
 
-??? notes "1.1-2"
+???+ notes "1.1-2"
 
     For every AVL tree, there exists a sequence of nodes such that we can obtain this AVL tree by inserting the nodes in the sequence one by one into an initiallly empty tree.
-
+    
     这句话的意思是，我们能通过逐一插入节点到一棵空树中，来获得这个最终的树.
-
+    
     是对的，比如：
-
+    
     ```plaintext
         4
        / \
@@ -174,59 +176,59 @@ AVLNode* rlRotation(AVLNode* root){
      / \ / \
     1  3 5  7
     ```
-
+    
     考虑前序遍历的方式，按4,2,6,1,3,5,7就能得到这棵树.
 
-??? notes "1.3-2"
+???+ notes "1.3-2"
 
     <center><img src="../figures/ads/1.3-2.png" style="zoom: 60%;" /></center>
-
+    
     A. 画图可知.
-
+    
     After inserting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
 
-??? notes "xyx-1"
+???+ notes "xyx-1"
     <center><img src="../figures/ads/xyx1-1.png" style="zoom: 60%;" /></center>
 
     举一个例子.
 
-??? tips "2021mid"
+???+ tips "2021mid"
 
     <center><img src="../figures/ads/2021mid-avl.png" style="zoom: 60%;" /></center>
-
+    
     iff是“当且仅当”的意思.
 
-??? tips "Final Practice 1 Code Completion"
+???+ tips "Final Practice 1 Code Completion"
 
     An AVL tree is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more than one, rebalancing is done to restore this property. Figures 1-4 illustrate the rotation rules.
-
+    
     ![F1.jpg](https://images.ptausercontent.com/3fb1ef21-3ece-4adf-ae42-00bfeeaf6f86.jpg)
-
+    
     ![F2.jpg](https://images.ptausercontent.com/d8528f9d-2d3b-480b-93f5-358209fe2f5b.jpg)
-
+    
     ![F3.jpg](https://images.ptausercontent.com/958bb922-0eaf-4cc3-ab73-ce74b5f2fbc3.jpg)
-
+    
     ![F4.jpg](https://images.ptausercontent.com/d26bb82b-1f4b-41ea-8514-584e513f1f92.jpg)
-
+    
     Now given a sequence of insertions, you are supposed to build the AVL tree. Then given a sequence of statements about the structure of the resulting tree, you are supposed to tell if they are correct or not. A statment is one of the following:
-
+    
     (1) A is the root  
     (2) A and B are siblings  
     (3) A is the parent of B  
     (4) A is the left child of B  
     (5) A is the right child of B
-
+    
     Format of functions:
-
+    
     ```c
     Tree Build_AVL ( int input[ ], int n );
     int Judge ( Tree T, int type, int A, int B );
     ```
-
+    
     The function `Build_AVL` is supposed to build an AVL tree according to the input sequence.
-
+    
     Here `Tree` is defined as the following:
-
+    
     ```
     typedef struct TNode *Tree;
     struct TNode {
@@ -235,33 +237,33 @@ AVLNode* rlRotation(AVLNode* root){
         Tree left, right; //pointing to the left and right children of this node
     };
     ```
-
+    
     The array `input` contains `n` (a positive integer) distinct keys to be inserted in order into an initially empty AVL tree. The root pointer of the resulting tree is supposed to be returned by `Build_AVL`.
-
+    
     The function `Judge` is supposed to test if a given statement for an AVL tree `T` is correct or not, and return `1` if the result is true, or `0` otherwise. The parameter `type` is an integer in \[1, 5\], which gives the index of a statement, as listed in the problem description; and `A` and `B` are the corresponging key values. For type 1, the value of `B` can be ignored. It is guaranteed that both `A` and `B` in the statements are in the tree.
-
+    
     Sample program of judge:
-
+    
     ```c
     #include <stdio.h>
     #include <stdlib.h>
-
+    
     typedef struct TNode *Tree;
     struct TNode {
         int key;    //key of the node
         int height; //height of the subtree with this node as the root
         Tree left, right; //pointing to the left and right children of this node
     };
-
+    
     Tree Build_AVL ( int input[ ], int n );
     int Judge ( Tree T, int type, int A, int B );
-
+    
     int main()
     {
         int n, *input;
         int m, type, A, B, i;
         Tree T;
-
+    
         scanf("%d", &n);
         input = (int *)malloc(sizeof(int) * n);
         for (i=0; i<n; i++) scanf("%d", &input[i]);
@@ -275,12 +277,12 @@ AVLNode* rlRotation(AVLNode* root){
         }
         return 0;
     }
-
+    
     /* Your function will be put here */
     ```
-
+    
     Sample Input 1 (Figure 1):
-
+    
     ```in
     3
     88 70 61
@@ -294,9 +296,9 @@ AVLNode* rlRotation(AVLNode* root){
     4 88 70
     5 88 70
     ```
-
+    
     Sample Output 1:
-
+    
     ```out
     Yes
     No
@@ -307,9 +309,9 @@ AVLNode* rlRotation(AVLNode* root){
     No
     Yes
     ```
-
+    
     Sample Input 2 (Figure 2):
-
+    
     ```in
     5
     88 70 61 96 120
@@ -322,9 +324,9 @@ AVLNode* rlRotation(AVLNode* root){
     5 120 96
     5 88 70
     ```
-
+    
     Sample Output 2:
-
+    
     ```out
     Yes
     No
@@ -334,9 +336,9 @@ AVLNode* rlRotation(AVLNode* root){
     Yes
     No
     ```
-
+    
     Sample Input 3 (Figure 3):
-
+    
     ```in
     6
     88 70 61 96 120 90
@@ -350,9 +352,9 @@ AVLNode* rlRotation(AVLNode* root){
     5 90 88
     5 96 88
     ```
-
+    
     Sample Output 3:
-
+    
     ```out
     No
     Yes
@@ -363,9 +365,9 @@ AVLNode* rlRotation(AVLNode* root){
     No
     Yes
     ```
-
+    
     Sample Input 4 (Figure 4):
-
+    
     ```in
     7
     88 70 61 96 120 90 65
@@ -378,9 +380,9 @@ AVLNode* rlRotation(AVLNode* root){
     4 70 88
     5 70 65
     ```
-
+    
     Sample Output 4:
-
+    
     ```out
     Yes
     No
@@ -390,7 +392,7 @@ AVLNode* rlRotation(AVLNode* root){
     No
     Yes
     ```
-
+    
     解答：
     
     ```c
@@ -398,14 +400,14 @@ AVLNode* rlRotation(AVLNode* root){
         if (T == NULL) return 0;
         return T->height;
     }
-
+    
     void updateHeight(Tree T) {
         if (T == NULL) return;
         int leftHeight = getHeight(T->left);
         int rightHeight = getHeight(T->right);
         T->height = (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
     }
-
+    
     Tree createNode(int key) {
         Tree newNode = (Tree)malloc(sizeof(struct TNode));
         newNode->key = key;
@@ -414,7 +416,7 @@ AVLNode* rlRotation(AVLNode* root){
         newNode->right = NULL;
         return newNode;
     }
-
+    
     Tree LL(Tree T) {
         Tree newRoot = T->left;
         T->left = newRoot->right;
@@ -423,7 +425,7 @@ AVLNode* rlRotation(AVLNode* root){
         updateHeight(newRoot);
         return newRoot;
     }
-
+    
     Tree RR(Tree T) {
         Tree newRoot = T->right;
         T->right = newRoot->left;
@@ -440,7 +442,7 @@ AVLNode* rlRotation(AVLNode* root){
         T->right = LL(T->right);
         return RR(T);
     }
-
+    
     Tree insert(Tree T, int key) {
         if (T == NULL) 
             return createNode(key);
@@ -454,7 +456,7 @@ AVLNode* rlRotation(AVLNode* root){
         updateHeight(T);
         
         int balanceFactor = getHeight(T->left) - getHeight(T->right);
-
+    
         if (balanceFactor > 1 && key < T->left->key)
             return LL(T);
         if (balanceFactor < -1 && key > T->right->key)
@@ -465,21 +467,21 @@ AVLNode* rlRotation(AVLNode* root){
             return RL(T);
         return T;
     }
-
+    
     Tree Build_AVL(int input[], int n) {
         Tree T = NULL;
         for (int i = 0; i < n; i++)
             T = insert(T, input[i]);
         return T;
     }
-
+    
     Tree findNode(Tree T, int key) {
         if (T == NULL) return NULL;
         if (T->key == key) return T;
         if (key < T->key) return findNode(T->left, key);
         return findNode(T->right, key);
     }
-
+    
     Tree findParent(Tree T, int key) {
         if (T == NULL || T->key == key) return NULL;
         
@@ -489,7 +491,7 @@ AVLNode* rlRotation(AVLNode* root){
         if (key < T->key) return findParent(T->left, key);
         return findParent(T->right, key);
     }
-
+    
     int Judge(Tree T, int type, int A, int B) {
         if (type == 1) return (T != NULL && T->key == A);
         
@@ -561,47 +563,47 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 #### PTA习题
 
-??? tips "1.3-3"
+???+ tips "1.3-3"
 
     <center><img src = "../figures/ads/1.3-3.png" style="zoom: 60%;"/></center>
-
+    
     全选.
 
-??? tips "[xyx-1](https://www.yuque.com/xianyuxuan/coding/ads_exam_1)"
+???+ tips "[xyx-1](https://www.yuque.com/xianyuxuan/coding/ads_exam_1)"
 
     <center><img src = "../figures/ads/xyx1-2.png" style="zoom: 60%;"/></center>
-
+    
     <center><img src = "../figures/ads/xyx1-3.jpg" style="zoom: 60%;"/></center>
-
+    
     All of the Zig, Zig-zig, and Zig-zag rotations not only move the accessed node to the root, but also roughly half the depth of most nodes on the path. <br>
     这是对的，并且是Splay的核心特性.
-
+    
     <center><img src = "../figures/ads/xyx1-3.png" style="zoom: 60%;"/></center>
-
+    
     选D，流程应该是如下的：
-
+    
     <center><img src = "../figures/ads/xyx1-4.jpg" style="zoom: 60%;"/></center>
-
+    
     <center><img src = "../figures/ads/xyx1-6.png" style="zoom: 60%;"/></center>
-
+    
     <center><img src = "../figures/ads/xyx1-6.jpg" style="zoom: 60%;"/></center>
 
-??? tips "2025fall-ch-mid"
+???+ tips "2025fall-ch-mid"
 
     <center><img src = "../figures/ads/2025midch-1.png" style="zoom: 60%;"/></center>
-
+    
     <center><img src = "../figures/ads/2025midch-1.jpg" style="zoom: 50%;"/></center>
 
-??? tips "Final Practice 2 2-17"
+???+ tips "Final Practice 2 2-17"
 
     <center><img src = "../figures/ads/f2.2-17.png" style = "zoom:60%"/></center>
-
+    
     1错2对3错.
     
     4错，如果不旋上去是没有意义的（？）
-
+    
     5错，因为zigzig先把P旋转上去，之后把X旋上去，并不是upward twice.
-
+    
     6对，看知识点即可.
 
 ## Lec 2 Red-Black Tree & B+ Tree
@@ -704,52 +706,118 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 !!! tips "2.1.4 再论 AVL 树和红黑树的区别"
 
     开头我们已经提到，AVL 树的平衡条件太严苛，因此更新树（即插入和删除）操作会更频繁，所以我们希望有一个条件更松的平衡要求但也能保证树高被控制在$O(\log n)$的量级。除此之外，AVL 树和红黑树似乎都是通过旋转恢复平衡，没有很大的差别。但其实有一个很有趣的现象，又非常多的库函数在选择平衡搜索树实现功能的时候，会更常用红黑树，例如大家最熟悉的 C++ 的 `std::map`，以及 Java 8 开始的 HashMap 和 Microsoft .NET 框架的部分代码，甚至 Linux 内核中内存管理也使用了红黑树（可以参考[这个 GitHub 上的 Linux 文档](https://github.com/torvalds/linux/blob/master/Documentation/core-api/rbtree.rst)）。那这其中的原因可能是什么呢？
-
+    
     事实上这一问题应当是没有标准答案的，毕竟是当年工程师的多方面考虑综合后的选择，但我们可以通过这个问题看一看 AVL 树和红黑树的一些更细致的区别：
-
+    
     1. 我们都知道，AVL 树平衡条件更严格，推导 AVL 树高的时候我们用到了斐波那契数列，实际上，可以验证的是 AVL 树最差高度大约为 $1.44 \log n$，红黑树最差则可以达到 $2 \log n$，事实上讨论题 1 隐含了这一点，从这一层面来看，**如果对一棵树的查询操作居多，那么 AVL 树会是更好的选择**；
-
+    
     2. 但上一节我们提到，AVL 树虽然插入只需要常数次旋转即可，但在删除时可能需要$O(\log n)$次旋转，而红黑树插入和删除都是常数次，有人提到在代码实现时旋转是插入和删除最耗时的操作，因此如果插入删除操作多，AVL 树不如红黑树快速，而我们知道使用 `std::map` 时**的确可能遇到较多插入删除操作**；
-
+    
     3. AVL 树需要维护树高或者 balance factor 属性，这是一个整数的大小，而红黑树只需要 1 个 bit 存储颜色即可，因此**更省空间**；
-
+    
     4. 红黑树是**可持久化**的数据结构，因此在函数式编程中容易实现；并且红黑树也可以支持分裂、合并等操作，这使得它可以做批量并行的插入、删除操作（实际上这与讲义最后红黑树与 B 树的关联是相关的），具体已经超出课程范畴，不再详细讨论。
 
 #### PTA习题
 
-??? tips "2025fall-yy-mid"
+???+ tips "2025fall-yy-mid"
 
     After deleting 10 from the red-black tree given in the figure, which one of the following statements must be FALSE?
-
+    
     <center><img src = "../figures/ads/yymid1.png" style="zoom: 50%;"/></center>
-
+    
     A. 8 is the parent of 6, and 6 is black<br>
     B. 6 is the parent of 8, and 8 is red<br>
     C. 11 is the parent of 15, and 15 is black<br>
     D. 13 is the parent of 14, and 13 is black
-
+    
     选B.红黑树的节点删除之后有两种处理方法：把左子树最大的移动过来/右子树最小的移动过来.
-
+    
     <center><img src = "../figures/ads/yymid1-1.jpg" style="zoom: 30%;"/></center>
 
-??? tips "xyx-1"
+???+ tips "xyx-1"
 
     <center><img src = "../figures/ads/xyx15.png" style="zoom: 50%;"/></center>
-
+    
     <center><img src = "../figures/ads/xyx1-5.png" style="zoom: 50%;"/></center>
 
-??? tips "2021mid"
+???+ tips "2021mid"
 
     In a red-black tree, if an internal black node is of degree 1, then it must have only 1 descendant node.
-
+    
     对.
 
-??? tips "Final Practice 2 2-6"
+???+ tips "Final Practice 2 2-6"
 
     <center><img src = "../figures/ads/f2.2-6.png" style = "zoom:60%"/></center>
-
+    
     self-adjusting structure指的是splay, skew/leftist heap这些，balanced指的是AVL, rb tree.
     **注意审题.**
+
+???+ tips "23-24Final"
+
+    The teacher wants to write the `IsBpT` function to check if the trees submitted by students satisfy the definition of the B+ tree of a given order (e.g., order 4) learned in our class. The B+ tree structure is defined as follows:
+
+    ```c
+    typedef struct BpTNode BpTNode; 
+    struct BpTNode {
+        bool isLeaf; /* 1 if this node is a leaf, or 0 if not */
+        bool isRoot; /* 1 if this node is the root, or 0 if not */
+        BpTNode** children; /* Pointers to children. This field is not used by leaf nodes. */ 
+        ElementType* keys;
+        int num_children; /* Number of valid children (not NULL) */
+        int num_keys; /* Number of valid keys */
+    };
+    ```
+
+    Fortunately, the students are all brilliant, so the B+ trees they submit guarantee to meet the following properties:
+
+    1. There is a root node, and all leaf nodes are at the same depth;
+    2. The key values stored in all leaf nodes are arranged in strictly ascending order from left to right.
+
+    Your task is to complete the function `IsBpT` as follows so that the teacher can determine whether a tree submitted by a student meets the other properties required by the definition of the B+ tree of a given order. Return `true` if the tree is a B+ tree, or `false` if not.
+
+    ```c
+    bool IsBpT(BpTNode* node, int order) {
+        if (node->isLeaf == 1) { /* this is a leaf node */
+            if (node->isRoot == 1) { /* this tree has only one node */
+                if (node->num_keys < 1 || node->num_keys > order) return false;
+            }
+            else {
+                if (node->num_keys < (order + 1) / 2 || node->num_keys > order) return false;
+            }
+        }
+        else {
+            /* check the property of the tree structure */
+            if (node->num_keys != node->num_children - 1) return false;
+            if (node->isRoot == 1) { /* this is the root node */
+                if (node->num_keys < 1 || node->num_keys > order - 1) return false;
+                else if (node->num_children < 2 || node->num_children > order) return false;
+            }
+            else {
+                if ( /* Blank 1 */ || node->num_keys > order - 1) return false;
+                else if (node->num_children < (order + 1) / 2 || node->num_children > order) return false;
+            }
+
+            /* check the property of the value of key */
+            for (int i = 0; i < node->num_keys; i++) {
+                BpTNode* key_node = /* Blank 2 */;
+                while (key_node->isLeaf == 0) {
+                    key_node = key_node->children[0];
+                }
+                if (node->keys[i] != key_node->keys[0]) return false;
+            }
+            for (int i = 0; i < node->num_children; i++) {
+                if (IsBpT(node->children[i], order) == false) return false;
+            }
+        }
+        return true;
+    }
+    ```
+
+    1. `node->num_keys < (order+1)/2 -1`
+    2. `(node->children)[i+1]`
+
+    第二空是因为key对应的children实际上是右子树的第一个key值
 
 ### B+ Tree
 
@@ -795,37 +863,37 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 
 #### PTA作业题整理
 
-??? notes "2.1-2"
+???+ notes "2.1-2"
 
     Consider an insertion in a B+ tree. We may need to update some keys stored in some internal nodes even if no leaf is split during the insertion.
 
-??? notes "2.1-3"
+???+ notes "2.1-3"
 
     Consider an initially empty B+ tree of order $M$. Whatever the value of $M$, after inserting $n$ keys, the cost of a findkey operation on the resulting B+ tree is $\Theta(\log n)$.
-
+    
     这显然是对的，不知道为啥做错了.
 
-??? notes "2.1-9"
+???+ notes "2.1-9"
 
     After inserting a node into a Leftist heap $H$ (which is equivalent to merging a one-node Leftist heap with $H$), we need to swap the children of at most $1$ node to make the resulting tree a Leftist heap.
 
-??? notes "2.2-2"
+???+ notes "2.2-2"
 
     Insert 1,6,7,3,5,2 one by one into an initially empty 2-3 tree (B+ tree of order 3). Which of the following statements is true? We assume that the height of a single node is 1.
-
+    
     A.The root has 1 key.<br>
     B.3 and 6 are in the same leaf.<br>
     C.The height of the resulting tree is 3.<br>
     D.The resulting tree is the same as that generated by inserting 1,2,3,5,6,7 one by one into an initially empty 2-3 tree.
-
+    
     选D
 
-??? notes "2.3-2"
+???+ notes "2.3-2"
 
     Consider a 2-3 tree. Initially, it has 2 leaves, with keys 1,2,5 and 11,17,19 respectively. Now we perform the following operations one by one:
     <center>Insert 15;  Insert 21;  Insert 22;  Delete 15;  Delete 5.</center>
     Among the following statements, which is/are correct?
-
+    
     A.The height of the tree increases after 15 is inserted.<br>
     B.Some key in some internal node changes after 21 is inserted.<br>
     C.The height of the tree increases after 22 is inserted.<br>
@@ -833,13 +901,13 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
     E.Some key in some internal node changes after 15 is deleted.<br>
     F.The height of the tree decreases after 5 is deleted.
 
-??? notes "2025fall-yy-mid"
+???+ notes "2025fall-yy-mid"
 
     In a B+ tree, internal nodes store both index keys and actual data records.
-
+    
     这是错的，不包含data records.
 
-??? notes "2025fall-yy-mid"
+???+ notes "2025fall-yy-mid"
 
     Insert 10, 20, 30, 40, 50, 60, 70, 80 into an initially empty 3-order B+ tree (i.e., each internal node can hold at most 2 keys). After all insertions, which of the following statements is TRUE?
     
@@ -847,25 +915,63 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
     B. The root node contains key 60<br>
     C. The height of the tree is 3<br>
     D. The leftmost leaf node contains keys [10, 20, 30]
-
+    
     选C.
     
     <center><img src = "../figures/ads/yymid2.png" style="zoom: 50%;"/></center>
-
+    
     来源：[USFCA可视化板-B+树](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
 
-??? tips "xyx-1"
+???+ tips "xyx-1"
 
     A B+ tree of order 3 with 21 numbers has at least __ nodes of degree 2. 
-
+    
     答案是0.
-
+    
     Which of the following statements concerning a B+ tree of order $M$ is TRUE?
     A.the root always has between $2$ and $M$ children<br>
     B.not all leaves are at the same depth<br>
     C.leaves and nonleaf nodes have some key values in common<br>
     D.all nonleaf nodes have between $\lceil M/2 \rceil$ and $M$ children
-
+    
     选C.<br>
     A: The root is either a leaf or has between $2$ and $M$ children.<br>
     D: All nonleaf nodes (except the root) have between $\lceil M/2 \rceil$ and $M$ children.
+
+???+ tips "Final Practice 填空"
+
+    ```c
+    static int order = DEFAULT_ORDER;
+    typedef struct BpTreeNode BpTreeNode;
+    struct BpTreeNode {
+        BpTreeNode** childrens;  /* Pointers to childrens. This field is not used by leaf nodes. */
+        ElementType* keys;
+        BpTreeNode* parent;
+        bool isLeaf;  /* 1 if this node is a leaf, or 0 if not */
+        int numKeys;  /* This field is used to keep track of the number of valid keys. 
+        In an internal node, the number of valid pointers is always numKeys + 1. */
+    };
+    
+    bool FindKey(BpTreeNode * const root, ElementType key){
+        if (root == NULL) {
+                return false;
+        }
+        int i = 0;
+        BpTreeNode * node = root;
+        while (/* Blank 1 */) {
+            i = 0;
+            while (i < node->numKeys) {
+                if (/* Blank 2 */) i++;
+                else break;
+            }
+            node = node->childrens[i];
+        }
+        for(i = 0; i < node->numKeys; i++){
+            if(node->keys[i] == key)
+                return true;
+        }
+        return false;
+    }
+    ```
+    
+    答案：`node != NULL && !node->isLeaf`以及`keys[i] < key`.

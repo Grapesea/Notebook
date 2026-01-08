@@ -18,7 +18,7 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 * **理想化假设：** 访问内存的时间是单位时间（Unit time），忽略了现实中缓存、总线竞争等复杂因素.
 * **指令：** 使用 `pardo` (parallel do) 关键字，表示后面的循环是所有处理器同时并行执行的.
 
-??? tips "举例"
+???+ tips "举例"
 
     执行单个语句：`c:=a+b`时：
 
@@ -59,7 +59,7 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 * 第二轮：将上一轮的结果再两两相加. 
 * 这就构成了一棵二叉树. 
 
-??? tips "pseudocode"
+???+ tips "pseudocode"
 
     ```pseudocode
     for i in range(1,n): (pardo)
@@ -106,7 +106,7 @@ $$W(n) = \text{total number of operations}, T(n) = \text{worst-case running time
 
 ### PTA习题
 
-??? tips "Final Practice 2 2-7"
+???+ tips "Final Practice 2 2-7"
 
     <center><img src = "../figures/parallel/f2.2-7.png" style = "zoom:60%"/></center>
 
@@ -132,7 +132,7 @@ $$C(h,i) = \begin{cases}
     C(h+1, \dfrac{i-1}{2}) + B(h, i) & i \text{为大于1的奇数}
 \end{cases}$$
 
-??? tips "pseudocode"
+???+ tips "pseudocode"
 
     ```python
     for P_i, i in range(1,n): pardo
@@ -192,27 +192,27 @@ n &  B(j) > A(n)
 
 原理：
 
-1. 初始化数组 $B(1),B(2),…,B(m)$ 全为 0. 
-2. 并行地对所有可能的数对进行比较. 
-3. 如果 $A[i] < A[j]$，则说明$A[i]$肯定不是最大值，将$B[i]$标记为 1. 
-4. 最后，只有 $B[i]$ 仍为 0 的那个索引对应的 $A[i]$ 是最大值. 
+1. 初始化数组 $B(1),B(2),…,B(m)$ 全为 0.
+2. 并行地对所有可能的数对进行比较.
+3. 如果 $A[i] < A[j]$，则说明$A[i]$肯定不是最大值，将$B[i]$标记为 1.
+4. 最后，只有 $B[i]$ 仍为 0 的那个索引对应的 $A[i]$ 是最大值.
 
 复杂度推导：
 
-* 深度 $D = O(n)$：所有比较是同时进行的，只需要一步. 
+* 深度 $D = O(n)$：所有比较是同时进行的，只需要一步.
 * 工作量 $W = O(n^2)$：因为有 $n^2$ 对组合需要比较.
-* **局限性：虽然极快，但工作量太大，不适合处理大规模数据**. 
+* **局限性：虽然极快，但工作量太大，不适合处理大规模数据**.
 
 ### 双对数范式 (Doubly-logarithmic Paradigm)
 
-为了平衡速度和工作量，这里引入了分治思想. 
+为了平衡速度和工作量，这里引入了分治思想.
 
 **第一阶段：递归分治 (Partition by $\sqrt n$)**
 
-原理：将 $n$ 个元素分成 $\sqrt n$ 个组，每组有 $\sqrt n$ 个元素. 
+原理：将 $n$ 个元素分成 $\sqrt n$ 个组，每组有 $\sqrt n$ 个元素.
 
-1. 递归地在每个组内找最大值（得到 $\sqrt n$ 个局部最大值 $M_i$）. 
-2. 对这 $\sqrt n$ 个局部最大值，使用上面的“双两比较”法找全局最大值. 
+1. 递归地在每个组内找最大值（得到 $\sqrt n$ 个局部最大值 $M_i$）.
+2. 对这 $\sqrt n$ 个局部最大值，使用上面的“双两比较”法找全局最大值.
 
 于是：
 
@@ -247,3 +247,11 @@ n &  B(j) > A(n)
 * 由于 $M$ 是从足够大的样本中选出的，极高概率出现的情况是，剩下的元素数量非常少. 如果的确如此，再次调用 $O(1)$ 算法即可收尾. 
 
 容易知道 $D = O(1)$：在 CRCW 模型下，步骤固定，不随 $n$ 增长；$W = O(n)$：每一步的分组和比较设计都控制在 $O(n)$ 以内，并且有以下定理：该算法以 $1 - 1/n^c$ 的概率（即几乎肯定）在常数时间内找到最大值. 这就保证该算法的可行性.
+
+## PTA习题
+
+???+ tips "8.1-3"
+
+    <center><img src = "../figures/parallel/8.1-3.png" style = "zoom:60%"/></center>
+
+    从上面的CRCW看出可以具有$W(n) = \Theta(n)$的策略.

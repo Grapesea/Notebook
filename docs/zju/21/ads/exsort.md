@@ -48,7 +48,7 @@ $$ 1 + \lceil \log_k(N/M) \rceil \text{（“1” 是初始生成段的那一趟
 
 但是就会出现问题：需要$2k$个tape，消耗太多资源，不够好!
 
-### Modified-Ver. (Less tapes)
+### Modified-Ver. ($k+1$ tapes)
 
 如果想要在2-way merge时只使用3个tape呢？
 
@@ -56,7 +56,7 @@ $$ 1 + \lceil \log_k(N/M) \rceil \text{（“1” 是初始生成段的那一趟
 
 进一步地，扩展到k-way时，我们实际上要保证的是：
 
-$$F_N^{(k)} = \sum\limits_{i=1}^{(k)} F_{N-i}^{(k)}$$
+$$F_N^{(k)} = \sum\limits_{i=1}^{N-1} F_{N-i}^{(k)}$$
 
 这样就能做到始终只需要恰好多出1条tape作缓冲，总计花费$(k+1)$条tape来实现k-Way Merge.
 
@@ -74,6 +74,8 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{(k)} F_{N-i}^{(k)}$$
 
 如果我们进行 $2$ 路归并，只能给输入 $A$ 一个块，输入 $B$ 一个块，输出一个块. 这种配置下，无法实现并行操作。CPU 处理完一个块后，必须停下来等待磁盘加载下一个块，导致硬件利用率极低.
 
+> 如果是$k$-way，需要$2k$个input buffer以及$2$个output buffer.
+
 ### k的理想值
 
 增加 $k$ 能减少pass数，但 $k$ 并非越大越好.
@@ -84,7 +86,7 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{(k)} F_{N-i}^{(k)}$$
 
 ### Replacement Selection（置换选择）
 
-为了进一步减少归并趟数，可以使用堆结构生成长度平均为 $2M$ 的段. 如果能让初始段变长，初始段的总数 $N/M$ 就会变小.
+为了进一步减少归并趟数，可以使用**Huffman Tree结构**生成长度平均为 $2M$ 的段. 如果能让初始段变长，初始段的总数 $N/M$ 就会变小.
 
 原理：内存中维护一个大小为$M$的最小堆. 每次输出当前可用的最小值，再用新读入的值替换已输出的值. 新读入的值如果 $\geq$ 刚输出的值，可以继续属于当前run；如果 $<$ 刚输出的值，则标记为下一个run.
 
@@ -100,10 +102,18 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{(k)} F_{N-i}^{(k)}$$
 
 ## PTA习题
 
-??? tips "8.1-5~8"
+???+ tips "8.1-5~8"
 
     <center><img src = "../figures/exsort/1-5,8.png" style="zoom: 60%;"/></center>
 
-??? tips "Final Practice 2 2-11"
+    TTFT，需要补充的是最后一题，曾经期末出了这道题：
 
-    <center><img src = "../figures/exsort/f2.2-11.png" style = "zoom:60%"/></center>
+    > In general, for a 3-way merge we need 6 input buffers and 2 output buffers for decreasing the number of passes. (F)
+
+    事实上，将输入输出缓冲区分开不能降低pass数，而是便于进行并行操作从而提升处理效率.
+
+???+ tips "Final Practice 2 2-16"
+
+    <center><img src = "../figures/exsort/f2.2-16.png" style = "zoom:60%"/></center>
+
+    A
