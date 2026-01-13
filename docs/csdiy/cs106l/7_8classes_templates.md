@@ -177,5 +177,18 @@ template <class T> Vector<T>::Vector(int size): m_nsize(0), m_nCapacity(size){
     m_pElements = size > 0 ? new T[size] : nullptr;
 }
 
+template <class T> Vector<T>::Vector(const Vector& r): m_nSize(r.m_nSize), m_nCapacity(r.m_nCapacity){
+    m_pElements = m_nCapacity > 0 ? new T[m_nCapacity] : nullptr;
+    for (int i = 0; i < m_nSize; i++)
+        m_pElements[i] = r.m_pElements[i];
+}
+
+template <class T> Vector<T>::~Vector(){
+    delete[] m_pElements;
+}
+
+template <class T> Vector<T>::operator[](int index){
+    
+}
 
 ```
