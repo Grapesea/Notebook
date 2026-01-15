@@ -119,6 +119,7 @@ nav:
           - Week4: zju/21/oop/4.md
           - Week5: zju/21/oop/5.md
           - Week6: zju/21/oop/6.md
+          - 考前抱佛脚: zju/21/oop/review.md
         - 课程作业题干: 
           - Lab 1: zju/21/oop/lab/1.md
           - Lab 2: zju/21/oop/lab/2.md
@@ -155,10 +156,12 @@ nav:
         - 概述: zju/22/dm/index.md
         - 笔记: zju/22/dm/dm.md
       - 工程图学(H):
-        - 概述: zju/22/eng/index.md
+        - 概述: zju/22/graphics/index.md
       - 生命科学导论(H):
         - 概述: zju/22/bio/index.md
         - 笔记: zju/22/bio/bio.md
+      - 中国书画鉴赏:
+        - 概述: zju/22/art/index.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
     - CS70: 
@@ -253,11 +256,12 @@ nav:
     - 图灵完备(Turing Complete): 
       - 导航: oj/turingcomplete/index.md
       - 题解: oj/turingcomplete/writeup.md
-  - 工具备忘:
+  - 编程语言&工具备忘:
     - 工具目录: tools/index.md
     - Markdown: tools/markdown.md
     - Linux: tools/linux.md
     - Python: tools/python.md
+    - C++: tools/cpp.md
     - Windows Command Line: tools/bash.md
     - Windows小tips: tools/windows.md
     - JavaScript语言: tools/JavaScript.md
