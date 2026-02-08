@@ -164,6 +164,8 @@ nav:
         - 概述: zju/22/art/index.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
+    - CS61C:
+      - 课程计划: csdiy/cs61c/index.md
     - CS70: 
       - 课程计划: csdiy/cs70/index.md
       - Proof & Stable matching: csdiy/cs70/1.md
@@ -177,6 +179,29 @@ nav:
       - Game Trees: csdiy/cs188/4.md
       - MDPs: csdiy/cs188/5.md
       - Appendix:Logic: csdiy/cs188/appendix.md
+    - NJU-SICP:
+      - 课程计划: csdiy/sicp-NJU/index.md
+      - lec1-6: csdiy/sicp-NJU/lec1-6.md
+    - NJU-ICSPA:
+      - 课程计划: csdiy/icspa-NJU/index.md
+    - CS106L:
+      - 课程计划: csdiy/cs106l/index.md
+      - Lec1-Brief Introduction: csdiy/cs106l/1intro.md
+      - Lec2-Types and Struct: csdiy/cs106l/2types.md
+      - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
+      - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
+      - Lec7&8-Classes, Template Classes: csdiy/cs106l/7_8classes_templates.md
+      - Lec9-Template Functions: csdiy/cs106l/9templatefuncs.md
+      - Lec10-Functions and Lambdas: csdiy/cs106l/10functions.md
+      - Lec11-Operators: csdiy/cs106l/11operators.md
+      - Lec12-Special Member Functions: csdiy/cs106l/12specialmembers.md
+      - Lec13-Move Semantics: csdiy/cs106l/13movesemantics.md
+      - Lec14-std::optional and Type Safety: csdiy/cs106l/14optional.md
+      - Lec15-RAII, Smart Pointers, and Building C++ Projects: csdiy/cs106l/15raii.md
+    - MIT 6.1600:
+      - 课程计划: csdiy/mit6.1600/index.md
+    - CSAPP:
+      - 课程计划: csdiy/csapp/index.md
     - 李沐动手学深度学习:
       - 课程计划: csdiy/d2l/index.md
       - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
@@ -202,29 +227,12 @@ nav:
       - Chap 10:降维与主成分分析: csdiy/datawhale_m4ai/10.md
       - Chap 11:密度估计和Gauss混合模型: csdiy/datawhale_m4ai/11.md
       - Chap 12:分类和支持向量机: csdiy/datawhale_m4ai/12.md
-    - CS61C:
-      - 课程计划: csdiy/cs61c/index.md
-    - MIT 6.046J:
-      - 课程计划: csdiy/mit6046j/index.md
-    - CS106L:
-      - 课程计划: csdiy/cs106l/index.md
-      - Lec1-Brief Introduction: csdiy/cs106l/1intro.md
-      - Lec2-Types and Struct: csdiy/cs106l/2types.md
-      - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
-      - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
-      - Lec7&8-Classes, Template Classes: csdiy/cs106l/7_8classes_templates.md
-      - Lec9-Template Functions: csdiy/cs106l/9templatefuncs.md
-      - Lec10-Functions and Lambdas: csdiy/cs106l/10functions.md
-      - Lec11-Operators: csdiy/cs106l/11operators.md
-      - Lec12-Special Member Functions: csdiy/cs106l/12specialmembers.md
-      - Lec13-Move Semantics: csdiy/cs106l/13movesemantics.md
-      - Lec14-std::optional and Type Safety: csdiy/cs106l/14optional.md
-      - Lec15-RAII, Smart Pointers, and Building C++ Projects: csdiy/cs106l/15raii.md
-    - CSAPP:
-      - 课程计划: csdiy/csapp/index.md
   - CTF: 
     - 笔记目录: ctf/index.md
     - CTF101笔记: ctf/ctf101.md
+    - Web笔记:
+      - 导航: ctf/web/index.md
+      - 西电CTF平台: ctf/web/xidianmoe.md
     - crypto笔记: 
       - 导航: ctf/crypto/index.md
       - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
@@ -241,6 +249,9 @@ nav:
       - 长城杯2025: ctf/crypto/ccb2025.md
     - NewStarCTF2025:
       - 题解: ctf/newstarctf2025/writeup.md
+  - 科研学习:
+    - 收集帖: lab/index.md
+    - Infiniflow: lab/infiniflow.md
   - OJ笔记:
     - OJ笔记导航: oj/index.md
     - LeetCode: 
@@ -272,6 +283,8 @@ nav:
       - 2026个人向新年展望: gadgets/article/2026ny.md
     - 摄影从0开始:
       - 资源目录: gadgets/photography/index.md
+    - 旅途记录:
+      - 上海一日游: gadgets/travel/tour_sh_1.md
   - 友链:
     - Grapesea的朋友们: friends/friends.md
     - Grapesea的其他联系方式: friends/contact.md

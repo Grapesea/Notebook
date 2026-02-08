@@ -28,6 +28,8 @@
     [BUUCTF](https://buuoj.cn/challenges)
     $\quad$
     [CryptoHack](https://cryptohack.org/challenges)
+    $\quad$
+    [攻防世界](https://adworld.xctf.org.cn/home/index)
 
 ???+ info "一些价值极高的密码学博客/文章"
 

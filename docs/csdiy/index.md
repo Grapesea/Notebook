@@ -11,12 +11,32 @@
 </thead>
 <tbody>
     <tr>
-        <td><a href="cs70/">CS70课程笔记</a></td>
+        <td><a href="cs70/">CS70笔记</a></td>
         <td>CS70 UC Berkley: Discrete Math, 2025 Summer</td>
     </tr>
     <tr>
-        <td><a href="cs188/">CS188课程笔记</a></td>
+        <td><a href="cs188/">CS188笔记</a></td>
         <td>CS188 UC Berkley: Introduction to Artificial Intelligence, 2025 Spring</td>
+    </tr>
+    <tr>
+        <td><a href="cs106l/">CS106L笔记</a></td>
+        <td>CS106L Stanford: Standard C++ Programming, 2022 </td>
+    </tr>
+    <tr>
+        <td><a href="csapp/">CSAPP笔记</a></td>
+        <td>CSAPP CMU</td>
+    </tr>
+    <tr>
+        <td><a href="sicp-NJU/">NJU-SICP笔记</a></td>
+        <td>NJU-SICP: 2025 Fall, 程序的构造与解释</td>
+    </tr>
+    <tr>
+        <td><a href="icspa-NJU/">NJU-ICSPA笔记</a></td>
+        <td>NJU-ICSPA: 2025 Spring</td>
+    </tr>
+    <tr>
+        <td><a href="mit6.1600/">MIT 6.1600: 笔记</a></td>
+        <td>NJU-ICSPA: 2025 Spring</td>
     </tr>
     <tr>
         <td><a href="datawhale_mm/">Datawhale Mathematical Modeling课程笔记</a></td>
@@ -25,22 +45,6 @@
     <tr>
         <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence课程笔记</a></td>
         <td>Datawhale人工智能数学基础开源课程</td>
-    </tr>
-    <tr>
-        <td><a href="cs61c/">CS61C笔记</a></td>
-        <td>CS61C UC Berkley: Computer Architecture (Machine Structures), 2025 Fall</td>
-    </tr>
-    <tr>
-        <td><a href="mit6.046j/">MIT 6.046J笔记</a></td>
-        <td>MIT 6.046J: Design and Analysis of Algorithms, 2015 Spring</td>
-    </tr>
-    <tr>
-        <td><a href="cs106l/">CS106L笔记</a></td>
-        <td>CS106L Stanford: Standard C++ Programming, 2022 </td>
-    </tr>
-    <tr>
-        <td><a href="csapp/">CSAPP笔记</a></td>
-        <td>CSAPP CMU: </td>
     </tr>
 </tbody>
 </table>
