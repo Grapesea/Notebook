@@ -88,15 +88,15 @@
             <div class="info">Where flowers bloom, where dreams come true.</div>
         </div>
     </div>
-    <!--<div class="card">
-        <img class="ava" src="" />
+    <<div class="card">
+        <img class="ava" src="../figures/ladygege.jpg" />
         <div class="card-header">
         <div>
-            <a href="" target="_blank">'s blog</a>
+            <a href="https://ladygege2494.github.io/" target="_blank">GegeNook</a>
         </div>
-        <div class="info"></div>
+        <div class="info">不拘一格</div>
         </div>
-    </div>-->
+    </div>>
     <!--<div class="card">
         <img class="ava" src="" />
         <div class="card-header">
