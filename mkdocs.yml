@@ -152,9 +152,14 @@ nav:
         - 笔记: zju/22/db/db.md
       - 计算机体系结构:
         - 概述: zju/22/arch/index.md
+      - 机器学习在数据分析上的实际运用（国际化课程）:
+        - 概述: zju/22/ml/index.md
       - 离散数学: 
         - 概述: zju/22/dm/index.md
         - 笔记: zju/22/dm/dm.md
+      - 中国现当代文学史I:
+        - 概述: zju\22\lit\index.md
+        - 阅读材料: zju\22\lit\reading.md
       - 工程图学(H):
         - 概述: zju/22/graphics/index.md
       - 生命科学导论(H):
@@ -162,11 +167,12 @@ nav:
         - 笔记: zju/22/bio/bio.md
       - 中国书画鉴赏:
         - 概述: zju/22/art/index.md
+        - 笔记: zju/22/art/lec.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
     - CS61C:
       - 课程计划: csdiy/cs61c/index.md
-    - CS70: 
+    - CS70 (√): 
       - 课程计划: csdiy/cs70/index.md
       - Proof & Stable matching: csdiy/cs70/1.md
       - Graph & Number theory & RSA: csdiy/cs70/2.md
@@ -179,9 +185,11 @@ nav:
       - Game Trees: csdiy/cs188/4.md
       - MDPs: csdiy/cs188/5.md
       - Appendix:Logic: csdiy/cs188/appendix.md
-    - NJU-SICP:
+    - NJU-SICP (√):
       - 课程计划: csdiy/sicp-NJU/index.md
       - lec1-6: csdiy/sicp-NJU/lec1-6.md
+      - lec7-12: csdiy\sicp-NJU\lec7-12.md
+      - lec13-18: csdiy\sicp-NJU\lec13-18.md
     - NJU-ICSPA:
       - 课程计划: csdiy/icspa-NJU/index.md
     - CS106L:
@@ -198,10 +206,11 @@ nav:
       - Lec13-Move Semantics: csdiy/cs106l/13movesemantics.md
       - Lec14-std::optional and Type Safety: csdiy/cs106l/14optional.md
       - Lec15-RAII, Smart Pointers, and Building C++ Projects: csdiy/cs106l/15raii.md
-    - MIT 6.1600:
-      - 课程计划: csdiy/mit6.1600/index.md
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
+    - CMU 15-445:
+      - 课程计划: csdiy\cmu15-445\index.md
+      - Lec1-10: csdiy\cmu15-445\1-10.md
     - 李沐动手学深度学习:
       - 课程计划: csdiy/d2l/index.md
       - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
@@ -227,6 +236,8 @@ nav:
       - Chap 10:降维与主成分分析: csdiy/datawhale_m4ai/10.md
       - Chap 11:密度估计和Gauss混合模型: csdiy/datawhale_m4ai/11.md
       - Chap 12:分类和支持向量机: csdiy/datawhale_m4ai/12.md
+    - Datawhale Hello-agent:
+      - 课程计划: csdiy\datawhale_hello_agent\index.md
   - CTF: 
     - 笔记目录: ctf/index.md
     - CTF101笔记: ctf/ctf101.md
@@ -270,12 +281,14 @@ nav:
   - 编程语言&工具备忘:
     - 工具目录: tools/index.md
     - Markdown: tools/markdown.md
-    - Linux: tools/linux.md
+    - Linux工具: tools/linux.md
+    - Linux指令: tools/Linux_command.md
     - Python: tools/python.md
     - C++: tools/cpp.md
     - Windows Command Line: tools/bash.md
     - Windows小tips: tools/windows.md
     - JavaScript语言: tools/JavaScript.md
+    - Marp插件配置: tools\marp.md
   - 储物柜:
     - Grapesea的小创作: 
       - 目录: gadgets/article/index.md

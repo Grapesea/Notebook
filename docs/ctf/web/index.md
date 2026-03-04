@@ -2,6 +2,6 @@
 
 ???+ info "Web 工具资源"
 
-    [密文反向查询-cmd5.com](cmd5.com)
+    [密文反向查询-cmd5.com](https://cmd5.com)
 
     [GitHack](https://github.com/BugScanTeam/GitHack)

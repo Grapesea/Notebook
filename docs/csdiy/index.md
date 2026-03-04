@@ -11,40 +11,44 @@
 </thead>
 <tbody>
     <tr>
-        <td><a href="cs70/">CS70笔记</a></td>
+        <td><a href="cs70/">CS70（√）</a></td>
         <td>CS70 UC Berkley: Discrete Math, 2025 Summer</td>
     </tr>
     <tr>
-        <td><a href="cs188/">CS188笔记</a></td>
+        <td><a href="cs188/">CS188</a></td>
         <td>CS188 UC Berkley: Introduction to Artificial Intelligence, 2025 Spring</td>
     </tr>
     <tr>
-        <td><a href="cs106l/">CS106L笔记</a></td>
+        <td><a href="cs106l/">CS106L</a></td>
         <td>CS106L Stanford: Standard C++ Programming, 2022 </td>
     </tr>
     <tr>
-        <td><a href="csapp/">CSAPP笔记</a></td>
-        <td>CSAPP CMU</td>
+        <td><a href="csapp/">CSAPP</a></td>
+        <td>CSAPP: CMU, 计算机系统</td>
     </tr>
     <tr>
-        <td><a href="sicp-NJU/">NJU-SICP笔记</a></td>
+        <td><a href="cmu15-445/">CMU 15-445</a></td>
+        <td>CMU 15-445: CMU, 2025Fall, 数据库系统</td>
+    </tr>
+    <tr>
+        <td><a href="sicp-NJU/">NJU-SICP（√）</a></td>
         <td>NJU-SICP: 2025 Fall, 程序的构造与解释</td>
     </tr>
     <tr>
-        <td><a href="icspa-NJU/">NJU-ICSPA笔记</a></td>
+        <td><a href="icspa-NJU/">NJU-ICSPA</a></td>
         <td>NJU-ICSPA: 2025 Spring</td>
     </tr>
     <tr>
-        <td><a href="mit6.1600/">MIT 6.1600: 笔记</a></td>
-        <td>NJU-ICSPA: 2025 Spring</td>
-    </tr>
-    <tr>
-        <td><a href="datawhale_mm/">Datawhale Mathematical Modeling课程笔记</a></td>
+        <td><a href="datawhale_mm/">Datawhale Mathematical Modeling</a></td>
         <td>Datawhale数学建模导论开源课程</td>
     </tr>
     <tr>
-        <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence课程笔记</a></td>
+        <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence</a></td>
         <td>Datawhale人工智能数学基础开源课程</td>
+    </tr>
+    <tr>
+        <td><a href="datawhale_hello_agent/">Datawhale Hello-agent</a></td>
+        <td>Datawhale Hello-agent开源课程</td>
     </tr>
 </tbody>
 </table>
