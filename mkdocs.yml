@@ -170,6 +170,9 @@ nav:
         - 笔记: zju/22/art/lec.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
+    - CS61B:
+      - 课程计划: csdiy/cs61b/index.md
+      - lec1-10: csdiy/cs61b/lec1-10.md
     - CS61C:
       - 课程计划: csdiy/cs61c/index.md
     - CS70 (√): 
@@ -188,8 +191,8 @@ nav:
     - NJU-SICP (√):
       - 课程计划: csdiy/sicp-NJU/index.md
       - lec1-6: csdiy/sicp-NJU/lec1-6.md
-      - lec7-12: csdiy\sicp-NJU\lec7-12.md
-      - lec13-18: csdiy\sicp-NJU\lec13-18.md
+      - lec7-12: csdiy/sicp-NJU/lec7-12.md
+      - lec13-18: csdiy/sicp-NJU/lec13-18.md
     - NJU-ICSPA:
       - 课程计划: csdiy/icspa-NJU/index.md
     - CS106L:
@@ -266,12 +269,15 @@ nav:
   - OJ笔记:
     - OJ笔记导航: oj/index.md
     - LeetCode: 
-      - 导航: oj/leetcode/index.md
-      - 数组: oj/leetcode/int.md
-      - 链表: oj/leetcode/linklist.md
-      - 回溯: oj/leetcode/backtrack.md
-      - 动态规划: oj/leetcode/dp.md
-      - 贪心: oj/leetcode/greedy.md
+      - 导航: oj/leetcode/c++/index.md
+      - C++:
+        - 数组: oj/leetcode/c++/int.md
+        - 链表: oj/leetcode/c++/linklist.md
+        - 回溯: oj/leetcode/c++/backtrack.md
+        - 动态规划: oj/leetcode/c++/dp.md
+        - 贪心: oj/leetcode/c++/greedy.md
+      - MySQL:
+        - 整理: oj/leetcode/sql/note.md
     - USTC Verilog OJ: 
       - 导航: oj/ustcverilog/index.md
       - 题解: oj/ustcverilog/writeup.md

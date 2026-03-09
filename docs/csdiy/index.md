@@ -39,8 +39,8 @@
         <td>NJU-ICSPA: 2025 Spring</td>
     </tr>
     <tr>
-        <td><a href="datawhale_mm/">Datawhale Mathematical Modeling</a></td>
-        <td>Datawhale数学建模导论开源课程</td>
+        <td><a href="cs61b/">CS61B</a></td>
+        <td>CS61B UC Berkley: Data Structure and Algorithms</td>
     </tr>
     <tr>
         <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence</a></td>
