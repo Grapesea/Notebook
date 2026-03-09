@@ -168,6 +168,12 @@ nav:
       - 中国书画鉴赏:
         - 概述: zju/22/art/index.md
         - 笔记: zju/22/art/lec.md
+      - 毛概:
+        - 概述: zju/22/mao/index.md
+      - 创新创业实践启蒙:
+        - 概述: zju/22/busi/index.md
+      - 大学生朋辈心理辅导:
+        - 概述: zju/22/psy/index.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
     - CS61B:
@@ -295,6 +301,7 @@ nav:
     - Windows小tips: tools/windows.md
     - JavaScript语言: tools/JavaScript.md
     - Marp插件配置: tools\marp.md
+    - Claude-Projects Prompts: tools/claude-projects.md
   - 储物柜:
     - Grapesea的小创作: 
       - 目录: gadgets/article/index.md

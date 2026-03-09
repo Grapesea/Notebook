@@ -20,12 +20,17 @@
     <tr>
         <td><a href="ml/">机器学习在数据分析上的实际运用（国际化）笔记</td>
         <td><a href="graphics/">工程图学（H）资料</a></td>
-        <td><a href="eco/">创新创业实践启蒙资料</a></td>
+        <td><a href="busi/">创新创业实践启蒙资料</a></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
+        <td><a href="psy/">大学生朋辈心理辅导资料</a></td>
+    </tr>
+    <tr>
         <td></td>
+        <td></td>
+        <td><a href="mao/">毛概资料</a></td>
     </tr>
 </tbody>
 </table>

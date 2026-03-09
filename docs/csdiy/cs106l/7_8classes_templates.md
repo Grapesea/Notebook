@@ -343,11 +343,13 @@ template class的另一些例子：
 
 ## Templates
 
-
+目标：写一次，适用于所有类型的变量
 
 
 
 ## Template Functions
+
+`<typename T>`表示是对`T`类型的模板函数，后面跟着的`T`是函数返回类型，用引用防止复制
 
 ```c++
 template <typename T>
