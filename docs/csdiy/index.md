@@ -19,12 +19,12 @@
         <td>CS188 UC Berkley: Introduction to Artificial Intelligence, 2025 Spring</td>
     </tr>
     <tr>
-        <td><a href="cs106l/">CS106L</a></td>
-        <td>CS106L Stanford: Standard C++ Programming, 2022 </td>
+        <td><a href="cs106l/">CS106L（√）</a></td>
+        <td>CS106L Stanford: Standard C++ Programming, 2022/2025 </td>
     </tr>
     <tr>
-        <td><a href="csapp/">CSAPP</a></td>
-        <td>CSAPP: CMU, 计算机系统</td>
+        <td><a href="csapp/">CMU15-213: CSAPP</a></td>
+        <td>CMU15-213: CSAPP (计算机系统)</td>
     </tr>
     <tr>
         <td><a href="cmu15-445/">CMU 15-445</a></td>
@@ -49,6 +49,14 @@
     <tr>
         <td><a href="datawhale_hello_agent/">Datawhale Hello-agent</a></td>
         <td>Datawhale Hello-agent开源课程</td>
+    </tr>
+    <tr>
+        <td><a href="math_founda_rein_learn/">强化学习的数学原理</a></td>
+        <td>西湖大学赵世钰老师开源课程</td>
+    </tr>
+    <tr>
+        <td><a href="d2l/">动手学深度学习：李沐</a></td>
+        <td>李沐老师2021年深度学习开源课程</td>
     </tr>
 </tbody>
 </table>

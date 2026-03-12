@@ -335,12 +335,6 @@ template class的另一些例子：
     }
     ```
 
-### 例子：realVector.cpp
-
-回顾iterator，它是vector的一个**member type**.
-
-
-
 ## Templates
 
 目标：写一次，适用于所有类型的变量
@@ -349,7 +343,7 @@ template class的另一些例子：
 
 ## Template Functions
 
-`<typename T>`表示是对`T`类型的模板函数，后面跟着的`T`是函数返回类型，用引用防止复制
+`<typename T>`表示是对`T`类型的模板函数，后面跟着的`T`是函数返回类型，用`&`引用防止复制
 
 ```c++
 template <typename T>
@@ -358,3 +352,170 @@ template <typename T>
 }
 ```
 
+### Template Function的使用
+
+**显式实例化：（explicit instantiation）**
+
+```cpp
+min<int>(106, 107);       // T = int
+min<double>(1.2, 3.4);    // T = double
+min<std::string>("cat", "dog"); // T = std::string
+```
+
+实际上编译器完成的任务：
+
+```cpp
+int min(const int& a, const int& b) { return a < b ? a : b; }
+double min(const double& a, const double& b) { return a < b ? a : b; }
+// ... 等等
+```
+
+核心是Templates automate code generation.
+
+**隐式实例化：（Implicit Instantiation）**
+
+```cpp
+min(106, 107);   // compiler看到2个 int，推导出 T = int
+min(1.2, 3.4);   // 推导出 T = double
+```
+
+这就等价于
+
+```cpp
+min<int>(106, 107);
+min<double>(1.2, 3.4);
+```
+
+???+ warning "Pitfall-1"
+
+    在隐式推导时，传入的“字符串”不会被自动推导成`std::string`，而是`const char*`，如：
+
+    ```cpp
+    min("Thomas", "Rachel");
+    ```
+
+    推导出的结果是：
+
+    ```cpp
+    const char* min(const char* a, const char* b) {
+        return a < b ? a : b;
+    }
+    ```
+
+    这是毫无意义的，因为实际上比较的是指针所在的内存地址. 所以这里就必须使用explicit instantiation：
+
+    ```cpp
+    min<std::string>("Thomas", "Rachel");  // const char* 被轉換為 std::string
+    ```
+
+???+ warning "Pitfall-2"
+
+    第二个需要注意的问题是类别匹配问题：
+
+    ```cpp
+    min(106, 3.14);
+    ```
+
+    此时编译器无法判断类型，直接报错.
+
+    解决方法：
+
+    ```cpp
+    min<double>(106, 3.14);  // int  double
+    ```
+
+    或者用两个模板参数：
+
+    ```cpp
+    template <typename T, typename U>
+    auto min(const T& a, const U& b) {
+        return a < b ? a : b;
+    }
+    min(106, 3.14);  // T = int, U = double，不会报错
+    ```
+
+### concepts：给template加上限制条件
+
+如果运算被应用在了不支持运算符的template上面，就会出现实例化之前的错误，报错信息难读取. 于是C++20引入了`concept`.
+
+比如：
+
+```cpp
+template <typename T>
+concept Comparable = requires(const T a, const T b) {
+    { a < b } -> std::convertible_to<bool>;
+};
+```
+
+定义一个叫 `Comparable` 的 `concept`，要求`a < b`必须编译成立，同时输出类型是`bool`.
+
+```cpp
+template <typename T> requires Comparable<T> T min(const T& a, const T& b);
+
+// 更简洁
+template <Comparable T> T min(const T& a, const T& b);
+```
+
+此时传入`Stanford`，系统报错会直接落在不可比较的特性上，更加清楚.
+
+`std::`提供了许多内建concepts，如：
+
+```cpp
+template <std::input_iterator It, typename T>
+It find(It begin, It end, const T& value);
+// std::input_iterator 是内建 concept，确保 It 是合法的迭代器
+```
+
+### 可变参数模板（Variadic Templates）
+
+我们希望让模板函数可以接受任意数量的参数.
+
+```cpp
+template <Comparable T> T min(const T& v){
+    return v;
+}
+
+template <Comparable T, Comparable... Args> T min(const T& v, const Args&... args){
+    auto m = min(args...);
+    return v < m ? v : m;
+}
+```
+
+### Template Metaprogramming（C++20以前）
+
+原因：template所有工作都在编译期完成，因此可以做一些计算.
+
+```cpp
+// 用 template struct 计算 Factorial
+template <size_t N>
+struct Factorial {
+    enum { value = N * Factorial<N-1>::value };  // 递归
+};
+
+template <>
+struct Factorial<0> {     // Base case：N=0 
+    enum { value = 1 };
+};
+
+std::cout << Factorial<7>::value;  // output: 5040
+```
+
+`Factorial<7>::value` 在编译时就已经是 5040 了！执行之后直接输出常数5040.
+
+???+ tips "`constexpr`和`consteval`"
+
+    C++20引入了`constexpr`和`consteval`，这进一步简化了求值：
+
+    ```cpp
+    // constexpr：「尽量在编译期执行」
+    constexpr size_t factorial(size_t n) {
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
+    }
+
+    // consteval：「必须在编译期执行，否则报错」
+    consteval size_t factorial(size_t n) {
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
+    }
+    ```

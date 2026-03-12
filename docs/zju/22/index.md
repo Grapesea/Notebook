@@ -36,3 +36,7 @@
 </table>
 
 <br/>
+
+好好活着吧xd，这没招了.
+
+<center><img src="ca.png" style="zoom: 75%;" /></center>`

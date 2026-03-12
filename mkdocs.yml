@@ -149,9 +149,11 @@ nav:
       - 导航: zju/22/index.md
       - 数据库系统: 
         - 概述: zju/22/db/index.md
-        - 笔记: zju/22/db/db.md
+        - Introduction: zju/22/db/db1.md
+        - Relational Model: zju/22/db/db2.md
       - 计算机体系结构:
         - 概述: zju/22/arch/index.md
+        - Chap 1: zju/22/arch/1.md
       - 机器学习在数据分析上的实际运用（国际化课程）:
         - 概述: zju/22/ml/index.md
       - 离散数学: 
@@ -207,14 +209,9 @@ nav:
       - Lec2-Types and Struct: csdiy/cs106l/2types.md
       - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
       - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
-      - Lec7&8-Classes, Template Classes: csdiy/cs106l/7_8classes_templates.md
-      - Lec9-Template Functions: csdiy/cs106l/9templatefuncs.md
-      - Lec10-Functions and Lambdas: csdiy/cs106l/10functions.md
-      - Lec11-Operators: csdiy/cs106l/11operators.md
-      - Lec12-Special Member Functions: csdiy/cs106l/12specialmembers.md
-      - Lec13-Move Semantics: csdiy/cs106l/13movesemantics.md
-      - Lec14-std::optional and Type Safety: csdiy/cs106l/14optional.md
-      - Lec15-RAII, Smart Pointers, and Building C++ Projects: csdiy/cs106l/15raii.md
+      - Lec7~9-Classes, Template Classes, Template Functions: csdiy/cs106l/7_8_9classes_templates_func.md
+      - Lec10~12-Functions, Lambda Functions, Operators and Special Member Functions: csdiy/cs106l/10functions.md
+      - Lec13~15-Move Semantics, std::optional, type safety, RAII, smart poiters: csdiy/cs106l/13_14_15move_semantics_optional_smart_pointer_raii.md
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
     - CMU 15-445:
@@ -224,6 +221,8 @@ nav:
       - 课程计划: csdiy/d2l/index.md
       - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
       - Note 2:数学基础: csdiy/d2l/mathbasics.md
+    - 强化学习的数学原理:
+      - 课程计划: csdiy/math_founda_rein_learn/index.md
     - Datawhale Mathematical Modeling:
       - 课程计划: csdiy/datawhale_mm/index.md
       - Chap 1:解析方法与几何模型: csdiy/datawhale_mm/1.md  
@@ -275,13 +274,13 @@ nav:
   - OJ笔记:
     - OJ笔记导航: oj/index.md
     - LeetCode: 
-      - 导航: oj/leetcode/c++/index.md
+      - 导航: oj/leetcode/cpp/index.md
       - C++:
-        - 数组: oj/leetcode/c++/int.md
-        - 链表: oj/leetcode/c++/linklist.md
-        - 回溯: oj/leetcode/c++/backtrack.md
-        - 动态规划: oj/leetcode/c++/dp.md
-        - 贪心: oj/leetcode/c++/greedy.md
+        - 数组: oj/leetcode/cpp/int.md
+        - 链表: oj/leetcode/cpp/linklist.md
+        - 回溯: oj/leetcode/cpp/backtrack.md
+        - 动态规划: oj/leetcode/cpp/dp.md
+        - 贪心: oj/leetcode/cpp/greedy.md
       - MySQL:
         - 整理: oj/leetcode/sql/note.md
     - USTC Verilog OJ: 
@@ -312,6 +311,7 @@ nav:
     - 旅途记录:
       - 上海一日游: gadgets/travel/tour_sh_1.md
       - 苏州1.5日游: gadgets/travel/suzhou_1.md
+      - 无锡1.5日游: gadgets/travel/wuxi_1.md
   - 友链:
     - Grapesea的朋友们: friends/friends.md
     - Grapesea的其他联系方式: friends/contact.md

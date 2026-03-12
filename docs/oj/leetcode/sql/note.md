@@ -1,5 +1,7 @@
 ## Leetcode MySQL
 
+> 免费的一共105题，争取刷干净
+
 176. 找出第二高的薪水，没有就返回NULL
 
 普通方法：
@@ -28,9 +30,114 @@ FROM Employee
 WHERE salary < (SELECT max(salary) FROM Employee);
 ```
 
+177.Nth Highest Salary
 
+在SQL中使用函数.
+
+```sql
+CREATE FUNCTION getNthHighestSalary(N INT) RETURN INT
+BEGIN 
+	DECLARE M INT; #声明局部变量并赋值
+	SET M = N-1;
+  RETURN (
+  	SELECT DISTINCT salary FROM Employee
+    ORDER BY salary DESC
+    LIMIT M,1 # 偏移量为N-1，取1条
+  );
+END
+```
 
 178.Rank Scores
 
-排名有三种：`RANK()`, `DENSE_RANK()`, `` 
+排名窗口函数：`RANK()`, `DENSE_RANK()`
 
+ ```sql
+ SELECT S.score,
+ 	DENSE_ARNK() OVER(
+     	ORDER BY
+         	S.Score DESC
+         AS 'rank'
+     )
+     FROM Scores S;
+ ```
+
+180.连续三天登录
+
+```sql
+select distinct l1.num as ConsecutiveNums 
+from Logs l1, Logs l2, Logs l3
+where l1.id = l2.id-1 and l2.id = l3.id-1 and l1.num = l2.num and l2.num = l3.num;
+```
+
+181.easy
+
+```sql
+select e1.name as Employee from Employee e1, Employee e2 where e1.managerId = e2.id and e1.salary > e2.salary
+```
+
+182.easy
+
+```sql
+select email as Email from Person group by email
+having COUNT(email) > 1
+```
+
+183.easy，用子查询
+
+```sql
+select name as Customers from Customers
+where Customers.id not in (select customerId from Orders);
+```
+
+法二：用left join筛选：
+
+```sql
+SELECT name AS 'Customers'
+FROM Customers
+LEFT JOIN Orders ON Customers.Id = Orders.CustomerId
+WHERE Orders.CustomerId IS NULL
+```
+
+
+
+184.有点麻烦
+
+先创建一个子表：
+
+```sql
+SELECT
+    DepartmentId, MAX(Salary)
+FROM
+    Employee
+GROUP BY DepartmentId;
+```
+
+获得了：
+
+| DepartmentId | MAX(Salary) |
+| ------------ | ----------- |
+| 1            | 90000       |
+| 2            | 80000       |
+
+然后使用join连接进行直接查询：
+
+```sql
+SELECT
+    d.name AS 'Department',
+    e.name AS 'Employee',
+    e.Salary FROM Employee e
+JOIN Department d ON e.DepartmentId = d.Id
+WHERE (e.DepartmentId , e.salary) IN
+    (SELECT DepartmentId, MAX(Salary) FROM Employee GROUP BY DepartmentId);
+```
+
+或者这样重新排版一下：
+
+```sql
+select d.name as Department, e.name as Employee, e.salary as Salary from
+Employee e join Department d on e.departmentId = d.id
+where (e.departmentId, e.salary) in
+(select departmentId, max(salary) from Employee group by departmentId);
+```
+
+9/105

@@ -2,7 +2,7 @@
     名称：Standard C++ Programming，
     [课程网站(2022 Spring)](https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1226/)
 
-    lab我完成的是2025 Fall版本.
+    lab我完成的是2025 Fall版本，地址[仓库](https://github.com/Grapesea/CS106L).
 
     包括的内容有：
 
