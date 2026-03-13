@@ -43,6 +43,10 @@
         <td>CS61B UC Berkley: Data Structure and Algorithms</td>
     </tr>
     <tr>
+        <td><a href="cs61c/">CS61C</a></td>
+        <td>CS61C UC Berkley: Great Ideas in Computer Architecture (Machine Structures) 2026 Spring</td>
+    </tr>
+    <tr>
         <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence</a></td>
         <td>Datawhale人工智能数学基础开源课程</td>
     </tr>

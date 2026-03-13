@@ -60,6 +60,7 @@ nav:
   - ZJU课程笔记: 
     - 导航栏: zju/index.md
     - 资源整合: zju/mix_resource.md
+    - ZJU妙妙工具: zju/tools.md
     - 大一教训总结: zju/exp1.md
     - 大一笔记拾遗: 
       - 导航: zju/12/index.md
@@ -162,6 +163,10 @@ nav:
       - 中国现当代文学史I:
         - 概述: zju\22\lit\index.md
         - 阅读材料: zju\22\lit\reading.md
+        - 阅读材料笔记-1: zju\22\lit\notes0.md
+        - 阅读材料笔记-2: zju\22\lit\notes1.md
+        - 课程笔记-1: zju\22\lit\notes2.md
+        - 课程笔记-2: zju\22\lit\notes3.md 
       - 工程图学(H):
         - 概述: zju/22/graphics/index.md
       - 生命科学导论(H):
@@ -183,7 +188,7 @@ nav:
       - lec1-10: csdiy/cs61b/lec1-10.md
     - CS61C:
       - 课程计划: csdiy/cs61c/index.md
-    - CS70 (√): 
+    - CS70: 
       - 课程计划: csdiy/cs70/index.md
       - Proof & Stable matching: csdiy/cs70/1.md
       - Graph & Number theory & RSA: csdiy/cs70/2.md
@@ -196,7 +201,7 @@ nav:
       - Game Trees: csdiy/cs188/4.md
       - MDPs: csdiy/cs188/5.md
       - Appendix:Logic: csdiy/cs188/appendix.md
-    - NJU-SICP (√):
+    - NJU-SICP:
       - 课程计划: csdiy/sicp-NJU/index.md
       - lec1-6: csdiy/sicp-NJU/lec1-6.md
       - lec7-12: csdiy/sicp-NJU/lec7-12.md
@@ -210,7 +215,7 @@ nav:
       - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
       - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
       - Lec7~9-Classes, Template Classes, Template Functions: csdiy/cs106l/7_8_9classes_templates_func.md
-      - Lec10~12-Functions, Lambda Functions, Operators and Special Member Functions: csdiy/cs106l/10functions.md
+      - Lec10~12-Functions, Lambda Functions, Operators and Special Member Functions: csdiy/cs106l/10_11_12function_operator_special.md
       - Lec13~15-Move Semantics, std::optional, type safety, RAII, smart poiters: csdiy/cs106l/13_14_15move_semantics_optional_smart_pointer_raii.md
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
@@ -270,7 +275,9 @@ nav:
       - 题解: ctf/newstarctf2025/writeup.md
   - 科研学习:
     - 收集帖: lab/index.md
-    - Infiniflow: lab/infiniflow.md
+    - Ragflow: lab/ragflow.md
+    - 工具:
+      - AutoFigure: lab/tools/autofigure.md
   - OJ笔记:
     - OJ笔记导航: oj/index.md
     - LeetCode: 
