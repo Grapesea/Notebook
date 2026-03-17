@@ -15,7 +15,7 @@
     <tr>
         <td><a href="arch/">计算机体系结构（CA, arch）笔记</a></td>
         <td><a href="bio/">生命科学导论（H）笔记</a></td>
-        <td><a href="lit/">中国现当代文学史I笔记</a></td>
+        <td><a href="lit/">中国现当代文学史I（已退课）</a></td>
     </tr>
     <tr>
         <td><a href="ml/">机器学习在数据分析上的实际运用（国际化）笔记</td>

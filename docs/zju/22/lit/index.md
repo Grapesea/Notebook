@@ -1,3 +1,5 @@
+> 后来我选择了退课和退微辅修，但是仍然去线下听课。考评毁掉了许多我想去学的课程.
+
 ???+ info "参考资源"
     摘录自[Socralin的博客](https://socralin.github.io/2025/02/11/Chinese-Modern-Literature-History-I-Learning/)：
 
