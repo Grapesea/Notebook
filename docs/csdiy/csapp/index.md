@@ -13,4 +13,6 @@
 
     可供借鉴的[代码示范资源](https://csapp.cs.cmu.edu/3e/code.html)
 
+    教材上的[图片集合](https://csapp.cs.cmu.edu/3e/figures.html)
+
     

@@ -2,7 +2,7 @@
 
 > 免费的一共105题，争取刷干净
 
-176. 找出第二高的薪水，没有就返回NULL
+176.找出第二高的薪水，没有就返回NULL
 
 普通方法：
 
@@ -140,4 +140,57 @@ where (e.departmentId, e.salary) in
 (select departmentId, max(salary) from Employee group by departmentId);
 ```
 
-9/105
+
+
+196.删除语法
+
+跟select distinct结果差不多.
+
+```sql
+delete from Person where id not in (
+	select a.id from (
+    	select min(id) as id from Person group by email
+    ) as a
+);
+```
+
+
+
+197.积累一下`datediff`函数的使用
+
+```sql
+select id2 as id from (
+    select w1.id as id1 , w2.id as id2 from Weather w1, Weather w2 
+    where datediff(w2.recordDate, w1.recordDate) = 1 and w2.temperature > w1.temperature 
+) w; 
+```
+
+
+
+511.Game Analysis
+
+```sql
+select player_id, min(event_date) as first_login from Activity
+group by player_id;
+```
+
+
+
+550.Game Analysis IV
+
+```sql
+select round(count(temp.player_id) / count(distinct a.player_id), 2) as fraction from Activity a
+left join (
+    select player_id, min(event_date) as earliestDate
+    from Activity group by player_id
+) as temp
+on a.player_id = temp.player_id and datediff(a.event_date, temp.earliestDate) = 1;
+```
+
+好麻烦的一条指令.
+
+
+
+
+
+> 15/105

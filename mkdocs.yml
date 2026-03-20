@@ -185,7 +185,7 @@ nav:
     - csdiy课程笔记导航: csdiy/index.md
     - CS61B:
       - 课程计划: csdiy/cs61b/index.md
-      - lec1-10: csdiy/cs61b/lec1-10.md
+      - lec1-5: csdiy/cs61b/lec1-5.md
     - CS61C:
       - 课程计划: csdiy/cs61c/index.md
     - CS70: 
@@ -221,7 +221,16 @@ nav:
       - 课程计划: csdiy/csapp/index.md
     - CMU 15-445:
       - 课程计划: csdiy\cmu15-445\index.md
-      - Lec1-10: csdiy\cmu15-445\1-10.md
+      - Lec1-5: csdiy\cmu15-445\1-5.md
+      - Lec6-10: csdiy\cmu15-445\6-10.md
+    - 鱼书:
+      - 书籍信息: csdiy/fish-dl/index.md
+    - CS224N:
+      - 课程计划: csdiy/cs224n/index.md
+      - 笔记:
+        - Lec1-5: csdiy/cs224n/notes/1-5.md
+      - 论文阅读:
+        - bert: csdiy/cs224n/papers/bert.md
     - 李沐动手学深度学习:
       - 课程计划: csdiy/d2l/index.md
       - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md

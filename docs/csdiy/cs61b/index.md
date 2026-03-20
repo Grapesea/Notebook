@@ -7,4 +7,4 @@
 
     其中WashingtonU的practice-it网站服务器已经于2025年底停止使用，所以可以参考的是[2025 Fall hw02](https://fa25.datastructur.es/homeworks/hw02/)的解释说明.
 
-    ![](figures/calendar.jpeg)
+    ![calendar](figures/calendar.jpeg)
