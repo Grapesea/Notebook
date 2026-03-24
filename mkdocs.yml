@@ -161,12 +161,12 @@ nav:
         - 概述: zju/22/dm/index.md
         - 笔记: zju/22/dm/dm.md
       - 中国现当代文学史I:
-        - 概述: zju\22\lit\index.md
-        - 阅读材料: zju\22\lit\reading.md
-        - 阅读材料笔记-1: zju\22\lit\notes0.md
-        - 阅读材料笔记-2: zju\22\lit\notes1.md
-        - 课程笔记-1: zju\22\lit\notes2.md
-        - 课程笔记-2: zju\22\lit\notes3.md 
+        - 概述: zju/22/lit/index.md
+        - 阅读材料: zju/22/lit/reading.md
+        - 阅读材料笔记-1: zju/22/lit/notes0.md
+        - 阅读材料笔记-2: zju/22/lit/notes1.md
+        - 课程笔记-1: zju/22/lit/notes2.md
+        - 课程笔记-2: zju/22/lit/notes3.md 
       - 工程图学(H):
         - 概述: zju/22/graphics/index.md
       - 生命科学导论(H):
@@ -220,9 +220,9 @@ nav:
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
     - CMU 15-445:
-      - 课程计划: csdiy\cmu15-445\index.md
-      - Lec1-5: csdiy\cmu15-445\1-5.md
-      - Lec6-10: csdiy\cmu15-445\6-10.md
+      - 课程计划: csdiy/cmu15-445/index.md
+      - Lec1-5: csdiy/cmu15-445/1-5.md
+      - Lec6-10: csdiy/cmu15-445/6-10.md
     - 鱼书:
       - 书籍信息: csdiy/fish-dl/index.md
     - CS224N:
@@ -259,7 +259,7 @@ nav:
       - Chap 11:密度估计和Gauss混合模型: csdiy/datawhale_m4ai/11.md
       - Chap 12:分类和支持向量机: csdiy/datawhale_m4ai/12.md
     - Datawhale Hello-agent:
-      - 课程计划: csdiy\datawhale_hello_agent\index.md
+      - 课程计划: csdiy/datawhale_hello_agent/index.md
   - CTF: 
     - 笔记目录: ctf/index.md
     - CTF101笔记: ctf/ctf101.md
@@ -315,8 +315,9 @@ nav:
     - Windows Command Line: tools/bash.md
     - Windows小tips: tools/windows.md
     - JavaScript语言: tools/JavaScript.md
-    - Marp插件配置: tools\marp.md
+    - Marp插件配置: tools/marp.md
     - Claude-Projects Prompts: tools/claude-projects.md
+    - V2rayN一键配置脚本: tools/v2ray.md
   - 储物柜:
     - Grapesea的小创作: 
       - 目录: gadgets/article/index.md
