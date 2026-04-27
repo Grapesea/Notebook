@@ -8,6 +8,8 @@
 
     [HobbitQia的笔记](https://note.hobbitqia.cc/DB/)
 
+    [期末卷](https://www.cc98.org/topic/6205468)
+
 ???+ info "课程信息"
 
     课程范围是 Chap 1-7, 12-19.

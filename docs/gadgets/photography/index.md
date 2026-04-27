@@ -5,3 +5,5 @@
 ## 后期
 
 [如何系统地自学摄影后期和调色？有什么工具能帮助？ - 叶明的回答 - 知乎](https://www.zhihu.com/question/41726610/answer/3330311976)
+
+[怎么系统地自学Photoshop？ - 张姆斯的回答 - 知乎](https://www.zhihu.com/question/62211230/answer/774409138)

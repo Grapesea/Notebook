@@ -23,8 +23,16 @@
         <td>CS106L Stanford: Standard C++ Programming, 2022/2025 </td>
     </tr>
     <tr>
+        <td><a href="cs224n/">CS224N</a></td>
+        <td>Stanford CS224N: NLP with Deep Learning, 2026 Winter</td>
+    </tr>
+    <tr>
+        <td><a href="cs224w/">CS224W</a></td>
+        <td>Stanford CS224W: Machine Learning with Graphs, 2025 Fall</td>
+    </tr>
+    <tr>
         <td><a href="csapp/">CMU15-213: CSAPP</a></td>
-        <td>CMU15-213: CSAPP (计算机系统)</td>
+        <td>CMU15-213: CSAPP</td>
     </tr>
     <tr>
         <td><a href="cmu15-445/">CMU 15-445</a></td>
@@ -47,21 +55,29 @@
         <td>CS61C UC Berkley: Great Ideas in Computer Architecture (Machine Structures) 2026 Spring</td>
     </tr>
     <tr>
-        <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence</a></td>
-        <td>Datawhale人工智能数学基础开源课程</td>
-    </tr>
-    <tr>
         <td><a href="datawhale_hello_agent/">Datawhale Hello-agent</a></td>
         <td>Datawhale Hello-agent开源课程</td>
     </tr>
     <tr>
-        <td><a href="math_founda_rein_learn/">强化学习的数学原理</a></td>
-        <td>西湖大学赵世钰老师开源课程</td>
+        <td><a href="datawhale-rag/">Datawhale All-in-RAG</a></td>
+        <td>Datawhale All-in-RAG开源课程</td>
+    </tr>
+    <tr>
+        <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence</a></td>
+        <td>Datawhale人工智能数学基础开源课程</td>
+    </tr>
+    <tr>
+        <td><a href="fish-dl/">深度学习-鱼书</a></td>
+        <td>深度学习基础教材</td>
     </tr>
     <tr>
         <td><a href="d2l/">动手学深度学习：李沐</a></td>
         <td>李沐老师2021年深度学习开源课程</td>
     </tr>
+    <tr>
+        <td><a href="math_founda_rein_learn/">强化学习的数学原理</a></td>
+        <td>西湖大学赵世钰老师开源课程</td>
+    </tr>    
 </tbody>
 </table>
 
