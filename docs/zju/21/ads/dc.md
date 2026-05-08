@@ -28,7 +28,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
     推导：$T(n) = \log n \log\log n$，因为
 
-    <center><img src = "../figures/dc/p1.jpg" style = "zoom:30%"/></center>
+    <center><img src = "./figures/dc/p1.jpg" style = "zoom:30%"/></center>
 
 但是有些情况下，直接证并不容易. 此时可以像做某些数学证明题一样，加强命题.
 
@@ -44,7 +44,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 #### 主定理
 
-<center><img src = "../figures/dc/mt.png" style = "zoom:60%"/></center>
+<center><img src = "./figures/dc/mt.png" style = "zoom:60%"/></center>
 
 #### 主方法
 
@@ -79,17 +79,17 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 ???+ tips "xyx-1"
 
-    <center><img src = "../figures/dc/xyx-1.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dc/xyx-1.png" style = "zoom:60%"/></center>
 
     来自豆包：
 
-    <center><img src = "../figures/dc/xyx-2.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dc/xyx-2.png" style = "zoom:60%"/></center>
 
 ???+ tips "Final Practice 2 2-2"
 
-    <center><img src = "../figures/dc/f2.2-2.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dc/f2.2-2.png" style = "zoom:60%"/></center>
 
-    <center><img src = "../figures/dc/f2.2-2ex.jpg" style = "zoom:40%"/></center>
+    <center><img src = "./figures/dc/f2.2-2ex.jpg" style = "zoom:40%"/></center>
 
 ## 实际应用案例
 
@@ -97,15 +97,15 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 ???+ tips "3.3-1"
 
-    <center><img src = "../figures/dc/1.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dc/1.png" style = "zoom:60%"/></center>
 
 ???+ tips "2024mid"
 
-    <center><img src = "../figures/dc/2024mid4-1.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dc/2024mid4-1.png" style = "zoom:60%"/></center>
 
-    <center><img src = "../figures/dc/2024mid4-2.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dc/2024mid4-2.png" style = "zoom:60%"/></center>
 
-    <center><img src = "../figures/dc/2024mid4-3.png" style = "zoom:50%"/></center>
+    <center><img src = "./figures/dc/2024mid4-3.png" style = "zoom:50%"/></center>
 
     答案：
 
@@ -143,6 +143,6 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 ???+ tips "2021mid"
 
-    <center><img src = "../figures/dc/2021mid-1.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dc/2021mid-1.png" style = "zoom:60%"/></center>
 
     应该是$f(N) = O(N^{\log_b a}) \Longrightarrow T(N) = O(N^{\log_b a}\log N)$.

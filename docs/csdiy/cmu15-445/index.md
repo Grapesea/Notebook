@@ -2,4 +2,4 @@
 
 ??? info "课程日历"
 
-    <img src="figures/calendar.jpeg" style="zoom: 50%;" />
+    <img src="./figures/calendar.jpeg" style="zoom: 50%;" />

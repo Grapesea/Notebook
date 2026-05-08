@@ -55,11 +55,11 @@ Computer words are composed of bits, thus one word is a vector of binary numbers
 
     1 bit ALU:
 
-    <center><img src = "../3/1.png" style="zoom: 40%" /></center>
+    <center><img src = "./3/1.png" style="zoom: 40%" /></center>
 
     于是减法可以用如下的ALU实现：
 
-    <center><img src = "../3/2.png" style="zoom: 40%" /></center>
+    <center><img src = "./3/2.png" style="zoom: 40%" /></center>
 
     于是我们得到了第4个指令：`sub`.
 
@@ -82,7 +82,7 @@ Computer words are composed of bits, thus one word is a vector of binary numbers
 
     原理图：
 
-    <center><img src = "../3/3.png" style="zoom: 40%" /></center>
+    <center><img src = "./3/3.png" style="zoom: 40%" /></center>
 
 2. Group Carry Lookahead Logic
 
@@ -104,7 +104,7 @@ Computer words are composed of bits, thus one word is a vector of binary numbers
 
     所以对于当前位而言，如果$P_i = 1$，或者前面的位上存在 $P_j = 1$ 且该生成项$P_j$所在位到当前位之间的所有$G_k = 1(j\leq k\leq i)$，当前位的进位值为 1，否则为 0.
 
-    <center><img src = "../3/cla.png" style="zoom: 50%" /></center>
+    <center><img src = "./3/cla.png" style="zoom: 50%" /></center>
 
 <del>Carry skip adder & Carry select adder 没搞懂，据说不考，先跳过了.</del>
 
@@ -114,7 +114,7 @@ Group Carry Lookhead Logic
 
 完整版看NoughtQ佬的笔记，此处只记录下自己在看V3版本的流程梳理：
 
-<center><img src = "../3/mul.png" style="zoom: 70%" /></center>
+<center><img src = "./3/mul.png" style="zoom: 70%" /></center>
 
 然后是Booth算法来处理signed multiplication:
 
@@ -139,7 +139,7 @@ Group Carry Lookhead Logic
 
 以$00100010 \times 11011011 = 34 \times (-37)$为例，其操作流程是：
 
-<center><img src = "../3/booth.png" style="zoom: 80%" /></center>
+<center><img src = "./3/booth.png" style="zoom: 80%" /></center>
 
 RISC-V中的乘法指令：
 
@@ -177,10 +177,10 @@ $$(-1)^S \times F \times 2^E$$
 
 $$2.0_{10} \times 10^{-38} \to 2.0 \times 10^{38}$$
 
-<center><img src = "../3/float.png" style="zoom: 80%" /></center>
+<center><img src = "./3/float.png" style="zoom: 80%" /></center>
 
 双精度下，数的范围是
 
 $$2.0_{10}\times 10^{-308} \to 2.0_{10} \times 10^{308}$$
 
-<center><img src = "../3/double.png" style="zoom: 80%" /></center>
+<center><img src = "./3/double.png" style="zoom: 80%" /></center>

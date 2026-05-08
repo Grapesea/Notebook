@@ -34,7 +34,7 @@ if (isset($_GET['data'])) {
 
 最后在尾部加上`?data=O:1:"B":1:{s:1:"c";a:2:{i:0;O:1:"A":0:{}i:1;s:4:"test";}}`即可.
 
-<center><img src="../figures/xdmoe/phptrick.png" style="zoom: 33%;"/></center>
+<center><img src="./figures/xdmoe/phptrick.png" style="zoom: 33%;"/></center>
 
 
 

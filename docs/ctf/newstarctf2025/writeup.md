@@ -238,7 +238,7 @@ apt指的是 Advanced Persistent Threat，此处是kimsuky.
 
 ### [Easy]OSINT-天空Belong
 
-<center><img src = "../figures/osint1.jpg" style = "zoom:40%"/></center>
+<center><img src = "./figures/osint1.jpg" style = "zoom:40%"/></center>
 
 直接打开wsl获取信息：
 
@@ -249,7 +249,7 @@ $ file 1.jpg
 
 可以知道这张图片是小米手机拍摄，并且拍摄时间为2025:08:17 15:03:47.
 
-<center><img src = "../figures/osint2.jpg" style = "zoom:30%"/></center>
+<center><img src = "./figures/osint2.jpg" style = "zoom:30%"/></center>
 
 进一步通过飞机的右翼编号，在航旅纵横和Flightera上面查出来是
 [地址](https://www.flightera.net/zh/flight_details/Urumqi+Air/UQ3574/ZSJN/2025-08-17)

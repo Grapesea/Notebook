@@ -22,7 +22,7 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 
     执行单个语句：`c:=a+b`时：
 
-    <center><img src = "../figures/parallel/1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/parallel/1.png" style="zoom: 50%;"/></center>
 
     执行循环语句：
 
@@ -33,7 +33,7 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 
     由于是并行的，所以时间开销是$O(1)$.
 
-    <center><img src = "../figures/parallel/2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/parallel/2.png" style="zoom: 50%;"/></center>
 
 ### Memory Conflicts
 
@@ -108,7 +108,7 @@ $$W(n) = \text{total number of operations}, T(n) = \text{worst-case running time
 
 ???+ tips "Final Practice 2 2-7"
 
-    <center><img src = "../figures/parallel/f2.2-7.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/parallel/f2.2-7.png" style = "zoom:60%"/></center>
 
     据上面的分析，有$n$组并行任务，每个并行任务的复杂度（即单个处理器所需的时间$D$）是二分的复杂度$O(\log n)$，所以$W(n) = O(\log n) \times n = O(n\log n), D(n) = \log n$.
 
@@ -118,11 +118,11 @@ $$W(n) = \text{total number of operations}, T(n) = \text{worst-case running time
 
 考虑平衡二叉树
 
-<center><img src = "../figures/parallel/3.png" style="zoom: 50%;"/></center>
+<center><img src = "./figures/parallel/3.png" style="zoom: 50%;"/></center>
 
 规定前缀和$C(h,i) = \sum\limits_{k=1}^{\alpha} A[k]$，其中$(0,\alpha)$是二叉树的节点$(h,i)$最右侧路径的叶子节点的位置（容易发现$\alpha = 2^{h-1}+i$）.
 
-<center><img src = "../figures/parallel/3-2.png" style="zoom: 50%;"/></center>
+<center><img src = "./figures/parallel/3-2.png" style="zoom: 50%;"/></center>
 
 则转移方程：
 
@@ -176,11 +176,11 @@ n &  B(j) > A(n)
 
 在以下的示例中，相比原先的两种做法：
 
-<center><img src = "../figures/parallel/4.png" style="zoom: 50%;"/></center>
+<center><img src = "./figures/parallel/4.png" style="zoom: 50%;"/></center>
 
 并行排序做到了：整体$D = O(\log n), W = O(p\log n) = O(n)$.
 
-<center><img src = "../figures/parallel/5.png" style="zoom: 60%;"/></center>
+<center><img src = "./figures/parallel/5.png" style="zoom: 60%;"/></center>
 
 ## Maximum Finding
 
@@ -252,6 +252,6 @@ n &  B(j) > A(n)
 
 ???+ tips "8.1-3"
 
-    <center><img src = "../figures/parallel/8.1-3.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/parallel/8.1-3.png" style = "zoom:60%"/></center>
 
     从上面的CRCW看出可以具有$W(n) = \Theta(n)$的策略.

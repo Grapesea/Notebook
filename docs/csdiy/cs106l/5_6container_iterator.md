@@ -6,11 +6,11 @@ STL(Standard Template Library) is the core of modern C++, involving containers, 
 
 All containers can hold almost all elements.
 
-<center><img src="../figures/containers.png"  style="zoom: 50%;" /></center>
+<center><img src="./figures/containers.png"  style="zoom: 50%;" /></center>
 
 这里提到了Stanford自制的库以及STL的比较，是在CS106B用到Qt Creator时会尝试使用.
 
-<center><img src="../figures/stfstl.png"  style="zoom: 50%;" /></center>
+<center><img src="./figures/stfstl.png"  style="zoom: 50%;" /></center>
 
 ### 6种container的实现和用法
 
@@ -42,7 +42,7 @@ list.push_front(3);       //{3,5,6}
 list.pop_back();          //{3,5}
 ```
 
-<center><img src="../figures/when2use.png"  style="zoom: 60%;" /></center>
+<center><img src="./figures/when2use.png"  style="zoom: 60%;" /></center>
 
 总结：
 
@@ -54,7 +54,7 @@ list.pop_back();          //{3,5}
 
 这部分讲了容器适配器.
 
-<center><img src="../figures/containers2.png"  style="zoom: 50%;" /></center>
+<center><img src="./figures/containers2.png"  style="zoom: 50%;" /></center>
 
 Container adapters provide a specific interface by adapting other containers:
 

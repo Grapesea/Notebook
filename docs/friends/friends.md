@@ -89,7 +89,7 @@
         </div>
     </div>
     <<div class="card">
-        <img class="ava" src="../figures/ladygege.jpg" />
+        <img class="ava" src="./figures/ladygege.jpg" />
         <div class="card-header">
         <div>
             <a href="https://ladygege2494.github.io/" target="_blank">GegeNook</a>

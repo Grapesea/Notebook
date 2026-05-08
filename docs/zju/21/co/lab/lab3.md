@@ -5,7 +5,7 @@
 
         测试tb文件中给的输入样例，实现PPT P20所示效果，在计算开始后必须体现移位过程，即需要体现这段波形：
 
-        <center><img src = "../lab3/0.png" style = "zoom:40%"/></center>
+        <center><img src = "./lab3/0.png" style = "zoom:40%"/></center>
 
     * 32位整数除法PPT P35
 
@@ -15,7 +15,7 @@
 
         实现过程可以参考这个示例：
 
-        <center><img src = "../lab3/01.png" style = "zoom:40%"/></center>
+        <center><img src = "./lab3/01.png" style = "zoom:40%"/></center>
 
     * 选做：32位浮点加法PPT P73
         仿真激励文件可以参考： `.\OExp03\OExp03-float_add\float_add.srcs\sim_1\new\tb.v`
@@ -28,7 +28,7 @@
 
 原理图如下：
 
-<center><img src = "../lab3/mul0.png" style = "zoom:40%"/></center>
+<center><img src = "./lab3/mul0.png" style = "zoom:40%"/></center>
 
 代码如下：
 
@@ -88,21 +88,21 @@ endmodule
 
 仿真图像：
 
-<center><img src = "../lab3/mul1.png" style = "zoom:40%"/></center>
+<center><img src = "./lab3/mul1.png" style = "zoom:40%"/></center>
 
 ## Divider(除法器)
 
 这个实验要求完成32位无符号除法器，其实验slides上要求采用的算法是课堂上讲的Improved Version：
 
-<center><img src = "../lab3/div01.png" style = "zoom:50%"/></center>
+<center><img src = "./lab3/div01.png" style = "zoom:50%"/></center>
 
 原理图如下：
 
-<center><img src = "../lab3/div0.png" style = "zoom:50%"/></center>
+<center><img src = "./lab3/div0.png" style = "zoom:50%"/></center>
 
 其流程图如下：
 
-<center><img src = "../lab3/div0.jpg" style = "zoom:40%"/></center>
+<center><img src = "./lab3/div0.jpg" style = "zoom:40%"/></center>
 
 代码：
 
@@ -162,7 +162,7 @@ endmodule
 
 仿真波形：
 
-<center><img src = "../lab3/div1.png" style = "zoom:50%"/></center>
+<center><img src = "./lab3/div1.png" style = "zoom:50%"/></center>
 
 ## （选做）Floating-Point Adder
 

@@ -463,7 +463,7 @@ const indicates a variable can't be modified.
     c_ref.push_back(3); // BAD - const
     ```
 
-    <center><img src="../figures/const.png" alt="0" style="zoom: 50%;" /></center>
+    <center><img src="./figures/const.png" alt="0" style="zoom: 50%;" /></center>
 
     2.const定义过后，非const的ref也不能使用了，必须使用const ref.
 
@@ -527,4 +527,4 @@ const indicates a variable can't be modified.
     // c_ref 同样会"看到"这个修改
     ```
 
-    <center><img src="../figures/const_ref.png" alt="0" style="zoom: 50%;" /></center>
+    <center><img src="./figures/const_ref.png" alt="0" style="zoom: 50%;" /></center>

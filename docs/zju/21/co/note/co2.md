@@ -18,7 +18,7 @@
 
     想要表示C语言的switch-case语句，可以使用分支地址的方法，如图：
 
-    <center><img src = "../2/jumptable.png" style="zoom: 40%" /></center>
+    <center><img src = "./2/jumptable.png" style="zoom: 40%" /></center>
 
     比如说这段C语言代码：
 

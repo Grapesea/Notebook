@@ -88,11 +88,11 @@ $\alpha$-pruning: 修剪掉max一层的节点，因为其兄弟节点和更上�
 
 举例：（此处?的值是无关紧要的）
 
-<center><img src = "../figures/bt/alpha.png" style="zoom: 30%;"/></center>
+<center><img src = "./figures/bt/alpha.png" style="zoom: 30%;"/></center>
 
 $\beta$-pruning: 修剪掉min一层的节点.
 
-<center><img src = "../figures/bt/beta.png" style="zoom: 48%;"/></center>
+<center><img src = "./figures/bt/beta.png" style="zoom: 48%;"/></center>
 
 当二者同时被使用的时候，搜索的复杂度会被降低到 $O(\sqrt{N})$.
 
@@ -127,7 +127,7 @@ $\beta$-pruning: 修剪掉min一层的节点.
 
 ???+ tips "xyx-1"
 
-    <center><img src = "../figures/bt/xyx-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/bt/xyx-1.png" style="zoom: 50%;"/></center>
 
     都是c.如果忘了算法也可以通过分析得出，从左向右自顶向下预设某个节点的值未知，去推导该值会不会对结果产生影响.
     
@@ -141,17 +141,17 @@ $\beta$-pruning: 修剪掉min一层的节点.
 
 ???+ tips "2025fall-yy-mid"
 
-    <center><img src = "../figures/bt/yymid3-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/bt/yymid3-1.png" style="zoom: 50%;"/></center>
 
-    <center><img src = "../figures/bt/yymid3-2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/bt/yymid3-2.png" style="zoom: 50%;"/></center>
 
     答案是`fabs(2 * sum - total)`和`sum -= a[p]`
 
 ???+ tips "2025fall-ch-mid"
 
-    <center><img src = "../figures/bt/chmid3-1.png" style="zoom: 70%;"/></center>
+    <center><img src = "./figures/bt/chmid3-1.png" style="zoom: 70%;"/></center>
 
-    <center><img src = "../figures/bt/chmid3-2.png" style="zoom: 70%;"/></center>
+    <center><img src = "./figures/bt/chmid3-2.png" style="zoom: 70%;"/></center>
 
     答案：`i >= 0 && j <= N-1 ; i--, j++`, `board;row+1`, `board[row][col] = 0`.
     

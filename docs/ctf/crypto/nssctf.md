@@ -34,7 +34,7 @@ $ ciphey "4O595954494Q32515046324757595N534R52415653334357474R4N575955544R4O5N4Q
 
 即可获得：
 
-<center><img src="../photos/nssctf/ciphey_0.png" alt="rr" style="zoom: 75%;" /></center>
+<center><img src="./photos/nssctf/ciphey_0.png" alt="rr" style="zoom: 75%;" /></center>
 
 
 
@@ -108,7 +108,7 @@ UEsDBBQACAAIAAZUilYAAAAAAAAAACUAAAAVACAATWFnaWMgb2YgRW5jb2RpbmcudHh0VVQNAAdNkTNk
 
 丢到cyberchef里面是这样的：
 
-<center><img src="../photos/nssctf/magic_of_encoding.png" alt="rr" style="zoom: 50%;" /></center>
+<center><img src="./photos/nssctf/magic_of_encoding.png" alt="rr" style="zoom: 50%;" /></center>
 
 
 

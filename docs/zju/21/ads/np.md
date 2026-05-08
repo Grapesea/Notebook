@@ -49,7 +49,7 @@ $\textbf{NP-hard}$: 如果对于所有的$Y \in \textbf{NP}$，都存在规约�
 
 关系图：
 
-<center><img src = "../figures/np/np.png" style="zoom: 70%;"/></center>
+<center><img src = "./figures/np/np.png" style="zoom: 70%;"/></center>
 
 ???+ tips "举例: Traveling salesman problem/ Hamiltonian cycle problem"
     Hamilton cycle problem: Given a graph $G=(V, E)$, is there a simple cycle that visits all vertices?
@@ -60,7 +60,7 @@ $\textbf{NP-hard}$: 如果对于所有的$Y \in \textbf{NP}$，都存在规约�
 
     现在我们的讨论基于假设Hamilton cycle problem是$\textbf{NPC}$问题，希望推出Traveling salesman problem是$\textbf{NPC}$问题.
 
-    <center><img src = "../figures/np/eg.png" style="zoom: 70%;"/></center>
+    <center><img src = "./figures/np/eg.png" style="zoom: 70%;"/></center>
 
     我们在把一个图拓展为完全图时，将图原来就有的边权值定义为1，新添加的边权值定义为2，那么对于原来的图是否有Hamiltonian cycle，就可以转换为拓展后的完全图在TSP问题上是否有解的问题(令$K = |v|$).
 
@@ -72,7 +72,7 @@ It's **impossible** to have C compiler detect all infinite loops.即不存在某
 
 证明方法可以通过这张传神的PPT看出来：
 
-<center><img src = "../figures/np/halting.png" style="zoom: 70%;"/></center>
+<center><img src = "./figures/np/halting.png" style="zoom: 70%;"/></center>
 
 如果真的存在一个这样的能检测无限循环的代码，那么我们用它来检测自身：
 
@@ -190,7 +190,7 @@ We call the function $f$ the **reduction function**, and a polynomial-time algor
     * 如果$\textbf{co-NP} \neq \textbf{NP}$：
         可能是$\textbf{P} = \textbf{NP} \cap \textbf{co-NP}$，或者$\textbf{P} \subset \textbf{NP} \cap \textbf{co-NP}$;
 
-    <center><img src = "../figures/np/conp.png" style="zoom: 70%;"/></center>
+    <center><img src = "./figures/np/conp.png" style="zoom: 70%;"/></center>
 
 根据上面的规约，定义语言$L\subseteq \{0,1\}^* \in \textbf{NP-complete}$当且仅当
 
@@ -227,8 +227,8 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 
 ???+ tips "Proof"
 
-    <center><img src = "../figures/np/pr2.png" style="zoom: 78%;"/></center>
-    <center><img src = "../figures/np/pr1.png" style="zoom: 70%;"/></center>
+    <center><img src = "./figures/np/pr2.png" style="zoom: 78%;"/></center>
+    <center><img src = "./figures/np/pr1.png" style="zoom: 70%;"/></center>
 
     首先，Vertex Cover Problem 属于 $\textbf{NP}$（验证算法的时间复杂度为 $O(N^3)$）.
 
@@ -248,11 +248,11 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 
 ???+ tips "xyx-2"
 
-    <center><img src = "../figures/np/xyx-2-1.png" style="zoom: 70%;"/></center>
+    <center><img src = "./figures/np/xyx-2-1.png" style="zoom: 70%;"/></center>
 
 ???+ tips "Final Practice 2 2-11"
 
-    <center><img src = "../figures/np/f2.2-11.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/np/f2.2-11.png" style = "zoom:60%"/></center>
 
     复习一下英语语法：
 
@@ -265,11 +265,11 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 
 ???+ tips "Final Practice 3 2-19,20"
 
-    <center><img src = "../figures/np/f3.2-19.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/np/f3.2-19.png" style = "zoom:60%"/></center>
 
     3个表述全错，因为$X$并不一定是$\textbf{NP-complete}$问题，如果是，则由属于$\textbf{P}$可以推知$\textbf{P} = \textbf{NP}$，但$X$也可以是属于$\textbf{NP}$与$\textbf{P}$的交集中，从而不能推出这个结论.
 
-    <center><img src = "../figures/np/f3.2-20.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/np/f3.2-20.png" style = "zoom:60%"/></center>
 
     > A、B 选项：对于长度为 $l$ 的子句，该子句不被满足的概率为 $p^{l}$，故被满足的概率为 $1 - p^{l}$，对 应的总近似比就是 $\frac{1}{1 - p^{l}}$；
     

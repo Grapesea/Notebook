@@ -20,9 +20,9 @@ $$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
 推导如下：
 
 ???+ tips "手写的推导过程"
-    <center><img src = "../figures/ads/zig1.jpg" style="zoom: 25%;"/></center>
-    <center><img src = "../figures/ads/zigzag.jpg" style="zoom: 30%;"/></center>
-    <center><img src = "../figures/ads/zigzig.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "./figures/ads/zig1.jpg" style="zoom: 25%;"/></center>
+    <center><img src = "./figures/ads/zigzag.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "./figures/ads/zigzig.jpg" style="zoom: 30%;"/></center>
 
 而假设$X$的高度是$H(X)$的情况下，可能的旋转次数是
 
@@ -63,19 +63,19 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 ???+ tips "1.2-2"
 
-    <center><img src = "../figures/ads/1.2-2.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/1.2-2.png" style="zoom: 60%;"/></center>
 
     
 
 ???+ tips "2025fall-yy-mid"
 
-    <center><img src = "../figures/ads/yymid4.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/yymid4.png" style="zoom: 60%;"/></center>
 
     答案是D，因为
 
 ???+ tips "2024mid"
 
-    <center><img src = "../figures/ads/2024mid1.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/2024mid1.png" style="zoom: 60%;"/></center>
 
     来自豆包：
 
@@ -85,13 +85,13 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 ???+ tips "2025fall-zgc-mid"
 
-    <center><img src = "../figures/ads/zgc-mid-5.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/zgc-mid-5.png" style="zoom: 60%;"/></center>
 
     答案是全选.
 
 ???+ tips "Final Practice 2 2-4"
 
-    <center><img src = "../figures/amor/f2.2-4.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/amor/f2.2-4.png" style="zoom: 60%;"/></center>
 
     跟zyz讨论的结果是，遇到这种题目可以根据势函数的性质入手，在“平凡”的操作下势能函数需要增长得快一些，以便于“蓄积能量”，在触发边界条件的情况下势能函数需要快速下降，以“释放能量”.
 
@@ -99,6 +99,6 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 ???+ tips "Final Practice 2 2-18"
 
-    <center><img src = "../figures/amor/f2.2-18.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/amor/f2.2-18.png" style = "zoom:60%"/></center>
 
     选D，全局朝着尽可能平均的角度前进，局部节点的度在指数处理后是不断下降的.

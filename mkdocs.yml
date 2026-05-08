@@ -1,6 +1,7 @@
 site_name: Grapesea's Notebook
 repo_url: https://github.com/Grapesea/Notebook
 repo_name: Notebook
+use_directory_urls: false
 theme: 
   name: material
   font:
@@ -182,6 +183,13 @@ nav:
         - 概述: zju/22/busi/index.md
       - 大学生朋辈心理辅导:
         - 概述: zju/22/psy/index.md
+  - 语言学习:
+    - IELTS:
+      - 资源整合: language/IELTS/index.md
+      - 口语: language/IELTS/speaking.md
+      - 听力: language/IELTS/listening.md
+      - 阅读: language/IELTS/reading.md
+      - 作文: language/IELTS/writing.md
   - csdiy课程笔记: 
     - csdiy课程笔记导航: csdiy/index.md
     - CS61B:
@@ -226,12 +234,18 @@ nav:
         - bert: csdiy/cs224n/papers/bert.md
     - CS224W:
       - 课程计划: csdiy/cs224w/index.md
+      - Lec01-02 (Introduction & Node Embedding): csdiy/cs224w/01-02.md
+      - 论文阅读:
+        - node2vec: csdiy/cs224w/papers/node2vec.md
+      - lab: 
+        - colab: csdiy/cs224w/labs/colab0.md
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
     - CMU 15-445:
       - 课程计划: csdiy/cmu15-445/index.md
-      - Lec1-5: csdiy/cmu15-445/1-5.md
-      - Lec6-10: csdiy/cmu15-445/6-10.md
+      - Lec1-6 (SQL, Storage): csdiy/cmu15-445/1-6.md
+      - Lec7-10 (Index): csdiy/cmu15-445/7-10.md
+      - Lec11-16 (Algorithms, Query): csdiy/cmu15-445/11-16.md
     - MIT 6.S081 Operating System: 
       - 课程计划: csdiy/MIT6.S081/index.md
       - Lab01: csdiy/MIT6.S081/labs/01.md
@@ -240,6 +254,7 @@ nav:
       - Chap 2: csdiy/fish-dl/Chap2-Perceptron.md
       - Chap 3: csdiy/fish-dl/Chap3-NeuralNetwork.md
       - Chap 4: csdiy/fish-dl/Chap4-Learning.md
+      - Chap 5: csdiy/fish-dl/Chap5-BackPropagation.md
     - 李沐动手学深度学习:
       - 课程计划: csdiy/d2l/index.md
       - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
@@ -308,6 +323,7 @@ nav:
       - C++:
         - 数组: oj/leetcode/cpp/int.md
         - 链表: oj/leetcode/cpp/linklist.md
+        - 树: oj/leetcode/cpp/tree.md
         - 回溯: oj/leetcode/cpp/backtrack.md
         - 动态规划: oj/leetcode/cpp/dp.md
         - 贪心: oj/leetcode/cpp/greedy.md

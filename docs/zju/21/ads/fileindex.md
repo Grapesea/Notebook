@@ -46,7 +46,7 @@
 
 ???+ tips "2024mid"
 
-    <center><img src = "../figures/ads/2024mid2.png" style = "zoom:50%"/></center>
+    <center><img src = "./figures/ads/2024mid2.png" style = "zoom:50%"/></center>
 
     选D
 

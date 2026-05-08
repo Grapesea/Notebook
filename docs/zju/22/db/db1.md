@@ -26,7 +26,7 @@ Instance（实例）：the actual content of the database at a particular point 
 
 类比：type ↔ schema, variable ↔ instance
 
-<center><img src="../figures/1/schema_structure.png" style="zoom: 75%;" /></center>
+<center><img src="./figures/1/schema_structure.png" style="zoom: 75%;" /></center>
 
 Physical Independence v.s Logical Independence：
 
@@ -55,7 +55,7 @@ SQL = DDL+DML+DCL，是应用最广的non-procedural语言.
 
 ER model:
 
-<center><img src="../figures/1/er.png" style="zoom: 50%;" /></center>
+<center><img src="./figures/1/er.png" style="zoom: 50%;" /></center>
 
 Relational Model：Transfer E-R diagrams into relational schema
 
@@ -65,4 +65,4 @@ Database administrator (DBA，数据库管理员): A special user having central
 
 ## Database Architecture
 
-<center><img src="../figures/1/arch.png" style="zoom: 50%;" /></center>
+<center><img src="./figures/1/arch.png" style="zoom: 50%;" /></center>

@@ -63,7 +63,7 @@ $$W_{n} = \max \{W_{n-1},W_{n-2}+\omega_n\} \Longrightarrow W_{i} = \max \{W_{i-
 
 ???+ tips "思考题2"
 
-    <center><img src = "../figures/dp/1.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/dp/1.png" style = "zoom:60%"/></center>
 
     答案：2，5
 
@@ -105,7 +105,7 @@ $$M_{1(10\times 20)} \times M_{2(20\times 50)} \times M_{3(50\times 1)} \times M
 
 需要找到最佳的顺序，使得开销时间最小.
 
-<center><img src = "../figures/dp/matrix_mul.jpg" style = "zoom:40%"/></center>
+<center><img src = "./figures/dp/matrix_mul.jpg" style = "zoom:40%"/></center>
 
 伪代码如下：
 
@@ -137,17 +137,17 @@ void OptMatrix( const long r[ ], int N, TwoDimArray M )
 
 首先可以看出，期望时间之和运算公式是$T(N) = \sum\limits_{i=1}^N p_i(1+d_i)$.
 
-<center><img src = "../figures/dp/tree.jpg" style = "zoom:50%"/></center>
+<center><img src = "./figures/dp/tree.jpg" style = "zoom:50%"/></center>
 
 在PPT上的图递推逻辑：
 
-<center><img src = "../figures/dp/obst.jpg" style="zoom: 30%;"/></center>
+<center><img src = "./figures/dp/obst.jpg" style="zoom: 30%;"/></center>
 
 ### PTA习题
 
 ???+ tips "2025fall-zgc-mid"
 
-    <center><img src = "../figures/dp/zgcmid-4.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/dp/zgcmid-4.png" style="zoom: 50%;"/></center>
 
     弥补了进考场前看不到OBST的遗憾.
 
@@ -185,7 +185,7 @@ $T(N) = O(N^3)$，但是在稠密图中速度更快一点.
 
 生产线选择问题
 
-<center><img src = "../figures/dp/assembly.jpg" style="zoom: 30%;"/></center>
+<center><img src = "./figures/dp/assembly.jpg" style="zoom: 30%;"/></center>
 
 代码：
 
@@ -223,15 +223,15 @@ $T(N) = O(N^3)$，但是在稠密图中速度更快一点.
 
 ???+ tips "2025fall-ch-mid"
 
-    <center><img src = "../figures/dp/chmid3-3.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/dp/chmid3-3.png" style="zoom: 50%;"/></center>
 
     答案：`int j = 0; j < i; j++`, `dp[i] = max(dp[i], dp[j]+1)`
 
 ???+ tips "2025fall-zgc-mid"
 
-    <center><img src = "../figures/dp/zgcmid-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/dp/zgcmid-1.png" style="zoom: 50%;"/></center>
 
-    <center><img src = "../figures/dp/zgcmid-2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/dp/zgcmid-2.png" style="zoom: 50%;"/></center>
 
     以下是我临场写的比较笨拙的代码，考场上只有一个样例点没过（空字符串输入，所以遗憾-1，下面的代码已经补上这个问题了）.另外值得吐槽的是，平时作业可以使用C++，本着在学OOP的原则所以我好久没用过C了，结果这次期中只能用C，所以你可以看到我写的依托可笑代码:
 

@@ -48,7 +48,7 @@ $N(S)$: neighborhood of $S$ – the set $\{ S': S \sim S' \}$.
 * $\text{cost}(S) = |S|$;
 * $S \sim S'$: $S'$ can be obtained from $S$ by (adding or) deleting a single node. （假定初始全部顶点的覆盖最多有$|V|$个顶点，从这个解开始删除）
 
-<center><img src="../figures/local/case.png" style="zoom: 50%;" /></center>
+<center><img src="./figures/local/case.png" style="zoom: 50%;" /></center>
 
 **这一优化问题具有 2-近似算法**（如贪心选择最大度顶点，或局部搜索的近似比分析）. 例如，贪心算法每次选择度数最大的顶点加入覆盖，删除其关联边，重复直到所有边被覆盖.
 
@@ -134,7 +134,7 @@ SolutionType SimulatedAnnealing(){
 
 ???+ tips "Final Practice 2 2-10"
 
-    <center><img src = "../figures/local/f2.2-10.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/local/f2.2-10.png" style = "zoom:60%"/></center>
 
     C是显然错的，二者可以互相规约；B是正确的，参见[这里](../ads/np.md)的Proof过程PPT.
 
@@ -154,7 +154,7 @@ SolutionType SimulatedAnnealing(){
 
     比如下面这张图里的config就是satisfied：
 
-    <center><img src="../figures/local/satis.png" style="zoom: 50%;" /></center>
+    <center><img src="./figures/local/satis.png" style="zoom: 50%;" /></center>
 
 ### State-flipping Algorithm (状态翻转算法)
 
@@ -175,7 +175,7 @@ ConfigType State_flipping(S_init){
 
 证明：
 
-<center><img src="../figures/local/sfpr.png" style="zoom: 50%;" /></center>
+<center><img src="./figures/local/sfpr.png" style="zoom: 50%;" /></center>
 
 实际应用上，可用于解决组合优化问题（如最大割问题），但可能无法找到全局最优解. 但是得出来的所有目标是让 $\phi = \sum\limits_{e\text{ is good}} |w_e|$ 最大的局部最优解必定是stable configuration.
 
@@ -222,13 +222,13 @@ $$w(A,B) = \sum\limits_{u\in A,v\in B}w_{uv}$$
 
 > 实质上是Local Beam Search.
 
-<center><img src="../figures/local/betterlocal.png" style="zoom: 50%;" /></center>
+<center><img src="./figures/local/betterlocal.png" style="zoom: 50%;" /></center>
 
 ## PTA习题
 
 ???+ tips "7.2-1"
 
-    <center><img src="../figures/local/2.1.png" style="zoom: 50%;" /></center>
+    <center><img src="./figures/local/2.1.png" style="zoom: 50%;" /></center>
 
     助教说一般蒙的话可以选Minimum Spanning Tree，因为是其中简单的一种树.
 

@@ -80,15 +80,15 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 
 举例：
 
-<center><img src = "../figures/greedy/huffeg.png" style="zoom: 50%;"/></center>
+<center><img src = "./figures/greedy/huffeg.png" style="zoom: 50%;"/></center>
 
 ???+ tips "贪心正确性证明"
-    <center><img src = "../figures/greedy/pr1.png" style="zoom: 50%;"/></center>
-    <center><img src = "../figures/greedy/pr2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/greedy/pr1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/greedy/pr2.png" style="zoom: 50%;"/></center>
 
 ???+ tips "2025fall-zgc-mid"
 
-    <center><img src = "../figures/greedy/zgcmid-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/greedy/zgcmid-1.png" style="zoom: 50%;"/></center>
 
     > 喜欢Huffman编码吗？考前不复习，场上两行泪.
 
@@ -96,13 +96,13 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 
 ???+ tips "xyx-2"
 
-    <center><img src = "../figures/greedy/xyx-2-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/greedy/xyx-2-1.png" style="zoom: 50%;"/></center>
 
     反例：$[1,2], [4,5], [1,3], [2,5,6]$，如果按照Greedy 1的思路走是$[1,2], [4,5] \quad [1,3] \quad [2.5,6]$三组，但是按照Greedy 2的思路只需要2组：$[1,2], [2.5,6]\quad [1,3], [4,5]$.
 
 ???+ tips "5.2-1"
 
-    <center><img src = "../figures/greedy/5.2-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/greedy/5.2-1.png" style="zoom: 50%;"/></center>
 
     选C.
 
@@ -216,5 +216,5 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 
 ???+ tips "2020mid"
 
-    <center><img src = "../figures/greedy/2020mid1.png" style="zoom: 50%;"/></center>
-    <center><img src = "../figures/greedy/2020mid2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/greedy/2020mid1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/greedy/2020mid2.png" style="zoom: 50%;"/></center>

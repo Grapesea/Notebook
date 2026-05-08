@@ -6,9 +6,9 @@
     
     验收要求：
     
-    <center><img src = "../lab4/check.png" style = "zoom:60%"/></center>
+    <center><img src = "./lab4/check.png" style = "zoom:60%"/></center>
     
-    <center><img src = "../lab4/optional.png" style = "zoom:70%"/></center>
+    <center><img src = "./lab4/optional.png" style = "zoom:70%"/></center>
 
 ## 4-0 CPU核集成设计
 
@@ -83,8 +83,8 @@
 
 文件结构：
 
-<center><img src = "../lab4/4-1-1.png" style = "zoom:50%"/></center>
-<center><img src = "../lab4/4-1-2.png" style = "zoom:50%"/></center>
+<center><img src = "./lab4/4-1-1.png" style = "zoom:50%"/></center>
+<center><img src = "./lab4/4-1-2.png" style = "zoom:50%"/></center>
 
 ??? tips "`PC.v`"
     ```verilog

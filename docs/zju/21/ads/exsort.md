@@ -9,13 +9,13 @@
 
 ???+ tips "举例"
 
-    <center><img src = "../figures/exsort/eg.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/exsort/eg.png" style="zoom: 60%;"/></center>
 
     对于大小为3的internal memory, 每一次run实现的是从磁盘中取出3个数，在内部排好，返回给新的tape.
 
     tape可以重复使用，因为原先放进去的东西取完了之后就立刻清空了，所以过程大致如下：
 
-    <center><img src = "../figures/exsort/egp.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/exsort/egp.png" style="zoom: 60%;"/></center>
 
     追加Question: Given 10,000,000 records of 128 bytes each, and the size of the internal memory is 4MB.  How many passes we have to do?
     
@@ -44,7 +44,7 @@ $$ 1 + \lceil \log_k(N/M) \rceil \text{（“1” 是初始生成段的那一趟
 
 用上面的输入举例：
 
-<center><img src = "../figures/exsort/eg2.png" style="zoom: 60%;"/></center>
+<center><img src = "./figures/exsort/eg2.png" style="zoom: 60%;"/></center>
 
 但是就会出现问题：需要$2k$个tape，消耗太多资源，不够好!
 
@@ -96,15 +96,15 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{N-1} F_{N-i}^{(k)}$$
 
 ???+ tips "Final Exercise 1.1-5"
 
-    <center><img src = "../figures/exsort/f1.1-5.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/exsort/f1.1-5.png" style="zoom: 60%;"/></center>
 
-    <center><img src = "../figures/exsort/f1.1-5ex.jpg" style="zoom: 20%;"/></center>
+    <center><img src = "./figures/exsort/f1.1-5ex.jpg" style="zoom: 20%;"/></center>
 
 ## PTA习题
 
 ???+ tips "8.1-5~8"
 
-    <center><img src = "../figures/exsort/1-5,8.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/exsort/1-5,8.png" style="zoom: 60%;"/></center>
 
     TTFT，需要补充的是最后一题，曾经期末出了这道题：
 
@@ -114,6 +114,6 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{N-1} F_{N-i}^{(k)}$$
 
 ???+ tips "Final Practice 2 2-16"
 
-    <center><img src = "../figures/exsort/f2.2-16.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/exsort/f2.2-16.png" style = "zoom:60%"/></center>
 
     A

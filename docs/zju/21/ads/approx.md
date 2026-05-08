@@ -55,11 +55,11 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 
 ???+ tips "6.1-7/8/9"
 
-    <center><img src = "../figures/approx/1.789.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/1.789.png" style="zoom: 50%;"/></center>
 
 ???+ tips "xyx-2"
 
-    <center><img src = "../figures/approx/xyx-2-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/xyx-2-1.png" style="zoom: 50%;"/></center>
 
 ## 实际应用
 
@@ -166,7 +166,7 @@ $$\max(\dfrac{C}{C^*},\dfrac{C^*}{C}) \leq \rho(n)$$
 举例：
 
 ???+ tips "xyx-2"
-    <center><img src = "../figures/approx/xyx-2-2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/xyx-2-2.png" style="zoom: 50%;"/></center>
 
     $\text{Bin Size} =1, L = \{0.55,0.7,0.55,0.1,0.45,0.15,0.3,0.2\}$, $L' = \{0.55,0.7,0.55,0.45,0.15,0.3,0.2\}$
 
@@ -236,14 +236,14 @@ View the entire item list before producing an answer.
 #### PTA习题
 
 ???+ tips "6.2-2/3"
-    <center><img src = "../figures/approx/2.23.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/2.23.png" style="zoom: 50%;"/></center>
     2-2选C，因为NF只与前一个有关，样例特殊时也不会提升比率;<br>
 
     2-3选C，考虑$\{0.9,0.2,0.9,0.2\}$.
 
 ???+ tips "xyx-2"
-    <center><img src = "../figures/approx/xyx-2-3.png" style="zoom: 50%;"/></center>
-    <center><img src = "../figures/approx/xyx-2-3ex.jpg" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/xyx-2-3.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/xyx-2-3ex.jpg" style="zoom: 50%;"/></center>
 
 ???+ tips "Final Practice 2 2-1"
 
@@ -343,7 +343,7 @@ Centers  Greedy-2r ( Sites S[ ], int n, int K, double r )
 #### PTA习题
 
 ???+ tips "6.2-4"
-    <center><img src = "../figures/approx/2.4.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/2.4.png" style="zoom: 50%;"/></center>
 
 ???+ tips "xyx-2"
     (T) The K-center problem can be solved optimally in polynomial time if K is a given constant. 
@@ -354,7 +354,7 @@ Centers  Greedy-2r ( Sites S[ ], int n, int K, double r )
 
 ???+ tips "xyx-2评论区的题目"
 
-    <center><img src = "../figures/approx/xyx2-c.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/xyx2-c.png" style="zoom: 50%;"/></center>
 
 ### TSP问题（Traveling Salesman Problem）
 
@@ -367,7 +367,7 @@ Centers  Greedy-2r ( Sites S[ ], int n, int K, double r )
 ### 图论与树PTA习题
 
 ???+ tips "6.2-5"
-    <center><img src = "../figures/approx/2.5.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/2.5.png" style="zoom: 50%;"/></center>
 
 ???+ tips "6.3-2"
-    <center><img src = "../figures/approx/3.2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/approx/3.2.png" style="zoom: 50%;"/></center>

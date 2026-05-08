@@ -114,11 +114,11 @@
 
     丢到cyberchef里面，
 
-    <center><img src="../photos/cryptohack/xor_cc0.png" alt="rr" style="zoom: 50%;" /></center>
+    <center><img src="./photos/cryptohack/xor_cc0.png" alt="rr" style="zoom: 50%;" /></center>
 
     可以看到myXORkey了，然后把这个放到左边的框里面就行了：
 
-    <center><img src="../photos/cryptohack/xor_cc1.png" alt="rr" style="zoom: 50%;" /></center>
+    <center><img src="./photos/cryptohack/xor_cc1.png" alt="rr" style="zoom: 50%;" /></center>
 
     flag: `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`
 

@@ -8,7 +8,7 @@
 
 AES是一种块加密算法，大致流程如下图所示（图源CTFwiki）：
 
-<center><img src="../photos/cryptohack/aes_details.jpg" alt="rr" style="zoom: 50%;" /></center>
+<center><img src="./photos/cryptohack/aes_details.jpg" alt="rr" style="zoom: 50%;" /></center>
 
 其主要过程如下：
 
@@ -598,7 +598,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 
 ### [ECBCBCWTF](https://cryptohack.org/courses/symmetric/ecbcbcwtf/)
 
-<center><img src="../photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
+<center><img src="./photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
 
 ??? tips "题解"
 
@@ -670,7 +670,7 @@ $$\begin{cases}
 
 ### [Symmetry](https://cryptohack.org/courses/symmetric/symmetry/)
 
-<center><img src="../photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
+<center><img src="./photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
 
 ??? tips "题解"
 
@@ -700,7 +700,7 @@ $$\begin{cases}
 
 [Bean_counter](https://cryptohack.org/courses/symmetric/bean_counter/)
 
-<center><img src="../photos/cryptohack/ctr.png" style="zoom: 100%;" /></center>
+<center><img src="./photos/cryptohack/ctr.png" style="zoom: 100%;" /></center>
 
 ??? tips "题解"
 

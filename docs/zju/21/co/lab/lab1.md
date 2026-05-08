@@ -126,7 +126,7 @@ endmodule
 
 仿真波形：
 
-<center><img src = "../lab1/1.png" style = "zoom:60%"/></center>
+<center><img src = "./lab1/1.png" style = "zoom:60%"/></center>
 
 #### 功能性描述
 
@@ -178,7 +178,7 @@ endmodule
 
 仿真波形：
 
-<center><img src = "../lab1/2.png" style = "zoom:60%"/></center>
+<center><img src = "./lab1/2.png" style = "zoom:60%"/></center>
 
 <del>逻辑原理图的部分我就不做了，嫌麻烦.</del>
 
@@ -187,7 +187,7 @@ endmodule
 Register files是数字系统的功能组件之一，此处我们需要实现\(32 \times 32 bits\)的寄存器组件，进行行为级描述并输出仿真结果.
 
 原理图：
-<center><img src = "../lab1/3.png" style = "zoom:60%"/></center>
+<center><img src = "./lab1/3.png" style = "zoom:60%"/></center>
 
 端口要求：
 
@@ -283,7 +283,7 @@ endmodule
 
 最后跑出来结果是：
 
-<center><img src = "../lab1/4.png" style = "zoom:60%"/></center>
+<center><img src = "./lab1/4.png" style = "zoom:60%"/></center>
 
 ## 三段式状态机
 
@@ -419,6 +419,6 @@ endmodule
 
 跑出来仿真：
 
-<center><img src = "../lab1/5.png" style = "zoom:60%"/></center>
+<center><img src = "./lab1/5.png" style = "zoom:60%"/></center>
 
 于是lab1就<del>在这种赤石的氛围中</del>结束了！

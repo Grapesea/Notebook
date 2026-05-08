@@ -83,7 +83,7 @@ AVLNode* rrRotation(AVLNode* root){
 }
 ```
 
-<center><img src="../figures/ads/rr.png" alt="rr" style="zoom: 75%;" /></center>
+<center><img src="./figures/ads/rr.png" alt="rr" style="zoom: 75%;" /></center>
 
 LL Rotation类似，代码如下：
 
@@ -107,11 +107,11 @@ AVLNode* llRotation(AVLNode* root){
 
 LR Rotation过程：
 
-<center><img src="../figures/ads/lr-1.jpg" alt="lr" style="zoom: 75%;" /></center>
+<center><img src="./figures/ads/lr-1.jpg" alt="lr" style="zoom: 75%;" /></center>
 
 **LR rotation过程可以看作是一次RR Rotation和一次LL Rotation的叠加**，拆解如下：
 
-<center><img src="../figures/ads/lr-2.jpg" alt="lr" style="zoom: 75%;" /></center>
+<center><img src="./figures/ads/lr-2.jpg" alt="lr" style="zoom: 75%;" /></center>
 
 所以代码为：
 
@@ -181,20 +181,20 @@ AVLNode* rlRotation(AVLNode* root){
 
 ???+ notes "1.3-2"
 
-    <center><img src="../figures/ads/1.3-2.png" style="zoom: 60%;" /></center>
+    <center><img src="./figures/ads/1.3-2.png" style="zoom: 60%;" /></center>
     
     A. 画图可知.
     
     After inserting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
 
 ???+ notes "xyx-1"
-    <center><img src="../figures/ads/xyx1-1.png" style="zoom: 60%;" /></center>
+    <center><img src="./figures/ads/xyx1-1.png" style="zoom: 60%;" /></center>
 
     举一个例子.
 
 ???+ tips "2021mid"
 
-    <center><img src="../figures/ads/2021mid-avl.png" style="zoom: 60%;" /></center>
+    <center><img src="./figures/ads/2021mid-avl.png" style="zoom: 60%;" /></center>
     
     iff是“当且仅当”的意思.
 
@@ -542,11 +542,11 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 * P 是根节点，则只需要进行zig操作来rotation X & P
 
-    <center><img src = "../figures/ads/zig.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "./figures/ads/zig.jpg" style="zoom: 30%;"/></center>
 
 * P 不是根节点，则需要分情况，选择操作zig-zag(Double Rotation)或者zig-zig(Single Rotation)
 
-    <center><img src = "../figures/ads/dr.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "./figures/ads/dr.jpg" style="zoom: 30%;"/></center>
 
 #### 搜索、插入
 
@@ -565,38 +565,38 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 ???+ tips "1.3-3"
 
-    <center><img src = "../figures/ads/1.3-3.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/1.3-3.png" style="zoom: 60%;"/></center>
     
     全选.
 
 ???+ tips "[xyx-1](https://www.yuque.com/xianyuxuan/coding/ads_exam_1)"
 
-    <center><img src = "../figures/ads/xyx1-2.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/xyx1-2.png" style="zoom: 60%;"/></center>
     
-    <center><img src = "../figures/ads/xyx1-3.jpg" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/xyx1-3.jpg" style="zoom: 60%;"/></center>
     
     All of the Zig, Zig-zig, and Zig-zag rotations not only move the accessed node to the root, but also roughly half the depth of most nodes on the path. <br>
     这是对的，并且是Splay的核心特性.
     
-    <center><img src = "../figures/ads/xyx1-3.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/xyx1-3.png" style="zoom: 60%;"/></center>
     
     选D，流程应该是如下的：
     
-    <center><img src = "../figures/ads/xyx1-4.jpg" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/xyx1-4.jpg" style="zoom: 60%;"/></center>
     
-    <center><img src = "../figures/ads/xyx1-6.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/xyx1-6.png" style="zoom: 60%;"/></center>
     
-    <center><img src = "../figures/ads/xyx1-6.jpg" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/xyx1-6.jpg" style="zoom: 60%;"/></center>
 
 ???+ tips "2025fall-ch-mid"
 
-    <center><img src = "../figures/ads/2025midch-1.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/2025midch-1.png" style="zoom: 60%;"/></center>
     
-    <center><img src = "../figures/ads/2025midch-1.jpg" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/ads/2025midch-1.jpg" style="zoom: 50%;"/></center>
 
 ???+ tips "Final Practice 2 2-17"
 
-    <center><img src = "../figures/ads/f2.2-17.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/ads/f2.2-17.png" style = "zoom:60%"/></center>
     
     1错2对3错.
     
@@ -631,7 +631,7 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 !!! tips "举例"
     上面的定义比较抽象，可以参考这个示例图来理解：
-    <center><img src = "../figures/ads/rbtree.png" style="zoom: 60%;"/></center>
+    <center><img src = "./figures/ads/rbtree.png" style="zoom: 60%;"/></center>
     A red-black tree with \(n\) internal nodes has height at most 2\(\ln (N+1)\).
     这可以由归纳法进行证明，略.
 
@@ -649,27 +649,27 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 首先是case3，只需要LL Rotation或者RR Rotation的情况：
 
-<center><img src = "../figures/ads/case3.jpg" style="zoom: 50%;"/></center>
+<center><img src = "./figures/ads/case3.jpg" style="zoom: 50%;"/></center>
 
 接着是case2，这里只需要进行一次LR/RL Rotation并且染色就能达到平衡：
 
-<center><img src = "../figures/ads/case2.jpg" style="zoom: 50%;"/></center>
+<center><img src = "./figures/ads/case2.jpg" style="zoom: 50%;"/></center>
 
 最后是最为复杂的case1，我们针对节点G的上一级进行分类，由对称性化简，最后共分成4个小的case：
 
-<center><img src = "../figures/ads/case1.jpg" style="zoom: 50%;"/></center>
+<center><img src = "./figures/ads/case1.jpg" style="zoom: 50%;"/></center>
 
-<center><img src = "../figures/ads/case121.jpg" style="zoom: 50%;"/></center>
+<center><img src = "./figures/ads/case121.jpg" style="zoom: 50%;"/></center>
 
-<center><img src = "../figures/ads/case122.jpg" style="zoom: 50%;"/></center>
+<center><img src = "./figures/ads/case122.jpg" style="zoom: 50%;"/></center>
 
-<center><img src = "../figures/ads/case123.jpg" style="zoom: 50%;"/></center>
+<center><img src = "./figures/ads/case123.jpg" style="zoom: 50%;"/></center>
 
-<img src = "../figures/ads/case124.jpg" style="zoom: 30%;"/>
+<img src = "./figures/ads/case124.jpg" style="zoom: 30%;"/>
 
 完整状态机：
 
-<center><img src = "../figures/ads/statemachine.png" style="zoom: 70%;"/></center>
+<center><img src = "./figures/ads/statemachine.png" style="zoom: 70%;"/></center>
 
 #### 删除
 
@@ -685,19 +685,19 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 总的思路分析：
 
-<center><img src = "../figures/ads/rbdel0.jpg" style="zoom: 80%;"/></center>
+<center><img src = "./figures/ads/rbdel0.jpg" style="zoom: 80%;"/></center>
 
 首先是case3.当$X$有2个孩子的时候，我们只需要将$X$与其左子树最大节点或者右子树最小节点的**键值**交换，保持红黑属性不变，就可以转换成case1或者2.
 
 而case1,2其实没有显著的不同，所以讨论的时候可以合并来看（以下已经注明，case1真包含于cases12.3，因为NIL节点是黑色的.）
 
-<center><img src = "../figures/ads/rbdel1.jpg" style="zoom: 80%;"/></center>
+<center><img src = "./figures/ads/rbdel1.jpg" style="zoom: 80%;"/></center>
 
-<center><img src = "../figures/ads/rbdel2.jpg" style="zoom: 60%;"/></center>
+<center><img src = "./figures/ads/rbdel2.jpg" style="zoom: 60%;"/></center>
 
 状态机：
 
-<center><img src = "../figures/ads/rbdel3.jpg" style="zoom: 60%;"/></center>
+<center><img src = "./figures/ads/rbdel3.jpg" style="zoom: 60%;"/></center>
 
 搜索到$X$节点需要的时间是$O(\log N)$，而向上转移所谓的双黑属性时间复杂度是$O(h) = O(\log N)$，每个转移操作的时间复杂度是$O(1)$，于是整个删除操作的复杂度是$O(\log N)$.
 
@@ -723,7 +723,7 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
     After deleting 10 from the red-black tree given in the figure, which one of the following statements must be FALSE?
     
-    <center><img src = "../figures/ads/yymid1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/ads/yymid1.png" style="zoom: 50%;"/></center>
     
     A. 8 is the parent of 6, and 6 is black<br>
     B. 6 is the parent of 8, and 8 is red<br>
@@ -732,13 +732,13 @@ Red-Black Tree 是一个满足以下red-black property的BST：
     
     选B.红黑树的节点删除之后有两种处理方法：把左子树最大的移动过来/右子树最小的移动过来.
     
-    <center><img src = "../figures/ads/yymid1-1.jpg" style="zoom: 30%;"/></center>
+    <center><img src = "./figures/ads/yymid1-1.jpg" style="zoom: 30%;"/></center>
 
 ???+ tips "xyx-1"
 
-    <center><img src = "../figures/ads/xyx15.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/ads/xyx15.png" style="zoom: 50%;"/></center>
     
-    <center><img src = "../figures/ads/xyx1-5.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/ads/xyx1-5.png" style="zoom: 50%;"/></center>
 
 ???+ tips "2021mid"
 
@@ -748,7 +748,7 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 ???+ tips "Final Practice 2 2-6"
 
-    <center><img src = "../figures/ads/f2.2-6.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/ads/f2.2-6.png" style = "zoom:60%"/></center>
     
     self-adjusting structure指的是splay, skew/leftist heap这些，balanced指的是AVL, rb tree.
     **注意审题.**
@@ -833,7 +833,7 @@ Definition:
 
 比如2-3-4树的举例如下：
 
-<center><img src = "../figures/ads/bplus0.png" style="zoom: 50%;"/></center>
+<center><img src = "./figures/ads/bplus0.png" style="zoom: 50%;"/></center>
 
 其中所有数据存储在叶子节点中，拼接起来就是一个严格单调递增/减的数列；
 
@@ -852,9 +852,9 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 过程图如下：
 
 ???+ tips "B+树搜索插入操作"
-    <center><img src = "../figures/ads/bplus0.jpg" style="zoom: 80%;"/></center>
-    <center><img src = "../figures/ads/bplus1.jpg" style="zoom: 80%;"/></center>
-    <center><img src = "../figures/ads/bplus2.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "./figures/ads/bplus0.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "./figures/ads/bplus1.jpg" style="zoom: 80%;"/></center>
+    <center><img src = "./figures/ads/bplus2.jpg" style="zoom: 80%;"/></center>
 
 #### *删除
 
@@ -918,7 +918,7 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
     
     选C.
     
-    <center><img src = "../figures/ads/yymid2.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/ads/yymid2.png" style="zoom: 50%;"/></center>
     
     来源：[USFCA可视化板-B+树](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
 

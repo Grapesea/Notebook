@@ -15,13 +15,13 @@
 
 * Decomposability of  computer systems
 
-    <center><img src="../1/co0.png" alt="rr" style="zoom: 40%;" /></center>
+    <center><img src="./1/co0.png" alt="rr" style="zoom: 40%;" /></center>
 
-    <center><img src="../1/co01.png" alt="rr" style="zoom: 31%;" /></center>
+    <center><img src="./1/co01.png" alt="rr" style="zoom: 31%;" /></center>
 
 * Five Classic Components of Hardware
 
-    <center><img src="../1/co1.png" alt="rr" style="zoom: 40%;" /></center>
+    <center><img src="./1/co1.png" alt="rr" style="zoom: 40%;" /></center>
 
 * CPU Processor
 
@@ -92,7 +92,7 @@
 
     3. 时钟周期：
 
-        <center><img src="../1/clkperiod.png" alt="rr" style="zoom: 40%;" /></center>
+        <center><img src="./1/clkperiod.png" alt="rr" style="zoom: 40%;" /></center>
 
     4. Performance can be improved by reducing  number of clock cycles or increasing clock rate. Hardware designer must often trade off clock rate against cycle count (为了提升性能，硬件设计师经常需要在**时钟频率**和**周期数**之间做权衡取舍).
 

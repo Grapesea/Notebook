@@ -93,7 +93,7 @@ Node *merge(Node *X, Node *Y){
 
 流程图实例：
 
-<center><img src = "../figures/ads/recmerge.jpg" style = "zoom:30%"/></center>
+<center><img src = "./figures/ads/recmerge.jpg" style = "zoom:30%"/></center>
 
 迭代式：这个部分的思路跟归并排序差不多，都需要双指针来动态移动.
 
@@ -144,9 +144,9 @@ Node *_merge(Node *X_, Node *Y_) // iterative merge
 
 流程图实例：
 
-<center><img src = "../figures/ads/itemerge0.jpg" style = "zoom:30%"/></center>
+<center><img src = "./figures/ads/itemerge0.jpg" style = "zoom:30%"/></center>
 
-<center><img src = "../figures/ads/itemerge1.jpg" style = "zoom:30%"/></center>
+<center><img src = "./figures/ads/itemerge1.jpg" style = "zoom:30%"/></center>
 
 #### Insertion
 
@@ -205,11 +205,11 @@ ADS课程的merge是对wiki等地方的定义做出了一点修改的（……�
 >
 > !: **if H merges with a NULL node, in leftist heap we just need to return H, but in skew heap we should swap ls and rs.**
 
-<center><img src = "../figures/ads/sh0.jpg" style = "zoom:30%"/></center>
+<center><img src = "./figures/ads/sh0.jpg" style = "zoom:30%"/></center>
 
-<center><img src = "../figures/ads/sh1.jpg" style = "zoom:30%"/></center>
+<center><img src = "./figures/ads/sh1.jpg" style = "zoom:30%"/></center>
 
-<center><img src = "../figures/ads/sh2.jpg" style = "zoom:30%"/></center>
+<center><img src = "./figures/ads/sh2.jpg" style = "zoom:30%"/></center>
 
 skew heap的删除和插入节点方法与leftist heap原理上基本一致，略去.
 
@@ -266,15 +266,15 @@ $$\text{size}_{\text{H.right_descendent}} \geq \dfrac12 \text{size}_{\text{H}}$$
 
     The right path of a skew heap can be arbitrarily long.<br>
     
-    <center><img src = "../figures/ads/xyx-left.png" style = "zoom:50%"/></center>
+    <center><img src = "./figures/ads/xyx-left.png" style = "zoom:50%"/></center>
 
 ???+ tips "2024mid"
 
-    <center><img src = "../figures/ads/2024mid3.png" style = "zoom:50%"/></center>
+    <center><img src = "./figures/ads/2024mid3.png" style = "zoom:50%"/></center>
 
 ???+ tips "2.1-10,11"
 
-    <center><img src = "../figures/ads/2.1-1011.png" style = "zoom:50%"/></center>
+    <center><img src = "./figures/ads/2.1-1011.png" style = "zoom:50%"/></center>
 
 ## Lec 5 Binomial Queue
 
@@ -293,7 +293,7 @@ $$\text{size}_{\text{H.right_descendent}} \geq \dfrac12 \text{size}_{\text{H}}$$
 
 其图示如下：
 
-<center><img src = "../figures/ads/bt0.png" style = "zoom:30%"/></center>
+<center><img src = "./figures/ads/bt0.png" style = "zoom:30%"/></center>
 
 于是有：
 
@@ -309,7 +309,7 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 
 于是构成为：
 
-<center><img src = "../figures/ads/bq0.png" style = "zoom:50%"/></center>
+<center><img src = "./figures/ads/bq0.png" style = "zoom:50%"/></center>
 
 ### Findmin
 
@@ -322,7 +322,7 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 > 1. 树/堆的纬度，具体观察数据的转移与变化过程；<br>
 > 2. 二进制的纬度，将$k$阶二项树抽象为 bit vector 第$k$位的 1，从二进制加法的角度理解；
 
-<center><img src = "../figures/ads/bqmerge.jpg" style = "zoom:50%"/></center>
+<center><img src = "./figures/ads/bqmerge.jpg" style = "zoom:50%"/></center>
 
 下面是这个函数具体的实现代码：
 
@@ -402,7 +402,7 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 
 类似之前的heap，插入操作看作是与一个结点的二项堆的merge.
 
-<center><img src = "../figures/ads/bqinsert.jpg" style = "zoom:50%"/></center>
+<center><img src = "./figures/ads/bqinsert.jpg" style = "zoom:50%"/></center>
 
 If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i + 1)$. Performing $N$ Insertions on an initially empty binomial queue will take $O(N)$ worst-case time.  Hence the average time is $O(1)$.
 
@@ -446,13 +446,13 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 
 ???+ tips "过程"
 
-    <center><img src = "../figures/ads/deletemin_bq.jpg" style = "zoom:30%"/></center>
+    <center><img src = "./figures/ads/deletemin_bq.jpg" style = "zoom:30%"/></center>
 
 ### PTA习题
 
 ???+ tips "2.1-13,14"
 
-    <center><img src = "../figures/ads/2.1-1314.png" style = "zoom:60%"/></center>
+    <center><img src = "./figures/ads/2.1-1314.png" style = "zoom:60%"/></center>
     
     第1题的情况是，会误以为 $k$-ary tree 要求度必须“恰好”等于 $k$，但实际上只要“不超过” $k$ 即可。因此该命题为 True.
     
@@ -486,7 +486,7 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 
 ???+ tips "xyx-1"
 
-    <center><img src = "../figures/ads/xyx1-7.png" style = "zoom:50%"/></center>
+    <center><img src = "./figures/ads/xyx1-7.png" style = "zoom:50%"/></center>
     
     For a binomial queue, __ takes a constant time on average.<br>
     A.merging<br>

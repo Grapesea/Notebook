@@ -26,7 +26,7 @@
 
 如图为NEXYS-A7上的16个并行LED流水灯原理图, 所有的阴极（负极）接地（共阴极），当阳极接高电平时点亮.
 
-<center><img src = "../lab0/1.png" style = "zoom:40%"/></center>
+<center><img src = "./lab0/1.png" style = "zoom:40%"/></center>
 
 将学在浙大上给出的`Water_LED.v`和`Water_LED_tb.v`代码分别导入Vivado的`Design Sources`和`Simulation Sources`中.
 
@@ -97,7 +97,7 @@ endmodule
 
 结果图大概长这样：
 
-<center><img src = "../lab0/2.png" style = "zoom:60%"/></center>
+<center><img src = "./lab0/2.png" style = "zoom:60%"/></center>
 
 ### 添加约束文件
 
@@ -130,7 +130,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports CLK_i]
 
 接下来生成bitstream并program device之后就能看到流水灯效果了，是索引为3,2,1,0的四个端口出现了流水的效果.
 
-<a href="../lab0/water_led.mp4" download="water_led.mp4">点击下载效果视频</a>
+<a href="./lab0/water_led.mp4" download="water_led.mp4">点击下载效果视频</a>
 
 ## 自定义模块设计学习
 
@@ -186,11 +186,11 @@ endmodule
 
 跑出来结果：
 
-<center><img src = "../lab0/3.png" style = "zoom:60%"/></center>
+<center><img src = "./lab0/3.png" style = "zoom:60%"/></center>
 
 slides上面的仿真代码，从波形倒推来讲比较复杂. 看意思是只要能验证MUX的设计代码功能成立，就可以进入封装部分了.
 
-找到上面的`Tools->Create and Package New IP->Next`，一路点击底下的`Next>`至IP Location的选择，这里我的Vivado初始路径跟slides不是很一样，slides上面要求是`../mux2t1_5/mux2t1_5.srcs/sources_1/new`，而我这里是`../mux2t1_5/mux2t1_5.srcs`，所以还得往里面切2层找到目标路径.
+找到上面的`Tools->Create and Package New IP->Next`，一路点击底下的`Next>`至IP Location的选择，这里我的Vivado初始路径跟slides不是很一样，slides上面要求是`./mux2t1_5/mux2t1_5.srcs/sources_1/new`，而我这里是`./mux2t1_5/mux2t1_5.srcs`，所以还得往里面切2层找到目标路径.
 
 finish之后，在弹出的窗口中选择`Review and Package->Package IP`即可，这样封装就完成了.
 

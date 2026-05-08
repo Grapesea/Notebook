@@ -15,7 +15,7 @@
     有概率$P$输出的答案是错误，运行时间固定为$T$.
 
 ???+ tips "23-24Final"
-    <center><img src = "../figures/random/cy.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/random/cy.png" style="zoom: 50%;"/></center>
 
     只有当**验证（Verification）**一个解的正确性的复杂度不高于算法本身的复杂度时，这种转换才成立.
 
@@ -183,13 +183,13 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
 
 ???+ tips "7.1-4,5"
 
-    <center><img src = "../figures/random/7.1-4,5.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/random/7.1-4,5.png" style="zoom: 50%;"/></center>
 
     4的正确表述是，如果$b = (b_1,b_2,\cdots,b_n)$表示$a$排完序之后的结果，那么任意两个元素被比较过的次数最多是1，并且$b_i$和$b_j$被比较过的概率是$\dfrac{2}{j−i+1}, j>i$,如果$b_i$或者$b_j$被当作了pivot.
 
 ???+ tips "7.3-1"
 
-    <center><img src = "../figures/random/7.3-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/random/7.3-1.png" style="zoom: 50%;"/></center>
 
     A错是显然的，B的反例是当第二大的数在前$k$个中，且最大的数在末尾的数列.
 
@@ -199,6 +199,6 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
 
 ???+ tips "Final Practice 1 1-1"
 
-    <center><img src = "../figures/random/f1-1.png" style="zoom: 50%;"/></center>
+    <center><img src = "./figures/random/f1-1.png" style="zoom: 50%;"/></center>
 
     并没有“好的”输入这种事情，因为随机化消除了输入的特性，期望值不会因此而改变. 任意输入序列，对应的效率期望值是恒定的，永远是$O(n\log n)$.

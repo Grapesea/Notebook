@@ -6,7 +6,7 @@
 
 与CS106B比较：
 
-<center><img src="../figures/intro/0.png" alt="0" style="zoom: 40%;" /></center>
+<center><img src="./figures/intro/0.png" alt="0" style="zoom: 40%;" /></center>
 
 ### C++简介
 
@@ -64,7 +64,7 @@ C 的劣势：
 
 C++希望做到的（设计哲学）：
 
-<center><img src="../figures/intro/1.png" alt="0" style="zoom: 40%;" /></center>
+<center><img src="./figures/intro/1.png" alt="0" style="zoom: 40%;" /></center>
 
 STL库的优越性：
 
