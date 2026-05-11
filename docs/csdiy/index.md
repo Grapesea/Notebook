@@ -59,10 +59,6 @@
         <td>Datawhale Hello-agent开源课程</td>
     </tr>
     <tr>
-        <td><a href="datawhale-rag/">Datawhale All-in-RAG</a></td>
-        <td>Datawhale All-in-RAG开源课程</td>
-    </tr>
-    <tr>
         <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence</a></td>
         <td>Datawhale人工智能数学基础开源课程</td>
     </tr>

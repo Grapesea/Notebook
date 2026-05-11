@@ -1,3 +1,5 @@
+# Dynamic Programming
+
 ???+ info "教程地址"
 
     [动态规划理论基础](https://www.programmercarl.com/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html)
@@ -29,15 +31,15 @@
         }
     };
     ```
-
+    
     这样做的时间空间复杂度均为\(O(n)\)，而递归时间复杂度是\(O(2^n)\).
-
+    
     70.同理，略.
 
 ??? tips "[746.Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/description/)"
 
     首先，可以把cost数组理解成跳跃后的花费.
-
+    
     ```cpp
     class Solution {
     public:
@@ -52,13 +54,13 @@
         }
     };
     ```
-
+    
     时间空间复杂度均为\(O(n)\).
 
 ??? tips "[62.Unique Path I](https://leetcode.com/problems/unique-paths) & [63. Unique Path II](https://leetcode.com/problems/unique-paths-ii/)"
 
     这2个是较为简单的动规.
-
+    
     ```cpp
     class Solution {
     public:
@@ -75,9 +77,9 @@
         }
     };
     ```
-
+    
     还有一个数论方法，但是需要注意溢出的处理：
-
+    
     ```cpp
     class Solution {
     public:
@@ -97,9 +99,9 @@
         }
     };
     ```
-
+    
     63这题要注意数组初始化，我一开始没意识到，然后出问题了.
-
+    
     ```cpp
     class Solution {
     public:
@@ -170,7 +172,7 @@
 ??? tips "ADS-hw5-PTA"
 
     这是0-1背包的基础板子.
-
+    
     ```cpp
     #include<iostream>
     #include<vector>
@@ -184,7 +186,7 @@
         for (int i = 0; i < N; i++){
             cin >> weight[i] >> value[i];
         }
-
+    
         vector<vector<int>> dp(N,vector<int>(V+1,0));
         for (int i = 0; i < N; i++)
             dp[i][0] = 0;
@@ -214,16 +216,16 @@
     int max(int* nums, int* sum, int pos){
         return (sum[pos-2] + nums[pos] > sum[pos-1]) ? sum[pos-2] + nums[pos] : sum[pos-1];
     }
-
+    
     int rob(int* nums, int numsSize) {
         int* sum = (int*) malloc(numsSize * sizeof(int));
         sum[0] = nums[0];
         if (numsSize == 1) return sum[0];
-
+    
         sum[1] = (nums[0] < nums[1]) ? nums[1] : nums[0];
         if (numsSize == 2) return sum[1];
         sum[2] = (nums[0] + nums[2] > nums[1]) ? nums[0] + nums[2] : nums[1];
-
+    
         for (int i = 3; i < numsSize; i++){
             sum[i] = max(nums, sum, i);
         }
@@ -244,7 +246,7 @@
         else 
             return sum[pos-1];
     }
-
+    
     int rob_s(int* nums, int st, int ed){
         int numsSize = ed - st + 1;
         
@@ -275,7 +277,7 @@
         free(sum);
         return result;
     }
-
+    
     int rob(int* nums, int numsSize) {
         if (numsSize == 0) return 0;
         if (numsSize == 1) return nums[0];
@@ -302,7 +304,7 @@
     *     struct TreeNode *right;
     * };
     */
-
+    
     int *rob_t(struct TreeNode *node){
         int* sum = (int*) malloc(sizeof(int) * 2);
         memset(sum, 0, sizeof(int) * 2);
@@ -315,7 +317,7 @@
         // 0表示不偷当前节点，1表示偷当前节点.
         return sum;
     }
-
+    
     int rob(struct TreeNode* root) {
         int* dp = rob_t(root);
         return fmax(dp[0],dp[1]);
@@ -333,12 +335,12 @@
     ```c
     int maxProfit(int* prices, int pricesSize) {
         if (pricesSize == 0) return 0;
-
+    
         int** dp = (int**) malloc(sizeof(int*) * pricesSize);
         for(int i = 0; i < pricesSize; i++){
             dp[i] = malloc(sizeof(int)*2);
         }
-
+    
         dp[0][0] = -prices[0];
         dp[0][1] = 0;
         for (int i = 1; i < pricesSize; i++){
@@ -354,5 +356,5 @@
 ??? tips "sol"
 
     ```c
-
+    
     ```

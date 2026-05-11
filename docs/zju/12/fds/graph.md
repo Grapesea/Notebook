@@ -1,5 +1,1 @@
-### 基础建构
-
-### Dijkstra's Algorithm
-
-### Prim
+参见CSDIY文件夹下的CS61B[图论笔记](../../../csdiy/cs61b/graph.md).

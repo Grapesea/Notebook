@@ -48,6 +48,9 @@ markdown_extensions:
       generic: true
   - pymdownx.superfences
   - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
   - footnotes
   - attr_list
 
@@ -55,6 +58,9 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
   - 首页: index.md
@@ -67,6 +73,7 @@ nav:
       - 导航: zju/12/index.md
       - 数据结构基础: 
         - 概述: zju/12/fds/index.md
+        - Tree: zju/12/fds/tree.md
         - Heap: zju/12/fds/heap.md
         - Graph: zju/12/fds/graph.md
         - Testing: zju/12/fds/testing.md
@@ -184,17 +191,24 @@ nav:
       - 大学生朋辈心理辅导:
         - 概述: zju/22/psy/index.md
   - 语言学习:
+    - 导航栏: language/index.md
     - IELTS:
       - 资源整合: language/IELTS/index.md
       - 口语: language/IELTS/speaking.md
       - 听力: language/IELTS/listening.md
       - 阅读: language/IELTS/reading.md
       - 作文: language/IELTS/writing.md
-  - csdiy课程笔记: 
-    - csdiy课程笔记导航: csdiy/index.md
+    - CET6:
+      - 资源整合: language/CET6/index.md
+      - 单词: language/CET6/words.md
+  - CSDIY: 
+    - CSDIY笔记导航: csdiy/index.md
     - CS61B:
       - 课程计划: csdiy/cs61b/index.md
-      - lec1-5: csdiy/cs61b/lec1-5.md
+      - Introduction: csdiy/cs61b/intro.md
+      - Tree: csdiy/cs61b/tree.md
+      - Heap: csdiy/cs61b/heap.md
+      - Graph: csdiy/cs61b/graph.md
     - CS61C:
       - 课程计划: csdiy/cs61c/index.md
     - CS70: 
@@ -235,10 +249,12 @@ nav:
     - CS224W:
       - 课程计划: csdiy/cs224w/index.md
       - Lec01-02 (Introduction & Node Embedding): csdiy/cs224w/01-02.md
+      - Lec03-05 (GNN): csdiy/cs224w/03-05.md
       - 论文阅读:
         - node2vec: csdiy/cs224w/papers/node2vec.md
       - lab: 
-        - colab: csdiy/cs224w/labs/colab0.md
+        - colab0: csdiy/cs224w/labs/colab0.md
+        - colab1: csdiy/cs224w/labs/colab1.md
     - CSAPP:
       - 课程计划: csdiy/csapp/index.md
     - CMU 15-445:
@@ -286,36 +302,19 @@ nav:
       - Chap 10:降维与主成分分析: csdiy/datawhale_m4ai/10.md
       - Chap 11:密度估计和Gauss混合模型: csdiy/datawhale_m4ai/11.md
       - Chap 12:分类和支持向量机: csdiy/datawhale_m4ai/12.md
-  - CTF: 
-    - 笔记目录: ctf/index.md
-    - CTF101笔记: ctf/ctf101.md
-    - Web笔记:
-      - 导航: ctf/web/index.md
-      - 西电CTF平台: ctf/web/xidianmoe.md
-    - crypto笔记: 
-      - 导航: ctf/crypto/index.md
-      - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
-      - cryptohack基础: ctf/crypto/cryptohack_basic.md
-      - RSA: ctf/crypto/rsa.md
-      - DSA: ctf/crypto/dsa.md
-      - AES: ctf/crypto/aes.md
-      - Lattice: ctf/crypto/lattice.md
-      - PRNG: ctf/crypto/prng.md
-      - Hash Function: ctf/crypto/hash.md
-      - ZJUSEC题库: ctf/crypto/zjusec.md
-      - NSSCTF题库: ctf/crypto/nssctf.md
-      - CSACTF2025: ctf/crypto/csactf2025.md
-      - 长城杯2025: ctf/crypto/ccb2025.md
-    - NewStarCTF2025:
-      - 题解: ctf/newstarctf2025/writeup.md
   - 科研学习:
     - 收集帖: lab/index.md
-    - Ragflow: lab/ragflow.md
+    - RAGFlow: lab/ragflow.md
     - Datawhale All-in-RAG:
       - 课程计划: lab/datawhale-rag/index.md
       - Chap 1-3: lab/datawhale-rag/1-3.md
     - 工具:
       - AutoFigure: lab/tools/autofigure.md
+  - 实习&工作:
+    - 实习资源整理:
+      - 面经: intern_work/interview/index.md
+    - 前端:
+      - Vue框架: intern_work/frontend/vue-basics.md
   - OJ笔记:
     - OJ笔记导航: oj/index.md
     - LeetCode: 
@@ -324,6 +323,7 @@ nav:
         - 数组: oj/leetcode/cpp/int.md
         - 链表: oj/leetcode/cpp/linklist.md
         - 树: oj/leetcode/cpp/tree.md
+        - 图论: oj/leetcode/cpp/graph.md
         - 回溯: oj/leetcode/cpp/backtrack.md
         - 动态规划: oj/leetcode/cpp/dp.md
         - 贪心: oj/leetcode/cpp/greedy.md
@@ -355,6 +355,28 @@ nav:
     - Claude-Projects Prompts: tools/claude-projects.md
     - V2rayN一键配置脚本: tools/v2ray.md
     - VSCode打通WSL: tools/wsl_connect_vscode.md
+  - CTF: 
+    - 笔记目录: ctf/index.md
+    - CTF101笔记: ctf/ctf101.md
+    - Web笔记:
+      - 导航: ctf/web/index.md
+      - 西电CTF平台: ctf/web/xidianmoe.md
+    - crypto笔记: 
+      - 导航: ctf/crypto/index.md
+      - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
+      - cryptohack基础: ctf/crypto/cryptohack_basic.md
+      - RSA: ctf/crypto/rsa.md
+      - DSA: ctf/crypto/dsa.md
+      - AES: ctf/crypto/aes.md
+      - Lattice: ctf/crypto/lattice.md
+      - PRNG: ctf/crypto/prng.md
+      - Hash Function: ctf/crypto/hash.md
+      - ZJUSEC题库: ctf/crypto/zjusec.md
+      - NSSCTF题库: ctf/crypto/nssctf.md
+      - CSACTF2025: ctf/crypto/csactf2025.md
+      - 长城杯2025: ctf/crypto/ccb2025.md
+    - NewStarCTF2025:
+      - 题解: ctf/newstarctf2025/writeup.md
   - 储物柜:
     - Grapesea的小创作: 
       - 目录: gadgets/article/index.md
@@ -370,4 +392,3 @@ nav:
   - 友链:
     - Grapesea的朋友们: friends/friends.md
     - Grapesea的其他联系方式: friends/contact.md
-    

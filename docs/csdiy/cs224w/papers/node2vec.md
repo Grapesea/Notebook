@@ -48,7 +48,7 @@ $$\alpha_{pq}(t,x) = \begin{cases} \dfrac1p & (dist(t,x) = 0)\\ 1 & (dist(t,x) =
 
 * Space Complexity: $O(|E|)$;
 * Time Complexity: $O(a^2|V|)$，其中$a$是节点平均的度数（由于真实世界中一般是稀疏图，所以$a$不是很大）
-* 如果将 random walk length 设置成$l$，我们对$(l-k)$个node 取$k$个sample ($k < l$) 
+* 如果将 random walk length 设置成$l$，我们对$(l-k)$个node 取$k$个sample ($k < l$) ，实际的复杂度是$O(\dfrac{l}{k(l-k)})$.
 
 下面定义一些算子：
 
@@ -79,6 +79,4 @@ $$\alpha_{pq}(t,x) = \begin{cases} \dfrac1p & (dist(t,x) = 0)\\ 1 & (dist(t,x) =
 
 核心伪代码：
 
-```pseudocode
-```
-
+<img src="./figures/node2vec/algo.png" alt="algo" style="zoom: 50%;" />

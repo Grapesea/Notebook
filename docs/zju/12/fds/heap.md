@@ -1,1 +1,1 @@
-> 完全来自CS61B: 2024Spring
+参见CSDIY文件夹下的CS61B[堆笔记](../../../csdiy/cs61b/heap.md).

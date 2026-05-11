@@ -1,4 +1,4 @@
-# RAGflow
+# RAGFlow
 
 ## Setup
 

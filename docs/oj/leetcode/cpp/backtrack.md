@@ -1,3 +1,5 @@
+# Backtracking
+
 回溯必定伴随着递归.
 
 模板：
@@ -20,10 +22,10 @@ void backtracking(参数) {
 ??? tips "77.Combinations"
 
     [地址](https://leetcode.com/problems/combinations/)
-
+    
     这个回溯有点难懂……考虑用树来理解，每一层相当于一个选择，放入path之后接着枚举，
     退出之后回溯到上一层并把刚刚得到的放到path中.
-
+    
     ```cpp
     class Solution {
     private:
@@ -41,22 +43,22 @@ void backtracking(参数) {
             }
         }
     public:
-
+    
         vector<vector<int>> combine(int n, int k) {
             backtracking(n, k, 1);
             return result;
         }
     };
     ```
-
+    
     这里还有一个剪枝：如果for循环选择的起始位置之后的元素个数**已经不足**需要的元素个数，那么就没有必要搜索了.
-
+    
     于是可以将for的终止条件改成`i <= n - (k - path.size()) + 1`.
 
 ??? tips "216.Combination Sum III"
 
     [地址](https://leetcode.com/problems/combination-sum-iii/)
-
+    
     ```cpp
     class Solution {
     private:
@@ -75,7 +77,7 @@ void backtracking(参数) {
                 sum -= i;
                 path.pop_back();
             }
-
+    
         }
     public:
         vector<vector<int>> combinationSum3(int k, int n) {
@@ -84,5 +86,5 @@ void backtracking(参数) {
         }
     };
     ```
-
+    
     这里可以做一些剪枝，比如在`sum > target`的时候直接返回即可，因为已经不可能达成了.

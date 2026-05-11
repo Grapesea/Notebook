@@ -1,0 +1,20 @@
+/* Use Kai-style serif fonts for Markdown blockquotes across the site. */
+.md-typeset blockquote,
+.md-typeset blockquote p,
+.md-typeset blockquote li {
+  font-family: "Times New Roman", Times, "KaiTi", "STKaiti", "Kaiti SC", "Noto Serif CJK SC", serif;
+}
+
+.md-typeset blockquote {
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+}
+
+/* Keep inline code and code blocks monospaced inside blockquotes. */
+.md-typeset blockquote code,
+.md-typeset blockquote pre,
+.md-typeset blockquote kbd,
+.md-typeset blockquote samp {
+  font-family: var(--md-code-font-family);
+}

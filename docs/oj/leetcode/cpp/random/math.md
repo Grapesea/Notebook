@@ -1,3 +1,5 @@
+# Math
+
 [数学章节](https://leetcode.cn/quest/maths-quest/)
 
 I-2
