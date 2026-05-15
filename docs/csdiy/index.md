@@ -1,6 +1,6 @@
-想学的有很多，但时间非常有限.
+想学的有很多，但时间非常有限. 打表的只是计划，并没有完成多少.
 
-打表的只是计划，并没有完成多少.
+标记：（√）已完成；（+）进行中；（#）计划内未开始；（-）暂时弃坑；（×）永久弃坑
 
 <table>
 <thead>
@@ -11,69 +11,81 @@
 </thead>
 <tbody>
     <tr>
-        <td><a href="cs70/">CS70（√）</a></td>
+        <td><a href="cs70/">UCB-CS70（√）</a></td>
         <td>CS70 UC Berkley: Discrete Math, 2025 Summer</td>
     </tr>
     <tr>
-        <td><a href="cs188/">CS188</a></td>
+        <td><a href="cs188/">UCB-CS188（+）</a></td>
         <td>CS188 UC Berkley: Introduction to Artificial Intelligence, 2025 Spring</td>
     </tr>
     <tr>
-        <td><a href="cs106l/">CS106L（√）</a></td>
+        <td><a href="cs106l/">Stanford-CS106L（√）</a></td>
         <td>CS106L Stanford: Standard C++ Programming, 2022/2025 </td>
     </tr>
     <tr>
-        <td><a href="cs224n/">CS224N</a></td>
+        <td><a href="cs224n/">Stanford-CS224N（#）</a></td>
         <td>Stanford CS224N: NLP with Deep Learning, 2026 Winter</td>
     </tr>
     <tr>
-        <td><a href="cs224w/">CS224W</a></td>
+        <td><a href="cs224w/">Stanford-CS224W（+）</a></td>
         <td>Stanford CS224W: Machine Learning with Graphs, 2025 Fall</td>
     </tr>
     <tr>
-        <td><a href="csapp/">CMU15-213: CSAPP</a></td>
+        <td><a href="csapp/">CMU15-213: CSAPP（＋）</a></td>
         <td>CMU15-213: CSAPP</td>
     </tr>
     <tr>
-        <td><a href="cmu15-445/">CMU 15-445</a></td>
+        <td><a href="cmu15-445/">CMU 15-445（＋）</a></td>
         <td>CMU 15-445: CMU, 2025Fall, 数据库系统</td>
+    </tr>
+    <tr>
+        <td><a href="MIT6.S081/">MIT 6.S081, 2021Fall（#）</a></td>
+        <td>MIT 6.S081: 2021 Fall, 操作系统</td>
+    </tr>
+    <tr>
+        <td><a href="cmu15-445/">UCB-CS168（#）</a></td>
+        <td>UCB CS168: 2025 Spring, 计算机网络</td>
     </tr>
     <tr>
         <td><a href="sicp-NJU/">NJU-SICP（√）</a></td>
         <td>NJU-SICP: 2025 Fall, 程序的构造与解释</td>
     </tr>
     <tr>
-        <td><a href="icspa-NJU/">NJU-ICSPA</a></td>
-        <td>NJU-ICSPA: 2025 Spring</td>
+        <td><a href="icspa-NJU/">NJU-ICSPA（-）</a></td>
+        <td>NJU-ICSPA: 2025 Spring，计算机系统概论</td>
     </tr>
     <tr>
-        <td><a href="cs61b/">CS61B</a></td>
-        <td>CS61B UC Berkley: Data Structure and Algorithms</td>
+        <td><a href="cs61b/">UCB-CS61B（+）</a></td>
+        <td>UCB CS61B: Data Structure and Algorithms</td>
     </tr>
     <tr>
-        <td><a href="cs61c/">CS61C</a></td>
-        <td>CS61C UC Berkley: Great Ideas in Computer Architecture (Machine Structures) 2026 Spring</td>
+        <td><a href="cs61c/">UCB-CS61C（-）</a></td>
+        <td>UCB CS61C: Great Ideas in Computer Architecture (Machine Structures) 2026 Spring</td>
     </tr>
     <tr>
-        <td><a href="datawhale_hello_agent/">Datawhale Hello-agent</a></td>
+        <td><a href="datawhale_hello_agent/">Datawhale Hello-agent（#）</a></td>
         <td>Datawhale Hello-agent开源课程</td>
     </tr>
     <tr>
-        <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence</a></td>
-        <td>Datawhale人工智能数学基础开源课程</td>
+        <td><a href="datawhale_m4ai/">Datawhale Mathematics for Artificial Intelligence（×）</a></td>
+        <td>Datawhale 人工智能数学基础开源课程</td>
     </tr>
     <tr>
-        <td><a href="fish-dl/">深度学习-鱼书</a></td>
+        <td><a href="fish-dl/">深度学习-鱼书（√）</a></td>
         <td>深度学习基础教材</td>
     </tr>
     <tr>
-        <td><a href="d2l/">动手学深度学习：李沐</a></td>
+        <td><a href="d2l/">动手学深度学习：李沐（+）</a></td>
         <td>李沐老师2021年深度学习开源课程</td>
     </tr>
     <tr>
-        <td><a href="math_founda_rein_learn/">强化学习的数学原理</a></td>
+        <td><a href="ml-lhy/">李宏毅:通用AI模型時代下的機器學習, 2025（+）</a></td>
+        <td>台湾大学李宏毅老师2025年LLM开源课程</td>
+    </tr>
+    <tr>
+        <td><a href="math_founda_rein_learn/">强化学习的数学原理（√）</a></td>
         <td>西湖大学赵世钰老师开源课程</td>
-    </tr>    
+    </tr>
 </tbody>
 </table>
 

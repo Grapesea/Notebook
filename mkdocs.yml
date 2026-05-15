@@ -265,17 +265,22 @@ nav:
     - MIT 6.S081 Operating System: 
       - 课程计划: csdiy/MIT6.S081/index.md
       - Lab01: csdiy/MIT6.S081/labs/01.md
-    - 鱼书:
+    - UCB CS168 Computer Network:
+      - 课程计划: csdiy/cs168/index.md
+      - Introduction: csdiy/cs168/intro.md
+      - Projects:
+        - Project 01 Traceroute: csdiy/cs168/labs/proj01.md
+    - 斋藤康毅-深度学习(鱼书):
       - 书籍信息: csdiy/fish-dl/index.md
       - Chap 2: csdiy/fish-dl/Chap2-Perceptron.md
       - Chap 3: csdiy/fish-dl/Chap3-NeuralNetwork.md
       - Chap 4: csdiy/fish-dl/Chap4-Learning.md
       - Chap 5: csdiy/fish-dl/Chap5-BackPropagation.md
-    - 李沐动手学深度学习:
+    - 李沐-动手学深度学习:
       - 课程计划: csdiy/d2l/index.md
       - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
       - Note 2:数学基础: csdiy/d2l/mathbasics.md
-    - 强化学习的数学原理:
+    - 赵世钰-强化学习的数学原理:
       - 课程计划: csdiy/math_founda_rein_learn/index.md
     - 李宏毅-通用AI模型時代下的機器學習:
       - 课程计划: csdiy/ml-lhy/index.md
@@ -310,11 +315,16 @@ nav:
       - Chap 1-3: lab/datawhale-rag/1-3.md
     - 工具:
       - AutoFigure: lab/tools/autofigure.md
-  - 实习&工作:
+      - EasySpider: lab/tools/easyspider.md
+  - 实习&工作: 
+    - 导航: intern_work/index.md
     - 实习资源整理:
       - 面经: intern_work/interview/index.md
     - 前端:
       - Vue框架: intern_work/frontend/vue-basics.md
+    - Web开发:
+      - CS571 (React / React Native): 
+        - 课程资源: intern_work/web_develop/cs571/index.md
   - OJ笔记:
     - OJ笔记导航: oj/index.md
     - LeetCode: 

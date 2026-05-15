@@ -59,6 +59,8 @@ $$\alpha_{pq}(t,x) = \begin{cases} \dfrac1p & (dist(t,x) = 0)\\ 1 & (dist(t,x) =
 | Weighted-L1 | $\|\cdot\|_{\bar 1}$ | $\|f(u)\cdot f(v)\|_{\bar 1i} = \lvert f_i(u)-f_i(v)\rvert$   |
 | Weighted-L2 | $\|\cdot\|_{\bar 2}$ | $\|f(u)\cdot f(v)\|_{\bar 2i} = \lvert f_i(u)-f_i(v)\rvert^2$ |
 
+这些算子用于刻画两个node的feature embedding之间的关系，从结果来分类，做出"存在/不存在"的二分类预测.
+
 ## Node2vec算法
 
 ???+ info "代码仓库"
