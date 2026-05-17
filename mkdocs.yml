@@ -318,6 +318,8 @@ nav:
       - EasySpider: lab/tools/easyspider.md
   - 实习&工作: 
     - 导航: intern_work/index.md
+    - 笔试机试: 
+      - 华为机试: intern_work/test/huawei/index.md
     - 实习资源整理:
       - 面经: intern_work/interview/index.md
     - 前端:

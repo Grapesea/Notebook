@@ -25,12 +25,12 @@
 * `and`/`or`: 如果第一个为`False`/`True`则短路，否则直接返回后者.
 
 * lambda expression: 
-    <center><img src="..\figures\lambda.png" style="zoom: 42%;"/></center>
+    <center><img src="./figures/lambda.png" style="zoom: 60%;"/></center>
     
-*  When is the return expression of a lambda expression executed?
+* When is the return expression of a lambda expression executed?
     **When the function returned by the lambda expression is called.**
 
-*  Which of the following statements describes a difference between a def statement and a lambda expression?        
+* Which of the following statements describes a difference between a def statement and a lambda expression?
     **A lambda expression does not automatically bind the function object that it returns to an intrinsic name.**
 
 * 写出这段程序的输出：
