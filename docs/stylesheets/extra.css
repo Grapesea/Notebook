@@ -18,3 +18,54 @@
 .md-typeset blockquote samp {
   font-family: var(--md-code-font-family);
 }
+
+/* Refine fenced code blocks with borders, line dividers and line numbers. */
+.md-typeset .highlight pre,
+.md-typeset .highlighttable {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.45rem;
+  overflow: hidden;
+}
+
+.md-typeset .highlight pre {
+  background: var(--md-code-bg-color);
+  margin: 0;
+}
+
+.md-typeset .highlight code,
+.md-typeset .highlight [data-linenos],
+.md-typeset .highlight .linenos {
+  background: transparent;
+}
+
+.md-typeset .highlight [data-linenos],
+.md-typeset .highlight .linenos {
+  border-right: 1px dashed var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  display: inline-block;
+  font-size: 0.82em;
+  min-width: 1.75ch;
+  padding-right: 0.2rem;
+  text-align: right;
+  margin-right: 0.15rem;
+  user-select: none;
+}
+
+.md-typeset .highlight [data-linenos]::before {
+  content: attr(data-linenos);
+}
+
+.md-typeset .highlight .linenos span,
+.md-typeset .highlight code > span {
+  display: block;
+  line-height: 1.45;
+}
+
+.md-typeset .highlight code > span {
+  border-bottom: 1px dashed rgba(127, 127, 127, 0.22);
+  padding: 0 0.9rem 0 0.35rem;
+}
+
+.md-typeset .highlight code > span:last-child {
+  border-bottom: 0;
+}

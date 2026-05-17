@@ -40,8 +40,13 @@ theme:
     - content.action.edit
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: false
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      linenums: true
+      pygments_lang_class: true
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite
   - toc:
       permalink: true
   - pymdownx.arithmatex:
