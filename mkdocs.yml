@@ -208,116 +208,145 @@ nav:
       - 单词: language/CET6/words.md
   - CSDIY: 
     - CSDIY笔记导航: csdiy/index.md
-    - CS61B:
-      - 课程计划: csdiy/cs61b/index.md
-      - Introduction: csdiy/cs61b/intro.md
-      - Tree: csdiy/cs61b/tree.md
-      - Heap: csdiy/cs61b/heap.md
-      - Graph: csdiy/cs61b/graph.md
-    - CS61C:
-      - 课程计划: csdiy/cs61c/index.md
-    - CS70: 
-      - 课程计划: csdiy/cs70/index.md
-      - Proof & Stable matching: csdiy/cs70/1.md
-      - Graph & Number theory & RSA: csdiy/cs70/2.md
-      - Counting & Probability: csdiy/cs70/3.md
-    - CS188: 
-      - 课程计划: csdiy/cs188/index.md
-      - intro & search: csdiy/cs188/1.md
-      - A* search & Heuristics: csdiy/cs188/2.md
-      - CSPs: csdiy/cs188/3.md
-      - Game Trees: csdiy/cs188/4.md
-      - MDPs: csdiy/cs188/5.md
-      - Appendix:Logic: csdiy/cs188/appendix.md
-    - NJU-SICP:
-      - 课程计划: csdiy/sicp-NJU/index.md
-      - lec1-6: csdiy/sicp-NJU/lec1-6.md
-      - lec7-12: csdiy/sicp-NJU/lec7-12.md
-      - lec13-18: csdiy/sicp-NJU/lec13-18.md
-    - NJU-ICSPA:
-      - 课程计划: csdiy/icspa-NJU/index.md
-    - CS106L:
-      - 课程计划: csdiy/cs106l/index.md
-      - Lec1-Brief Introduction: csdiy/cs106l/1intro.md
-      - Lec2-Types and Struct: csdiy/cs106l/2types.md
-      - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
-      - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
-      - Lec7~9-Classes, Template Classes, Template Functions: csdiy/cs106l/7_8_9classes_templates_func.md
-      - Lec10~12-Functions, Lambda Functions, Operators and Special Member Functions: csdiy/cs106l/10_11_12function_operator_special.md
-      - Lec13~15-Move Semantics, std::optional, type safety, RAII, smart poiters: csdiy/cs106l/13_14_15move_semantics_optional_smart_pointer_raii.md
-    - CS224N:
-      - 课程计划: csdiy/cs224n/index.md
-      - 笔记:
-        - Lec1-5: csdiy/cs224n/notes/1-5.md
-      - 论文阅读:
-        - bert: csdiy/cs224n/papers/bert.md
-    - CS224W:
-      - 课程计划: csdiy/cs224w/index.md
-      - Lec01-02 (Introduction & Node Embedding): csdiy/cs224w/01-02.md
-      - Lec03-05 (GNN): csdiy/cs224w/03-05.md
-      - 论文阅读:
-        - node2vec: csdiy/cs224w/papers/node2vec.md
-      - lab: 
-        - colab0: csdiy/cs224w/labs/colab0.md
-        - colab1: csdiy/cs224w/labs/colab1.md
-    - CSAPP:
-      - 课程计划: csdiy/csapp/index.md
-    - CMU 15-445:
-      - 课程计划: csdiy/cmu15-445/index.md
-      - Lec1-6 (SQL, Storage): csdiy/cmu15-445/1-6.md
-      - Lec7-10 (Index): csdiy/cmu15-445/7-10.md
-      - Lec11-16 (Algorithms, Query): csdiy/cmu15-445/11-16.md
-    - MIT 6.S081 Operating System: 
-      - 课程计划: csdiy/MIT6.S081/index.md
-      - Lab01: csdiy/MIT6.S081/labs/01.md
-    - UCB CS168 Computer Network:
-      - 课程计划: csdiy/cs168/index.md
-      - Introduction: csdiy/cs168/intro.md
-      - Projects:
-        - Project 01 Traceroute: csdiy/cs168/labs/proj01.md
-    - 斋藤康毅-深度学习(鱼书):
-      - 书籍信息: csdiy/fish-dl/index.md
-      - Chap 2: csdiy/fish-dl/Chap2-Perceptron.md
-      - Chap 3: csdiy/fish-dl/Chap3-NeuralNetwork.md
-      - Chap 4: csdiy/fish-dl/Chap4-Learning.md
-      - Chap 5: csdiy/fish-dl/Chap5-BackPropagation.md
-    - 李沐-动手学深度学习:
-      - 课程计划: csdiy/d2l/index.md
-      - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
-      - Note 2:数学基础: csdiy/d2l/mathbasics.md
-    - 赵世钰-强化学习的数学原理:
-      - 课程计划: csdiy/math_founda_rein_learn/index.md
-    - 李宏毅-通用AI模型時代下的機器學習:
-      - 课程计划: csdiy/ml-lhy/index.md
-    - Datawhale Hello-agent:
-      - 课程计划: csdiy/datawhale_hello_agent/index.md
-    - Datawhale Mathematical Modeling:
-      - 课程计划: csdiy/datawhale_mm/index.md
-      - Chap 1:解析方法与几何模型: csdiy/datawhale_mm/1.md  
-      - Chap 2:微分方程与动力系统: csdiy/datawhale_mm/2.md
-      - Chap 3:函数极值与规划模型: csdiy/datawhale_mm/3.md
-      - Chap 4:复杂网络与图论模型: csdiy/datawhale_mm/4.md
-      - Chap 5:进化计算与群体智能: csdiy/datawhale_mm/5.md
-      - Chap 6:数据处理与拟合模型: csdiy/datawhale_mm/6.md
-      - Chap 7:权重生成与评价模型: csdiy/datawhale_mm/7.md
-      - Chap 8:时间序列与投资模型: csdiy/datawhale_mm/8.md
-      - Chap 9:机器学习与统计模型: csdiy/datawhale_mm/9.md
-      - Chap 10:图像、文本与信号数据: csdiy/datawhale_mm/10.md
-    - Datawhale Mathematics for Artificial Intelligence:
-      - 课程计划: csdiy/datawhale_m4ai/index.md
-      - Chap 2-6:线性代数/解析几何/矩阵分解/向量微积分/概率与统计: csdiy/datawhale_m4ai/2-6.md
-      - Chap 7:连续优化: csdiy/datawhale_m4ai/7.md
-      - Chap 8:当模型遇上数据: csdiy/datawhale_m4ai/8.md
-      - Chap 9:线性回归: csdiy/datawhale_m4ai/9.md
-      - Chap 10:降维与主成分分析: csdiy/datawhale_m4ai/10.md
-      - Chap 11:密度估计和Gauss混合模型: csdiy/datawhale_m4ai/11.md
-      - Chap 12:分类和支持向量机: csdiy/datawhale_m4ai/12.md
+    - Basics (Algorithm & Discrete Math & Programming):
+      - Datawhale Mathematics for Artificial Intelligence:
+        - 课程计划: csdiy/datawhale_m4ai/index.md
+        - Chap 2-6:线性代数/解析几何/矩阵分解/向量微积分/概率与统计: csdiy/datawhale_m4ai/2-6.md
+        - Chap 7:连续优化: csdiy/datawhale_m4ai/7.md
+        - Chap 8:当模型遇上数据: csdiy/datawhale_m4ai/8.md
+        - Chap 9:线性回归: csdiy/datawhale_m4ai/9.md
+        - Chap 10:降维与主成分分析: csdiy/datawhale_m4ai/10.md
+        - Chap 11:密度估计和Gauss混合模型: csdiy/datawhale_m4ai/11.md
+        - Chap 12:分类和支持向量机: csdiy/datawhale_m4ai/12.md
+      - CS70: 
+        - 课程计划: csdiy/cs70/index.md
+        - Proof & Stable matching: csdiy/cs70/1.md
+        - Graph & Number theory & RSA: csdiy/cs70/2.md
+        - Counting & Probability: csdiy/cs70/3.md
+      - NJU-SICP:
+        - 课程计划: csdiy/sicp-NJU/index.md
+        - lec1-6: csdiy/sicp-NJU/lec1-6.md
+        - lec7-12: csdiy/sicp-NJU/lec7-12.md
+        - lec13-18: csdiy/sicp-NJU/lec13-18.md
+      - CS61B:
+        - 课程计划: csdiy/cs61b/index.md
+        - Introduction: csdiy/cs61b/intro.md
+        - Tree: csdiy/cs61b/tree.md
+        - Heap: csdiy/cs61b/heap.md
+        - Graph: csdiy/cs61b/graph.md
+      - CS106L:
+        - 课程计划: csdiy/cs106l/index.md
+        - Lec1-Brief Introduction: csdiy/cs106l/1intro.md
+        - Lec2-Types and Struct: csdiy/cs106l/2types.md
+        - Lec3&4-Streams, Initialization and References: csdiy/cs106l/3_4streams_init_ref.md
+        - Lec5&6-Containers,Iterators and Pointers: csdiy/cs106l/5_6container_iterator.md
+        - Lec7~9-Classes, Template Classes, Template Functions: csdiy/cs106l/7_8_9classes_templates_func.md
+        - Lec10~12-Functions, Lambda Functions, Operators and Special Member Functions: csdiy/cs106l/10_11_12function_operator_special.md
+        - Lec13~15-Move Semantics, std::optional, type safety, RAII, smart poiters: csdiy/cs106l/13_14_15move_semantics_optional_smart_pointer_raii.md
+    - Computer System:
+      - CS61C:
+        - 课程计划: csdiy/cs61c/index.md
+      - NJU-ICSPA:
+        - 课程计划: csdiy/icspa-NJU/index.md
+      - CSAPP:
+        - 课程计划: csdiy/csapp/index.md
+    - Database System:
+      - CMU 15-445:
+        - 课程计划: csdiy/cmu15-445/index.md
+        - Lec1-6 (SQL, Storage): csdiy/cmu15-445/1-6.md
+        - Lec7-10 (Index): csdiy/cmu15-445/7-10.md
+        - Lec11-16 (Algorithms, Query): csdiy/cmu15-445/11-16.md
+    - OS:
+      - MIT 6.S081 Operating System: 
+        - 课程计划: csdiy/MIT6.S081/index.md
+        - Lab01: csdiy/MIT6.S081/labs/01.md
+    - Network:
+      - UCB CS168 Computer Network:
+        - 课程计划: csdiy/cs168/index.md
+        - Introduction: csdiy/cs168/intro.md
+        - Projects:
+          - Project 01 Traceroute: csdiy/cs168/labs/proj01.md
+    - Web开发:
+      - UW-Madison CS571 React:
+        - 课程计划: intern_work/web_develop/cs571/index.md
+    - AI:
+      - CS188: 
+        - 课程计划: csdiy/cs188/index.md
+        - intro & search: csdiy/cs188/1.md
+        - A* search & Heuristics: csdiy/cs188/2.md
+        - CSPs: csdiy/cs188/3.md
+        - Game Trees: csdiy/cs188/4.md
+        - MDPs: csdiy/cs188/5.md
+        - Appendix:Logic: csdiy/cs188/appendix.md
+      - 李宏毅-通用AI模型時代下的機器學習:
+        - 课程计划: csdiy/ml-lhy/index.md
+      - CS224N:
+        - 课程计划: lab/cs224n/index.md
+        - 笔记:
+          - Lec1-5: lab/cs224n/notes/1-5.md
+        - 论文阅读:
+          - bert: lab/cs224n/papers/bert.md
+      - CS224W:
+        - 课程计划: lab/cs224w/index.md
+        - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
+        - Lec03-05 (GNN): lab/cs224w/03-05.md
+        - 论文阅读:
+          - node2vec: lab/cs224w/papers/node2vec.md
+        - lab: 
+          - colab0: lab/cs224w/labs/colab0.md
+          - colab1: lab/cs224w/labs/colab1.md
+          - colab2: lab/cs224w/labs/colab2.md
+      - Datawhale Hello-agent:
+        - 课程计划: csdiy/datawhale_hello_agent/index.md
+    - Deep Learning:
+      - 斋藤康毅-深度学习(鱼书):
+        - 书籍信息: csdiy/fish-dl/index.md
+        - Chap 2: csdiy/fish-dl/Chap2-Perceptron.md
+        - Chap 3: csdiy/fish-dl/Chap3-NeuralNetwork.md
+        - Chap 4: csdiy/fish-dl/Chap4-Learning.md
+        - Chap 5: csdiy/fish-dl/Chap5-BackPropagation.md
+      - 李沐-动手学深度学习:
+        - 课程计划: csdiy/d2l/index.md
+        - Note 1:深度学习简介与工具准备: csdiy/d2l/intro.md
+        - Note 2:数学基础: csdiy/d2l/mathbasics.md
+    - Reinforcement Learning:
+      - 赵世钰-强化学习的数学原理:
+        - 课程计划: csdiy/math_founda_rein_learn/index.md
+    - Misc:
+      - Datawhale Mathematical Modeling:
+        - 课程计划: csdiy/datawhale_mm/index.md
+        - Chap 1:解析方法与几何模型: csdiy/datawhale_mm/1.md  
+        - Chap 2:微分方程与动力系统: csdiy/datawhale_mm/2.md
+        - Chap 3:函数极值与规划模型: csdiy/datawhale_mm/3.md
+        - Chap 4:复杂网络与图论模型: csdiy/datawhale_mm/4.md
+        - Chap 5:进化计算与群体智能: csdiy/datawhale_mm/5.md
+        - Chap 6:数据处理与拟合模型: csdiy/datawhale_mm/6.md
+        - Chap 7:权重生成与评价模型: csdiy/datawhale_mm/7.md
+        - Chap 8:时间序列与投资模型: csdiy/datawhale_mm/8.md
+        - Chap 9:机器学习与统计模型: csdiy/datawhale_mm/9.md
+        - Chap 10:图像、文本与信号数据: csdiy/datawhale_mm/10.md
   - 科研学习:
     - 收集帖: lab/index.md
     - RAGFlow: lab/ragflow.md
     - Datawhale All-in-RAG:
       - 课程计划: lab/datawhale-rag/index.md
       - Chap 1-3: lab/datawhale-rag/1-3.md
+    - CS224N:
+      - 课程计划: lab/cs224n/index.md
+      - 笔记:
+        - Lec1-5: lab/cs224n/notes/1-5.md
+      - 论文阅读:
+        - bert: lab/cs224n/papers/bert.md
+    - CS224W:
+      - 课程计划: lab/cs224w/index.md
+      - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
+      - Lec03-05 (GNN): lab/cs224w/03-05.md
+      - 论文阅读:
+        - node2vec: lab/cs224w/papers/node2vec.md
+      - lab: 
+        - colab0: lab/cs224w/labs/colab0.md
+        - colab1: lab/cs224w/labs/colab1.md
+        - colab2: lab/cs224w/labs/colab2.md
     - 工具:
       - AutoFigure: lab/tools/autofigure.md
       - EasySpider: lab/tools/easyspider.md
@@ -378,7 +407,7 @@ nav:
     - Web笔记:
       - 导航: ctf/web/index.md
       - 西电CTF平台: ctf/web/xidianmoe.md
-    - crypto笔记: 
+    - Crypto笔记: 
       - 导航: ctf/crypto/index.md
       - CTF101课程遗留问题探索: ctf/crypto/ctf101.md
       - cryptohack基础: ctf/crypto/cryptohack_basic.md
@@ -392,6 +421,8 @@ nav:
       - NSSCTF题库: ctf/crypto/nssctf.md
       - CSACTF2025: ctf/crypto/csactf2025.md
       - 长城杯2025: ctf/crypto/ccb2025.md
+    - Blockchain笔记:
+      - 资源搜集: index.md
     - NewStarCTF2025:
       - 题解: ctf/newstarctf2025/writeup.md
   - 储物柜:
