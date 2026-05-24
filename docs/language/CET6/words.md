@@ -7,6 +7,11 @@
 - [ ] sophomore n. 大二学生
 - [ ] bachelor n. 学士
 - [ ] consultation n. 磋商
+- [ ] extravagances n. 奢侈浪费行为
+- [ ] despondent adj. 消沉的
+- [ ] melancholy adj. 忧郁的 n.忧郁
+- [ ] wary adj. 警惕的
+- [ ] prone adj. (= susceptible) 敏感的
 
 
 
@@ -26,4 +31,6 @@
 - [ ] write copy 写稿件
 - [ ] wrap up a project 完成某项目
 - [ ] get sb. on board 使……参与进来
+- [ ] spend a bundle on 在……上面花大钱
+- [ ] wanding mind 走神
 

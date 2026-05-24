@@ -14,6 +14,8 @@
 
 [bilibili：Lightroom基础(保姆)教程，从零到后期大师](https://www.bilibili.com/video/BV1D441177YX)
 
+[bilibili：用了 10 年 Lightroom 之后，我现在这样修照片 - Adrien Sanguinetti](https://www.bilibili.com/video/BV1g6RXBMEM1/)
+
 ## 相机选购
 
 [CC98: 从入门到破产-618保姆级相机选购指南](https://www.cc98.org/topic/5091819)

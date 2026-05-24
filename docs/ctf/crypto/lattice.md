@@ -24,12 +24,13 @@
 沉寂已久的Coppersmith出现了，我以为lab2就会用到的，然后想得过于复杂折磨死了自己，但现在还在做单变量Coppersmith的阅读理解.
 
 ???+ tips "Coppersmith方法的理论基础"
+
     * Coppersmith引理：
 
-        对mod N下度数为$d$的首一多项式$f$，若$n$是$N$的因子，$n > N^{\beta}, 0 < \beta \leq 1$，则可以**在多项式时间内**求出mod N下$\vert x_0\vert < N^{\frac{\beta^2}{d}}$的根.
+        对mod N下度数为$d$的首一多项式$f$，若$n$是$N$的因子，$n > N^{\beta}, 0 < \beta \leq 1$，则可以**在多项式时间内**求出mod N下 $\vert x_0\vert < N^{\frac{\beta^2}{d}}$ 的根.
 
         * $n = N: \vert x_0\vert < N^{\frac{1}{d}}$
-        * RSA中，$p \approx N^{0.5}$，所以可以求出$ \vert x_0\vert < N^{\frac{1}{4d}}$.
+        * RSA中，$p \approx N^{0.5}$，所以可以求出 $\vert x_0\vert < N^{\frac{1}{4d}}$.
 
     * 单变元的Coppersmith方法：
 
@@ -43,7 +44,7 @@
 
         考虑如下的$d-1$个多项式：$G_i(x) = Mx^i, 0\leq i < d$，由于每个$G_i$都满足$G_i(x_0) \equiv 0(\operatorname{mod} M)$，所以线性组合之后也能满足$F(x_0) \equiv 0 (\operatorname{mod} M)$，于是目标变成了找到使得$\|b_F\|\leq \dfrac{M}{\sqrt{d+1}}$的$F$.
 
-        构造格：$$L = \begin{bmatrix} M & 0 & \cdots & 0 & 0 \\ 0 & Mx & \cdots & 0 & 0 \\ \cdots & \cdots & \cdots & \cdots &\cdots \\ 0 & 0 & \cdots & Mx^{d-1} & 0 \\ a_0 & a_1x & \cdots & a_{d-1}x^{d-1} & a_dx^d \end{bmatrix}$$
+        构造格：$L = \begin{bmatrix} M & 0 & \cdots & 0 & 0 \\ 0 & Mx & \cdots & 0 & 0 \\ \cdots & \cdots & \cdots & \cdots &\cdots \\ 0 & 0 & \cdots & Mx^{d-1} & 0 \\ a_0 & a_1x & \cdots & a_{d-1}x^{d-1} & a_dx^d \end{bmatrix}$
 
         使用LLL算法之后得到了结果$F'$满足$F'(x_0) \equiv 0 (\operatorname{mod} M)$且$b_{F}$较小. 但是这个范围只是初步的，与Coppersmith的界还有一定的距离.（后面的分析略，涉及到shift polynomial等操作）
 

@@ -47,12 +47,15 @@ markdown_extensions:
       pygments_lang_class: true
       linenums_style: pymdownx-inline
   - pymdownx.inlinehilite
+  - pymdownx.tilde
   - toc:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.superfences
   - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
@@ -422,7 +425,7 @@ nav:
       - CSACTF2025: ctf/crypto/csactf2025.md
       - 长城杯2025: ctf/crypto/ccb2025.md
     - Blockchain笔记:
-      - 资源搜集: index.md
+      - 资源搜集: ctf/blockchain/index.md
     - NewStarCTF2025:
       - 题解: ctf/newstarctf2025/writeup.md
   - 储物柜:

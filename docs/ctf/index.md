@@ -9,12 +9,20 @@
 </thead>
 <tbody>
     <tr>
-        <td><a href="ctf101">CTF101课程笔记</a></td>
+        <td><a href="./ctf101.md">CTF101课程笔记</a></td>
         <td>CTF启蒙课程笔记</td>
     </tr>
     <tr>
         <td><a href="crypto/">crypto笔记</a></td>
         <td>crypto相关</td>
+    </tr>
+    <tr>
+        <td><a href="misc/">misc笔记</a></td>
+        <td>misc相关</td>
+    </tr>
+    <tr>
+        <td><a href="blockchain/">blockchain笔记</a></td>
+        <td>UBC 2026 Summer Institute: Blockchain Notes</td>
     </tr>
     <tr>
         <td><a href="newstarctf2025/">NewStar CTF2025 Crypto/Misc Writeup</a></td>
