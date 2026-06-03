@@ -86,6 +86,10 @@
         <td><a href="math_founda_rein_learn/">强化学习的数学原理（√）</a></td>
         <td>西湖大学赵世钰老师开源课程</td>
     </tr>
+    <tr>
+        <td><a href="hpc101/">HPC101, ZJU2026短学期课程综合实践（＋）</a></td>
+        <td>超算入门：ZJU2026短学期课程综合实践</td>
+    </tr>
 </tbody>
 </table>
 
