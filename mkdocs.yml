@@ -38,6 +38,18 @@ theme:
     - content.code.copy
     - content.code.annotate
     - content.action.edit
+    - git-revision-date-localized
+    - git-creation-date
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: datetime
+      timezone: Asia/Shanghai
+      locale: zh
+      fallback_to_build_date: true
+      enable_git_follow: false
+
 markdown_extensions:
   - admonition
   - pymdownx.highlight:
@@ -78,6 +90,8 @@ nav:
     - 大一教训总结: zju/exp1.md
     - 大一笔记拾遗: 
       - 导航: zju/12/index.md
+      - 线性代数知识拾遗:
+        - 大纲: zju/12/la/index.md
       - 数据结构基础: 
         - 概述: zju/12/fds/index.md
         - Tree: zju/12/fds/tree.md
@@ -208,6 +222,7 @@ nav:
     - CET6:
       - 资源整合: language/CET6/index.md
       - 单词: language/CET6/words.md
+      - 作文: language/CET6/writing.md
   - CSDIY: 
     - CSDIY笔记导航: csdiy/index.md
     - Basics (Algorithm & Discrete Math & Programming):
@@ -262,9 +277,15 @@ nav:
       - Lec1-6 (SQL, Storage): csdiy/cmu15-445/1-6.md
       - Lec7-10 (Index): csdiy/cmu15-445/7-10.md
       - Lec11-16 (Algorithms, Query): csdiy/cmu15-445/11-16.md
+      - Lec 17-20 (Transaction, Lock): csdiy/cmu15-445/17-20.md.md
+      - Lec 21-25 (Misc): csdiy/cmu15-445/21-25.md.md
     - MIT 6.S081 Operating System: 
       - 课程计划: csdiy/MIT6.S081/index.md
-      - Lab01: csdiy/MIT6.S081/labs/01.md
+      - 实验记录:
+        - Lab00: csdiy/MIT6.S081/labs/00.md
+        - Lab01: csdiy/MIT6.S081/labs/01.md
+      - xv6文档阅读:
+        - Chap 01: csdiy/MIT6.S081/xv6/01.md
     - UCB CS168 Computer Network:
       - 课程计划: csdiy/cs168/index.md
       - Introduction: csdiy/cs168/intro.md
@@ -292,6 +313,7 @@ nav:
       - 课程计划: lab/cs224w/index.md
       - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
       - Lec03-05 (GNN): lab/cs224w/03-05.md
+      - Lec06-08 (GNN Theory and Graph Transformer 1): lab/cs224w/06-08.md
       - 论文阅读:
         - node2vec: lab/cs224w/papers/node2vec.md
       - lab: 
@@ -355,7 +377,10 @@ nav:
   - 实习&工作: 
     - 导航: intern_work/index.md
     - 笔试机试: 
-      - 华为机试: intern_work/test/huawei/index.md
+      - 华为机试: 
+        - 目录: intern_work/test/huawei/index.md
+        - AI岗: 
+          - 20260613选择: intern_work/test/huawei/AI_develop_choice/20260513.md
     - 实习资源整理:
       - 面经: intern_work/interview/index.md
       - 模拟面试1: intern_work/interview/virtual-1.md

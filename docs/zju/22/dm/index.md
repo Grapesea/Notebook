@@ -16,3 +16,9 @@
     4. Graphs and Trees
     5. Algebraic System
     6. Formal Language and Autom
+
+???+ info "课程资源"
+
+    
+
+    [25-26春夏zwt离散数学理论基础第二次小测](https://www.cc98.org/topic/6534850)

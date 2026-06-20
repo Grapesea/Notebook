@@ -6,19 +6,25 @@
 
 我采用的是在自己的Windows电脑中，Docker Desktop + WSL2 配置该项目（文件放置在WSL文件系统中）.
 
-启动容器和服务器：
+在系统代理下启动容器和服务器：
 
 ```bash
-$ docker compose -f docker-compose.yml up -d
+ragflow$ docker compose -f docker/docker-compose.yml up -d
 ```
 
 检查状态：
 
 ```bash
-$ docker logs -f docker-ragflow-cpu-1
+ragflow$ docker logs -f docker-ragflow-cpu-1
 ```
 
 首先是docker很吃显存和内存，费了很多时间清理C盘文件.
+
+如果太卡了想暂停可以：
+
+```bash
+ragflow$ docker compose -f docker/docker-compose.yml down
+```
 
 其次是WSL2和Windows的映射很麻烦.
 
