@@ -20,11 +20,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
         
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.12'
           
       - name: Cache pip dependencies
         uses: actions/cache@v3
@@ -37,9 +39,7 @@ jobs:
       - name: Install MkDocs and dependencies
         run: |
           pip install --upgrade pip
-          pip install mkdocs-material
-          pip install mkdocs
-          # 如果你有其他插件需求，可以在这里添加
+          pip install -r requirements.txt
           
       - name: Verify MkDocs installation
         run: |

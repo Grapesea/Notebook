@@ -28,13 +28,13 @@ ragflow$ docker compose -f docker/docker-compose.yml down
 
 其次是WSL2和Windows的映射很麻烦.
 
-需要注意一点，如果WSL重启过了，IP地址会变化，体现在
+获取IP地址：
 
 ```bash
 $ hostname -I
 ```
 
-输出结果需要每次重新获取，然后PowerShell管理员模式执行：
+这是为了在本机上进行监听，打开PowerShell管理员模式执行：
 
 ```bash
 netsh interface portproxy add v4tov4 listenport=9380 listenaddress=127.0.0.1 connectport=9380 connectaddress=172.x.x.x
