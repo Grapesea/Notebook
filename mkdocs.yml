@@ -182,6 +182,7 @@ nav:
         - 概述: zju/22/db/index.md
         - Introduction: zju/22/db/db1.md
         - Relational Model: zju/22/db/db2.md
+        - SQL: zju/22/db/db4.md
       - 计算机体系结构:
         - 概述: zju/22/arch/index.md
         - Chap 1: zju/22/arch/1.md
@@ -211,6 +212,16 @@ nav:
         - 概述: zju/22/busi/index.md
       - 大学生朋辈心理辅导:
         - 概述: zju/22/psy/index.md
+    - 大三秋冬笔记: 
+      - 导航: zju/31/index.md
+      - HPC101: csdiy/hpc101/index.md
+      - 金融科技概论(课程综合实践II): zju\31\summer2\index.md
+      - 计算理论: zju/31/toc/index.md
+      - 操作系统: zju/31/os/index.md
+      - 计算机网络: zju/31/web/index.md
+      - B/S体系软件设计: zju/31/bs/index.md
+      - 自然语言处理: zju/31/nlp/index.md
+      - 习概: zju/31/xjp/index.md
   - 语言学习:
     - 导航栏: language/index.md
     - IELTS:
@@ -266,6 +277,11 @@ nav:
       - 课程计划: csdiy/icspa-NJU/index.md
     - HPC 101 (ZJU 2026):
       - 课程计划: csdiy/hpc101/index.md
+      - 课程笔记:
+        - 集群软硬件及运维基础(7.6): csdiy/hpc101/notes/cluster.md
+        - 计算机系统基础(7.7-7.8): csdiy/hpc101/notes/system.md
+        - 华为Ascend C异构框架基础(Extra): csdiy/hpc101/notes/ascendC.md
+        - 向量化计算(7.10): csdiy/hpc101/notes/vector.md
       - Labs:
         - Lab 00 (Setup): csdiy/hpc101/lab0.md
         - Lab 01 (简单集群搭建): csdiy/hpc101/lab1.md
@@ -306,9 +322,12 @@ nav:
     - CS224N:
       - 课程计划: lab/cs224n/index.md
       - 笔记:
-        - Lec1-5: lab/cs224n/notes/1-5.md
+        - Lec1: lab/cs224n/notes/1.md
+        - Lec2: lab/cs224n/notes/2.md
+        - Lec5: lab/cs224n/notes/5.md
       - 论文阅读:
         - bert: lab/cs224n/papers/bert.md
+        - Attention is all you need: lab/cs224n/papers/attention_is_all_you_need.md
     - CS224W:
       - 课程计划: lab/cs224w/index.md
       - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
@@ -384,6 +403,7 @@ nav:
     - 实习资源整理:
       - 面经: intern_work/interview/index.md
       - 模拟面试1: intern_work/interview/virtual-1.md
+      - 模拟面试2: intern_work/interview/virtual-2.md
     - 前端:
       - Vue框架: intern_work/frontend/vue-basics.md
     - Web开发:
