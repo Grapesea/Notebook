@@ -215,7 +215,7 @@ nav:
     - 大三秋冬笔记: 
       - 导航: zju/31/index.md
       - HPC101: csdiy/hpc101/index.md
-      - 金融科技概论(课程综合实践II): zju\31\summer2\index.md
+      - 金融科技概论(课程综合实践II): zju/31/summer2/index.md
       - 计算理论: zju/31/toc/index.md
       - 操作系统: zju/31/os/index.md
       - 计算机网络: zju/31/web/index.md
@@ -282,9 +282,13 @@ nav:
         - 计算机系统基础(7.7-7.8): csdiy/hpc101/notes/system.md
         - 华为Ascend C异构框架基础(Extra): csdiy/hpc101/notes/ascendC.md
         - 向量化计算(7.10): csdiy/hpc101/notes/vector.md
+        - GPU Programming(7.13): csdiy/hpc101/notes/gpu.md
+        - 分布式训练(7.16): csdiy/hpc101/notes/dist_train.md
+        - 机器学习基础(7.16): csdiy/hpc101/notes/ml-basics.md
       - Labs:
         - Lab 00 (Setup): csdiy/hpc101/lab0.md
         - Lab 01 (简单集群搭建): csdiy/hpc101/lab1.md
+        - csdiy\hpc101\CANN.md
       - Debian配置记录: csdiy/hpc101/Debian_settings.md
     - CSAPP (CMU):
       - 课程计划: csdiy/csapp/index.md
@@ -293,8 +297,8 @@ nav:
       - Lec1-6 (SQL, Storage): csdiy/cmu15-445/1-6.md
       - Lec7-10 (Index): csdiy/cmu15-445/7-10.md
       - Lec11-16 (Algorithms, Query): csdiy/cmu15-445/11-16.md
-      - Lec 17-20 (Transaction, Lock): csdiy/cmu15-445/17-20.md.md
-      - Lec 21-25 (Misc): csdiy/cmu15-445/21-25.md.md
+      - Lec17-20 (Transaction, Lock): csdiy/cmu15-445/17-20.md
+      - Lec21-25 (Misc): csdiy/cmu15-445/21-25.md
     - MIT 6.S081 Operating System: 
       - 课程计划: csdiy/MIT6.S081/index.md
       - 实验记录:
@@ -302,6 +306,10 @@ nav:
         - Lab01: csdiy/MIT6.S081/labs/01.md
       - xv6文档阅读:
         - Chap 01: csdiy/MIT6.S081/xv6/01.md
+    - Stanford CS144 Computer Network:
+      - 课程计划: csdiy/cs144/index.md
+      - Introduction: csdiy/cs144/1.md
+      - Checkpoint 01 : csdiy/cs144/lab0.md
     - UCB CS168 Computer Network:
       - 课程计划: csdiy/cs168/index.md
       - Introduction: csdiy/cs168/intro.md
@@ -377,7 +385,9 @@ nav:
     - CS224N:
       - 课程计划: lab/cs224n/index.md
       - 笔记:
-        - Lec1-5: lab/cs224n/notes/1-5.md
+        - Lec1: lab/cs224n/notes/1.md
+        - Lec2: lab/cs224n/notes/2.md
+        - Lec5: lab/cs224n/notes/5.md
       - 论文阅读:
         - bert: lab/cs224n/papers/bert.md
     - CS224W:
@@ -409,32 +419,32 @@ nav:
     - Web开发:
       - CS571 (React / React Native): 
         - 课程资源: intern_work/web_develop/cs571/index.md
-  - OJ笔记:
-    - OJ笔记导航: oj/index.md
-    - LeetCode: 
-      - 导航: oj/leetcode/cpp/index.md
-      - C++:
-        - 数组: oj/leetcode/cpp/int.md
-        - 链表: oj/leetcode/cpp/linklist.md
-        - 树: oj/leetcode/cpp/tree.md
-        - 图论: oj/leetcode/cpp/graph.md
-        - 回溯: oj/leetcode/cpp/backtrack.md
-        - 动态规划: oj/leetcode/cpp/dp.md
-        - 贪心: oj/leetcode/cpp/greedy.md
-        - 探险模式: 
-          - 数学: oj/leetcode/cpp/random/math.md
-        - Hot100: oj/leetcode/cpp/hot100.md
-      - MySQL:
-        - 整理: oj/leetcode/sql/note.md
-        - 探险模式: oj/leetcode/sql/random/note.md
-    - 牛客网:
-      - SQL: oj/nowcode/sql/index.md
-    - USTC Verilog OJ: 
-      - 导航: oj/ustcverilog/index.md
-      - 题解: oj/ustcverilog/writeup.md
-    - 图灵完备(Turing Complete): 
-      - 导航: oj/turingcomplete/index.md
-      - 题解: oj/turingcomplete/writeup.md
+    - OJ笔记:
+      - OJ笔记导航: intern_work/oj/index.md
+      - LeetCode: 
+        - 导航: intern_work/oj/leetcode/cpp/index.md
+        - C++:
+          - 数组: intern_work/oj/leetcode/cpp/int.md
+          - 链表: intern_work/oj/leetcode/cpp/linklist.md
+          - 树: intern_work/oj/leetcode/cpp/tree.md
+          - 图论: intern_work/oj/leetcode/cpp/graph.md
+          - 回溯: intern_work/oj/leetcode/cpp/backtrack.md
+          - 动态规划: intern_work/oj/leetcode/cpp/dp.md
+          - 贪心: intern_work/oj/leetcode/cpp/greedy.md
+          - 探险模式: 
+            - 数学: intern_work/oj/leetcode/cpp/random/math.md
+          - Hot100: intern_work/oj/leetcode/cpp/hot100.md
+        - MySQL:
+          - 整理: intern_work/oj/leetcode/sql/note.md
+          - 探险模式: intern_work/oj/leetcode/sql/random/note.md
+      - 牛客网:
+        - SQL: intern_work/oj/nowcode/sql/index.md
+      - USTC Verilog OJ: 
+        - 导航: intern_work/oj/ustcverilog/index.md
+        - 题解: intern_work/oj/ustcverilog/writeup.md
+      - 图灵完备(Turing Complete): 
+        - 导航: intern_work/oj/turingcomplete/index.md
+        - 题解: intern_work/oj/turingcomplete/writeup.md
   - 编程语言&工具备忘:
     - 工具目录: tools/index.md
     - Markdown: tools/markdown.md
