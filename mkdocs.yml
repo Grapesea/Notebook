@@ -306,15 +306,17 @@ nav:
         - Lab01: csdiy/MIT6.S081/labs/01.md
       - xv6文档阅读:
         - Chap 01: csdiy/MIT6.S081/xv6/01.md
-    - Stanford CS144 Computer Network:
+    - Stanford CS144 & UCB CS168 Computer Network:
       - 课程计划: csdiy/cs144/index.md
       - Introduction: csdiy/cs144/1.md
-      - Checkpoint 01 : csdiy/cs144/lab0.md
-    - UCB CS168 Computer Network:
-      - 课程计划: csdiy/cs168/index.md
-      - Introduction: csdiy/cs168/intro.md
-      - Projects:
-        - Project 01 Traceroute: csdiy/cs168/labs/proj01.md
+      - Checkpoint 0: csdiy/cs144/lab0.md
+      - Checkpoint 1: csdiy/cs144/lab1.md
+      - CS168 Notes:
+        - Lec1: csdiy/cs168/1.md
+        - Lec2: csdiy/cs168/2.md
+      - CS168 Projects:
+        - Project 1: csdiy/cs168/labs/proj01.md
+
     - CS571:React(UW-Madison):
       - 课程计划: intern_work/web_develop/cs571/index.md
     - CS188 (UCB): 

@@ -1194,7 +1194,7 @@ $P,Q$ 和 Slurm 任务数的关系是：$P \times Q = MPI \text{进程总数} = 
 
 #### 调整 HPL.dat 参数
 
-- 调整问题规模 N 以充分利用内存
+- 调整问题规模 $N$  以充分利用内存
 
     我目前每个节点的总内存不是很大，并且slurm可用的均为单核，所以如果向>20000调整需要谨慎，防止oom.
 
@@ -1257,4 +1257,405 @@ srun --mpi=pmix -n "${SLURM_NTASKS}" ./xhpl
 
 ## Bonus
 
-没时间了，跑步进入期末补天模式，前面的区域以后再来探索吧.
+~~没时间了，跑步进入期末补天模式，前面的区域以后再来探索吧.~~
+
+> 期末考试之后补做的.
+
+### 更换数学库
+
+**我选择使用OpenBLAS.**
+
+#### 性能对比
+
+本实验实际对比的是：
+
+| 标签                   | HPL 链接的库                | 说明                                   |
+| ---------------------- | --------------------------- | -------------------------------------- |
+| `reference_blas_cblas` | `cblas_LINUX.a + libblas.a` | Netlib 参考 BLAS 加 CBLAS 封装，单线程 |
+| `openblas`             | `libopenblas.a`             | OpenBLAS 优化实现，作业中限制为单线程  |
+
+为了只考察数学库造成的差异，两套 HPL 均使用 OpenMPI 5.0.9、GCC 的 `-O3`、3 个节点、每节点 1 个 MPI rank、每个 rank 1 个 CPU，并固定 `NB=128`、`P x Q=1 x 3`、`srun --mpi=pmix --cpu-bind=core`. 根据前面的规模调优结果，选择 `N=2000, 4000, 8000`；其中 `N=8000` 是当前集群上性能较好且能在时限内完成的规模. 每个 `HPL.dat` 内的 PFACT、NBMIN 和 RFACT 组合也完全相同.
+
+OpenBLAS 使用当前同宿主机虚拟节点均支持的 HASWELL 目标，并保留 pthread 支持：
+
+```bash
+cd ~/OpenBLAS
+make -j$(nproc) TARGET=HASWELL DYNAMIC_ARCH=0 \
+  USE_THREAD=1 USE_OPENMP=0 NO_LAPACK=1 NO_LAPACKE=1
+```
+
+HPL 的 OpenBLAS 配置保存在 `~/hpl-2.3/Make.OpenBLAS`，关键差异为：
+
+```makefile
+ARCH  = OpenBLAS
+LAdir = $(HOME)/OpenBLAS
+LAinc = -I$(LAdir)
+LAlib = $(LAdir)/libopenblas.a -lpthread -lm
+```
+
+使用脚本构建两套静态链接的 HPL 程序，并提交配对测试：
+
+```bash
+chmod +x ~/hpl_shared/build_blas_variants.sh
+~/hpl_shared/build_blas_variants.sh
+
+RUN_ID=blas-compare-$(date +%Y%m%d-%H%M%S) \
+  ~/hpl_shared/submit_hpl_sweep.sh
+
+# 所有作业完成后，将上一条命令输出的 sweep 目录填在这里
+~/hpl_shared/collect_hpl_results.sh \
+  /cluster/shared/hpl/sweeps/<RUN_ID>
+column -ts $'\t' /cluster/shared/hpl/sweeps/<RUN_ID>/summary.tsv
+column -ts $'\t' /cluster/shared/hpl/sweeps/<RUN_ID>/blas_comparison.tsv
+```
+
+作业脚本同时设置：
+
+```bash
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export GOTO_NUM_THREADS=1
+```
+
+这与 `--cpus-per-task=1` 一致，可以防止 OpenBLAS 在每个 MPI rank 内额外创建多个计算线程而造成超额订阅. 两个二进制采用静态数学库链接，因此不能用 `ldd` 区分实现；提交脚本会记录每个文件的 SHA-256，此外可用符号表检查：
+
+```bash
+nm /cluster/shared/hpl/bin/xhpl_reference | grep ' cblas_dgemm$'
+nm /cluster/shared/hpl/bin/xhpl_openblas | grep ' openblas_get_num_threads$'
+```
+
+完成所有作业后收集脚本会按相同参数配对两种实现，并在 `blas_comparison.tsv` 中自动计算加速比. 我截图结果如下：
+
+<center><img src="./figures/lab1/13.png" alt="01" style="zoom:50%;" /></center>
+
+加速比按相同 `N` 下的时间计算：
+
+$$
+S = \frac{T_{\text{reference BLAS+CBLAS}}}{T_{\text{OpenBLAS}}}
+$$
+
+提取一下信息：
+
+| N    | NB   | P    | Q    | BLAS time/s | BLAS GFlops | OpenBLAS time/s | OpenBLAS GFlops | Speedup |
+| ---- | ---- | ---- | ---- | ----------- | ----------- | --------------- | --------------- | ------- |
+| 2000 | 128  | 1    | 3    | 0.23        | 2.3572e+01  | 0.15            | 3.5709e+01      | 1.533   |
+| 4000 | 128  | 1    | 3    | 1.38        | 3.0972e+01  | 0.57            | 7.4949e+01      | 2.421   |
+| 8000 | 128  | 1    | 3    | 10.46       | 3.2633e+01  | 3.00            | 1.1393e+02      | 3.487   |
+
+可以看出OpenBLAS 明显快于 BLAS.
+
+
+
+#### 原因分析
+
+我搜索了一些原因：
+
+* OpenBLAS有手写汇编优化：BLAS 没有针对当前 CPU 的缓存层次、向量指令和执行流水线进行充分优化；OpenBLAS 的 DGEMM 使用了针对 HASWELL/AVX2 的汇编或内核代码，并通过矩阵分块与数据打包提高缓存复用率，因此 HPL 中占主要比例的矩阵乘法能获得更高吞吐量；
+* CPU优化策略选择：OpenBLAS 在程序启动时会检测当前运行的 CPU 型号，自动选择针对这颗 CPU 专门优化过的 kernel 代码路径（比如是否支持 AVX-512）；
+* 线程并行：BLAS 是单线程实现；OpenBLAS 支持通过 pthread 或 OpenMP 做多核并行计算，把矩阵运算切分给多个 CPU 核心同时算，充分利用多核硬件；
+* 分块（Tiling）计算：OpenBLAS 会根据 CPU 的 L1/L2/L3 Cache 大小把大矩阵切分成能装进各级 Cache 的小块（tile/block），使得计算时尽可能复用已经在 Cache 里的数据，减少内存访问次数.
+
+同时可以发现，小规模 `N=2000` 时，数据打包、MPI 通信和 HPL 控制流程占比更高，OpenBLAS 的优势可能尚未完全体现；规模增大后，DGEMM 占总运行时间的比例提高，加速通常更明显. 
+
+但我本地的环境中，每节点只有 1 个可用 CPU，最终 HPL 性能仍受 MPI 通信、虚拟化调度和内存容量限制，OpenBLAS 的单节点 DGEMM 加速不会等比例转化为整个集群的 HPL 加速，性能提升确实是有限的.
+
+
+
+### 更换共享文件系统
+
+我选择[GlusterFS](https://docs.gluster.org/en/latest/)作为实验（随便选的，后来搜索发现确实是最适配我目前硬件情况的）.
+
+#### 网络配置
+
+当前 `/etc/hosts` 中的 `node00`～`node03` 指向 Tailscale 地址，为了避免存储流量经过 Tailscale，我在4个节点的 `/etc/hosts` 中另外加入一组只用于存储的名称：
+
+```bash
+192.168.159.128 node00-storage
+192.168.159.129 node01-storage
+192.168.159.130 node02-storage
+192.168.159.131 node03-storage
+```
+
+这样不会影响 Slurm 和 SSH 当前使用的节点名，同时 GlusterFS 可以明确使用VMware NAT 网络. 在每台节点上验证名称解析和连接：
+
+```bash
+getent hosts node01-storage node02-storage node03-storage
+ping -c 2 node01-storage
+ping -c 2 node02-storage
+ping -c 2 node03-storage
+```
+
+输出：
+
+<center><img src="./figures/lab1/14.png" alt="01" style="zoom:50%;" /></center>
+
+#### Gluster安装
+
+在 node01、node02、node03 上安装服务端和客户端：
+
+```bash
+sudo apt update
+sudo apt install -y glusterfs-server glusterfs-client
+sudo systemctl enable --now glusterd
+sudo systemctl status glusterd --no-pager
+```
+
+node00 只充当客户端，不提供 brick：
+
+```bash
+sudo apt update
+sudo apt install -y glusterfs-client
+```
+
+检查版本，由于安装到了`/usr/bin`下，所以要sudo来确认三个服务端使用相同的 GlusterFS 主版本：
+
+```bash
+~$ sudo gluster --version
+# 我这边的输出显示
+glusterfs 11.1
+Repository revision: git://git.gluster.org/glusterfs.git
+Copyright (c) 2006-2016 Red Hat, Inc. <https://www.gluster.org/>
+GlusterFS comes with ABSOLUTELY NO WARRANTY.
+It is licensed to you under your choice of the GNU Lesser
+General Public License, version 3 or any later version (LGPLv3
+or later), or the GNU General Public License, version 2 (GPLv2),
+in all cases as published by the Free Software Foundation.
+```
+
+#### brick准备
+
+在 node01、node02、node03 分别执行：
+
+```bash
+$ df -h /
+  sudo mkdir -p /srv/gluster/slurmvol/brick
+  sudo chown root:root /srv/gluster/slurmvol/brick
+  sudo chmod 755 /srv/gluster/slurmvol/brick
+```
+
+确认是空的：
+
+```bash
+$ sudo find /srv/gluster/slurmvol/brick -mindepth 1 -print
+```
+
+检查一下集群：
+
+```bash
+~$ sudo /usr/sbin/gluster peer status
+   sudo /usr/sbin/gluster volume list
+Number of Peers: 0
+No volumes present in cluster
+```
+
+创建一下临时挂载（只需要在node01中创建即可，结果如下）
+
+<center><img src="./figures/lab1/15.png" alt="01" style="zoom:50%;" /></center>
+
+由于是共享的所以不用在node02, node03中都创建一次.
+
+在node00-03上都执行一次：
+
+```bash
+(base) ~$ sudo mkdir -p /mnt/gluster-shared
+  sudo mount -t glusterfs \
+    node01-storage:/slurmvol \
+    /mnt/gluster-shared
+
+  findmnt /mnt/gluster-shared
+  df -Th /mnt/gluster-shared
+[sudo] password for grapesea:
+TARGET            SOURCE                   FSTYPE       OPTIONS
+/mnt/gluster-shared
+                  node01-storage:/slurmvol fuse.gluster rw,relatime,user_id=0,group_id=0,default_permissions,allow_other,max_re
+Filesystem               Type            Size  Used Avail Use% Mounted on
+node01-storage:/slurmvol fuse.glusterfs   19G  8.0G  9.8G  45% /mnt/gluster-shared
+```
+
+可以在node00上面得到：
+
+```bash
+(base) ~$ cat /mnt/gluster-shared/test.txt
+GlusterFS test Wed Jul 22 08:42:00 AM EDT 2026
+```
+
+再从 node02 测试反向写入：
+
+  ```bash
+  ~$ echo "written from node02 $(date)" | \
+      sudo tee -a /mnt/gluster-shared/test.txt
+  written from node02 Wed Jul 22 08:45:39 AM EDT 2026
+  ```
+
+也成功了.
+
+#### 正式挂载
+
+卸载临时挂载，在 node00～03 分别执行：
+
+```bash
+cd ~
+sudo umount /mnt/gluster-shared
+```
+
+创建正式的挂载文件夹：
+
+```bash
+sudo mkdir -p /cluster/gluster-shared
+```
+
+在node00-03节点的`/etc/fstab`下添加配置：
+
+```text
+node01-storage:/slurmvol /cluster/gluster-shared glusterfs defaults,_netdev,backup-volfile-servers=node02-storage:node03-storage 0 0
+```
+
+检查状态：
+
+<center><img src="./figures/lab1/16.png" alt="01" style="zoom:50%;" /></center>
+
+挂载上去：
+
+```bash
+sudo mount /cluster/gluster-shared
+findmnt /cluster/shared
+findmnt /cluster/gluster-shared
+df -Th /cluster/shared /cluster/gluster-shared
+
+mount: (hint) your fstab has been modified, but systemd still uses
+       the old version; use 'systemctl daemon-reload' to reload.
+TARGET                  SOURCE                   FSTYPE         OPTIONS
+/cluster/gluster-shared node01-storage:/slurmvol fuse.glusterfs rw,relatime,user_id=0,group_id=0,default_permissions,allow_other,max_read=131
+Filesystem               Type            Size  Used Avail Use% Mounted on
+/dev/sda1                ext4             19G   17G  1.2G  94% /
+node01-storage:/slurmvol fuse.glusterfs   19G  8.0G  9.8G  45% /cluster/gluster-shared
+```
+
+此时node01-03上面有`gluster-shared`和`shared`两个文件夹，node01中验证挂载成果：
+
+```bash
+~$ mountpoint /cluster/gluster-shared
+  findmnt -T /cluster/gluster-shared
+  df -Th /cluster/gluster-shared
+/cluster/gluster-shared is a mountpoint
+TARGET                  SOURCE                   FSTYPE         OPTIONS
+/cluster/gluster-shared node01-storage:/slurmvol fuse.glusterfs rw,relatime,user_id=0,group_id=0,default_permissions,allow_other,max_read=131
+Filesystem               Type            Size  Used Avail Use% Mounted on
+node01-storage:/slurmvol fuse.glusterfs   19G  8.0G  9.8G  45% /cluster/gluster-shared
+```
+
+在node01中查看：
+
+```bash
+~$ ls -la /cluster/gluster-shared
+  cat /cluster/gluster-shared/user-test.txt
+total 9
+drwxrwsr-x 4 grapesea grapesea 4096 Jul 22 08:59 .
+drwxr-xr-x 4 root     root     4096 Jul 22 08:53 ..
+-rw-r--r-- 1 root     root       99 Jul 22 08:45 test.txt
+-rw-rw-r-- 1 grapesea grapesea   33 Jul 22 08:59 user-test.txt
+written without sudo from node00
+```
+
+在node00中测试rsync并复制HPL:
+
+```bash
+sudo apt update
+sudo apt install -y rsync
+
+sudo rsync -aHAX --numeric-ids --info=progress2 \
+    /cluster/shared/hpl/ \
+    /cluster/gluster-shared/hpl/
+```
+
+输出：
+
+```bash
+total 312
+drwxrwxr-x 5 grapesea grapesea   4096 Jul 22 03:08 .
+drwxr-xr-x 4 grapesea grapesea   4096 Jul 22 02:45 ..
+drwxrwxr-x 2 grapesea grapesea   4096 Jul 22 03:26 bin
+-rw-r--r-- 1 grapesea grapesea   1133 Jun  2 03:24 HPL.dat
+-rw-r--r-- 1 grapesea grapesea    599 Jun  1 13:07 README.md
+drwxrwxr-x 2 grapesea grapesea   4096 Jun  2 12:35 results
+-rwxr-xr-x 1 grapesea grapesea    810 Jun  1 13:34 run_hpl.sbatch
+drwxrwxr-x 4 grapesea grapesea   4096 Jul 22 03:45 sweeps
+-rwxr-xr-x 1 grapesea grapesea 284304 Jun  1 13:06 xhpl
+total 302
+drwxrwxr-x 5 grapesea grapesea   4096 Jul 22 03:08 .
+drwxrwsr-x 5 grapesea grapesea   4096 Jul 22 09:11 ..
+drwxrwxr-x 2 grapesea grapesea   4096 Jul 22 03:26 bin
+-rw-r--r-- 1 grapesea grapesea   1133 Jun  2 03:24 HPL.dat
+-rw-r--r-- 1 grapesea grapesea    599 Jun  1 13:07 README.md
+drwxrwxr-x 2 grapesea grapesea   4096 Jun  2 12:35 results
+-rwxr-xr-x 1 grapesea grapesea    810 Jun  1 13:34 run_hpl.sbatch
+drwxrwxr-x 4 grapesea grapesea   4096 Jul 22 03:45 sweeps
+-rwxr-xr-x 1 grapesea grapesea 284304 Jun  1 13:06 xhpl
+(base) ~$
+```
+
+在 node01-03 检查：
+
+```bash
+ls -la /cluster/gluster-shared/hpl
+```
+
+<center><img src="./figures/lab1/17.png" alt="01" style="zoom:50%;" /></center>
+
+复制一份作业脚本，并将其中路径改为：
+
+ ```bash
+ #SBATCH --output=/cluster/gluster-shared/hpl/results/slurm-%j.out
+ #SBATCH --error=/cluster/gluster-shared/hpl/results/slurm-%j.err
+ #SBATCH --chdir=/cluster/gluster-shared/hpl
+ ```
+
+随后提交：
+
+```bash
+sbatch /cluster/gluster-shared/hpl/run_hpl.sbatch
+```
+
+现在两套存储已经可以并存，`/cluster/shared` 放置的是原 NFS，而`/cluster/gluster-shared`放置的是新 GlusterFS，这样可以用相同的 HPL 作业分别测试 NFS 和 GlusterFS，而不需要清空或关闭原 NFS.
+
+#### 读写验证
+
+先从 node00 写入，再从三个计算节点读取：
+
+```bash
+echo "GlusterFS test from node00 - $(date)" | \
+  sudo tee /cluster/gluster-shared/gluster-test.txt
+
+ssh node01 "cat /cluster/gluster-shared/gluster-test.txt"
+ssh node02 "cat /cluster/gluster-shared/gluster-test.txt"
+ssh node03 "cat /cluster/gluster-shared/gluster-test.txt"
+```
+
+<center><img src="./figures/lab1/18.png" alt="01" style="zoom:50%;" /></center>
+
+然后从 node02 追加内容，并在 node00 查看：
+
+```bash
+ssh node02 "echo 'written from node02' >> /cluster/gluster-shared/gluster-test.txt"
+cat /cluster/gluster-shared/gluster-test.txt
+```
+
+<center><img src="./figures/lab1/19.png" alt="01" style="zoom:50%;" /></center>
+
+检查 GlusterFS 卷、brick 和待修复文件：
+
+```bash
+sudo gluster volume info slurmvol
+sudo gluster volume status slurmvol
+sudo gluster volume heal slurmvol info summary
+```
+
+效果：
+
+<center><img src="./figures/lab1/20.png" alt="01" style="zoom:50%;" /></center>
+
+### k3s
+
+> k3s是一个轻量级 Kubernetes 发行版。它和 Slurm 都可以管理多节点集群，但目标场景不同：Slurm 更适合 HPC 批处理作业和资源排队，Kubernetes 更适合长期运行的容器化服务和云原生应用。
+
+服务运行不起来，感觉是本地硬件资源受限了，因此这个bonus实在是完成不了.

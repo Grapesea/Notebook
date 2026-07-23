@@ -7,21 +7,27 @@
 </thead>
 <tbody>
     <tr>
-        <td><a href="toc/">计算理论（TOC）笔记</a></td>
+        <td><a href="toc/">计算理论（TOC）</a></td>
         <td><a href="nlp/">自然语言处理</a></td>
     </tr>
     <tr>
-        <td><a href="os/">操作系统（OS）笔记</a></td>
+        <td><a href="os/">操作系统（OS）</a></td>
         <td><a href="bs/">B/S体系软件设计</a></td>
     </tr>
     <tr>
-        <td><a href="web/">计算机网络（Web）笔记</td>
+        <td><a href="web/">计算机网络（Web）</td>
         <td><a href="xjp/">习概资料</td>
     </tr>
 </tbody>
 </table>
 
 <br/>
+
+???+ "资源整合"
+
+    
+
+
 
 好好活着吧xd，这没招了.
 
