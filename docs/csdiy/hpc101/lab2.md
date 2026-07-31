@@ -1,5 +1,9 @@
 # Lab2: MoE 的向量化计算
 
+[TOC]
+
+
+
 ## 环境配置
 
 用`degit`拉取部分资源：
@@ -28,6 +32,8 @@ cmake --build build
 我直接写成一整个脚本：
 
 ```bash
+#!/bin/bash
+cmake -B build
 cmake --build build
 echo "------------------------------------------- Test 1 -------------------------------------------"
 echo "------------------------- N = 1 | D = 256 | H = 128 | E = 16 | K = 4 -------------------------"
@@ -95,7 +101,7 @@ void moe_forward_optimized(const float* x, const MoEWeights& w, float* y,
 }
 ```
 
-此时可以达到接近于`top_K`的speedup：
+此时可以达到接近于4的speedup：
 
 ```bash
 lab2$ ./build/lab2 128 256 128 16 4
@@ -114,19 +120,74 @@ Speedup: 3.61086
 
 可以用并行优化掉一些循环依赖，从而做到：
 
-```c++
-```
-
 <center><img src="./figures/lab2/res0.png" alt="overview" style="zoom:50%;" /></center>
 
 可以看出在`num_tokens=1`的场景下加速不明显甚至有负优化.
 
-## 矩阵运算优化
+### 矩阵运算优化
 
 我把这部分的优化放在了自己github仓库的`lab2` branch中.
 
-实际上做的是，将所有输入的token看成是一整个矩阵，大小为$N\times D$，使用AMX这个矩阵  扩展来处理矩阵运算：
+实际上做的是，将所有输入的token看成是一整个矩阵，大小为$N\times D$，使用AMX这个矩阵扩展来处理矩阵运算：
+
+```cpp
+```
 
 
 
-<center><img src="./figures/lab2/res1.png" alt="overview" style="zoom:50%;" /></center>
+
+
+### 权重预处理优化
+
+
+
+
+
+### 分场景优化
+
+在前面已经将权重的预处理进行了优化，现在考虑对不同场景进行策略选择，我是用``作为区分的：
+
+```cpp
+```
+
+这样
+
+（Mermaid画的）
+
+```mermaid
+flowchart TD
+    P["preprocess：权重打包、补偿项、Router 转置、持久线程池"]
+    F["moe_forward_optimized"]
+    S1["S1：单 token、小专家<br/>AVX-512 VNNI + 专家级并行"]
+    S2["S2：单 token、大专家<br/>AMX 输出块并行 + L2 专家着色"]
+    B["S3/S4：多 token<br/>Router 分块 + 全局专家分桶"]
+    A["16-token AMX 批处理"]
+    C["按原 token 加权合并与残差"]
+
+    P --> F
+    F --> S1
+    F --> S2
+    F --> B
+    B --> A
+    S1 --> C
+    S2 --> C
+    A --> C
+```
+
+
+
+
+
+
+
+#### VTune分析
+
+将S3指令的结果放进Intel VTune GUI中查看：
+
+```bash
+vtune -collect hotspots -result-dir vtune-hotspots --   ./build/lab2 128 256 128 16 4 2000 --benchmark
+```
+
+
+
+<center><img src="./figures/lab2/v1.png" alt="v1" style="zoom:50%;" /></center>

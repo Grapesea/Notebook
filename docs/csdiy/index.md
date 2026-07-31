@@ -23,11 +23,11 @@
         <td>CS106L Stanford: Standard C++ Programming, 2022/2025 </td>
     </tr>
     <tr>
-        <td><a href="cs224n/">Stanford-CS224N（#）</a></td>
+        <td><a href="../lab/cs224n/">Stanford-CS224N（#）</a></td>
         <td>Stanford CS224N: NLP with Deep Learning, 2026 Winter</td>
     </tr>
     <tr>
-        <td><a href="cs224w/">Stanford-CS224W（+）</a></td>
+        <td><a href="../lab/cs224w/">Stanford-CS224W（+）</a></td>
         <td>Stanford CS224W: Machine Learning with Graphs, 2025 Fall</td>
     </tr>
     <tr>

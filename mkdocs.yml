@@ -64,7 +64,11 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
@@ -288,8 +292,10 @@ nav:
       - Labs:
         - Lab 00 (Setup): csdiy/hpc101/lab0.md
         - Lab 01 (简单集群搭建): csdiy/hpc101/lab1.md
-        - csdiy\hpc101\CANN.md
-      - Debian配置记录: csdiy/hpc101/Debian_settings.md
+        - Lab 02 (MoE的向量化计算): csdiy/hpc101/lab2.md
+        - Lab 03 (GDN Prefill 前向优化): csdiy/hpc101/lab3.md
+      - Ascend C 学习笔记: csdiy/hpc101/CANN.md
+      - Debian 配置记录: csdiy/hpc101/Debian_settings.md
     - CSAPP (CMU):
       - 课程计划: csdiy/csapp/index.md
     - CMU 15-445:
