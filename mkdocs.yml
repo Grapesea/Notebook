@@ -185,17 +185,12 @@ nav:
       - 导航: zju/22/index.md
       - 数据库系统: 
         - 概述: zju/22/db/index.md
-        - Introduction: zju/22/db/db1.md
-        - Relational Model: zju/22/db/db2.md
-        - SQL: zju/22/db/db4.md
       - 计算机体系结构:
         - 概述: zju/22/arch/index.md
-        - Chap 1: zju/22/arch/1.md
       - 机器学习在数据分析上的实际运用（国际化课程）:
         - 概述: zju/22/ml/index.md
       - 离散数学: 
         - 概述: zju/22/dm/index.md
-        - 笔记: zju/22/dm/dm.md
       - 中国现当代文学史I:
         - 概述: zju/22/lit/index.md
         - 阅读材料: zju/22/lit/reading.md
@@ -207,10 +202,8 @@ nav:
         - 概述: zju/22/graphics/index.md
       - 生命科学导论(H):
         - 概述: zju/22/bio/index.md
-        - 笔记: zju/22/bio/bio.md
       - 中国书画鉴赏:
         - 概述: zju/22/art/index.md
-        - 笔记: zju/22/art/lec.md
       - 毛概:
         - 概述: zju/22/mao/index.md
       - 创新创业实践启蒙:
@@ -220,13 +213,20 @@ nav:
     - 大三秋冬笔记: 
       - 导航: zju/31/index.md
       - HPC101: csdiy/hpc101/index.md
-      - 金融科技概论(课程综合实践II): zju/31/summer2/index.md
-      - 计算理论: zju/31/toc/index.md
-      - 操作系统: zju/31/os/index.md
-      - 计算机网络: zju/31/web/index.md
-      - B/S体系软件设计: zju/31/bs/index.md
-      - 自然语言处理: zju/31/nlp/index.md
-      - 习概: zju/31/xjp/index.md
+      - 金融科技概论(课程综合实践II): 
+        - 概述: zju/31/summer2/index.md
+      - 计算理论: 
+        - 概述: zju/31/toc/index.md
+      - 操作系统: 
+        - 概述: zju/31/os/index.md
+      - 计算机网络:         
+        - 概述: zju/31/web/index.md
+      - B/S体系软件设计: 
+        - 概述: zju/31/bs/index.md
+      - 自然语言处理: 
+        - 概述: zju/31/nlp/index.md
+      - 习概: 
+        - 概述: zju/31/xjp/index.md
   - 语言学习:
     - 导航栏: language/index.md
     - IELTS:
