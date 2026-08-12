@@ -1,4 +1,4 @@
-# 分布式训练
+# 11-1.分布式训练
 
 ## Why We Need Parallelism & Taxonomy
 

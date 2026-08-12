@@ -69,3 +69,83 @@
 .md-typeset .highlight code > span:last-child {
   border-bottom: 0;
 }
+
+/* Enlarge article images in an accessible lightbox. */
+.md-content img:not([data-no-zoom]) {
+  cursor: zoom-in;
+}
+
+.image-lightbox {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.88);
+  box-sizing: border-box;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  opacity: 0;
+  padding: 2.5rem 1rem 1rem;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 160ms ease;
+  z-index: 1000;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-lightbox__figure {
+  margin: 0;
+  max-height: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+
+.image-lightbox__image {
+  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.45);
+  cursor: default;
+  display: block;
+  max-height: calc(100vh - 5rem);
+  max-width: calc(100vw - 2rem);
+  object-fit: contain;
+}
+
+.image-lightbox__caption {
+  color: #fff;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.image-lightbox__close {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font: 2rem/1 sans-serif;
+  height: 2.25rem;
+  justify-content: center;
+  padding: 0 0 0.15rem;
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
+  width: 2.25rem;
+}
+
+.image-lightbox__close:focus-visible {
+  outline: 0.15rem solid #fff;
+  outline-offset: 0.15rem;
+}
+
+html.image-lightbox-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-lightbox {
+    transition: none;
+  }
+}

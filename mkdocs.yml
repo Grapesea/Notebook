@@ -80,6 +80,7 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mathjax.js
+  - javascripts/image-lightbox.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
@@ -286,14 +287,20 @@ nav:
         - 计算机系统基础(7.7-7.8): csdiy/hpc101/notes/system.md
         - 华为Ascend C异构框架基础(Extra): csdiy/hpc101/notes/ascendC.md
         - 向量化计算(7.10): csdiy/hpc101/notes/vector.md
-        - GPU Programming(7.13): csdiy/hpc101/notes/gpu.md
+        - OpenMP并行计算基础(7.12): csdiy/hpc101/notes/openmp.md
+        - Performance Profiling(7.12): csdiy/hpc101/notes/perfprofile.md
+        - GPU基础(7.13): csdiy/hpc101/notes/gpu-arch.md
+        - GPU Programming(7.13): csdiy/hpc101/notes/gpu-program.md
         - 分布式训练(7.16): csdiy/hpc101/notes/dist_train.md
         - 机器学习基础(7.16): csdiy/hpc101/notes/ml-basics.md
+        - HPC讲座(7.17): csdiy/hpc101/notes/hpc_lec.md
       - Labs:
         - Lab 00 (Setup): csdiy/hpc101/lab0.md
         - Lab 01 (简单集群搭建): csdiy/hpc101/lab1.md
         - Lab 02 (MoE的向量化计算): csdiy/hpc101/lab2.md
         - Lab 03 (GDN Prefill 前向优化): csdiy/hpc101/lab3.md
+        - Lab 04 (AMSS-NCKU 数值相对论程序优化): csdiy/hpc101/lab4.md
+        - Lab 05 (Gemma4 端到端推理优化): csdiy/hpc101/lab5.md
       - Ascend C 学习笔记: csdiy/hpc101/CANN.md
       - Debian 配置记录: csdiy/hpc101/Debian_settings.md
     - CSAPP (CMU):
@@ -305,18 +312,19 @@ nav:
       - Lec11-16 (Algorithms, Query): csdiy/cmu15-445/11-16.md
       - Lec17-20 (Transaction, Lock): csdiy/cmu15-445/17-20.md
       - Lec21-25 (Misc): csdiy/cmu15-445/21-25.md
-    - MIT 6.S081 Operating System: 
-      - 课程计划: csdiy/MIT6.S081/index.md
+    - MIT 6.1810 Operating System (2025 Fall): 
+      - 课程计划: csdiy/mit6.1810/index.md
       - 实验记录:
-        - Lab00: csdiy/MIT6.S081/labs/00.md
-        - Lab01: csdiy/MIT6.S081/labs/01.md
+        - Lab00: csdiy/mit6.1810/labs/00.md
+        - Lab01: csdiy/mit6.1810/labs/01.md
       - xv6文档阅读:
-        - Chap 01: csdiy/MIT6.S081/xv6/01.md
+        - Chap 01: csdiy/mit6.1810/xv6/01.md
     - Stanford CS144 & UCB CS168 Computer Network:
       - 课程计划: csdiy/cs144/index.md
       - Introduction: csdiy/cs144/1.md
       - Checkpoint 0: csdiy/cs144/lab0.md
       - Checkpoint 1: csdiy/cs144/lab1.md
+      - CS168课程计划: csdiy/cs168/index.md
       - CS168 Notes:
         - Lec1: csdiy/cs168/1.md
         - Lec2: csdiy/cs168/2.md
@@ -337,24 +345,8 @@ nav:
       - 课程计划: csdiy/ml-lhy/index.md
     - CS224N:
       - 课程计划: lab/cs224n/index.md
-      - 笔记:
-        - Lec1: lab/cs224n/notes/1.md
-        - Lec2: lab/cs224n/notes/2.md
-        - Lec5: lab/cs224n/notes/5.md
-      - 论文阅读:
-        - bert: lab/cs224n/papers/bert.md
-        - Attention is all you need: lab/cs224n/papers/attention_is_all_you_need.md
     - CS224W:
       - 课程计划: lab/cs224w/index.md
-      - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
-      - Lec03-05 (GNN): lab/cs224w/03-05.md
-      - Lec06-08 (GNN Theory and Graph Transformer 1): lab/cs224w/06-08.md
-      - 论文阅读:
-        - node2vec: lab/cs224w/papers/node2vec.md
-      - lab: 
-        - colab0: lab/cs224w/labs/colab0.md
-        - colab1: lab/cs224w/labs/colab1.md
-        - colab2: lab/cs224w/labs/colab2.md
     - Datawhale Hello-agent:
       - 课程计划: csdiy/datawhale_hello_agent/index.md
     - 斋藤康毅-深度学习(鱼书):
@@ -395,6 +387,7 @@ nav:
       - 笔记:
         - Lec1: lab/cs224n/notes/1.md
         - Lec2: lab/cs224n/notes/2.md
+        - Lec3: lab/cs224n/notes/3.md
         - Lec5: lab/cs224n/notes/5.md
       - 论文阅读:
         - bert: lab/cs224n/papers/bert.md
@@ -411,6 +404,9 @@ nav:
     - 工具:
       - AutoFigure: lab/tools/autofigure.md
       - EasySpider: lab/tools/easyspider.md
+    - Skills:
+      - 论文阅读-维度分析: lab/skills/dim_db.md
+      - 论文阅读-内容分析: lab/skills/read_inst.md
   - 实习&工作: 
     - 导航: intern_work/index.md
     - 笔试机试: 
@@ -455,23 +451,21 @@ nav:
         - 题解: intern_work/oj/turingcomplete/writeup.md
   - 编程语言&工具备忘:
     - 工具目录: tools/index.md
+    - Git拾遗: tools/git.md
     - Markdown: tools/markdown.md
-    - Linux工具: tools/linux.md
-    - Linux指令: tools/Linux_command.md
+    - Linux拾遗: tools/linux.md
     - Python: tools/python.md
     - C++: tools/cpp.md
-    - Windows Command Line: tools/bash.md
-    - Windows小tips: tools/windows.md
     - JavaScript语言: tools/JavaScript.md
     - Marp插件配置: tools/marp.md
     - Claude-Projects Prompts: tools/claude-projects.md
-    - V2rayN一键配置脚本: tools/v2ray.md
-    - VSCode打通WSL: tools/wsl_connect_vscode.md
+    - 网络配置拾遗: tools/ssh-web-vpn.md
   - CTF: 
     - 笔记目录: ctf/index.md
     - CTF101笔记: ctf/ctf101.md
     - Web笔记:
       - 导航: ctf/web/index.md
+      - SQL注入: ctf/web/sql.md
       - 西电CTF平台: ctf/web/xidianmoe.md
     - Crypto笔记: 
       - 导航: ctf/crypto/index.md

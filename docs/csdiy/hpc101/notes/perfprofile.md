@@ -51,9 +51,38 @@ $$
 
 Dependency Chain (依赖链)是不会撒谎的，会将完整的运行过程揭露出来.
 
-接下来我们考察
+接下来我们考察以下例子：
 
+```c++
+for (long i = 0; i < n; i++) s += a[i] * b[i]; // one chain
 
+for (long i = 0; i < n; i += 8) { // eight chains
+    s0 += a[i] * b[i]; s1 += a[i + 1] * b[i + 1];
+    /* ... */ s7 += a[i + 7] * b[i + 7];
+}
+```
+
+上下2种的编译有非常大的速度差距：
+
+```bash
+$ gcc {flags} dot1v8.c 			 		1 acc 8 accs
+    -O2 						 		2.79 8.48
+    -O3 -march=native 			  		 2.79 11.19
+    -O2 -ffast-math 			  		 5.56 9.49
+    -O3 -march=native -ffast-math  		  11.13 17.88
+```
+
+究其原因，FMA单元是一个流水线，Latency = 4cycles，但是每个cycle可以进行一个新的独立op：
+
+<center><img src="./figures/perfprofile/3.png" alt="01" style="zoom:50%;" /></center>
+
+我们已经学习过，层次图上越往上，体积越小且latency越少：
+
+<center><img src="./figures/perfprofile/4.png" alt="01" style="zoom:50%;" /></center>
+
+而如果从Bandwidth角度来看Memory数据：
+
+<center><img src="./figures/perfprofile/5.png" alt="01" style="zoom:50%;" /></center>
 
 ## Measuring the Machine
 
