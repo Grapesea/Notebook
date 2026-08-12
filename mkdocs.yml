@@ -362,7 +362,8 @@ nav:
     - 赵世钰-强化学习的数学原理:
       - 课程计划: csdiy/math_founda_rein_learn/index.md
     - Blockchain技术:
-      - UBC暑校: ctf/blockchain/index.md
+      - 资源整合: ctf/blockchain/index.md
+      - UBC暑校: ctf/blockchain/ubc/index.md
     - Misc:
       - Datawhale Mathematical Modeling:
         - 课程计划: csdiy/datawhale_mm/index.md

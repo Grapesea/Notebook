@@ -1,13 +1,13 @@
-# UBC Blockchain Summer Institute 2026
+# 区块链技术
 
-依托 University of British Columbia 的 [Blockchain@UBC](https://blockchain.ubc.ca/) 实验室进行的暑期交流活动，为浙江大学计算机学院统一组织前往.
+???+ info "参考资料"
 
-???+ info "课程信息"
+    [CTF101 2024 MISC Lec3](https://courses.zjusec.com/2024/slides/misc-lec3/#/)
 
-    [官方网站](https://blockchain.ubc.ca/education-programs/blockchainubc-summer-institute/summer-institute-2026)
+    [Introduction to Blockchain Technology](https://www.geeksforgeeks.org/ethical-hacking/blockchain-technology-introduction/)
 
-    课程日历：
+    [鹤翔万里的笔记](https://note.tonycrane.cc/ctf/blockchain/)
 
-    ![](calendar.jpg)
+章节：
 
-
+[UBC Blockchain Summer Institute 2026](ubc/index.md)
