@@ -5,9 +5,8 @@
 ???+ info "课程信息"
 
     [官方网站](https://blockchain.ubc.ca/education-programs/blockchainubc-summer-institute/summer-institute-2026)
-
+    
     课程日历：
-
-    ![](calendar.jpg)
-
+    
+    ![](calendar.jpeg)
 

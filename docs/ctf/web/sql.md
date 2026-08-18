@@ -159,33 +159,9 @@ $query_string = "SELECT * FROM melody_bu_shi_ji_lao WHERE id = " . $_GET['questi
 
   是字符 |。
 
-  回显：
+回显：
 
   Aploium|AAA{welc0me_to_AAA_Congratu1ationS_qq_group_386796080}|技术有多强,责任就有多大. DO NOT EVIL
   Aploium|这个不是Flag,只是秀个恩爱|吱吱我爱你~
 
-  所以真正的 flag 是：
-
-  AAA{welc0me_to_AAA_Congratu1ationS_qq_group_386796080}
-
-  ———
-
-  总结
-
-  这题的核心是：
-
-  数字型 SQL 注入 + UNION 查询 + information_schema 枚举 + 注释绕过空格过滤
-
-  完整思路：
-
-  确认注入
-  → 判断列数
-  → UNION SELECT 找回显位
-  → 查 database()
-  → 查 information_schema.tables
-  → 查 information_schema.columns
-  → 查 flag_is_here.flag
-
-  最终 flag：
-
-  AAA{welc0me_to_AAA_Congratu1ationS_qq_group_386796080}
+最终 flag：`AAA{welc0me_to_AAA_Congratu1ationS_qq_group_386796080}`

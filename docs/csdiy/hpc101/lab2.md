@@ -11,7 +11,7 @@
 > - 掌握向量化优化的通用方法：识别热点、数据重排、提高算术强度
 > - Bonus：在 RISC-V 平台上实现 MoE 算子
 >
-> Bonus 实验：以 RISC-V 的 V (Vector) 和进迭时空的 IME 矩阵扩展为例，向同学们介绍与 AVX, AMX 不同的向量 / 矩阵扩展设计思路。旨在让感兴趣的同学了解开放指令集架构 RISC-V 的生态，学习能够适配不同向量单元长度的向量扩展的设计，进而对向量化加速有更深入的理解. 
+> Bonus 实验：以 RISC-V 的 V (Vector) 和进迭时空的 IME 矩阵扩展为例，向同学们介绍与 AVX, AMX 不同的向量 / 矩阵扩展设计思路。旨在让感兴趣的同学了解开放指令集架构 RISC-V 的生态，学习能够适配不同向量单元长度的向量扩展的设计，进而对向量化加速有更深入的理解.
 >
 > 参考文档：
 >
@@ -101,19 +101,19 @@ hpc submit -p lab2 -c 16 "sh 1.sh"
 > >
 > >         * 都是SwiGLU专家架构，输入$x_{t,q}$之后，先经过gate projection和up projection：
 > >
-> >             $z_{g,int32} = W_{g,q}x_{t,q} , \quad z_{u,int32} = W_{u,q}x_{t,q}$
+> >             $$z_{g,int32} = W_{g,q}x_{t,q} , \quad z_{u,int32} = W_{u,q}x_{t,q}$$
 > >
 > >             然后乘上对应的scale反量化回FP32，得到$z_g = z_{g,int32} \cdot s_{W_g} s_x, \quad z_u = z_{u,int32} \cdot s_{W_u} s_x$
 > >
 > >         * 在FP32下计算，经SiLU激活之后，逐元素相乘：
 > >
-> >             $\text{SiLU}(x) = \dfrac{x}{1+e^{-x}} \quad h = \text{SiLU}(z_g) \odot z_u $
+> >             $$\text{SiLU}(x) = \dfrac{x}{1+e^{-x}} \quad h = \text{SiLU}(z_g) \odot z_u$$
 > >
 > >             中间结果$h$重新量化一次，得到int8的$h_q$，再用int8的权重$W_d$做down projection回到D中完成前向：
 > >
-> >             $h_q= \text{round}(\dfrac{h}{s_h}), \quad s_h = \dfrac{\max\limits_i|h_i|}{127}$
+> >             $$h_q= \text{round}(\dfrac{h}{s_h}), \quad s_h = \dfrac{\max\limits_i|h_i|}{127}$$
 > >
-> >             $o_{int} = W^{(e)}_{d,q} h_q \Longrightarrow FFN_e(x_{t}) = o_{int}s_{W_d} s_h$
+> >             $$o_{int} = W^{(e)}_{d,q} h_q \Longrightarrow FFN_e(x_{t}) = o_{int}s_{W_d} s_h$$
 > >
 > > * Router 做sigmoid亲和度，带偏置选择Top-4：
 > >
@@ -125,7 +125,7 @@ hpc submit -p lab2 -c 16 "sh 1.sh"
 > >
 > > * 残差连接并加权合并：
 > >
-> >     * $y_t = x_t + FFN_{shared}(x_t) + \sum\limits_{e \in S_t} g_{t,e}FFN_{e}(x_t)$
+> >     $$y_t = x_t + FFN_{shared}(x_t) + \sum\limits_{e \in S_t} g_{t,e}FFN_{e}(x_t)$$
 >
 > <center><img src="./figures/lab2/overview.jpg" alt="overview" style="zoom:50%;" /></center>
 
@@ -444,8 +444,6 @@ perf report --stdio --no-children \
 
 OpenMP版本的实际`perf report`中，`expert_ffn`占41.53%，`libgomp`占15.62%，`__expf_fma`占13.09%，OpenMP生成的forward函数占6.05%；最终版本中持久线程的`std::thread::_M_run`占95.19%，`moe_forward_optimized`占2.87%，`expert_amx_pair_s3`占0.74%. `_mm_pause`被内联进worker循环，所以perf把它记在`_M_run`上，这和VTune把`_mm_pause`单独显示为64%--67%并不矛盾. 
 
-
-
 两个工具共同得到的结论是：最早需要优化的是标量expert和`expf`，VNNI/AMX完成以后新的问题变成线程池等待与小bucket的任务粒度.
 
 最终：（力竭了，遗憾止步119分）
@@ -457,31 +455,41 @@ OpenMP版本的实际`perf report`中，`expert_ffn`占41.53%，`libgomp`占15.6
 > 1.以场景 S3（$N = 128, D = 256, H = 128, E = 16, K = 4$）为例，估算参考实现一次前向的总访存量（专家权重被读了多少遍？）和总乘加次数，计算算术强度（MACs/byte）. 按专家分组之后这两个数字分别变成多少？由此说明这个负载是访存瓶颈还是计算瓶颈， 以及分组为什么能加速.
 
 每个expert经过3次projection，权重数：
+
 $$
 3DH = 3 \times 256 \times 128 = 3 \times 2^{15}bytes
 $$
+
 每个token需要激活$K + 1 = 5$个专家：
 
 参考实现中，token逐个处理：
 
 专家权重被读取：
+
 $$
 N \times (K+1) = 128 \times 5 = 5 \times 2^7
 $$
+
 总访存：
+
 $$
 5 \times 2^7 \times 3 \times 2^{15} = 15 \times 2^{22}
 $$
+
 算术强度就是1MACs/B吧，是非常明显的单独读取.
 
 按专家分组之后，用到的专家数$E + 1 = 17$，在随机路由下大概率会覆盖到所有专家：
+
 $$
 17 \times 3 \times 2^{15} = 51 \times 2^{15}B
 $$
+
 新的算术强度：
+
 $$
 \dfrac{15 \times 2^{22}}{51 \times 2^{15}} \approx 37.6 \text{MACs/B}
 $$
+
 应该是访存瓶颈，修改前后计算量没有改变，只是打包了权重计算的方式，使得重复利用，进而提升了运算速度.
 
 
@@ -498,12 +506,12 @@ $$
 单个有符号位int8的范围是$[-128, 127]$，所以乘积最大值是$-128 \times (-128) = 16384 = 2^{14}$.
 
 如果是int16，在加到32768就会溢出，所以最坏是加到第2项容易溢出（int16最大正值是$2^{15} - 1 = 32767$；如果是int32会慢很多，最大正值是$2^{31}-1$，溢出概率很低）.
+
 $$
-\max \times \text{max\_d\_model} = 16384 \times 1024 = 2^{24}
+\max \times \text{max}_{d_\text{model}} = 16384 \times 1024 = 2^{24}
 $$
+
 剩余量：$\dfrac{2^{31}-1}{2^{24}} \approx 128$.
-
-
 
 ## Bonus: 在RISC-V上进行优化
 
@@ -525,7 +533,7 @@ c++: error: '-march=sapphirerapids': ISA string must begin with rv32 or rv64
 2. RISC-V 节点上 cmake 复用了这份 stale cache：`CMakeLists.txt` 的 `-march=sapphirerapids` 分支被触发，RISC-V 的 g++ 直接拒绝该参数，`student` 目标编译失败；
 3. 脚本不管编译失败继续执行 `./build/lab2`，此时运行的是 build 目录里残留的 x86-64 ELF 二进制，RISC-V 内核加载不了，于是 `Exec format error`，退出码 126.
 
-所以根因是跨机器/跨架构复用了 build 目录，和算法本身一点关系都没有. 修复也很简单，[1.sh](../1.sh) 在 cmake 配置前先清空再生成：
+所以根因是跨机器/跨架构复用了 build 目录，和算法本身一点关系都没有. 修复也很简单，`../1.sh` 在 cmake 配置前先清空再生成：
 
 ```bash
 cmake -E remove_directory build
@@ -595,7 +603,7 @@ RVV 和 AVX-512 的第一个区别是设计哲学. AVX-512 把宽度焊死在 IS
 | 饱和窄化 | `_mm512_cvtsepi32_epi8` 一步完成 | `vnclip` 一次只砍半位宽（i32→i16→i8 需两步） |
 | 数据布局 | AMX 16×64B 行主序 tile | 无固定 tile；为让 16 个输出行连续可向量加载，需在 preprocess 里按 16 行块转置 |
 
-基于这些差异，我的设计是 **16 条 lane 的固定工作宽度**：VLEN=256 时 16 个 int16 恰好占满一个向量寄存器，16 个 int32 累加器占 LMUL=2. int8 权重在 `preprocess` 里按 16 输出行一块转置打包成 `[fb][k][16]`（`pack_gu_tiles`，[moe_opt.cpp:2283](../student/moe_opt.cpp)）：
+基于这些差异，我的设计是 **16 条 lane 的固定工作宽度**：VLEN=256 时 16 个 int16 恰好占满一个向量寄存器，16 个 int32 累加器占 LMUL=2. int8 权重在 `preprocess` 里按 16 输出行一块转置打包成 `[fb][k][16]`（`pack_gu_tiles`，位于`../student/moe_opt.cpp`）：
 
 ```cpp
 // dst[(b,k)][lane] = w[b*16+lane][k]：同一 k 的 16 个输出行连续
@@ -606,7 +614,7 @@ for (int b = 0; b < fb; ++b)
                 gate[(size_t)(b * RVV_FB + l) * cols + k];
 ```
 
-这样一次 `vle8` 就是一条能直接喂给 `vwmacc` 的向量. GEMM 微内核（`gemm_tile_s8_live`，[moe_opt.cpp:2672](../student/moe_opt.cpp)）长这样：
+这样一次 `vle8` 就是一条能直接喂给 `vwmacc` 的向量. GEMM 微内核（`gemm_tile_s8_live`，位于`../student/moe_opt.cpp`）长这样：
 
 ```cpp
 for (int k = 0; k < k_dim; ++k) {
@@ -624,9 +632,7 @@ for (int k = 0; k < k_dim; ++k) {
 - 权重向量只加载/扩展一次，被 **8 个 token 累加器共享**（8 个 `vint32m2_t` 占 16 个向量寄存器，加上权重和临时变量，32 个寄存器内不溢出）——每条权重字节被 8 个 token 复用，这是 Test 4 带宽降 8 倍的直接原因；
 - GCC 不允许 "RVV 类型数组"，8 个累加器用命名变量 + 指针数组绕过去；token 数不足 8 时按 `LIVE` 模板分派（`if constexpr`，1..8），多余的累加器不生成指令.
 
-量化是同样的套路（`rvv_quantize_row`，[moe_opt.cpp:2645](../student/moe_opt.cpp)）：`vfredmax` 求 |x| 最大值算 scale，`vfcvt`（RNE，与参考 `lrintf` 一致）取整，再两级 `vnclip` 饱和窄化到 int8. exp/sigmoid 用和 x86 相同的 Cephes 多项式 + 指数位构造（`(fx+127)<<23`），16 lane 一次算 16 个 exp，替代每专家一次标量 `expf`；SwiGLU 的 sigmoid 还换成了更短的 [7/6] Pade 有理近似（`rvv_swiglu_sigmoid`，[moe_opt.cpp:2587](../student/moe_opt.cpp)），除法用 `vfrec7` + 一步 Newton 迭代代替完整向量除法——但 **router 的 sigmoid 保留了精确除法**（`rvv_router_sigmoid`）：Top-K 是离散选择，几个 ulps 的误差就可能换掉一个被选中的专家.
-
-踩坑记录（都是 qemu 逐步跟踪发现的——本机交叉编译 `cmake -B build-rv -DCMAKE_TOOLCHAIN_FILE=cmake/riscv64-toolchain.cmake`，`qemu-riscv64 -cpu max,vlen=256` 跑正确性；TCG 软件模拟没有性能意义，但正确性一测一个准）：
+踩坑记录：
 
 1. **`vfnmacc` 语义与 x86 不同**：RVV 的 `vfnmacc = −(vd + rs1·vs2)`，不是 "a − b·c". 参数归约 `x − fx·ln2` 必须用 `vfnmsac`（= vd − rs1·vs2）；
 2. **多项式是 Horner 形** `y = y·x + c`（`vfmacc_vv(c, y, x)`），不是 `y + c·x`；写反会导致 exp(0)=1.5 这类错误；
@@ -638,13 +644,13 @@ for (int k = 0; k < k_dim; ++k) {
 
 ### IME 矩阵扩展（4×4×8 的 vmadot）
 
-IME（进迭时空的矩阵扩展）是 RISC-V 生态里厂商扩展的典型样本：在标准 RVV 之外用自定义编码加矩阵指令. 它的 `vmadot` 固定计算一个 $A[4][8] × B[4][8]ᵀ → C[4][4]$ 的 signed int8 tile（4 个 token × 4 个输出通道 × 8 个归约元素），和 AMX 的 16×64 大 tile 形成鲜明对比. 好处是它直接消费普通的向量寄存器（v0/v1/v2...），复用 RVV 的加载指令，不需要 AMX 那套 tile load/store 和 `arch_prctl` 权限申请；代价是工具链不认识——binutils 早于厂商助记符，只能手写编码：
+IME（进迭时空的矩阵扩展）是 RISC-V 生态里厂商扩展的典型样本：在标准 RVV 之外用自定义编码加矩阵指令. 它的 `vmadot` 固定计算一个 $A[4][8] × B[4][8]^T → C[4][4]$ 的 signed int8 tile（4 个 token × 4 个输出通道 × 8 个归约元素），和 AMX 的 16×64 大 tile 形成鲜明对比. 好处是它直接消费普通的向量寄存器（v0/v1/v2...），复用 RVV 的加载指令，不需要 AMX 那套 tile load/store 和 `arch_prctl` 权限申请；代价是工具链不认识——binutils 早于厂商助记符，只能手写编码：
 
 ```asm
 .word 0xe2103e2b    # vmadot v28, v0, v1
 ```
 
-权重在 `preprocess` 里打包成 `[output_block][k_block][4][8]`（`pack_ime_tiles`，[moe_opt.cpp:2309](../student/moe_opt.cpp)），一次 `vle8` 32 字节正好一个 K 块. 多 token 路径用双输出版本（`ime_vmadot_tile2`，[moe_opt.cpp:2412](../student/moe_opt.cpp)）：一次扫两个 output block，v26/v28 两个累加器并行，把 S3 常见的 16-token batch 从四次相距很远的权重遍历变成紧挨着的四次复用.
+权重在 `preprocess` 里打包成 `[output_block][k_block][4][8]`，一次 `vle8` 32 字节正好一个 K 块. 多 token 路径用双输出版本：一次扫两个 output block，v26/v28 两个累加器并行，把 S3 常见的 16-token batch 从四次相距很远的权重遍历变成紧挨着的四次复用.
 
 单 token（S1/S2）则是另一回事：`vmadot` 的 M 方向固定 4 行，单 token 只有 1 行有效，矩阵利用率只有 25%. 我先验证了"IME 浪费 3 个 M 行，RVV 单 token 内核可能更快"这个猜想，把 Gate/Up 和 Down 分别换成 RVV 做 A/B（300 轮、同一作业内三次取中位）：
 
@@ -657,7 +663,7 @@ IME（进迭时空的矩阵扩展）是 RISC-V 生态里厂商扩展的典型样
 
 结果很有意思：虽然 IME 在 M 方向只有 25% 结果有效，但一条 `vmadot` 仍然比 RVV 的 `vle8 + vsext + vwmacc` 指令流更有优势——RVV 每 16 个 MAC 要 3 条指令，IME 是 load + 一条矩阵指令. Gate/Up 改 RVV 回退约 11%，Down 改 RVV 回退约 7%，因此最终保留全 IME.
 
-针对 S2 我还在这个 leaf 上做了最后一点优化——**软件流水**（`ime_vmadot_tile_s2`，[moe_opt.cpp:2365](../student/moe_opt.cpp)）. 原来的每个 K 块严格执行 `vle8 A -> vle8 B -> vmadot -> 指针递增`，`vmadot` 紧跟在两次 load 后面，会直接暴露向量 load-to-use 延迟. 改成两组输入寄存器交替：当前 `vmadot` 消费 v0/v1 的时候，v2/v3 已经在下一次 load 里准备好了，让 load 延迟和矩阵计算重叠：
+针对 S2 我还在这个 leaf 上做了最后一点优化——**软件流水**. 原来的每个 K 块严格执行 `vle8 A -> vle8 B -> vmadot -> 指针递增`，`vmadot` 紧跟在两次 load 后面，会直接暴露向量 load-to-use 延迟. 改成两组输入寄存器交替：当前 `vmadot` 消费 v0/v1 的时候，v2/v3 已经在下一次 load 里准备好了，让 load 延迟和矩阵计算重叠：
 
 ```assembly
 load block 0 -> v0/v1
@@ -677,7 +683,7 @@ vmadot v28, v2, v3
 
 ### 分场景调度与最终结果
 
-调度逻辑（`rvv_forward`，[moe_opt.cpp:3003](../student/moe_opt.cpp)）和 x86 主线一致，按场景特征分路：
+调度逻辑（`rvv_forward`）和 x86 主线一致，按场景特征分路：
 
 ```mermaid
 flowchart TD
@@ -712,4 +718,3 @@ RISC-V 节点上的完整演进（baseline：S1 0.395 s、S2 6.10 s、S3 25.3 s�
 
 1. **RVV v1 的 S1/S2 是回退的**（3.67x/3.71x，比标量移植的 4.06x/4.84x 还低）. RVV v1 是按 S3/S4 的 batch 形状写的，单 token 场景里向量化的固定开销（vsetvl、打包、清零）反而比收益大——和主线里"矩阵化在 S3 掉到 2.82x"是同一个教训：**优化形状和问题形状要匹配**，S1/S2 这种单 token 小专家场景要的是降低单条指令的延迟而不是堆吞吐. IME 的 M=4 tile 天然为小 batch 设计，换上去之后单 token 直接回到 12x 以上；
 2. **S4 超额完成**：当初的预期是 27x（带宽约束，见 `moe_riscv_rvv_optimization.md` 里的估算表），实际跑到 64.44x. 打包 + 分桶让权重按 token 组复用、DRAM 流量降 8 倍之后，S4 从"带宽瓶颈"变成了"计算瓶颈"，向量化的收益全部兑现. 对照当初定的目标（16.0 / 18.5 / 114.5 / 27.0），S2、S4 超额，S3 基本打平，S1 差约 10%——单 token 微秒级的路径本来就受频率和线程状态影响，属于意料之中.
-

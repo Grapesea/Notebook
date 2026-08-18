@@ -299,8 +299,11 @@ nav:
         - Lab 01 (简单集群搭建): csdiy/hpc101/lab1.md
         - Lab 02 (MoE的向量化计算): csdiy/hpc101/lab2.md
         - Lab 03 (GDN Prefill 前向优化): csdiy/hpc101/lab3.md
+        - Lab 3.5 (昇腾算子优化): csdiy/hpc101/lab3p5.md
         - Lab 04 (AMSS-NCKU 数值相对论程序优化): csdiy/hpc101/lab4.md
+        - lab 4.5 (): csdiy/hpc101/lab4p5.md
         - Lab 05 (Gemma4 端到端推理优化): csdiy/hpc101/lab5.md
+        - Project (): csdiy/hpc101/project.md
       - Ascend C 学习笔记: csdiy/hpc101/CANN.md
       - Debian 配置记录: csdiy/hpc101/Debian_settings.md
     - CSAPP (CMU):
@@ -392,10 +395,12 @@ nav:
         - Lec5: lab/cs224n/notes/5.md
       - 论文阅读:
         - bert: lab/cs224n/papers/bert.md
+        - Transformer: lab/cs224n/papers/attention_is_all_you_need.md
     - CS224W:
       - 课程计划: lab/cs224w/index.md
       - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
       - Lec03-05 (GNN): lab/cs224w/03-05.md
+      - Lec06-08 (GNN Theory and Graph Transformer 1): lab/cs224w/06-08.md
       - 论文阅读:
         - node2vec: lab/cs224w/papers/node2vec.md
       - lab: 
@@ -457,7 +462,6 @@ nav:
     - Linux拾遗: tools/linux.md
     - Python: tools/python.md
     - C++: tools/cpp.md
-    - JavaScript语言: tools/JavaScript.md
     - Marp插件配置: tools/marp.md
     - Claude-Projects Prompts: tools/claude-projects.md
     - 网络配置拾遗: tools/ssh-web-vpn.md
@@ -499,6 +503,8 @@ nav:
       - 苏州1.5日游: gadgets/travel/suzhou_1.md
       - 无锡1.5日游: gadgets/travel/wuxi_1.md
       - 临安太子尖(20260426): gadgets/travel/taizijian20260426.md
+      - 丽水3日游: gadgets/travel/lishui_1.md
+      - 加拿大两周见闻录: gadgets/travel/canada.md
   - 友链:
     - Grapesea的朋友们: friends/friends.md
     - Grapesea的其他联系方式: friends/contact.md
