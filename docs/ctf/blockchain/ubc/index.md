@@ -8,5 +8,5 @@
     
     课程日历：
     
-    ![](calendar.jpeg)
+    ![](figures/calendar.jpeg)
 

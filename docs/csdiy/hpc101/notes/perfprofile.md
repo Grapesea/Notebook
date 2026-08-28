@@ -34,13 +34,17 @@
 <center><img src="./figures/perfprofile/0.png" alt="01" style="zoom:50%;" /></center>
 
 在这两个参数的基础上，要考察硬件的瞬时承载能力，我们引入了Little's Law：
+
 $$
 \text{in-flight} = \text{Throughput} \times \text{Latency}
 $$
+
 这可以用一个KFC餐厅来建模理解. 假设每个顾客平均要在店里面吃1h疯狂星期四再离开，且每小时会进来60个顾客，那么所需要的椅子数自然就是
+
 $$
 60 \text{guests}/h \times 1h = 60
 $$
+
 实际上，Little's Law几乎遍布体系结构的各个地方：
 
 <center><img src="./figures/perfprofile/1.png" alt="01" style="zoom:50%;" /></center>
@@ -74,15 +78,19 @@ $ gcc {flags} dot1v8.c 			 		1 acc 8 accs
 
 究其原因，FMA单元是一个流水线，Latency = 4cycles，但是每个cycle可以进行一个新的独立op：
 
-<center><img src="./figures/perfprofile/3.png" alt="01" style="zoom:50%;" /></center>
+<center><img src="./figures/perfprofile/3.png" alt="01" style="zoom:70%;" /></center>
 
 我们已经学习过，层次图上越往上，体积越小且latency越少：
 
-<center><img src="./figures/perfprofile/4.png" alt="01" style="zoom:50%;" /></center>
+<center><img src="./figures/perfprofile/4.png" alt="01" style="zoom:70%;" /></center>
 
 而如果从Bandwidth角度来看Memory数据：
 
-<center><img src="./figures/perfprofile/5.png" alt="01" style="zoom:50%;" /></center>
+<center><img src="./figures/perfprofile/5.png" alt="01" style="zoom:70%;" /></center>
+
+
+
+
 
 ## Measuring the Machine
 

@@ -301,9 +301,9 @@ nav:
         - Lab 03 (GDN Prefill 前向优化): csdiy/hpc101/lab3.md
         - Lab 3.5 (昇腾算子优化): csdiy/hpc101/lab3p5.md
         - Lab 04 (AMSS-NCKU 数值相对论程序优化): csdiy/hpc101/lab4.md
-        - lab 4.5 (): csdiy/hpc101/lab4p5.md
+        - Lab 4.5 (基于 INT8 张量核的 FP64 GEMM 模拟): csdiy/hpc101/lab4p5.md
         - Lab 05 (Gemma4 端到端推理优化): csdiy/hpc101/lab5.md
-        - Project (): csdiy/hpc101/project.md
+        - Project (鲲鹏高性能计算全球挑战赛-S2赛季): csdiy/hpc101/project.md
       - Ascend C 学习笔记: csdiy/hpc101/CANN.md
       - Debian 配置记录: csdiy/hpc101/Debian_settings.md
     - CSAPP (CMU):
@@ -487,8 +487,12 @@ nav:
       - CSACTF2025: ctf/crypto/csactf2025.md
       - 长城杯2025: ctf/crypto/ccb2025.md
     - Blockchain笔记:
+      - 资源页: ctf/blockchain/index.md
       - UBC暑校:
-        - 资源搜集: ctf/blockchain/index.md
+        - 资源页: ctf/blockchain/ubc/index.md
+        - Day1 (Introduction): ctf/blockchain/ubc/1.md
+        - Day2 (Bitcoin): ctf/blockchain/ubc/2.md
+        - Day3 (Ethereum): ctf/blockchain/ubc/3.md
     - NewStarCTF2025:
       - 题解: ctf/newstarctf2025/writeup.md
   - 储物柜:
