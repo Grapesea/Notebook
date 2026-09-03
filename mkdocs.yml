@@ -492,7 +492,11 @@ nav:
         - 资源页: ctf/blockchain/ubc/index.md
         - Day1 (Introduction): ctf/blockchain/ubc/1.md
         - Day2 (Bitcoin): ctf/blockchain/ubc/2.md
-        - Day3 (Ethereum): ctf/blockchain/ubc/3.md
+        - Day3 (Ethereum & Smart Contract): ctf/blockchain/ubc/3.md
+        - Day4 (SSI & Solana): ctf/blockchain/ubc/4.md
+        - Day5 (XRP & BSafe and BGIN): ctf/blockchain/ubc/5.md
+        - Day6 (Blockchain & Quantum): ctf/blockchain/ubc/6.md
+        - Day7 (Blockchain & AI): ctf/blockchain/ubc/7.md
     - NewStarCTF2025:
       - 题解: ctf/newstarctf2025/writeup.md
   - 储物柜:
@@ -503,12 +507,12 @@ nav:
     - 摄影从0开始:
       - 资源目录: gadgets/photography/index.md
     - 旅途记录:
-      - 上海一日游: gadgets/travel/shanghai_1.md
+      - 上海1日游: gadgets/travel/shanghai_1.md
       - 苏州1.5日游: gadgets/travel/suzhou_1.md
       - 无锡1.5日游: gadgets/travel/wuxi_1.md
       - 临安太子尖(20260426): gadgets/travel/taizijian20260426.md
       - 丽水3日游: gadgets/travel/lishui_1.md
-      - 加拿大两周见闻录: gadgets/travel/canada.md
+      - 温哥华2周旅行见闻: gadgets/travel/vancouver.md
   - 友链:
     - Grapesea的朋友们: friends/friends.md
     - Grapesea的其他联系方式: friends/contact.md
