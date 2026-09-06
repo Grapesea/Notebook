@@ -1,6 +1,6 @@
 # Lab 4: AMSS-NCKU 数值相对论程序优化
 
-<center>3240104505 查沣翊(Grapesea)</center>
+<center>Grapesea</center>
 
 [TOC]
 
