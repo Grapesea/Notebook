@@ -333,7 +333,8 @@ nav:
         - Lec2: csdiy/cs168/2.md
       - CS168 Projects:
         - Project 1: csdiy/cs168/labs/proj01.md
-
+    - 生成式软件工程 (南京大学 蒋炎岩, 2026):
+      - 课程计划: csdiy/gse-NJU/index.md
     - CS571:React(UW-Madison):
       - 课程计划: intern_work/web_develop/cs571/index.md
     - CS188 (UCB): 
@@ -382,7 +383,7 @@ nav:
         - Chap 10:图像、文本与信号数据: csdiy/datawhale_mm/10.md
   - 科研学习:
     - 收集帖: lab/index.md
-    - RAGFlow: lab/ragflow.md
+    - 沉思录: lab/think.md
     - Datawhale All-in-RAG:
       - 课程计划: lab/datawhale-rag/index.md
       - Chap 1-3: lab/datawhale-rag/1-3.md
@@ -409,10 +410,15 @@ nav:
         - colab2: lab/cs224w/labs/colab2.md
     - 工具:
       - AutoFigure: lab/tools/autofigure.md
+      - RAGFlow: lab/tools/ragflow.md
       - EasySpider: lab/tools/easyspider.md
     - Skills:
       - 论文阅读-维度分析: lab/skills/dim_db.md
       - 论文阅读-内容分析: lab/skills/read_inst.md
+    - 论文阅读:
+      - 日志: lab/paper_reading/log.md
+      - CoG: lab/paper_reading/[ACL2026]CoG.md
+      - Temp-R1: lab/paper_reading/[ACL2026]Temp_r1.md
   - 实习&工作: 
     - 导航: intern_work/index.md
     - 笔试机试: 
