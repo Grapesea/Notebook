@@ -1,0 +1,1 @@
+# [ACL 2026] Temp-R1: A Unified Autonomous Agent for Complex Temporal KGQA via Reverse Curriculum Reinforcement Learning
