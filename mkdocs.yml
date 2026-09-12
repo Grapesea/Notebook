@@ -417,15 +417,16 @@ nav:
       - 论文阅读-内容分析: lab/skills/read_inst.md
     - 论文阅读:
       - 日志: lab/paper_reading/log.md
-      - CoG: lab/paper_reading/[ACL2026]CoG.md
-      - Temp-R1: lab/paper_reading/[ACL2026]Temp_r1.md
+      - CoG: lab/paper_reading/CoG.md
+      - Temp-R1: lab/paper_reading/Temp_r1.md
+      - GNN-RAG: lab/paper_reading/GNN-RAG.md
   - 实习&工作: 
     - 导航: intern_work/index.md
     - 笔试机试: 
       - 华为机试: 
         - 目录: intern_work/test/huawei/index.md
         - AI岗: 
-          - 20260613选择: intern_work/test/huawei/AI_develop_choice/20260513.md
+          - 20260513选择: intern_work/test/huawei/AI_develop_choice/20260513.md
     - 实习资源整理:
       - 面经: intern_work/interview/index.md
       - 模拟面试1: intern_work/interview/virtual-1.md

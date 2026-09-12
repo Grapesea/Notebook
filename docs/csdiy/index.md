@@ -15,7 +15,7 @@
         <td>CS70 UC Berkley: Discrete Math, 2025 Summer</td>
     </tr>
     <tr>
-        <td><a href="cs188/">UCB-CS188（+）</a></td>
+        <td><a href="cs188/">UCB-CS188（√）</a></td>
         <td>CS188 UC Berkley: Introduction to Artificial Intelligence, 2025 Spring</td>
     </tr>
     <tr>
@@ -23,12 +23,16 @@
         <td>CS106L Stanford: Standard C++ Programming, 2022/2025 </td>
     </tr>
     <tr>
-        <td><a href="../lab/cs224n/">Stanford-CS224N（#）</a></td>
+        <td><a href="../lab/cs224n/">Stanford-CS224N（+）</a></td>
         <td>Stanford CS224N: NLP with Deep Learning, 2026 Winter</td>
     </tr>
     <tr>
         <td><a href="../lab/cs224w/">Stanford-CS224W（+）</a></td>
         <td>Stanford CS224W: Machine Learning with Graphs, 2025 Fall</td>
+    </tr>
+    <tr>
+        <td><a href="../lab/cs336/">Stanford-CS336（+）</a></td>
+        <td>Stanford CS336: LLM from Scratch, 2026 Spring</td>
     </tr>
     <tr>
         <td><a href="csapp/">CMU15-213: CSAPP（＋）</a></td>
@@ -87,7 +91,7 @@
         <td>西湖大学赵世钰老师开源课程</td>
     </tr>
     <tr>
-        <td><a href="hpc101/">HPC101, ZJU2026短学期课程综合实践（＋）</a></td>
+        <td><a href="hpc101/">HPC101, ZJU2026短学期课程综合实践（√）</a></td>
         <td>超算入门：ZJU2026短学期课程综合实践</td>
     </tr>
 </tbody>

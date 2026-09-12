@@ -22,19 +22,33 @@ Start (2026.9.7)：
 
 读完了[彭思达老师的CCF Talk](../think.md).
 
+---
 
+(2026.9.10)
 
+发现2026.1的一篇综述[[3]](#3)给出了更广的分类，并开始重读CoG整理成笔记.
 
+怎么感觉强化学习还得从头再学一遍，Shiyu Zhao老师的看过但忘了……？
 
+---
 
+(2026.9.11)
 
+睡过头了，报到注册，重新捡起CS224W，主要是因为翻到了 GNN-RAG[[4]](#4) 这篇文献.
 
+CoG读完了.
 
+---
 
+(2026.9.12)
 
 
 
 > <a id="1">[1]</a>：[ACL 2026 Main] Temp-R1: A Unified Autonomous Agent for Complex Temporal KGQA via Reverse Curriculum Reinforcement Learning，论文地址: https://arxiv.org/abs/2601.18296，Github仓库: https://github.com/zjukg/Temp-R1，阅读笔记: [跳转此处](./[ACL2026]Temp_r1.md)
 >
 > <a id="2">[2]</a>：[ACL 2026 Main] CoG: Controllable Graph Reasoning via Relational Blueprints and Failure-Aware Refinement over Knowledge Graph，论文地址: https://arxiv.org/abs/2601.11047，Github仓库: https://github.com/zjukg/CoG，阅读笔记: [跳转此处](./[ACL2026]CoG.md)
+>
+> <a id="3">[3]</a>：[Arxiv 2601.00536] Retrieval--Reasoning Processes for Multi-hop Question Answering: A Four-Axis Design Framework and Empirical Trends，论文地址：https://arxiv.org/abs/2601.00536
+>
+> <a id="4">[4]</a>：[ACL 2025 Finding] GNN-RAG: Graph Neural Retrieval for Large Language Model Reasoning，论文地址: [ACL链接](https://aclanthology.org/2025.findings-acl.856.pdf)  [Arxiv链接](https://arxiv.org/abs/2405.20139)，阅读笔记：[跳转此处](./[ACL2025]GNN-RAG.md)
 
