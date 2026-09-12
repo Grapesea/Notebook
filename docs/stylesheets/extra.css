@@ -1,3 +1,8 @@
+/* Tighten paragraph spacing to about 70% of the Material theme default. */
+.md-typeset p {
+  margin-block: 0.7em;
+}
+
 /* Use Kai-style serif fonts for Markdown blockquotes across the site. */
 .md-typeset blockquote,
 .md-typeset blockquote p,
@@ -8,7 +13,16 @@
 .md-typeset blockquote {
   border: 1px solid #d0d0d0;
   border-radius: 4px;
-  padding: 0.8rem 1rem;
+  padding: 0.4rem 1rem;
+}
+
+/* Avoid stacking the quote padding with the theme's paragraph margins. */
+.md-typeset blockquote > :first-child {
+  margin-top: 0;
+}
+
+.md-typeset blockquote > :last-child {
+  margin-bottom: 0;
 }
 
 /* Keep inline code and code blocks monospaced inside blockquotes. */

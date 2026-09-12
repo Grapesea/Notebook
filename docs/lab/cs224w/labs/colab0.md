@@ -1,10 +1,10 @@
 # Colab 0
 
-???+ info "资源"
-
-    [NetworkX](https://networkx.org/documentation/stable/)
-    
-    [Pytorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/)
+> [!INFO]+ 资源
+>
+> [NetworkX](https://networkx.org/documentation/stable/)
+>
+> [Pytorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/)
 
 ---
 

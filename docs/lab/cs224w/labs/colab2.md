@@ -1,10 +1,10 @@
 # Colab 2
 
-???+ info "资源"
-
-    [PyG](https://pytorch-geometric.readthedocs.io/en/latest/index.html)
-    
-    主要用的是[torch_geometric.nn](https://pytorch-geometric.readthedocs.io/en/latest/modules/nn.html)
+> [!INFO]+ 资源
+>
+> [PyG](https://pytorch-geometric.readthedocs.io/en/latest/index.html)
+>
+> 主要用的是[torch_geometric.nn](https://pytorch-geometric.readthedocs.io/en/latest/modules/nn.html)
 
 ---
 

@@ -14,46 +14,46 @@
 
 伪代码如下：
 
-???+ tips "关键函数"
-
-    ```c
-    bool Reconstruct ( DistType X[ ], DistSet D, int N, int left, int right ){ 
-        /* X[1]...X[left-1] and X[right+1]...X[N] are solved */
-        bool Found = false;
-        if ( Is_Empty( D ) ) return true; /* solved */
-        D_max = Find_Max( D );
-        /* option 1：X[right] = D_max */
-        /* check if |D_max-X[i]|D is true for all X[i]’s that have been solved */
-        OK = Check( D_max, N, left, right ); /* pruning */
-        if ( OK ) { /* add X[right] and update D */
-            X[right] = D_max;
-            for ( i=1; i<left; i++ )  Delete( |X[right]-X[i]|, D);
-            for ( i=right+1; i<=N; i++ )  Delete( |X[right]-X[i]|, D);
-            Found = Reconstruct ( X, D, N, left, right-1 );
-            if ( !Found ) { /* if does not work, undo */
-                for ( i=1; i<left; i++ )  Insert( |X[right]-X[i]|, D);
-                for ( i=right+1; i<=N; i++ )  Insert( |X[right]-X[i]|, D);
-            }
-        }
-        /* finish checking option 1 */
-        if ( !Found ) { /* if option 1 does not work */
-            /* option 2: X[left] = X[N]-D_max */
-            OK = Check( X[N]-D_max, N, left, right );
-            if ( OK ) {
-                X[left] = X[N] – D_max;
-                for ( i=1; i<left; i++ )  Delete( |X[left]-X[i]|, D);
-                for ( i=right+1; i<=N; i++ )  Delete( |X[left]-X[i]|, D);
-                Found = Reconstruct (X, D, N, left+1, right );
-                if ( !Found ) {
-                    for ( i=1; i<left; i++ ) Insert( |X[left]-X[i]|, D);
-                    for ( i=right+1; i<=N; i++ ) Insert( |X[left]-X[i]|, D);
-                }
-            }
-            /* finish checking option 2 */
-        } /* finish checking all the options */
-        return Found;
-    }
-    ```
+> [!TIP]+ 关键函数
+>
+> ```c
+> bool Reconstruct ( DistType X[ ], DistSet D, int N, int left, int right ){ 
+>     /* X[1]...X[left-1] and X[right+1]...X[N] are solved */
+>     bool Found = false;
+>     if ( Is_Empty( D ) ) return true; /* solved */
+>     D_max = Find_Max( D );
+>     /* option 1：X[right] = D_max */
+>     /* check if |D_max-X[i]|D is true for all X[i]’s that have been solved */
+>     OK = Check( D_max, N, left, right ); /* pruning */
+>     if ( OK ) { /* add X[right] and update D */
+>         X[right] = D_max;
+>         for ( i=1; i<left; i++ )  Delete( |X[right]-X[i]|, D);
+>         for ( i=right+1; i<=N; i++ )  Delete( |X[right]-X[i]|, D);
+>         Found = Reconstruct ( X, D, N, left, right-1 );
+>         if ( !Found ) { /* if does not work, undo */
+>             for ( i=1; i<left; i++ )  Insert( |X[right]-X[i]|, D);
+>             for ( i=right+1; i<=N; i++ )  Insert( |X[right]-X[i]|, D);
+>         }
+>     }
+>     /* finish checking option 1 */
+>     if ( !Found ) { /* if option 1 does not work */
+>         /* option 2: X[left] = X[N]-D_max */
+>         OK = Check( X[N]-D_max, N, left, right );
+>         if ( OK ) {
+>             X[left] = X[N] – D_max;
+>             for ( i=1; i<left; i++ )  Delete( |X[left]-X[i]|, D);
+>             for ( i=right+1; i<=N; i++ )  Delete( |X[left]-X[i]|, D);
+>             Found = Reconstruct (X, D, N, left+1, right );
+>             if ( !Found ) {
+>                 for ( i=1; i<left; i++ ) Insert( |X[left]-X[i]|, D);
+>                 for ( i=right+1; i<=N; i++ ) Insert( |X[left]-X[i]|, D);
+>             }
+>         }
+>         /* finish checking option 2 */
+>     } /* finish checking all the options */
+>     return Found;
+> }
+> ```
 
 这个算法的时间复杂度最坏情况为 $O(2^N)$，因为每个位置有两种选择（左或右）；但实际运行时通常远小于 $O(2^N)$，因为剪枝效果好.
 
@@ -63,12 +63,12 @@
 
 ### PTA习题
 
-???+ notes "3.3-2"
-    In a turnpike reconstruction problem, the distance set is given as $\{1, 1, 2, 4, 4, 5, 5, 5, 6, 6, 7, 9, 10, 11, 12\}$. In now backtracking state(a node in the backtracking tree), we temporarily identify four points: $x_1=0,x_2=12,x_3=1,x_4=2$, which next try is possible？
-
-    A.$x_5=3$ $\quad$ B.$x_5=4$ $\quad$ C.$x_5=5$ $\quad$ D.$x_5=6$ $\quad$ E.$x_5=7$ $\quad$ F.$x_5=8$ $\quad$ G.$x_5=9$ $\quad$ 
-
-    答案是
+> [!NOTE]+ 3.3-2
+> In a turnpike reconstruction problem, the distance set is given as $\{1, 1, 2, 4, 4, 5, 5, 5, 6, 6, 7, 9, 10, 11, 12\}$. In now backtracking state(a node in the backtracking tree), we temporarily identify four points: $x_1=0,x_2=12,x_3=1,x_4=2$, which next try is possible？
+>
+> A.$x_5=3$ $\quad$ B.$x_5=4$ $\quad$ C.$x_5=5$ $\quad$ D.$x_5=6$ $\quad$ E.$x_5=7$ $\quad$ F.$x_5=8$ $\quad$ G.$x_5=9$ $\quad$ 
+>
+> 答案是
 
 ## Alpha-Beta Pruning
 
@@ -96,62 +96,62 @@ $\beta$-pruning: 修剪掉min一层的节点.
 
 当二者同时被使用的时候，搜索的复杂度会被降低到 $O(\sqrt{N})$.
 
-???+ tips "算法伪代码"
-
-    ```python
-    function AlphaBeta(state, depth, α, β, isMaxPlayer):
-        if state是终局 or depth = 0:
-            return 评估值
-        
-        if isMaxPlayer:
-            maxEval = -inf
-            for each child in state的后继状态:
-                eval = AlphaBeta(child, depth-1, α, β, false)
-                maxEval = max(maxEval, eval)
-                α = max(α, eval)
-                if β <= α:  // β剪枝
-                    break
-            return maxEval
-        else:
-            minEval = +inf
-            for each child in state的后继状态:
-                eval = AlphaBeta(child, depth-1, α, β, true)
-                minEval = min(minEval, eval)
-                β = min(β, eval)
-                if β <= α:  // α剪枝
-                    break
-            return minEval
-    ```
+> [!TIP]+ 算法伪代码
+>
+> ```python
+> function AlphaBeta(state, depth, α, β, isMaxPlayer):
+>     if state是终局 or depth = 0:
+>         return 评估值
+>
+>     if isMaxPlayer:
+>         maxEval = -inf
+>         for each child in state的后继状态:
+>             eval = AlphaBeta(child, depth-1, α, β, false)
+>             maxEval = max(maxEval, eval)
+>             α = max(α, eval)
+>             if β <= α:  // β剪枝
+>                 break
+>         return maxEval
+>     else:
+>         minEval = +inf
+>         for each child in state的后继状态:
+>             eval = AlphaBeta(child, depth-1, α, β, true)
+>             minEval = min(minEval, eval)
+>             β = min(β, eval)
+>             if β <= α:  // α剪枝
+>                 break
+>         return minEval
+> ```
 
 ### PTA习题
 
-???+ tips "xyx-1"
-
-    <center><img src = "./figures/bt/xyx-1.png" style="zoom: 50%;"/></center>
-
-    都是c.如果忘了算法也可以通过分析得出，从左向右自顶向下预设某个节点的值未知，去推导该值会不会对结果产生影响.
-    
-    * α-β 剪枝的核心：max 层维护 α（下界），min 层维护 β（上界）<br>
-    * β 剪枝：在 max 节点，如果找到的值 ≥ β，则剪枝<br>
-    * α 剪枝：在 min 节点，如果找到的值 ≤ α，则剪枝
+> [!TIP]+ xyx-1
+>
+> <center><img src = "./figures/bt/xyx-1.png" style="zoom: 50%;"/></center>
+>
+> 都是c.如果忘了算法也可以通过分析得出，从左向右自顶向下预设某个节点的值未知，去推导该值会不会对结果产生影响.
+>
+> * α-β 剪枝的核心：max 层维护 α（下界），min 层维护 β（上界）<br>
+> * β 剪枝：在 max 节点，如果找到的值 ≥ β，则剪枝<br>
+> * α 剪枝：在 min 节点，如果找到的值 ≤ α，则剪枝
 
 ## 回溯算法补充问题
 
 ### PTA习题
 
-???+ tips "2025fall-yy-mid"
+> [!TIP]+ 2025fall-yy-mid
+>
+> <center><img src = "./figures/bt/yymid3-1.png" style="zoom: 50%;"/></center>
+>
+> <center><img src = "./figures/bt/yymid3-2.png" style="zoom: 50%;"/></center>
+>
+> 答案是`fabs(2 * sum - total)`和`sum -= a[p]`
 
-    <center><img src = "./figures/bt/yymid3-1.png" style="zoom: 50%;"/></center>
-
-    <center><img src = "./figures/bt/yymid3-2.png" style="zoom: 50%;"/></center>
-
-    答案是`fabs(2 * sum - total)`和`sum -= a[p]`
-
-???+ tips "2025fall-ch-mid"
-
-    <center><img src = "./figures/bt/chmid3-1.png" style="zoom: 70%;"/></center>
-
-    <center><img src = "./figures/bt/chmid3-2.png" style="zoom: 70%;"/></center>
-
-    答案：`i >= 0 && j <= N-1 ; i--, j++`, `board;row+1`, `board[row][col] = 0`.
+> [!TIP]+ 2025fall-ch-mid
+>
+> <center><img src = "./figures/bt/chmid3-1.png" style="zoom: 70%;"/></center>
+>
+> <center><img src = "./figures/bt/chmid3-2.png" style="zoom: 70%;"/></center>
+>
+> 答案：`i >= 0 && j <= N-1 ; i--, j++`, `board;row+1`, `board[row][col] = 0`.
     

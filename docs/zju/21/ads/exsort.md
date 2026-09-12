@@ -7,19 +7,19 @@
 1. 生成置换段（Runs）： 将大文件切成内存能处理的小块，在内存中排好序，写回外存.  
 2. 归并段（Merging）： 将多个已排序的段合并成更大的有序段，直到整个文件有序.
 
-???+ tips "举例"
-
-    <center><img src = "./figures/exsort/eg.png" style="zoom: 60%;"/></center>
-
-    对于大小为3的internal memory, 每一次run实现的是从磁盘中取出3个数，在内部排好，返回给新的tape.
-
-    tape可以重复使用，因为原先放进去的东西取完了之后就立刻清空了，所以过程大致如下：
-
-    <center><img src = "./figures/exsort/egp.png" style="zoom: 60%;"/></center>
-
-    追加Question: Given 10,000,000 records of 128 bytes each, and the size of the internal memory is 4MB.  How many passes we have to do?
-    
-    Answer: $\text{runs} = \dfrac{10^7 \times 128 Bytes}{4MB} = 320 \quad \text{passes} = 1+ \log(320 \text{runs}) = 1 + 9$
+> [!TIP]+ 举例
+>
+> <center><img src = "./figures/exsort/eg.png" style="zoom: 60%;"/></center>
+>
+> 对于大小为3的internal memory, 每一次run实现的是从磁盘中取出3个数，在内部排好，返回给新的tape.
+>
+> tape可以重复使用，因为原先放进去的东西取完了之后就立刻清空了，所以过程大致如下：
+>
+> <center><img src = "./figures/exsort/egp.png" style="zoom: 60%;"/></center>
+>
+> 追加Question: Given 10,000,000 records of 128 bytes each, and the size of the internal memory is 4MB.  How many passes we have to do?
+>
+> Answer: $\text{runs} = \dfrac{10^7 \times 128 Bytes}{4MB} = 320 \quad \text{passes} = 1+ \log(320 \text{runs}) = 1 + 9$
 
 外部排序的开销主要取决于读写磁盘的次数. 每进行一趟归并，整个文件都要被读写一次.
 
@@ -94,26 +94,26 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{N-1} F_{N-i}^{(k)}$$
 
 以某年期末涉及到的题目举例：
 
-???+ tips "Final Exercise 1.1-5"
-
-    <center><img src = "./figures/exsort/f1.1-5.png" style="zoom: 60%;"/></center>
-
-    <center><img src = "./figures/exsort/f1.1-5ex.jpg" style="zoom: 20%;"/></center>
+> [!TIP]+ Final Exercise 1.1-5
+>
+> <center><img src = "./figures/exsort/f1.1-5.png" style="zoom: 60%;"/></center>
+>
+> <center><img src = "./figures/exsort/f1.1-5ex.jpg" style="zoom: 20%;"/></center>
 
 ## PTA习题
 
-???+ tips "8.1-5~8"
+> [!TIP]+ 8.1-5~8
+>
+> <center><img src = "./figures/exsort/1-5,8.png" style="zoom: 60%;"/></center>
+>
+> TTFT，需要补充的是最后一题，曾经期末出了这道题：
+>
+> > In general, for a 3-way merge we need 6 input buffers and 2 output buffers for decreasing the number of passes. (F)
+>
+> 事实上，将输入输出缓冲区分开不能降低pass数，而是便于进行并行操作从而提升处理效率.
 
-    <center><img src = "./figures/exsort/1-5,8.png" style="zoom: 60%;"/></center>
-
-    TTFT，需要补充的是最后一题，曾经期末出了这道题：
-
-    > In general, for a 3-way merge we need 6 input buffers and 2 output buffers for decreasing the number of passes. (F)
-
-    事实上，将输入输出缓冲区分开不能降低pass数，而是便于进行并行操作从而提升处理效率.
-
-???+ tips "Final Practice 2 2-16"
-
-    <center><img src = "./figures/exsort/f2.2-16.png" style = "zoom:60%"/></center>
-
-    A
+> [!TIP]+ Final Practice 2 2-16
+>
+> <center><img src = "./figures/exsort/f2.2-16.png" style = "zoom:60%"/></center>
+>
+> A

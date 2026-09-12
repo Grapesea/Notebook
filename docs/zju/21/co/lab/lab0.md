@@ -1,24 +1,24 @@
 主要记录一下lab0的手搓过程，免得以后又忘记了Verilog里面各种东西的写法.
 
-!!! warning
-
-    我使用的Vivado版本是2022.2，slides上面是2017年的版本，所以会有很多细节上的出入. 事实上，本文档也记录了很多版本出入上的困惑.
-
-    lab0包含的任务有：预热（Water_LED的仿真试验、自定义模块IP核的生成）、正式任务（基本逻辑模块的原理学习、Xilinx IP的生成）.
-
-    林芃班的验收规则：
-
-    * 流水灯仿真波形 PPT 39
-
-    * 流水灯运行结果 PPT 54
-
-    * MUX2T1_5仿真波形 PPT 78
-
-    * 多选器控制LED运行结果 PPT 167
-        
-        1. 注意推荐使用`.v`形式完成：通过`Add Sources->Add or create design source->Create File` 创建所需模块，然后实现各模块功能
-
-        2. ppt79-94以及ppt142-149中自定义IP模块的封装和调用可以先做了解
+> [!WARNING]
+>
+> 我使用的Vivado版本是2022.2，slides上面是2017年的版本，所以会有很多细节上的出入. 事实上，本文档也记录了很多版本出入上的困惑.
+>
+> lab0包含的任务有：预热（Water_LED的仿真试验、自定义模块IP核的生成）、正式任务（基本逻辑模块的原理学习、Xilinx IP的生成）.
+>
+> 林芃班的验收规则：
+>
+> * 流水灯仿真波形 PPT 39
+>
+> * 流水灯运行结果 PPT 54
+>
+> * MUX2T1_5仿真波形 PPT 78
+>
+> * 多选器控制LED运行结果 PPT 167
+>
+>     1. 注意推荐使用`.v`形式完成：通过`Add Sources->Add or create design source->Create File` 创建所需模块，然后实现各模块功能
+>
+>     2. ppt79-94以及ppt142-149中自定义IP模块的封装和调用可以先做了解
 
 ## 预热
 
@@ -134,9 +134,9 @@ set_property IOSTANDARD LVCMOS33 [get_ports CLK_i]
 
 ## 自定义模块设计学习
 
-!!! tips
-
-    这个模块操作过于老旧，可以不做.
+> [!TIP]
+>
+> 这个模块操作过于老旧，可以不做.
 
 ### IP核的生成
 
@@ -216,255 +216,255 @@ finish之后，在弹出的窗口中选择`Review and Package->Package IP`即可
 
 记录一下提到的逻辑模块和他们实现用到的代码：
 
-!!! tips
+> [!TIP]
+>
+> MUX: m位n选1的多路器
+>
+> ```verilog
+> module MUXnT1_m(input [m-1:0] I0,
+>                 input [m-1:0] I1,
+>                 // etc.
+>                 input sel,
+>                 output reg [m-1:0] o
+>                 );
+>     // Some code here.
+> endmodule     
+> ```
+>
+> MUX2T1_5:
+>
+> ```verilog
+> module MUX2T1_5(input [4:0] I0,
+>                 input [4:0] I1,
+>                 input sel,
+>                 output reg [4:0] o
+>                 );
+>     always @(*) begin
+>         if (sel == 1)
+>             o = I1;
+>         else
+>             o = I0;
+>     end
+>
+>     // 以下语句是错误的，因为o是reg类型，不支持assign连续赋值.
+>     // assign o = sel ? I1 : I0;
+>
+> endmodule
+> ```
+>
+> MUX2T1_32:
+>
+> ```verilog
+> module MUX2T1_32(input [31:0] I0,
+>                  input [31:0] I1,
+>                  input sel,
+>                  output reg [31:0] o
+>                 );
+>     always @(*) begin
+>         if (sel == 1)
+>             o = I1;
+>         else
+>             o = I0;
+>     end
+> endmodule
+> ```
+>
+> MUX4T1_5:
+>
+> ```verilog
+> module MUX4T1_5(input [1:0] s,
+>                 input [4:0] I0,
+>                 input [4:0] I1,
+>                 input [4:0] I2,
+>                 input [4:0] I3,
+>                 output reg [4:0] o
+>                 );
+>     always @(*) begin
+>         if (s == 2'b00)
+>             o = I0;
+>         else if (s == 2'b01)
+>             o = I1;
+>         else if (s == 2'b10)
+>             o = I2;
+>         else 
+>             o = I3;
+>     end
+> endmodule
+> ```
+>
+> MUX4T1_32:
+>
+> ```verilog
+> module MUX4T1_32(input [1:0] s,
+>                 input [31:0] I0,
+>                 input [31:0] I1,
+>                 input [31:0] I2,
+>                 input [31:0] I3,
+>                 output reg [31:0] o
+>                 );
+>     always @(*) begin
+>         if (s == 2'b00)
+>             o = I0;
+>         else if (s == 2'b01)
+>             o = I1;
+>         else if (s == 2'b10)
+>             o = I2;
+>         else 
+>             o = I3;
+>     end
+> endmodule
+> ```
+>
+> MUX8T1_32:
+>
+> ```verilog
+> module MUX8T1_32(input [31:0] I0,
+>                  input [31:0] I1,
+>                  input [31:0] I2,
+>                  input [31:0] I3,
+>                  input [31:0] I4,
+>                  input [31:0] I5,
+>                  input [31:0] I6,
+>                  input [31:0] I7,
+>                  input [2:0] s,
+>                  output reg [31:0] o
+>                 );
+>     always @(*) begin
+>     case (s)
+>         3'b000: o = I0;
+>         3'b001: o = I1;
+>         3'b010: o = I2;
+>         3'b011: o = I3;
+>         3'b100: o = I4;
+>         3'b101: o = I5;
+>         3'b110: o = I6;
+>         3'b111: o = I7;
+>         default: o = I0;  // 可选的默认情况
+>     endcase
+> end
+> endmodule
+> ```
 
-    MUX: m位n选1的多路器
-
-    ```verilog
-    module MUXnT1_m(input [m-1:0] I0,
-                    input [m-1:0] I1,
-                    // etc.
-                    input sel,
-                    output reg [m-1:0] o
-                    );
-        // Some code here.
-    endmodule     
-    ```
-
-    MUX2T1_5:
-
-    ```verilog
-    module MUX2T1_5(input [4:0] I0,
-                    input [4:0] I1,
-                    input sel,
-                    output reg [4:0] o
-                    );
-        always @(*) begin
-            if (sel == 1)
-                o = I1;
-            else
-                o = I0;
-        end
-        
-        // 以下语句是错误的，因为o是reg类型，不支持assign连续赋值.
-        // assign o = sel ? I1 : I0;
-
-    endmodule
-    ```
-
-    MUX2T1_32:
-
-    ```verilog
-    module MUX2T1_32(input [31:0] I0,
-                     input [31:0] I1,
-                     input sel,
-                     output reg [31:0] o
-                    );
-        always @(*) begin
-            if (sel == 1)
-                o = I1;
-            else
-                o = I0;
-        end
-    endmodule
-    ```
-
-    MUX4T1_5:
-
-    ```verilog
-    module MUX4T1_5(input [1:0] s,
-                    input [4:0] I0,
-                    input [4:0] I1,
-                    input [4:0] I2,
-                    input [4:0] I3,
-                    output reg [4:0] o
-                    );
-        always @(*) begin
-            if (s == 2'b00)
-                o = I0;
-            else if (s == 2'b01)
-                o = I1;
-            else if (s == 2'b10)
-                o = I2;
-            else 
-                o = I3;
-        end
-    endmodule
-    ```
-
-    MUX4T1_32:
-
-    ```verilog
-    module MUX4T1_32(input [1:0] s,
-                    input [31:0] I0,
-                    input [31:0] I1,
-                    input [31:0] I2,
-                    input [31:0] I3,
-                    output reg [31:0] o
-                    );
-        always @(*) begin
-            if (s == 2'b00)
-                o = I0;
-            else if (s == 2'b01)
-                o = I1;
-            else if (s == 2'b10)
-                o = I2;
-            else 
-                o = I3;
-        end
-    endmodule
-    ```
-
-    MUX8T1_32:
-
-    ```verilog
-    module MUX8T1_32(input [31:0] I0,
-                     input [31:0] I1,
-                     input [31:0] I2,
-                     input [31:0] I3,
-                     input [31:0] I4,
-                     input [31:0] I5,
-                     input [31:0] I6,
-                     input [31:0] I7,
-                     input [2:0] s,
-                     output reg [31:0] o
-                    );
-        always @(*) begin
-        case (s)
-            3'b000: o = I0;
-            3'b001: o = I1;
-            3'b010: o = I2;
-            3'b011: o = I3;
-            3'b100: o = I4;
-            3'b101: o = I5;
-            3'b110: o = I6;
-            3'b111: o = I7;
-            default: o = I0;  // 可选的默认情况
-        endcase
-    end
-    endmodule
-    ```
-
-!!! tips
-
-    算术函数模块
-
-    32位无进位加法器：
-
-    ```verilog
-    module add_32(input [31:0] a,
-                  input [31:0] b,
-                  output [31:0] c
-                );
-        assign c = a ^ b;
-    endmodule
-    ```
-
-    32位带进位加减器：
-    
-    这里`c == 1`时选择减法，`c == 0`时选择加法. 
-
-    ```verilog
-    module ADC32(input [31:0] A,
-                  input [31:0] B,
-                  input C0,
-                  output [32:0] S
-                );
-        wire b0 = C0 ^ 1'b0;
-        assign S = {1'b0,A} + {b0,B} + C0; 
-    endmodule
-    ```
-
-    32位与运算：
-
-    ```verilog
-    module and32(input [31:0] A,
-                  input [31:0] B,
-                  output [31:0] res
-                );
-        assign res = (A & B);
-    endmodule
-    ```
-
-    32位或运算：
-
-    ```verilog
-    module or32(input [31:0] A,
-                  input [31:0] B,
-                  output [31:0] res
-                );
-        assign res = (A | B);
-    endmodule
-    ```
-
-    32位或非运算：
-
-    ```verilog
-    module nor32(input [31:0] A,
-                  input [31:0] B,
-                  output [31:0] res
-                );
-        assign res = ~(A | B); // | 是按位或， || 是逻辑或
-    endmodule
-    ```
-
-    32位异或运算：
-
-    ```verilog
-    module xor32(input [31:0] A,
-                  input [31:0] B,
-                  output [31:0] res
-                );
-        assign res = A ^ B;
-    endmodule
-    ```
-
-    32位逻辑右移运算（srl）：移位量由b[4:0]来控制
-
-    ```verilog
-    module srl32(input [31:0] A,
-                  input [31:0] B,
-                  output [31:0] res
-                );
-        assign res = A >> B[4:0];
-    endmodule
-    ```
-
-    32位自或运算：（判断是否为全0）
-
-    ```verilog
-    module or_bit_32(input [31:0] A,
-                  output o
-                );
-        assign o = |A;
-    endmodule
-    ```
-
-    16位符号数-32位符号数算术拓展：
-
-    ```verilog
-    module Ext_32(input [15:0] imm_16,
-                  output [31:0] imm_32
-                );
-        assign imm_32 = {16{imm_16[15]}，imm_16};
-    endmodule
-    ```
-
-    1位信号-32位算术拓展：
-
-    ```verilog
-    module SignalExt_32(input S,
-                  output [31:0] So
-                );
-        assign So = {32{S}};
-    endmodule
-    ```
+> [!TIP]
+>
+> 算术函数模块
+>
+> 32位无进位加法器：
+>
+> ```verilog
+> module add_32(input [31:0] a,
+>               input [31:0] b,
+>               output [31:0] c
+>             );
+>     assign c = a ^ b;
+> endmodule
+> ```
+>
+> 32位带进位加减器：
+>
+> 这里`c == 1`时选择减法，`c == 0`时选择加法. 
+>
+> ```verilog
+> module ADC32(input [31:0] A,
+>               input [31:0] B,
+>               input C0,
+>               output [32:0] S
+>             );
+>     wire b0 = C0 ^ 1'b0;
+>     assign S = {1'b0,A} + {b0,B} + C0; 
+> endmodule
+> ```
+>
+> 32位与运算：
+>
+> ```verilog
+> module and32(input [31:0] A,
+>               input [31:0] B,
+>               output [31:0] res
+>             );
+>     assign res = (A & B);
+> endmodule
+> ```
+>
+> 32位或运算：
+>
+> ```verilog
+> module or32(input [31:0] A,
+>               input [31:0] B,
+>               output [31:0] res
+>             );
+>     assign res = (A | B);
+> endmodule
+> ```
+>
+> 32位或非运算：
+>
+> ```verilog
+> module nor32(input [31:0] A,
+>               input [31:0] B,
+>               output [31:0] res
+>             );
+>     assign res = ~(A | B); // | 是按位或， || 是逻辑或
+> endmodule
+> ```
+>
+> 32位异或运算：
+>
+> ```verilog
+> module xor32(input [31:0] A,
+>               input [31:0] B,
+>               output [31:0] res
+>             );
+>     assign res = A ^ B;
+> endmodule
+> ```
+>
+> 32位逻辑右移运算（srl）：移位量由b[4:0]来控制
+>
+> ```verilog
+> module srl32(input [31:0] A,
+>               input [31:0] B,
+>               output [31:0] res
+>             );
+>     assign res = A >> B[4:0];
+> endmodule
+> ```
+>
+> 32位自或运算：（判断是否为全0）
+>
+> ```verilog
+> module or_bit_32(input [31:0] A,
+>               output o
+>             );
+>     assign o = |A;
+> endmodule
+> ```
+>
+> 16位符号数-32位符号数算术拓展：
+>
+> ```verilog
+> module Ext_32(input [15:0] imm_16,
+>               output [31:0] imm_32
+>             );
+>     assign imm_32 = {16{imm_16[15]}，imm_16};
+> endmodule
+> ```
+>
+> 1位信号-32位算术拓展：
+>
+> ```verilog
+> module SignalExt_32(input S,
+>               output [31:0] So
+>             );
+>     assign So = {32{S}};
+> endmodule
+> ```
 
 ### 任务2：生成IP并初始化存储内容
 
-!!! tips
-
-    这个模块中的IP Core生成操作过于老旧，暂时可以不做，但是lab2还是要进行这个操作的.
+> [!TIP]
+>
+> 这个模块中的IP Core生成操作过于老旧，暂时可以不做，但是lab2还是要进行这个操作的.
 
 > 学习并利用Vivado生成Xilinx库中的IP，以存储器ROM,RAM为例，并完成其存储内容的初始化.
 
@@ -474,22 +474,22 @@ finish之后，在弹出的窗口中选择`Review and Package->Package IP`即可
 
 先双击打开`Distributed Memory Generator`，`Depth`输入1024，`Data Width`输入32，存储类型调成ROM -> OK，接着在操作窗口中选择跟memory config同级的RST & Initialization，你需要点击Browse按钮来添加Coefficients File并查验.
 
-!!! tips
-
-    这里slides又开始顺序颠倒不说人话了，coe文件实则需要自己创建完再在这个窗口中选中，需要自行编辑一个`.coe`文件.
-
-    个人是VSCode打开这个文件夹然后按照slides-124的指示添加`ROM.coe`文件：
-
-    ```coe
-    memory_initialization_radix=16;
-    memory_initialization_vector=
-    00000000, 11111111, 22222222, 33333333, 44444444, 55555555, 
-    66666666, 77777777, 88888888, 99999999, aaaaaaaa, bbbbbbbb, 
-    cccccccc, dddddddd, eeeeeeee, ffffffff, 557EF7E0, D7BDFBD9, 
-    D7DBFDB9, DFCFFCFB, DFCFBFFF, F7F3DFFF, FFFFDF3D, FFFF9DB9, 
-    FFFFBCFB, DFCFFCFB, DFCFBFFF, D7DB9FFF, D7DBFDB9, D7BDFBD9, 
-    FFFF07E0, 007E0FFF, 03bdf020, 03def820, 08002300;
-    ```
+> [!TIP]
+>
+> 这里slides又开始顺序颠倒不说人话了，coe文件实则需要自己创建完再在这个窗口中选中，需要自行编辑一个`.coe`文件.
+>
+> 个人是VSCode打开这个文件夹然后按照slides-124的指示添加`ROM.coe`文件：
+>
+> ```coe
+> memory_initialization_radix=16;
+> memory_initialization_vector=
+> 00000000, 11111111, 22222222, 33333333, 44444444, 55555555, 
+> 66666666, 77777777, 88888888, 99999999, aaaaaaaa, bbbbbbbb, 
+> cccccccc, dddddddd, eeeeeeee, ffffffff, 557EF7E0, D7BDFBD9, 
+> D7DBFDB9, DFCFFCFB, DFCFBFFF, F7F3DFFF, FFFFDF3D, FFFF9DB9, 
+> FFFFBCFB, DFCFFCFB, DFCFBFFF, D7DB9FFF, D7DBFDB9, D7BDFBD9, 
+> FFFF07E0, 007E0FFF, 03bdf020, 03def820, 08002300;
+> ```
 
 点击生成之后，你就能看到类似slides-123上面的效果，查看ROM_D.veo模块，出现这样的片段即为成功：
 
@@ -518,17 +518,17 @@ RAM your_instance_name (
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 ```
 
-???+ questions
-
-    RAM IP Core的生成过程中有一个问题，为什么不能勾选`Primitives Output Register`？
-
-    理由：默认的输出端口会勾选输出寄存器，导致数据会往后延迟一个时钟周期，所以应该不勾选.
+> [!QUESTION]+
+>
+> RAM IP Core的生成过程中有一个问题，为什么不能勾选`Primitives Output Register`？
+>
+> 理由：默认的输出端口会勾选输出寄存器，导致数据会往后延迟一个时钟周期，所以应该不勾选.
 
 ## 正式任务2：利用自定义模块构建实验平台
 
-!!! tips
-
-    这个模块IP Core相关部分操作过于老旧，可以不做. 最好使用`.v`文件模块化打包的操作来实现.
+> [!TIP]
+>
+> 这个模块IP Core相关部分操作过于老旧，可以不做. 最好使用`.v`文件模块化打包的操作来实现.
 
 这个部分就更加混沌了，IP核的封装不太明白为什么不使用`.v`直接模块化打包进去，所幸助教哥哥的验收要求中规避了IP Core的生成.
 

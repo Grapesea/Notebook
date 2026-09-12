@@ -1,26 +1,26 @@
 > 记录了lec1-6的零碎内容.
 
-??? tips "hw与lab运行方式"
-
-    lab-Test:
-
-    ```wsl
-    $ python ok -q q1 -u # 或者q2, q3, etc.
-    ```
-
-    lab/hw-Problem:
-
-    测试全部：
-
-    ```wsl
-    $ python ok --local
-    ```
-
-    测试单个函数：
-
-    ```wsl
-    $ python ok -q <func name> --local
-    ```
+> [!TIP]- hw与lab运行方式
+>
+> lab-Test:
+>
+> ```wsl
+> $ python ok -q q1 -u # 或者q2, q3, etc.
+> ```
+>
+> lab/hw-Problem:
+>
+> 测试全部：
+>
+> ```wsl
+> $ python ok --local
+> ```
+>
+> 测试单个函数：
+>
+> ```wsl
+> $ python ok -q <func name> --local
+> ```
 
 * `and`/`or`: 如果第一个为`False`/`True`则短路，否则直接返回后者.
 

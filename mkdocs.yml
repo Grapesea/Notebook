@@ -50,6 +50,9 @@ plugins:
       fallback_to_build_date: true
       enable_git_follow: false
 
+hooks:
+  - scripts/mkdocs_nav_hook.py
+
 markdown_extensions:
   - admonition
   - pymdownx.highlight:
@@ -335,6 +338,9 @@ nav:
         - Project 1: csdiy/cs168/labs/proj01.md
     - 生成式软件工程 (南京大学 蒋炎岩, 2026):
       - 课程计划: csdiy/gse-NJU/index.md
+      - "1": "csdiy/gse-NJU/1.md"  # mkdocs-nav-sync
+      - "2": "csdiy/gse-NJU/2.md"  # mkdocs-nav-sync
+      - "3": "csdiy/gse-NJU/3.md"  # mkdocs-nav-sync
     - CS571:React(UW-Madison):
       - 课程计划: intern_work/web_develop/cs571/index.md
     - CS188 (UCB): 
@@ -419,7 +425,7 @@ nav:
       - 日志: lab/paper_reading/log.md
       - CoG: lab/paper_reading/CoG.md
       - Temp-R1: lab/paper_reading/Temp_r1.md
-      - GNN-RAG: lab/paper_reading/GNN-RAG.md
+      - "GNN-RAG": "lab/paper_reading/GNN_RAG.md"
   - 实习&工作: 
     - 导航: intern_work/index.md
     - 笔试机试: 
@@ -479,6 +485,7 @@ nav:
       - 导航: ctf/web/index.md
       - SQL注入: ctf/web/sql.md
       - 西电CTF平台: ctf/web/xidianmoe.md
+      - "info": "ctf/web/info.md"  # mkdocs-nav-sync
     - Crypto笔记: 
       - 导航: ctf/crypto/index.md
       - CTF101课程遗留问题探索: ctf/crypto/ctf101.md

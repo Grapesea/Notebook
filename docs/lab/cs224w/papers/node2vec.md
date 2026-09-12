@@ -1,10 +1,10 @@
 # node2vec
 
-???+ info "论文信息"
-
-    论文地址：[arxiv: 1607.00653](https://arxiv.org/abs/1607.00653)
-    
-    发表于KDD 2016.
+> [!INFO]+ 论文信息
+>
+> 论文地址：[arxiv: 1607.00653](https://arxiv.org/abs/1607.00653)
+>
+> 发表于KDD 2016.
 
 ---
 
@@ -63,11 +63,11 @@ $$\alpha_{pq}(t,x) = \begin{cases} \dfrac1p & (dist(t,x) = 0)\\ 1 & (dist(t,x) =
 
 ## Node2vec算法
 
-???+ info "代码仓库"
-
-    [node2vec](https://github.com/aditya-grover/node2vec)
-    
-    [snap: node2vec](https://github.com/snap-stanford/snap/tree/master/examples/node2vec)
+> [!INFO]+ 代码仓库
+>
+> [node2vec](https://github.com/aditya-grover/node2vec)
+>
+> [snap: node2vec](https://github.com/snap-stanford/snap/tree/master/examples/node2vec)
 
 > 其它的一些random walk ideas：
 >

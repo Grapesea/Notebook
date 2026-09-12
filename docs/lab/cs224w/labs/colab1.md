@@ -1,10 +1,10 @@
 # Colab 1
 
-???+ info "资源"
-
-    [NetworkX](https://networkx.org/documentation/stable/tutorial.html)
-    
-    检索的时候感觉Bing获得的结果远远弱于Google.
+> [!INFO]+ 资源
+>
+> [NetworkX](https://networkx.org/documentation/stable/tutorial.html)
+>
+> 检索的时候感觉Bing获得的结果远远弱于Google.
 
 ---
 

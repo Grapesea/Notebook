@@ -1,28 +1,28 @@
-???+ tips "验收要求"
-
-    1. 注意`srl`操作对应：`A >> B[4:0]`;
-
-    2. ALU仿真波形PPT1 19
-
-        * 需要按两种⽅式实现ALU：
-        
-            （1）结构化描述的ALU（⼦模块调⽤的⽅法，见后续PPT⻚）；
-            
-            （2）功能性描述的ALU（见后续PPT⻚）
-
-            （3）可选：采用逻辑原理图输入设计ALU
-
-        * 两种⽅式实现ALU的都需要仿真测试得到PPT1 15⻚所示波形
-
-        * 对应仿真激励⽂件可以参考：`lab1\OExp01\OExp01-ALU\OExp01-ALU.srcs\sim_1\new\ALU_tb.v`
-
-    3. regfile仿真结果（PPT1 21）
-
-        * 对应仿真激励⽂件可以参考：`lab1\OExp01\OExp01-Regs\OExp01-Regs.srcs\sim_1\new\Regs_tb.v`
-
-    4. 三段式状态机仿真波形（PPT2 23）
-
-        * 对应仿真激励⽂件可以参考：`lab1\OExp01\OExp01-seq_moore\seq_moore.srcs\sim_1\new\tb.v`
+> [!TIP]+ 验收要求
+>
+> 1. 注意`srl`操作对应：`A >> B[4:0]`;
+>
+> 2. ALU仿真波形PPT1 19
+>
+>     * 需要按两种⽅式实现ALU：
+>
+>         （1）结构化描述的ALU（⼦模块调⽤的⽅法，见后续PPT⻚）；
+>
+>         （2）功能性描述的ALU（见后续PPT⻚）
+>
+>         （3）可选：采用逻辑原理图输入设计ALU
+>
+>     * 两种⽅式实现ALU的都需要仿真测试得到PPT1 15⻚所示波形
+>
+>     * 对应仿真激励⽂件可以参考：`lab1\OExp01\OExp01-ALU\OExp01-ALU.srcs\sim_1\new\ALU_tb.v`
+>
+> 3. regfile仿真结果（PPT1 21）
+>
+>     * 对应仿真激励⽂件可以参考：`lab1\OExp01\OExp01-Regs\OExp01-Regs.srcs\sim_1\new\Regs_tb.v`
+>
+> 4. 三段式状态机仿真波形（PPT2 23）
+>
+>     * 对应仿真激励⽂件可以参考：`lab1\OExp01\OExp01-seq_moore\seq_moore.srcs\sim_1\new\tb.v`
 
 ## ALU, Regfiles设计
 

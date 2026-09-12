@@ -1,26 +1,26 @@
-???+ tips "验收要求"
-
-    * 32位整数乘法PPT P20
-        仿真激励文件可以参考： `.\OExp03\OExp03-mul32\mul32.srcs\sim_1\new\tb.v`
-
-        测试tb文件中给的输入样例，实现PPT P20所示效果，在计算开始后必须体现移位过程，即需要体现这段波形：
-
-        <center><img src = "./lab3/0.png" style = "zoom:40%"/></center>
-
-    * 32位整数除法PPT P35
-
-        仿真激励文件可以参考： `.\OExp03\OExp03-div32\div32.srcs\sim_1\imports\new\div32_tb.v`
-
-        测试tb文件中给的输入样例，实现PPT P35所示效果，在计算开始后quotient和remainder的输出也需要体现移位过程
-
-        实现过程可以参考这个示例：
-
-        <center><img src = "./lab3/01.png" style = "zoom:40%"/></center>
-
-    * 选做：32位浮点加法PPT P73
-        仿真激励文件可以参考： `.\OExp03\OExp03-float_add\float_add.srcs\sim_1\new\tb.v`
-
-        熟悉浮点加法过程，在tb文件的输入下得到正确答案
+> [!TIP]+ 验收要求
+>
+> * 32位整数乘法PPT P20
+>     仿真激励文件可以参考： `.\OExp03\OExp03-mul32\mul32.srcs\sim_1\new\tb.v`
+>
+>     测试tb文件中给的输入样例，实现PPT P20所示效果，在计算开始后必须体现移位过程，即需要体现这段波形：
+>
+>     <center><img src = "./lab3/0.png" style = "zoom:40%"/></center>
+>
+> * 32位整数除法PPT P35
+>
+>     仿真激励文件可以参考： `.\OExp03\OExp03-div32\div32.srcs\sim_1\imports\new\div32_tb.v`
+>
+>     测试tb文件中给的输入样例，实现PPT P35所示效果，在计算开始后quotient和remainder的输出也需要体现移位过程
+>
+>     实现过程可以参考这个示例：
+>
+>     <center><img src = "./lab3/01.png" style = "zoom:40%"/></center>
+>
+> * 选做：32位浮点加法PPT P73
+>     仿真激励文件可以参考： `.\OExp03\OExp03-float_add\float_add.srcs\sim_1\new\tb.v`
+>
+>     熟悉浮点加法过程，在tb文件的输入下得到正确答案
 
 ## Multiplier(乘法器)
 
@@ -168,21 +168,21 @@ endmodule
 
 首先看看瓜豪文档的思考题：
 
-???+ question "思考题"
-
-    请结合理论课所学，回答以下问题：
-
-    * 双精度浮点数 `x, y, z`，若 `x = -1.5e38, y = 1.5e38, z=1.0`
-        * `(x+y)+z = ?`；
-        * `x+(y+z) = ?`；
-        * 两者有区别吗？请解释你的回答。
-    * 假设使用单精度浮点数，编写以下代码
-        ```c
-        float x = SOME_VALUE_0;
-        float sum = 0.0f;
-        for(int i = 0; i < SOME_VALUE_1; ++i) sum += x;
-        printf("%f\n", sum - 100.0f);
-        ```
-        * 如果 `SOME_VALUE_0 := 0.1, SOME_VALUE_1 := 1000`，你将得到什么结果？
-        * 如果 `SOME_VALUE_0 := 0.125, SOME_VALUE_1 := 800`，你将得到什么结果？
-        * 请结合浮点数定义，解释两者差异。
+> [!QUESTION]+ 思考题
+>
+> 请结合理论课所学，回答以下问题：
+>
+> * 双精度浮点数 `x, y, z`，若 `x = -1.5e38, y = 1.5e38, z=1.0`
+>     * `(x+y)+z = ?`；
+>     * `x+(y+z) = ?`；
+>     * 两者有区别吗？请解释你的回答。
+> * 假设使用单精度浮点数，编写以下代码
+>     ```c
+>     float x = SOME_VALUE_0;
+>     float sum = 0.0f;
+>     for(int i = 0; i < SOME_VALUE_1; ++i) sum += x;
+>     printf("%f\n", sum - 100.0f);
+>     ```
+>     * 如果 `SOME_VALUE_0 := 0.1, SOME_VALUE_1 := 1000`，你将得到什么结果？
+>     * 如果 `SOME_VALUE_0 := 0.125, SOME_VALUE_1 := 800`，你将得到什么结果？
+>     * 请结合浮点数定义，解释两者差异。

@@ -1,8 +1,8 @@
-???+ info "课程信息"
-
-    生成式软件工程, 南京大学 2026，蒋炎岩老师
-    
-    参考资料：https://linbol.top/videobook
+> [!INFO]+ 课程信息
+>
+> 生成式软件工程, 南京大学 2026，蒋炎岩老师
+>
+> 参考资料：https://linbol.top/videobook
 
 名场面合集：
 

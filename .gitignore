@@ -6,3 +6,5 @@ sx_hb_1.md
 .codex
 .obsidian
 docs/inspiration.md
+tests/
+__pycache__/

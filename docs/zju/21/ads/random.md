@@ -1,10 +1,10 @@
-???+ info "参考资源"
-
-    [Starstone的笔记本](https://starstone3.github.io/incourse/ADS/Random/)
-    $\quad$
-    [Yale-Randomized](https://www.cs.yale.edu/homes/aspnes/classes/469/notes.pdf)
-    $\quad$
-    [SJTU-CS3341-Randomized笔记](https://jhc.sjtu.edu.cn/~kuanyang/teaching/CS3341/notes/lec01.pdf)
+> [!INFO]+ 参考资源
+>
+> [Starstone的笔记本](https://starstone3.github.io/incourse/ADS/Random/)
+> $\quad$
+> [Yale-Randomized](https://www.cs.yale.edu/homes/aspnes/classes/469/notes.pdf)
+> $\quad$
+> [SJTU-CS3341-Randomized笔记](https://jhc.sjtu.edu.cn/~kuanyang/teaching/CS3341/notes/lec01.pdf)
     
 相比本学期其他数据结构和算法考虑优化的是平均效率和摊还效率，randomized algorithm更关心算法的期望效率.
 
@@ -14,12 +14,12 @@
 * Monte Carlo算法：randomized algorithms that are always correct, and run efficiently in expectation
     有概率$P$输出的答案是错误，运行时间固定为$T$.
 
-???+ tips "23-24Final"
-    <center><img src = "./figures/random/cy.png" style="zoom: 50%;"/></center>
-
-    只有当**验证（Verification）**一个解的正确性的复杂度不高于算法本身的复杂度时，这种转换才成立.
-
-    需要加上这个条件：在有效时间内（例如 $O(n^2)$ 内）能够验证蒙特卡罗算法给出的答案是否正确
+> [!TIP]+ 23-24Final
+> <center><img src = "./figures/random/cy.png" style="zoom: 50%;"/></center>
+>
+> 只有当**验证（Verification）**一个解的正确性的复杂度不高于算法本身的复杂度时，这种转换才成立.
+>
+> 需要加上这个条件：在有效时间内（例如 $O(n^2)$ 内）能够验证蒙特卡罗算法给出的答案是否正确
 
 ## Hiring problem
 
@@ -33,24 +33,24 @@
 
 直接遍历，考虑最坏情形是后一个人始终比前一个人优秀，从而不得不花费$NC_h$的成本.
 
-???+ tips "pseudocode"
-
-    ```pseudocode
-    int Hiring ( EventType C[ ], int N )
-    {   /* candidate 0 is a least-qualified dummy candidate */
-        int Best = 0;
-        int BestQ = the quality of candidate 0;
-        for ( i=1; i<=N; i++ ) {
-            Qi = interview( i ); /* Ci */
-            if ( Qi > BestQ ) {
-                BestQ = Qi;
-                Best = i;
-                hire( i );  /* Ch */
-            }
-        }
-        return Best;
-    }
-    ```
+> [!TIP]+ pseudocode
+>
+> ```pseudocode
+> int Hiring ( EventType C[ ], int N )
+> {   /* candidate 0 is a least-qualified dummy candidate */
+>     int Best = 0;
+>     int BestQ = the quality of candidate 0;
+>     for ( i=1; i<=N; i++ ) {
+>         Qi = interview( i ); /* Ci */
+>         if ( Qi > BestQ ) {
+>             BestQ = Qi;
+>             Best = i;
+>             hire( i );  /* Ch */
+>         }
+>     }
+>     return Best;
+> }
+> ```
 
 ### Randomized Solution
 
@@ -78,28 +78,28 @@ void PermuteBySorting ( ElemType A[ ], int N )
 
 于是我们引入了截断准则，即在前$k$个人里面选择一个最好的，只要后面的人中有比他更优秀的，我们就结束面试.
 
-???+ tips "pseudocode"
-
-    ```C
-    int OnlineHiring ( EventType C[ ], int N, int k )
-    {
-        int Best = N;
-        int BestQ = - inf;
-        for ( i=1; i<=k; i++ ) {
-            Qi = interview( i );
-            if ( Qi > BestQ )   
-                BestQ = Qi;
-        }
-        for ( i=k+1; i<=N; i++ ) {
-            Qi = interview( i );
-            if ( Qi > BestQ ) {
-                Best = i;
-                break;
-            }
-        }
-        return Best;
-    }
-    ```
+> [!TIP]+ pseudocode
+>
+> ```C
+> int OnlineHiring ( EventType C[ ], int N, int k )
+> {
+>     int Best = N;
+>     int BestQ = - inf;
+>     for ( i=1; i<=k; i++ ) {
+>         Qi = interview( i );
+>         if ( Qi > BestQ )   
+>             BestQ = Qi;
+>     }
+>     for ( i=k+1; i<=N; i++ ) {
+>         Qi = interview( i );
+>         if ( Qi > BestQ ) {
+>             Best = i;
+>             break;
+>         }
+>     }
+>     return Best;
+> }
+> ```
 
 接下来计算$k$的值，使得我们找到最优秀的人的概率最高：
 
@@ -123,29 +123,29 @@ $$\dfrac{k}{N}\ln \dfrac{N-1}{k-1}<\sum\limits_{i=k}^{N-1} \dfrac{1}{i}< \dfrac{
 
 我们已经学过deterministic quicksort，可以通过[usfca画板](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)和[资料1](https://www.geeksforgeeks.org/dsa/quick-sort-algorithm/),[wiki]()回顾一下.
 
-???+ tips "C++代码"
-
-    ```cpp
-    int partition(vector<int>& arr, int low, int high){
-        int pivot = arr[high]; //pivot可以随便选取
-        int i = low-1;
-        for (int j = low; j <= high-1; j++){
-            if (arr[j] < pivot){
-                i++;
-                swap(arr[i],arr[j]);
-            }
-        }
-        swap(arr[i+1],arr[high]);
-        return i+1;
-    }
-    void quicksort(vector<int>& arr, int low, int high){
-        if (low < high){
-            int pivot = partition(arr,low,high);
-            quicksort(arr,low,pivot-1);
-            quicksort(arr,pivot+1,high);
-        }
-    }
-    ```
+> [!TIP]+ C++代码
+>
+> ```cpp
+> int partition(vector<int>& arr, int low, int high){
+>     int pivot = arr[high]; //pivot可以随便选取
+>     int i = low-1;
+>     for (int j = low; j <= high-1; j++){
+>         if (arr[j] < pivot){
+>             i++;
+>             swap(arr[i],arr[j]);
+>         }
+>     }
+>     swap(arr[i+1],arr[high]);
+>     return i+1;
+> }
+> void quicksort(vector<int>& arr, int low, int high){
+>     if (low < high){
+>         int pivot = partition(arr,low,high);
+>         quicksort(arr,low,pivot-1);
+>         quicksort(arr,pivot+1,high);
+>     }
+> }
+> ```
 
 其基础性质是：
 
@@ -181,24 +181,24 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
 
 ## PTA习题
 
-???+ tips "7.1-4,5"
+> [!TIP]+ 7.1-4,5
+>
+> <center><img src = "./figures/random/7.1-4,5.png" style="zoom: 50%;"/></center>
+>
+> 4的正确表述是，如果$b = (b_1,b_2,\cdots,b_n)$表示$a$排完序之后的结果，那么任意两个元素被比较过的次数最多是1，并且$b_i$和$b_j$被比较过的概率是$\dfrac{2}{j−i+1}, j>i$,如果$b_i$或者$b_j$被当作了pivot.
 
-    <center><img src = "./figures/random/7.1-4,5.png" style="zoom: 50%;"/></center>
+> [!TIP]+ 7.3-1
+>
+> <center><img src = "./figures/random/7.3-1.png" style="zoom: 50%;"/></center>
+>
+> A错是显然的，B的反例是当第二大的数在前$k$个中，且最大的数在末尾的数列.
+>
+> C的推导：记第1个值是$A[0]$. 如果它就是max，那么最终返回的结果一定不是max，概率是$\dfrac1n$; 否则：
+>
+> $$P(\text{Find Max}) = $$
 
-    4的正确表述是，如果$b = (b_1,b_2,\cdots,b_n)$表示$a$排完序之后的结果，那么任意两个元素被比较过的次数最多是1，并且$b_i$和$b_j$被比较过的概率是$\dfrac{2}{j−i+1}, j>i$,如果$b_i$或者$b_j$被当作了pivot.
-
-???+ tips "7.3-1"
-
-    <center><img src = "./figures/random/7.3-1.png" style="zoom: 50%;"/></center>
-
-    A错是显然的，B的反例是当第二大的数在前$k$个中，且最大的数在末尾的数列.
-
-    C的推导：记第1个值是$A[0]$. 如果它就是max，那么最终返回的结果一定不是max，概率是$\dfrac1n$; 否则：
-
-    $$P(\text{Find Max}) = $$
-
-???+ tips "Final Practice 1 1-1"
-
-    <center><img src = "./figures/random/f1-1.png" style="zoom: 50%;"/></center>
-
-    并没有“好的”输入这种事情，因为随机化消除了输入的特性，期望值不会因此而改变. 任意输入序列，对应的效率期望值是恒定的，永远是$O(n\log n)$.
+> [!TIP]+ Final Practice 1 1-1
+>
+> <center><img src = "./figures/random/f1-1.png" style="zoom: 50%;"/></center>
+>
+> 并没有“好的”输入这种事情，因为随机化消除了输入的特性，期望值不会因此而改变. 任意输入序列，对应的效率期望值是恒定的，永远是$O(n\log n)$.

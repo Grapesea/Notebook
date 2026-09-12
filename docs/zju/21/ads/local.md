@@ -1,10 +1,10 @@
-???+ info "参考资源"
-
-    [UCB CS188(2025Spring)-Local Search](https://inst.eecs.berkeley.edu/~cs188/textbook/search/local.html)
-    $\quad$
-    [HobbitQia助教哥哥的笔记](https://note.hobbitqia.cc/ADS/)
-    $\quad$
-    [Starstone的笔记本](https://starstone3.github.io/incourse/ADS/localsearch/)
+> [!INFO]+ 参考资源
+>
+> [UCB CS188(2025Spring)-Local Search](https://inst.eecs.berkeley.edu/~cs188/textbook/search/local.html)
+> $\quad$
+> [HobbitQia助教哥哥的笔记](https://note.hobbitqia.cc/ADS/)
+> $\quad$
+> [Starstone的笔记本](https://starstone3.github.io/incourse/ADS/localsearch/)
 
 ## 定义
 
@@ -16,25 +16,25 @@
 
 $N(S)$: neighborhood of $S$ – the set $\{ S': S \sim S' \}$.
 
-???+ tips "pseudocode"
-
-    ```c
-    SolutionType Gradient_descent()
-    {   
-        Start from a feasible solution S in FS;
-        MinCost = cost(S);
-        while (1) {
-            S' = Search( N(S) ); /* find the best S' in N(S) */
-            CurrentCost = cost(S');
-            if ( CurrentCost < MinCost ) {
-                MinCost = CurrentCost;    
-                S = S;
-            }
-            else  break;
-        }
-        return S;
-    }
-    ```
+> [!TIP]+ pseudocode
+>
+> ```c
+> SolutionType Gradient_descent()
+> {   
+>     Start from a feasible solution S in FS;
+>     MinCost = cost(S);
+>     while (1) {
+>         S' = Search( N(S) ); /* find the best S' in N(S) */
+>         CurrentCost = cost(S');
+>         if ( CurrentCost < MinCost ) {
+>             MinCost = CurrentCost;    
+>             S = S;
+>         }
+>         else  break;
+>     }
+>     return S;
+> }
+> ```
 
 ## The Vertex Cover Problem (顶点覆盖问题-优化方面)
 
@@ -124,19 +124,19 @@ SolutionType SimulatedAnnealing(){
 }
 ```
 
-???+ tips "相关问题"
-
-    * 支配集问题：在无向图 $G=(V, E)$ 中，支配集 $D$ 是顶点集 $V$ 的一个子集，使得图中的任意一个顶点 $v$要么属于 $D$，要么与 $D$ 中的至少一个顶点相邻.
-    * 最大独立集问题：在无向图 $G=(V, E)$ 中，独立集$I$是顶点集 $V$ 的一个子集 ，使得其中任意两个顶点之间都没有边相连. 找到包含顶点数最多的独立集，即最大独立集.
-    * 最大团问题：团（Clique）是顶点集 $V$ 的一个子集 $C$，使得 $C$ 中任意两个不同的顶点之间都有边相连（即诱导子图是一个完全图）. 找到图中规模最大的团，即最大团.
+> [!TIP]+ 相关问题
+>
+> * 支配集问题：在无向图 $G=(V, E)$ 中，支配集 $D$ 是顶点集 $V$ 的一个子集，使得图中的任意一个顶点 $v$要么属于 $D$，要么与 $D$ 中的至少一个顶点相邻.
+> * 最大独立集问题：在无向图 $G=(V, E)$ 中，独立集$I$是顶点集 $V$ 的一个子集 ，使得其中任意两个顶点之间都没有边相连. 找到包含顶点数最多的独立集，即最大独立集.
+> * 最大团问题：团（Clique）是顶点集 $V$ 的一个子集 $C$，使得 $C$ 中任意两个不同的顶点之间都有边相连（即诱导子图是一个完全图）. 找到图中规模最大的团，即最大团.
 
 ### PTA习题
 
-???+ tips "Final Practice 2 2-10"
-
-    <center><img src = "./figures/local/f2.2-10.png" style = "zoom:60%"/></center>
-
-    C是显然错的，二者可以互相规约；B是正确的，参见[这里](../ads/np.md)的Proof过程PPT.
+> [!TIP]+ Final Practice 2 2-10
+>
+> <center><img src = "./figures/local/f2.2-10.png" style = "zoom:60%"/></center>
+>
+> C是显然错的，二者可以互相规约；B是正确的，参见[这里](../ads/np.md)的Proof过程PPT.
 
 ## Hopfield  Neural Networks (神经网络问题)
 
@@ -191,23 +191,23 @@ $$w(A,B) = \sum\limits_{u\in A,v\in B}w_{uv}$$
 
 实际上这是Hopfield问题的特殊形式，因为$\forall w_e>0$，并且可以证明，这里的local optimum是$\dfrac12$：
 
-???+ tips "证明"
-
-    由$(A,B)$是local optimal partition，得到
-
-    $$\sum\limits_{v\in A}w_{uv} \leq \sum\limits_{v\in B}w_{uv}, \quad \forall u \in A$$
-
-    对所有$u \in A$进行求和，得到：
-
-    $$2 \sum\limits_{(u,v)\subseteq A}w_{uv} = \sum\limits_{u\in A}\sum\limits_{v\in A}w_{uv} \leq \sum\limits_{u\in A}\sum\limits_{v\in B}w_{uv} = w(A,B)$$
-
-    同理
-
-    $$2 \sum\limits_{(u,v)\subseteq B}w_{uv} \leq w(A,B)$$
-
-    所以
-
-    $$w(A^*,B^*) \leq \sum\limits_{(u,v)\subseteq A}w_{uv} + \sum\limits_{(u,v)\subseteq B}w_{uv} + w(A,B) \leq 2w(A,B) \quad \hfill \ensuremath{\blacksquare}$$
+> [!TIP]+ 证明
+>
+> 由$(A,B)$是local optimal partition，得到
+>
+> $$\sum\limits_{v\in A}w_{uv} \leq \sum\limits_{v\in B}w_{uv}, \quad \forall u \in A$$
+>
+> 对所有$u \in A$进行求和，得到：
+>
+> $$2 \sum\limits_{(u,v)\subseteq A}w_{uv} = \sum\limits_{u\in A}\sum\limits_{v\in A}w_{uv} \leq \sum\limits_{u\in A}\sum\limits_{v\in B}w_{uv} = w(A,B)$$
+>
+> 同理
+>
+> $$2 \sum\limits_{(u,v)\subseteq B}w_{uv} \leq w(A,B)$$
+>
+> 所以
+>
+> $$w(A^*,B^*) \leq \sum\limits_{(u,v)\subseteq A}w_{uv} + \sum\limits_{(u,v)\subseteq B}w_{uv} + w(A,B) \leq 2w(A,B) \quad \hfill \ensuremath{\blacksquare}$$
 
 ### Big-improvement-flip
 
@@ -226,10 +226,10 @@ $$w(A,B) = \sum\limits_{u\in A,v\in B}w_{uv}$$
 
 ## PTA习题
 
-???+ tips "7.2-1"
-
-    <center><img src="./figures/local/2.1.png" style="zoom: 50%;" /></center>
-
-    助教说一般蒙的话可以选Minimum Spanning Tree，因为是其中简单的一种树.
-
-    具体而言，
+> [!TIP]+ 7.2-1
+>
+> <center><img src="./figures/local/2.1.png" style="zoom: 50%;" /></center>
+>
+> 助教说一般蒙的话可以选Minimum Spanning Tree，因为是其中简单的一种树.
+>
+> 具体而言，

@@ -1,6 +1,6 @@
-???+ info "推荐资源"
-
-    [Brucejqs的ads笔记-Parallel](https://brucejqs.github.io/MyNotebook/blog/Computer%20Science/ADS/Chapter%2014/)
+> [!INFO]+ 推荐资源
+>
+> [Brucejqs的ads笔记-Parallel](https://brucejqs.github.io/MyNotebook/blog/Computer%20Science/ADS/Chapter%2014/)
  
 ## Parallel Algorithm的基础模型
 
@@ -18,22 +18,22 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 * **理想化假设：** 访问内存的时间是单位时间（Unit time），忽略了现实中缓存、总线竞争等复杂因素.
 * **指令：** 使用 `pardo` (parallel do) 关键字，表示后面的循环是所有处理器同时并行执行的.
 
-???+ tips "举例"
-
-    执行单个语句：`c:=a+b`时：
-
-    <center><img src = "./figures/parallel/1.png" style="zoom: 50%;"/></center>
-
-    执行循环语句：
-
-    ```pseudocode
-    for P_i, 1 <= i <= n  pardo
-        A(i) := B(i)
-    ```
-
-    由于是并行的，所以时间开销是$O(1)$.
-
-    <center><img src = "./figures/parallel/2.png" style="zoom: 50%;"/></center>
+> [!TIP]+ 举例
+>
+> 执行单个语句：`c:=a+b`时：
+>
+> <center><img src = "./figures/parallel/1.png" style="zoom: 50%;"/></center>
+>
+> 执行循环语句：
+>
+> ```pseudocode
+> for P_i, 1 <= i <= n  pardo
+>     A(i) := B(i)
+> ```
+>
+> 由于是并行的，所以时间开销是$O(1)$.
+>
+> <center><img src = "./figures/parallel/2.png" style="zoom: 50%;"/></center>
 
 ### Memory Conflicts
 
@@ -59,17 +59,17 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 * 第二轮：将上一轮的结果再两两相加. 
 * 这就构成了一棵二叉树. 
 
-???+ tips "pseudocode"
-
-    ```pseudocode
-    for i in range(1,n): (pardo)
-        B(0,i) = A(i)
-
-    for h in range(1,\log n): 
-        for i in range(1,n/2^h): (pardo)
-            B(h,i) = B(h-1, 2i-1) + B(h-1, 2i)
-    output B(log n, 1)
-    ```
+> [!TIP]+ pseudocode
+>
+> ```pseudocode
+> for i in range(1,n): (pardo)
+>     B(0,i) = A(i)
+>
+> for h in range(1,\log n): 
+>     for i in range(1,n/2^h): (pardo)
+>         B(h,i) = B(h-1, 2i-1) + B(h-1, 2i)
+> output B(log n, 1)
+> ```
 
 ## Work-Depth 模型
 
@@ -106,11 +106,11 @@ $$W(n) = \text{total number of operations}, T(n) = \text{worst-case running time
 
 ### PTA习题
 
-???+ tips "Final Practice 2 2-7"
-
-    <center><img src = "./figures/parallel/f2.2-7.png" style = "zoom:60%"/></center>
-
-    据上面的分析，有$n$组并行任务，每个并行任务的复杂度（即单个处理器所需的时间$D$）是二分的复杂度$O(\log n)$，所以$W(n) = O(\log n) \times n = O(n\log n), D(n) = \log n$.
+> [!TIP]+ Final Practice 2 2-7
+>
+> <center><img src = "./figures/parallel/f2.2-7.png" style = "zoom:60%"/></center>
+>
+> 据上面的分析，有$n$组并行任务，每个并行任务的复杂度（即单个处理器所需的时间$D$）是二分的复杂度$O(\log n)$，所以$W(n) = O(\log n) \times n = O(n\log n), D(n) = \log n$.
 
 ## 前缀和问题（Prefix-Sums）
 
@@ -132,27 +132,27 @@ $$C(h,i) = \begin{cases}
     C(h+1, \dfrac{i-1}{2}) + B(h, i) & i \text{为大于1的奇数}
 \end{cases}$$
 
-???+ tips "pseudocode"
-
-    ```python
-    for P_i, i in range(1,n): pardo
-        B(0,i) = A(i)
-    for h in range(1,log(n)):
-        d_h = n//(2**h)
-        for i in range(1,d_h): pardo
-            B(h, i) = B(h - 1, 2 * i - 1) + B(h - 1, 2 * i)
-
-    for h in range(log(n),0,-1):
-        d_h = n//(2**h)
-        for i in range(2,d_h,2): pardo
-            C(h, i) := C(h + 1, i // 2)
-        for i = 1: pardo
-            C(h, 1) = B(h, 1)
-        for i in range(3,d_h,2): pardo
-            C(h, i) = C(h+1, (i-1)//2) + B(h, i)
-    for P_i, i in range(1,n): pardo
-        print(C(0, i))
-    ```
+> [!TIP]+ pseudocode
+>
+> ```python
+> for P_i, i in range(1,n): pardo
+>     B(0,i) = A(i)
+> for h in range(1,log(n)):
+>     d_h = n//(2**h)
+>     for i in range(1,d_h): pardo
+>         B(h, i) = B(h - 1, 2 * i - 1) + B(h - 1, 2 * i)
+>
+> for h in range(log(n),0,-1):
+>     d_h = n//(2**h)
+>     for i in range(2,d_h,2): pardo
+>         C(h, i) := C(h + 1, i // 2)
+>     for i = 1: pardo
+>         C(h, 1) = B(h, 1)
+>     for i in range(3,d_h,2): pardo
+>         C(h, i) = C(h+1, (i-1)//2) + B(h, i)
+> for P_i, i in range(1,n): pardo
+>     print(C(0, i))
+> ```
 
 这样$T(n) = O(\log n), W(n) = O(n)$.
 
@@ -250,8 +250,8 @@ n &  B(j) > A(n)
 
 ## PTA习题
 
-???+ tips "8.1-3"
-
-    <center><img src = "./figures/parallel/8.1-3.png" style = "zoom:60%"/></center>
-
-    从上面的CRCW看出可以具有$W(n) = \Theta(n)$的策略.
+> [!TIP]+ 8.1-3
+>
+> <center><img src = "./figures/parallel/8.1-3.png" style = "zoom:60%"/></center>
+>
+> 从上面的CRCW看出可以具有$W(n) = \Theta(n)$的策略.

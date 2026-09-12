@@ -128,25 +128,25 @@ $ hashcat -a 3 -m 0 496603d6953a15846cd7cc476f146771 LitCTF{md5can?a?a3de?arypt2
 
 重温一下这个点：
 
-!!! tips
-
-    中国剩余定理
-
-    考虑同余方程
-
-    $$\begin{cases} x \equiv c_1 & (\operatorname{mod} n_1) \\  x \equiv c_2 & (\operatorname{mod} n_2) \\ & \vdots \\ x \equiv c_k & (\operatorname{mod} n_k)\end{cases}$$
-
-    我们首先计算出$N = n_1 * n_2 *\cdots * n_k$，并得到列表
-
-    $$ N_i = N // n_i$$
-
-    再算出$N_i$模$n_i$的逆$inv_i$:
-
-    $$inv_i = N_i^{-1} (\operatorname{mod}n_i)$$
-
-    最后获得余数并对$N$取模，得到最终结果：
-
-    $$x = \sum\limits_{i=1}^r c_i* N_i*inv_i (\operatorname{mod} N)$$
+> [!TIP]
+>
+> 中国剩余定理
+>
+> 考虑同余方程
+>
+> $$\begin{cases} x \equiv c_1 & (\operatorname{mod} n_1) \\  x \equiv c_2 & (\operatorname{mod} n_2) \\ & \vdots \\ x \equiv c_k & (\operatorname{mod} n_k)\end{cases}$$
+>
+> 我们首先计算出$N = n_1 * n_2 *\cdots * n_k$，并得到列表
+>
+> $$ N_i = N // n_i$$
+>
+> 再算出$N_i$模$n_i$的逆$inv_i$:
+>
+> $$inv_i = N_i^{-1} (\operatorname{mod}n_i)$$
+>
+> 最后获得余数并对$N$取模，得到最终结果：
+>
+> $$x = \sum\limits_{i=1}^r c_i* N_i*inv_i (\operatorname{mod} N)$$
 
 payload:
 

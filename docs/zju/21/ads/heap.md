@@ -1,19 +1,19 @@
 ## Lec 4 Leftist Heap(左式堆) & Skew Heap(斜堆)
 
-???+ warning "Cheating List"
+> [!WARNING]+ Cheating List
+>
+> |                    | Leftist Heap（左式堆）                                       | Skew Heap（斜堆）                             | Binomial Queue（二项队列）                                   |
+> | ------------------ | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------------------ |
+> | 节点数/树高关系    | 最坏树高 $O(N)$，摊还树高$O(\log N)$；节点数$N$ 与树高 $h$ 满足  $F_{h+2} - 1 \leq N$ （ $\{F_n\}$  为斐波那契数列） | 最坏树高 \( O(N) \)，摊还树高 $O(\log N)$ | 树高 \( h \leq \log_2 (N + 1) \)；节点数 \( N \) 与树高 \( h \) 满足 \( 2^h \leq N < 2^{h+1} \) |
+> | 搜索               | 无（堆结构不支持高效搜索，需线性遍历）                       | 无（堆结构不支持高效搜索，需线性遍历）        | 无（堆结构不支持高效搜索，需线性遍历）                       |
+> | 插入               | 摊还 $O(\log N)$（基于合并操作实现）                     | 摊还 $O(\log N)$（基于合并操作实现）      | worst $O(\log N)$，摊还$2$                                              |
+> | DeleteMin | 摊还 $O(\log N)$（基于合并操作实现）                     | 摊还 $O(\log N)$（基于合并操作实现）      | $O(\log N)$                                              |
+> | 势函数             |                                                              | heavy node数量                                | 子树数量                                                     |
 
-    |                    | Leftist Heap（左式堆）                                       | Skew Heap（斜堆）                             | Binomial Queue（二项队列）                                   |
-    | ------------------ | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------------------ |
-    | 节点数/树高关系    | 最坏树高 $O(N)$，摊还树高$O(\log N)$；节点数$N$ 与树高 $h$ 满足  $F_{h+2} - 1 \leq N$ （ $\{F_n\}$  为斐波那契数列） | 最坏树高 \( O(N) \)，摊还树高 $O(\log N)$ | 树高 \( h \leq \log_2 (N + 1) \)；节点数 \( N \) 与树高 \( h \) 满足 \( 2^h \leq N < 2^{h+1} \) |
-    | 搜索               | 无（堆结构不支持高效搜索，需线性遍历）                       | 无（堆结构不支持高效搜索，需线性遍历）        | 无（堆结构不支持高效搜索，需线性遍历）                       |
-    | 插入               | 摊还 $O(\log N)$（基于合并操作实现）                     | 摊还 $O(\log N)$（基于合并操作实现）      | worst $O(\log N)$，摊还$2$                                              |
-    | DeleteMin | 摊还 $O(\log N)$（基于合并操作实现）                     | 摊还 $O(\log N)$（基于合并操作实现）      | $O(\log N)$                                              |
-    | 势函数             |                                                              | heavy node数量                                | 子树数量                                                     |
-
-???+ tips "资源"
-    [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec04)
-    $\quad$
-    [Wintermelon的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch4/)
+> [!TIP]+ 资源
+> [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec04)
+> $\quad$
+> [Wintermelon的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch4/)
 
 ### Leftist Heap
 
@@ -47,10 +47,10 @@ $$\text{dist}_{\text{node}} = \text{dist}_{\text{rightchild}}+1$$
 
 $\text{dist}$的另一种理解是，某个节点距离其子树中$\text{dist}=0$的节点的最小距离，不存在的孩子节点视作$\text{dist}=-1$.
 
-!!! tips
-    定理：在右路径上有$r$个节点的左式堆一定至少有$2^r-1$个节点.
-
-    证明：这可以由数学归纳法得到.
+> [!TIP]
+> 定理：在右路径上有$r$个节点的左式堆一定至少有$2^r-1$个节点.
+>
+> 证明：这可以由数学归纳法得到.
 
 #### Merge
 
@@ -170,10 +170,10 @@ Node *del(Node *cur, ElementType x)
 }
 ```
 
-???+ tips "2.1-9"
-    After inserting a node into a Leftist heap H (which is equivalent to merging a one-node Leftist heap with H), we need to swap the children of at most 1 node to make the resulting tree a Leftist heap.
-
-    这句话是对的，添加之后最多让一个parent的深度增加并产生矛盾，即某个节点$dist = d+1$，其左右节点$dist = d,d+1$，此时只要交换其左右节点就能够解决矛盾，不需要进行多余交换.
+> [!TIP]+ 2.1-9
+> After inserting a node into a Leftist heap H (which is equivalent to merging a one-node Leftist heap with H), we need to swap the children of at most 1 node to make the resulting tree a Leftist heap.
+>
+> 这句话是对的，添加之后最多让一个parent的深度增加并产生矛盾，即某个节点$dist = d+1$，其左右节点$dist = d,d+1$，此时只要交换其左右节点就能够解决矛盾，不需要进行多余交换.
 
 ### Skew Heap
 
@@ -213,14 +213,14 @@ ADS课程的merge是对wiki等地方的定义做出了一点修改的（……�
 
 skew heap的删除和插入节点方法与leftist heap原理上基本一致，略去.
 
-???+ tips
-    wyh学长的讲义思考题（英文版）：
-
-    (1)The result of inserting keys $1,2,\cdots, 2^{k}-1$for any $k>4$ in order into an initially empty leftist heap is always a full binary tree. (T/F)
-    
-    (2)The result of inserting keys $1,2,\cdots, 2^{k}-1$for any $k>4$ in order into an initially empty skew heap is always a full binary tree. (T/F)
-    
-    两道题答案都是T，因为
+> [!TIP]+
+> wyh学长的讲义思考题（英文版）：
+>
+> (1)The result of inserting keys $1,2,\cdots, 2^{k}-1$for any $k>4$ in order into an initially empty leftist heap is always a full binary tree. (T/F)
+>
+> (2)The result of inserting keys $1,2,\cdots, 2^{k}-1$for any $k>4$ in order into an initially empty skew heap is always a full binary tree. (T/F)
+>
+> 两道题答案都是T，因为
 
 #### Amortized Analysis for Skew Heap
 
@@ -240,50 +240,50 @@ $$\text{size}_{\text{H.right_descendent}} \geq \dfrac12 \text{size}_{\text{H}}$$
 
 #### PTA习题
 
-???+ tips "2025fall-yy-mid"
-    To build a skew heap, we can start with an emtpy heap, and merge each single-node heap into the resulting heap one by one.
-    Then the best description of the time complexity of this procedure is: $\textcolor{red}{O(N\log N)}$.
+> [!TIP]+ 2025fall-yy-mid
+> To build a skew heap, we can start with an emtpy heap, and merge each single-node heap into the resulting heap one by one.
+> Then the best description of the time complexity of this procedure is: $\textcolor{red}{O(N\log N)}$.
+>
+> 这个递推应该是$T(N) = T(N-1) + \log N$，所以由Sterling公式得到结果.
+>
+> While inserting n elements into a skew heap, the insertion of the last element may cost $O(n)$ time.
+>
+> 这是对的，考虑降序的序列即可.
 
-    这个递推应该是$T(N) = T(N-1) + \log N$，所以由Sterling公式得到结果.
-    
-    While inserting n elements into a skew heap, the insertion of the last element may cost $O(n)$ time.
-    
-    这是对的，考虑降序的序列即可.
+> [!TIP]+ 2025fall-ch-mid
+>
+> What is the defining mechanical difference between the merge operation in a Skew Heap and in a Leftist Heap?<br>
+> A. Skew Heaps merge along the left spines, while Leftist Heaps merge along the right spines.<br>
+> B. Skew Heaps unconditionally swap the left and right children of every node on the merge path, while Leftist Heaps only swap if the NPL property is violated.<br>
+> C. Skew Heaps have an $O(\log n)$ worst-case merge time, while Leftist Heaps have an $O(\log n)$ amortized merge time.<br>
+> D. Skew Heaps do not need to maintain the min-heap property during the merge, only at the end.
+>
+> 选B，这是最关键的点.
 
-???+ tips "2025fall-ch-mid"
+> [!TIP]+ xyx-1
+> The result of inserting keys 1 to $2^k−1$ for any k>4 in order into an initially empty skew heap is always a full binary tree.<br>
+> 这个明显对.
+>
+> The right path of a skew heap can be arbitrarily long.<br>
+>
+> <center><img src = "./figures/ads/xyx-left.png" style = "zoom:50%"/></center>
 
-    What is the defining mechanical difference between the merge operation in a Skew Heap and in a Leftist Heap?<br>
-    A. Skew Heaps merge along the left spines, while Leftist Heaps merge along the right spines.<br>
-    B. Skew Heaps unconditionally swap the left and right children of every node on the merge path, while Leftist Heaps only swap if the NPL property is violated.<br>
-    C. Skew Heaps have an $O(\log n)$ worst-case merge time, while Leftist Heaps have an $O(\log n)$ amortized merge time.<br>
-    D. Skew Heaps do not need to maintain the min-heap property during the merge, only at the end.
-    
-    选B，这是最关键的点.
+> [!TIP]+ 2024mid
+>
+> <center><img src = "./figures/ads/2024mid3.png" style = "zoom:50%"/></center>
 
-???+ tips "xyx-1"
-    The result of inserting keys 1 to $2^k−1$ for any k>4 in order into an initially empty skew heap is always a full binary tree.<br>
-    这个明显对.
-
-    The right path of a skew heap can be arbitrarily long.<br>
-    
-    <center><img src = "./figures/ads/xyx-left.png" style = "zoom:50%"/></center>
-
-???+ tips "2024mid"
-
-    <center><img src = "./figures/ads/2024mid3.png" style = "zoom:50%"/></center>
-
-???+ tips "2.1-10,11"
-
-    <center><img src = "./figures/ads/2.1-1011.png" style = "zoom:50%"/></center>
+> [!TIP]+ 2.1-10,11
+>
+> <center><img src = "./figures/ads/2.1-1011.png" style = "zoom:50%"/></center>
 
 ## Lec 5 Binomial Queue
 
-!!! tips "资源"
-    [Wintermelon的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch5/)
-    $\quad$
-    [wiki](https://en.wikipedia.org/wiki/Binomial_heap)
-    $\quad$
-    [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec05)
+> [!TIP] 资源
+> [Wintermelon的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch5/)
+> $\quad$
+> [wiki](https://en.wikipedia.org/wiki/Binomial_heap)
+> $\quad$
+> [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec05)
 
 二项队列是一群heap的集合，其中每个heap都是1个二项队列.
 
@@ -326,77 +326,77 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 
 下面是这个函数具体的实现代码：
 
-???+ tips "实现"
+> [!TIP]+ 实现
+>
+> ```c
+> typedef struct BinNode *Position;
+> typedef struct Collection *BinQueue;
+> typedef struct BinNode *BinTree;  /* missing from p.176 */
+>
+> struct BinNode { 
+>     ElementType Element;
+>     Position LeftChild;
+>     Position NextSibling;
+> } ;
+>
+> struct Collection 
+> { 
+>     int	CurrentSize;  /* total number of nodes */
+>     BinTree	TheTrees[ MaxTrees ];
+> } ;
+> ```
 
-    ```c
-    typedef struct BinNode *Position;
-    typedef struct Collection *BinQueue;
-    typedef struct BinNode *BinTree;  /* missing from p.176 */
-    
-    struct BinNode { 
-        ElementType Element;
-        Position LeftChild;
-        Position NextSibling;
-    } ;
-    
-    struct Collection 
-    { 
-        int	CurrentSize;  /* total number of nodes */
-        BinTree	TheTrees[ MaxTrees ];
-    } ;
-    ```
-
-???+ tips "merge代码"
-
-    BinTree的合并：
-    
-    ```c
-    BinTree CombineTrees( BinTree T1, BinTree T2 )
-    {  /* merge equal-sized T1 and T2 */
-        if ( T1->Element > T2->Element )
-            /* attach the larger one to the smaller one */
-            return CombineTrees( T2, T1 );
-        /* insert T2 to the front of the children list of T1 */
-        T2->NextSibling = T1->LeftChild;
-        T1->LeftChild = T2;
-        return T1;
-    }
-    ```
-    
-    heap的合并：
-    
-    ```c
-    BinQueue Merge( BinQueue H1, BinQueue H2 ){
-        BinTree T1, T2, Carry = NULL;
-        int i, j;
-        if ( H1->CurrentSize + H2-> CurrentSize > Capacity )  ErrorMessage();
-        H1->CurrentSize += H2-> CurrentSize;
-        for ( i=0, j=1; j<= H1->CurrentSize; i++, j*=2 ) {
-            T1 = H1->TheTrees[i]; T2 = H2->TheTrees[i]; /*current trees */
-            switch( 4*!!Carry + 2*!!T2 + !!T1 ) {
-            case 0: /* 000 */
-            case 1: /* 001 */  break;
-            case 2: /* 010 */  H1->TheTrees[i] = T2; H2->TheTrees[i] = NULL; break;
-            case 4: /* 100 */  H1->TheTrees[i] = Carry; Carry = NULL; break;
-            case 3: /* 011 */  Carry = CombineTrees( T1, T2 );
-                            H1->TheTrees[i] = H2->TheTrees[i] = NULL; break;
-            case 5: /* 101 */  Carry = CombineTrees( T1, Carry );
-                            H1->TheTrees[i] = NULL; break;
-            case 6: /* 110 */  Carry = CombineTrees( T2, Carry );
-                            H2->TheTrees[i] = NULL; break;
-            case 7: /* 111 */  H1->TheTrees[i] = Carry;
-                            Carry = CombineTrees( T1, T2 );
-                            H2->TheTrees[i] = NULL; break;
-            } /* end switch */
-        } /* end for-loop */
-        return H1;
-    }
-    ```
-    
-    这里我们将`T1,T2,Carry`的是否为空视作二进制bit组合起来，考察需要进行的操作. 
-    
-    * 如果`T1`存在但是`Carry`和`T2`不存在，则循环已经可以终止，表明合并结束了;
-    * 如果`T1,T2`均存在，
+> [!TIP]+ merge代码
+>
+> BinTree的合并：
+>
+> ```c
+> BinTree CombineTrees( BinTree T1, BinTree T2 )
+> {  /* merge equal-sized T1 and T2 */
+>     if ( T1->Element > T2->Element )
+>         /* attach the larger one to the smaller one */
+>         return CombineTrees( T2, T1 );
+>     /* insert T2 to the front of the children list of T1 */
+>     T2->NextSibling = T1->LeftChild;
+>     T1->LeftChild = T2;
+>     return T1;
+> }
+> ```
+>
+> heap的合并：
+>
+> ```c
+> BinQueue Merge( BinQueue H1, BinQueue H2 ){
+>     BinTree T1, T2, Carry = NULL;
+>     int i, j;
+>     if ( H1->CurrentSize + H2-> CurrentSize > Capacity )  ErrorMessage();
+>     H1->CurrentSize += H2-> CurrentSize;
+>     for ( i=0, j=1; j<= H1->CurrentSize; i++, j*=2 ) {
+>         T1 = H1->TheTrees[i]; T2 = H2->TheTrees[i]; /*current trees */
+>         switch( 4*!!Carry + 2*!!T2 + !!T1 ) {
+>         case 0: /* 000 */
+>         case 1: /* 001 */  break;
+>         case 2: /* 010 */  H1->TheTrees[i] = T2; H2->TheTrees[i] = NULL; break;
+>         case 4: /* 100 */  H1->TheTrees[i] = Carry; Carry = NULL; break;
+>         case 3: /* 011 */  Carry = CombineTrees( T1, T2 );
+>                         H1->TheTrees[i] = H2->TheTrees[i] = NULL; break;
+>         case 5: /* 101 */  Carry = CombineTrees( T1, Carry );
+>                         H1->TheTrees[i] = NULL; break;
+>         case 6: /* 110 */  Carry = CombineTrees( T2, Carry );
+>                         H2->TheTrees[i] = NULL; break;
+>         case 7: /* 111 */  H1->TheTrees[i] = Carry;
+>                         Carry = CombineTrees( T1, T2 );
+>                         H2->TheTrees[i] = NULL; break;
+>         } /* end switch */
+>     } /* end for-loop */
+>     return H1;
+> }
+> ```
+>
+> 这里我们将`T1,T2,Carry`的是否为空视作二进制bit组合起来，考察需要进行的操作. 
+>
+> * 如果`T1`存在但是`Carry`和`T2`不存在，则循环已经可以终止，表明合并结束了;
+> * 如果`T1,T2`均存在，
 
 ### Insertion
 
@@ -413,97 +413,97 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 1. Findmin<br>
 2. Merge
 
-???+ tips "代码实现"
+> [!TIP]+ 代码实现
+>
+> ```c
+> ElementType  DeleteMin( BinQueue H ){
+>     BinQueue DeletedQueue; 
+>     Position DeletedTree, OldRoot;
+>     ElementType MinItem = Infinity;  /* the minimum item to be returned */	
+>     int i, j, MinTree; /* MinTree is the index of the tree with the minimum item */
+>     if ( IsEmpty( H ) )  {  PrintErrorMessage();  return –Infinity; }
+>
+>     for ( i = 0; i < MaxTrees; i++) {  /* Step 1: find the minimum item */
+>         if( H->TheTrees[i] && H->TheTrees[i]->Element < MinItem ) { 
+>         MinItem = H->TheTrees[i]->Element;  MinTree = i;    } /* end if */
+>     } /* end for-i-loop */
+>     DeletedTree = H->TheTrees[ MinTree ];  
+>     H->TheTrees[ MinTree ] = NULL;   /* Step 2: remove the MinTree from H => H’ */ 
+>     OldRoot = DeletedTree;   /* Step 3.1: remove the root */ 
+>     DeletedTree = DeletedTree->LeftChild;   free(OldRoot);
+>     DeletedQueue = Initialize();   /* Step 3.2: create H” */ 
+>     DeletedQueue->CurrentSize = ( 1<<MinTree ) – 1;  /* 2MinTree – 1 */
+>     for ( j = MinTree – 1; j >= 0; j – – ) {  
+>         DeletedQueue->TheTrees[j] = DeletedTree;
+>         DeletedTree = DeletedTree->NextSibling;
+>         DeletedQueue->TheTrees[j]->NextSibling = NULL;
+>     } /* end for-j-loop */
+>     H->CurrentSize  – = DeletedQueue->CurrentSize + 1;
+>     H = Merge( H, DeletedQueue ); /* Step 4: merge H’ and H” */ 
+>     return MinItem;
+> }
+> ```
 
-    ```c
-    ElementType  DeleteMin( BinQueue H ){
-        BinQueue DeletedQueue; 
-        Position DeletedTree, OldRoot;
-        ElementType MinItem = Infinity;  /* the minimum item to be returned */	
-        int i, j, MinTree; /* MinTree is the index of the tree with the minimum item */
-        if ( IsEmpty( H ) )  {  PrintErrorMessage();  return –Infinity; }
-    
-        for ( i = 0; i < MaxTrees; i++) {  /* Step 1: find the minimum item */
-            if( H->TheTrees[i] && H->TheTrees[i]->Element < MinItem ) { 
-            MinItem = H->TheTrees[i]->Element;  MinTree = i;    } /* end if */
-        } /* end for-i-loop */
-        DeletedTree = H->TheTrees[ MinTree ];  
-        H->TheTrees[ MinTree ] = NULL;   /* Step 2: remove the MinTree from H => H’ */ 
-        OldRoot = DeletedTree;   /* Step 3.1: remove the root */ 
-        DeletedTree = DeletedTree->LeftChild;   free(OldRoot);
-        DeletedQueue = Initialize();   /* Step 3.2: create H” */ 
-        DeletedQueue->CurrentSize = ( 1<<MinTree ) – 1;  /* 2MinTree – 1 */
-        for ( j = MinTree – 1; j >= 0; j – – ) {  
-            DeletedQueue->TheTrees[j] = DeletedTree;
-            DeletedTree = DeletedTree->NextSibling;
-            DeletedQueue->TheTrees[j]->NextSibling = NULL;
-        } /* end for-j-loop */
-        H->CurrentSize  – = DeletedQueue->CurrentSize + 1;
-        H = Merge( H, DeletedQueue ); /* Step 4: merge H’ and H” */ 
-        return MinItem;
-    }
-    ```
-
-???+ tips "过程"
-
-    <center><img src = "./figures/ads/deletemin_bq.jpg" style = "zoom:30%"/></center>
+> [!TIP]+ 过程
+>
+> <center><img src = "./figures/ads/deletemin_bq.jpg" style = "zoom:30%"/></center>
 
 ### PTA习题
 
-???+ tips "2.1-13,14"
+> [!TIP]+ 2.1-13,14
+>
+> <center><img src = "./figures/ads/2.1-1314.png" style = "zoom:60%"/></center>
+>
+> 第1题的情况是，会误以为 $k$-ary tree 要求度必须“恰好”等于 $k$，但实际上只要“不超过” $k$ 即可。因此该命题为 True.
+>
+> 第2题的反例是101001这棵树，考虑min指向的是最高位子树的root，那么merge过程是11111+1011，merge次数超过了k.
 
-    <center><img src = "./figures/ads/2.1-1314.png" style = "zoom:60%"/></center>
-    
-    第1题的情况是，会误以为 $k$-ary tree 要求度必须“恰好”等于 $k$，但实际上只要“不超过” $k$ 即可。因此该命题为 True.
-    
-    第2题的反例是101001这棵树，考虑min指向的是最高位子树的root，那么merge过程是11111+1011，merge次数超过了k.
+> [!TIP]+ (2.3-7) Multiple Answers
+>
+> Right after we perform some operation (Merging, Insertion or DeleteMin) on a Binomial queue, we may have to merge some pairs of the resulting Binomial trees to make the resulting forest a Binomial queue.<br>
+> Suppose that $B_{i1},B_{i2},B_{i3}$ of size $2^{k−1},2^{k-1},2^k(k\geq 1)$ respectively are Binomial trees to merge. Consider the case that $B_{i1}$ is merged with $B_{i2}$, and the resulting Binomial tree is then merged with $B_{i3}$. We call this case “cascading merge”.<br>
+> Which of the following statements about “cascading merge” is/are correct?
+>
+> A.We may have to perform “cascading merge” right after deleting the minimum key of a Binomial queue.<br>
+> B.We may have to perform “cascading merge” right after merging two Binomial queues of the same size.<br>
+> C.We must perform “cascading merge” right after inserting a key into a Binomial queue of odd size.<br>
+> D.Consider the case that we perform consecutive insertions into a Binomial queue. Assume that we have performed “cascading merge” after inserting a key. Then in the next 3 insertions, we do not have to perform “cascading merge”.
+>
+> 答案是AD，B不可能出现cascading，因为
 
-???+ tips "(2.3-7) Multiple Answers"
+> [!TIP]+ (2.3-8) Multiple Answers
+>
+> Consider a binomial queue Q of n nodes with binomial trees $B_1,\cdots,B_k$. To delete the minimum key from Q, there are the following four steps to go.
+>
+> Step 1: Find the minimum key. Assume the minimum key is in $B_j, 1\leq j\leq k$.<br>
+> Step 2: Remove $B_j$ from $Q$. The resulting queue is $Q'$.<br>
+> Step 3: Construct a binomial queue $Q''$ using the subtrees rooted at the children of the root of $B_j$.<br>
+> Step 4: Merge $Q'$ with $Q''$.
+>
+> Of which step(s), the worst-case running time is $\Theta(\log n)$?
+>
+> A. Step 1.$\quad$ B. Step 2.$\quad$ C. Step 3.$\quad$ D. Step 4.
 
-    Right after we perform some operation (Merging, Insertion or DeleteMin) on a Binomial queue, we may have to merge some pairs of the resulting Binomial trees to make the resulting forest a Binomial queue.<br>
-    Suppose that $B_{i1},B_{i2},B_{i3}$ of size $2^{k−1},2^{k-1},2^k(k\geq 1)$ respectively are Binomial trees to merge. Consider the case that $B_{i1}$ is merged with $B_{i2}$, and the resulting Binomial tree is then merged with $B_{i3}$. We call this case “cascading merge”.<br>
-    Which of the following statements about “cascading merge” is/are correct?
-    
-    A.We may have to perform “cascading merge” right after deleting the minimum key of a Binomial queue.<br>
-    B.We may have to perform “cascading merge” right after merging two Binomial queues of the same size.<br>
-    C.We must perform “cascading merge” right after inserting a key into a Binomial queue of odd size.<br>
-    D.Consider the case that we perform consecutive insertions into a Binomial queue. Assume that we have performed “cascading merge” after inserting a key. Then in the next 3 insertions, we do not have to perform “cascading merge”.
-    
-    答案是AD，B不可能出现cascading，因为
+> [!TIP]+ xyx-1
+>
+> <center><img src = "./figures/ads/xyx1-7.png" style = "zoom:50%"/></center>
+>
+> For a binomial queue, __ takes a constant time on average.<br>
+> A.merging<br>
+> B.find-max<br>
+> C.delete-min<br>
+> D.insertion
+>
+> 其他三个都是 O(log N)；在空 binomial queue 上连续插入 N 个是 O(N) 的
 
-???+ tips "(2.3-8) Multiple Answers"
+> [!TIP]+ 2025fall-yy-mid
+>
+> In a binomial queue with 180 nodes, how many nodes have depth 1(the root has depth 0)?
+>
+> 应该是18个，只需要将180转化成$2^2+2^4+2^5+2^7$，并算出$2+4+5+7$即可.
 
-    Consider a binomial queue Q of n nodes with binomial trees $B_1,\cdots,B_k$. To delete the minimum key from Q, there are the following four steps to go.
-    
-    Step 1: Find the minimum key. Assume the minimum key is in $B_j, 1\leq j\leq k$.<br>
-    Step 2: Remove $B_j$ from $Q$. The resulting queue is $Q'$.<br>
-    Step 3: Construct a binomial queue $Q''$ using the subtrees rooted at the children of the root of $B_j$.<br>
-    Step 4: Merge $Q'$ with $Q''$.
-    
-    Of which step(s), the worst-case running time is $\Theta(\log n)$?
-    
-    A. Step 1.$\quad$ B. Step 2.$\quad$ C. Step 3.$\quad$ D. Step 4.
-
-???+ tips "xyx-1"
-
-    <center><img src = "./figures/ads/xyx1-7.png" style = "zoom:50%"/></center>
-    
-    For a binomial queue, __ takes a constant time on average.<br>
-    A.merging<br>
-    B.find-max<br>
-    C.delete-min<br>
-    D.insertion
-    
-    其他三个都是 O(log N)；在空 binomial queue 上连续插入 N 个是 O(N) 的
-
-???+ tips "2025fall-yy-mid"
-
-    In a binomial queue with 180 nodes, how many nodes have depth 1(the root has depth 0)?
-    
-    应该是18个，只需要将180转化成$2^2+2^4+2^5+2^7$，并算出$2+4+5+7$即可.
-
-???+ tips "2021mid"
-
-    To implement a binomial queue, left-child-next-sibling structure is used to represent each binomial tree.
-    
-    对.
+> [!TIP]+ 2021mid
+>
+> To implement a binomial queue, left-child-next-sibling structure is used to represent each binomial tree.
+>
+> 对.

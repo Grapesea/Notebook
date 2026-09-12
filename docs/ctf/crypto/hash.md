@@ -65,33 +65,33 @@ for i in range(n):
 
 [题解1,2](https://cryptohack.org/challenges/collider/solutions/)
 
-??? tips "题解2解释得比较清楚"
+> [!TIP]- 题解2解释得比较清楚
+>
+> > The scenario of this problem is about a document system, where we add documents. If we take a look at the code, then we will see that the flag is given to us only if we enter two different documents with the same hash, when there is a collision.
+>
+> > If we search about md5 collisions, we will find that there are a lot of articles and attacks and we can quickly find sets of different strings that produce the same hashes. One such set is the following:
+>
+> > `d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70` and `d131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f8955ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5bd8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70`
+>
+> > So, when prompted we input the following JSONs: `{"document":"d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70"}` and `{"document":"d131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f8955ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5bd8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70"}`
+>
+> > The first document is accepted in the document system, however the second one returns the following:
+>
+> > `{"error": "Document system crash, leaking flag: crypto{m0re_th4n_ju5t_p1g30nh0le_pr1nc1ple}"}`
 
-    > The scenario of this problem is about a document system, where we add documents. If we take a look at the code, then we will see that the flag is given to us only if we enter two different documents with the same hash, when there is a collision.
-
-    > If we search about md5 collisions, we will find that there are a lot of articles and attacks and we can quickly find sets of different strings that produce the same hashes. One such set is the following:
-
-    > `d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70` and `d131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f8955ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5bd8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70`
-
-    > So, when prompted we input the following JSONs: `{"document":"d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70"}` and `{"document":"d131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f8955ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5bd8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70"}`
-
-    > The first document is accepted in the document system, however the second one returns the following:
-
-    > `{"error": "Document system crash, leaking flag: crypto{m0re_th4n_ju5t_p1g30nh0le_pr1nc1ple}"}`
-
-??? tips "Writeup-1，来自题解1"
-
-    ```python
-    import socket 
-    # Hashes from https://en.wikipedia.org/wiki/MD5#Collision_vulnerabilities
-    msg1 = 'd131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70'
-    msg2 = 'd131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f8955ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5bd8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70'
-
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect(('socket.cryptohack.org', 13389))
-        print(s.recv(1024).decode())
-        s.sendall(f'{{"document": "{msg1}"}}'.encode())
-        print(s.recv(1024).decode())
-        s.sendall(f'{{"document": "{msg2}"}}'.encode())
-        print(s.recv(1024).decode()) 
-    ```
+> [!TIP]- Writeup-1，来自题解1
+>
+> ```python
+> import socket 
+> # Hashes from https://en.wikipedia.org/wiki/MD5#Collision_vulnerabilities
+> msg1 = 'd131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70'
+> msg2 = 'd131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f8955ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5bd8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70'
+>
+> with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+>     s.connect(('socket.cryptohack.org', 13389))
+>     print(s.recv(1024).decode())
+>     s.sendall(f'{{"document": "{msg1}"}}'.encode())
+>     print(s.recv(1024).decode())
+>     s.sendall(f'{{"document": "{msg2}"}}'.encode())
+>     print(s.recv(1024).decode()) 
+> ```

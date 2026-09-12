@@ -63,15 +63,15 @@ $$Cv = \dfrac{\sqrt{\operatorname{Var}(X)}}{E(X)}$$
 
 ### 协方差与相关系数
 
-???+ info "另一个角度的理解-内积空间"
-
-    这一小节的性质很难不让人联想到线代II中提到过的“内积空间”，现在作一些一一映射的理解：
-    
-    $X,Y$-两个向量空间，可以简单理解成三维空间中两条直线；
-    
-    内积的定义-协方差计算式；
-    
-    $X,Y$相关-
+> [!INFO]+ 另一个角度的理解-内积空间
+>
+> 这一小节的性质很难不让人联想到线代II中提到过的“内积空间”，现在作一些一一映射的理解：
+>
+> $X,Y$-两个向量空间，可以简单理解成三维空间中两条直线；
+>
+> 内积的定义-协方差计算式；
+>
+> $X,Y$相关-
 
 ​
 
@@ -101,7 +101,7 @@ $$\operatorname{Cov}(X,Y) = E(XY) - E(X)E(Y)$$
 
 $$\operatorname{Var}(\sum\limits_{i=1}^n X_i) = \sum\limits_{i=1}^n \operatorname{Var}(X_i) + 2\sum\limits_{1\leq i < j \leq n}\operatorname{Cov}(X_i,X_j) $$
 
-??? notes "eg 4.3.2 配对问题"
+> [!NOTE]- eg 4.3.2 配对问题
 
 一堆定理：（注意跟内积性质的对比）
 
@@ -134,19 +134,19 @@ $X,Y$方差存在 $\Longrightarrow$ $X,Y$不相关 $\not\Longrightarrow$ $X,Y$�
 
 $X,Y$相关 $\Longrightarrow$ $X,Y$不独立；
 
-??? notes "eg 4.3.6"
+> [!NOTE]- eg 4.3.6
 
 但是某些情况下又是等价的，如二元正态分布中：
 
-??? notes "eg 4.3.7"
+> [!NOTE]- eg 4.3.7
 
 ### 课后习题整理
 
-??? notes "B33-矩阵与正态分布"
-
-    已知三维正态变量 $\mathbf{X} = (X_1, X_2, X_3)^T \sim N(\mathbf{a}, \mathbf{B})$，其中 $\mathbf{a} = (0, 0, 1)^T$，$\mathbf{B} = \begin{pmatrix} 1 & 2 & -1 \\ 2 & 16 & 0 \\ -1 & 0 & 4 \end{pmatrix}$.<br>
-    (1) 写出 $\mathbf{X}$ 的每个分量的分布；<br>
-    (2) 判别 $X_1, X_2, X_3$ 的相关性与独立性；<br>
-    (3) 若 $Y_1 = X_1 - X_2, Y_2 = X_2 - X_3$，求 $\mathbf{Y} = (Y_1, Y_2)^T$ 的分布；
+> [!NOTE]- B33-矩阵与正态分布
+>
+> 已知三维正态变量 $\mathbf{X} = (X_1, X_2, X_3)^T \sim N(\mathbf{a}, \mathbf{B})$，其中 $\mathbf{a} = (0, 0, 1)^T$，$\mathbf{B} = \begin{pmatrix} 1 & 2 & -1 \\ 2 & 16 & 0 \\ -1 & 0 & 4 \end{pmatrix}$.<br>
+> (1) 写出 $\mathbf{X}$ 的每个分量的分布；<br>
+> (2) 判别 $X_1, X_2, X_3$ 的相关性与独立性；<br>
+> (3) 若 $Y_1 = X_1 - X_2, Y_2 = X_2 - X_3$，求 $\mathbf{Y} = (Y_1, Y_2)^T$ 的分布；
 
 ## Chap 5 大数定律及中心极限定理

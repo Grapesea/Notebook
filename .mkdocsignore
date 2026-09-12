@@ -1,0 +1,9 @@
+# Paths and gitignore-style patterns are relative to docs/.
+# Add private drafts or notes that should stay out of the navigation here.
+
+inspiration.md
+story/
+gadgets/travel/sx_hb_1.md
+zju/policies.md
+zju/22/art/lec.md
+inst.md

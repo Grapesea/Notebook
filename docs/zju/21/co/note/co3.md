@@ -2,15 +2,15 @@
 
 Computer words are composed of bits, thus one word is a vector of binary numbers. In RISC-V, there are 32bit/word or 64bits/word, in which 32 bits contains 4 bytes.
 
-???+ tips "资源"
-    [NoughtQ佬的笔记](https://note.noughtq.top/system/co/3)，讲得非常清晰，感觉比听智云效率高很多.
-    但是需要注意一个问题，其中的Improved Version除法器原理图中，remainder寄存器在lp老师的slides上面是128bits而非129bits.
-
-    Homework: 3.7, 3.20, 3.26, 3.27, 3.32
-    
-    林芃老师曰：“课上我们默认32bits是1 word，64bits叫做double word.
-    
-    “教材上有一些用法混乱，之后会指出。”
+> [!TIP]+ 资源
+> [NoughtQ佬的笔记](https://note.noughtq.top/system/co/3)，讲得非常清晰，感觉比听智云效率高很多.
+> 但是需要注意一个问题，其中的Improved Version除法器原理图中，remainder寄存器在lp老师的slides上面是128bits而非129bits.
+>
+> Homework: 3.7, 3.20, 3.26, 3.27, 3.32
+>
+> 林芃老师曰：“课上我们默认32bits是1 word，64bits叫做double word.
+>
+> “教材上有一些用法混乱，之后会指出。”
 
 * 数字表示法：
 
