@@ -1,6 +1,6 @@
 本文将依照金小刚老师授课以及教材等材料进行整理.
 
-> [!INFO]+ 课程信息
+> [!IMPORTANT] +课程信息
 >
 > 分数构成：（可申请免听）
 >
@@ -17,7 +17,7 @@
 > 5. Algebraic System
 > 6. Formal Language and Autom
 
-> [!INFO]+ 课程资源
+> [!IMPORTANT] +课程资源
 >
 >
 >

@@ -1,6 +1,6 @@
 先尝试听2021年李沐的动手学深度学习.
 
-> [!INFO]+ 课程资源
+> [!IMPORTANT] +课程资源
 >
 > [bilibili网课地址](https://www.bilibili.com/list/1567748478/?sid=358497)
 >
@@ -12,7 +12,7 @@
 >
 > [PyTorch论坛](https://discuss.pytorch.org/)
 
-> [!TIP]- 开始学习
+> [!TIP] +开始学习
 >
 > ```powershell
 > $ jupyter notebook

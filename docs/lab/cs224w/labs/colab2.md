@@ -1,6 +1,6 @@
 # Colab 2
 
-> [!INFO]+ 资源
+> [!IMPORTANT] +资源
 >
 > [PyG](https://pytorch-geometric.readthedocs.io/en/latest/index.html)
 >

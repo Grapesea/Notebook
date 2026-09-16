@@ -1,4 +1,4 @@
-> [!INFO] slides地址
+> [!IMPORTANT] slides地址
 >
 > [Lec 1: Welcome](https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1226/lectures/lecture1_spr.pdf)
 
@@ -12,7 +12,7 @@
 
 这三个都是C++能编译通过的代码：
 
-> [!TIP]- Ccde 1: 标准C++
+> [!TIP] +Ccde 1: 标准C++
 >
 > ```cpp
 > #include <iostream>
@@ -22,7 +22,7 @@
 > }
 > ```
 
-> [!TIP]- Code 2: 类C
+> [!TIP] +Code 2: 类C
 >
 > ```cpp
 > #include "stdio.h"
@@ -34,7 +34,7 @@
 > }
 > ```
 
-> [!TIP]- Code 3: 汇编
+> [!TIP] +Code 3: 汇编
 >
 > ```cpp
 > #include "stdio.h"

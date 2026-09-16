@@ -1,4 +1,4 @@
-> [!INFO]+ 推荐资源
+> [!IMPORTANT] +推荐资源
 >
 > [Brucejqs的ads笔记-Parallel](https://brucejqs.github.io/MyNotebook/blog/Computer%20Science/ADS/Chapter%2014/)
  
@@ -18,7 +18,7 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 * **理想化假设：** 访问内存的时间是单位时间（Unit time），忽略了现实中缓存、总线竞争等复杂因素.
 * **指令：** 使用 `pardo` (parallel do) 关键字，表示后面的循环是所有处理器同时并行执行的.
 
-> [!TIP]+ 举例
+> [!TIP] +举例
 >
 > 执行单个语句：`c:=a+b`时：
 >
@@ -59,7 +59,7 @@ PRAM 模型 (Parallel Random Access Machine)是并行计算中最经典的理论
 * 第二轮：将上一轮的结果再两两相加. 
 * 这就构成了一棵二叉树. 
 
-> [!TIP]+ pseudocode
+> [!TIP] +pseudocode
 >
 > ```pseudocode
 > for i in range(1,n): (pardo)
@@ -106,7 +106,7 @@ $$W(n) = \text{total number of operations}, T(n) = \text{worst-case running time
 
 ### PTA习题
 
-> [!TIP]+ Final Practice 2 2-7
+> [!TIP] +Final Practice 2 2-7
 >
 > <center><img src = "./figures/parallel/f2.2-7.png" style = "zoom:60%"/></center>
 >
@@ -132,7 +132,7 @@ $$C(h,i) = \begin{cases}
     C(h+1, \dfrac{i-1}{2}) + B(h, i) & i \text{为大于1的奇数}
 \end{cases}$$
 
-> [!TIP]+ pseudocode
+> [!TIP] +pseudocode
 >
 > ```python
 > for P_i, i in range(1,n): pardo
@@ -250,7 +250,7 @@ n &  B(j) > A(n)
 
 ## PTA习题
 
-> [!TIP]+ 8.1-3
+> [!TIP] +8.1-3
 >
 > <center><img src = "./figures/parallel/8.1-3.png" style = "zoom:60%"/></center>
 >

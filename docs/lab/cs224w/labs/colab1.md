@@ -1,6 +1,6 @@
 # Colab 1
 
-> [!INFO]+ 资源
+> [!IMPORTANT] +资源
 >
 > [NetworkX](https://networkx.org/documentation/stable/tutorial.html)
 >

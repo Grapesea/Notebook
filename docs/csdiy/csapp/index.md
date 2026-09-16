@@ -7,7 +7,7 @@
 
 极其想学但是没时间看的课程，先把[给学生的资源汇总](https://csapp.cs.cmu.edu/3e/students.html)翻译出来一部分留给自己看一下.
 
-> [!INFO]- 课程资源
+> [!IMPORTANT] +课程资源
 >
 > 课程[lab](https://csapp.cs.cmu.edu/3e/labs.html)
 >

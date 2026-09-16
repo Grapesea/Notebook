@@ -65,7 +65,7 @@ for i in range(n):
 
 [题解1,2](https://cryptohack.org/challenges/collider/solutions/)
 
-> [!TIP]- 题解2解释得比较清楚
+> [!TIP] +题解2解释得比较清楚
 >
 > > The scenario of this problem is about a document system, where we add documents. If we take a look at the code, then we will see that the flag is given to us only if we enter two different documents with the same hash, when there is a collision.
 >
@@ -79,7 +79,7 @@ for i in range(n):
 >
 > > `{"error": "Document system crash, leaking flag: crypto{m0re_th4n_ju5t_p1g30nh0le_pr1nc1ple}"}`
 
-> [!TIP]- Writeup-1，来自题解1
+> [!TIP] +Writeup-1，来自题解1
 >
 > ```python
 > import socket 

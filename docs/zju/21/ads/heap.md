@@ -1,6 +1,6 @@
 ## Lec 4 Leftist Heap(左式堆) & Skew Heap(斜堆)
 
-> [!WARNING]+ Cheating List
+> [!WARNING] +Cheating List
 >
 > |                    | Leftist Heap（左式堆）                                       | Skew Heap（斜堆）                             | Binomial Queue（二项队列）                                   |
 > | ------------------ | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------------------ |
@@ -10,7 +10,7 @@
 > | DeleteMin | 摊还 $O(\log N)$（基于合并操作实现）                     | 摊还 $O(\log N)$（基于合并操作实现）      | $O(\log N)$                                              |
 > | 势函数             |                                                              | heavy node数量                                | 子树数量                                                     |
 
-> [!TIP]+ 资源
+> [!TIP] +资源
 > [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec04)
 > $\quad$
 > [Wintermelon的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/ADS/ch4/)
@@ -170,7 +170,7 @@ Node *del(Node *cur, ElementType x)
 }
 ```
 
-> [!TIP]+ 2.1-9
+> [!TIP] +2.1-9
 > After inserting a node into a Leftist heap H (which is equivalent to merging a one-node Leftist heap with H), we need to swap the children of at most 1 node to make the resulting tree a Leftist heap.
 >
 > 这句话是对的，添加之后最多让一个parent的深度增加并产生矛盾，即某个节点$dist = d+1$，其左右节点$dist = d,d+1$，此时只要交换其左右节点就能够解决矛盾，不需要进行多余交换.
@@ -213,7 +213,7 @@ ADS课程的merge是对wiki等地方的定义做出了一点修改的（……�
 
 skew heap的删除和插入节点方法与leftist heap原理上基本一致，略去.
 
-> [!TIP]+
+> [!TIP] +
 > wyh学长的讲义思考题（英文版）：
 >
 > (1)The result of inserting keys $1,2,\cdots, 2^{k}-1$for any $k>4$ in order into an initially empty leftist heap is always a full binary tree. (T/F)
@@ -240,7 +240,7 @@ $$\text{size}_{\text{H.right_descendent}} \geq \dfrac12 \text{size}_{\text{H}}$$
 
 #### PTA习题
 
-> [!TIP]+ 2025fall-yy-mid
+> [!TIP] +2025fall-yy-mid
 > To build a skew heap, we can start with an emtpy heap, and merge each single-node heap into the resulting heap one by one.
 > Then the best description of the time complexity of this procedure is: $\textcolor{red}{O(N\log N)}$.
 >
@@ -250,7 +250,7 @@ $$\text{size}_{\text{H.right_descendent}} \geq \dfrac12 \text{size}_{\text{H}}$$
 >
 > 这是对的，考虑降序的序列即可.
 
-> [!TIP]+ 2025fall-ch-mid
+> [!TIP] +2025fall-ch-mid
 >
 > What is the defining mechanical difference between the merge operation in a Skew Heap and in a Leftist Heap?<br>
 > A. Skew Heaps merge along the left spines, while Leftist Heaps merge along the right spines.<br>
@@ -260,7 +260,7 @@ $$\text{size}_{\text{H.right_descendent}} \geq \dfrac12 \text{size}_{\text{H}}$$
 >
 > 选B，这是最关键的点.
 
-> [!TIP]+ xyx-1
+> [!TIP] +xyx-1
 > The result of inserting keys 1 to $2^k−1$ for any k>4 in order into an initially empty skew heap is always a full binary tree.<br>
 > 这个明显对.
 >
@@ -268,11 +268,11 @@ $$\text{size}_{\text{H.right_descendent}} \geq \dfrac12 \text{size}_{\text{H}}$$
 >
 > <center><img src = "./figures/ads/xyx-left.png" style = "zoom:50%"/></center>
 
-> [!TIP]+ 2024mid
+> [!TIP] +2024mid
 >
 > <center><img src = "./figures/ads/2024mid3.png" style = "zoom:50%"/></center>
 
-> [!TIP]+ 2.1-10,11
+> [!TIP] +2.1-10,11
 >
 > <center><img src = "./figures/ads/2.1-1011.png" style = "zoom:50%"/></center>
 
@@ -326,7 +326,7 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 
 下面是这个函数具体的实现代码：
 
-> [!TIP]+ 实现
+> [!TIP] +实现
 >
 > ```c
 > typedef struct BinNode *Position;
@@ -346,7 +346,7 @@ $$13 = 2^3 + 2^2 + 2^0 = (1101)_2$$
 > } ;
 > ```
 
-> [!TIP]+ merge代码
+> [!TIP] +merge代码
 >
 > BinTree的合并：
 >
@@ -413,7 +413,7 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 1. Findmin<br>
 2. Merge
 
-> [!TIP]+ 代码实现
+> [!TIP] +代码实现
 >
 > ```c
 > ElementType  DeleteMin( BinQueue H ){
@@ -444,13 +444,13 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 > }
 > ```
 
-> [!TIP]+ 过程
+> [!TIP] +过程
 >
 > <center><img src = "./figures/ads/deletemin_bq.jpg" style = "zoom:30%"/></center>
 
 ### PTA习题
 
-> [!TIP]+ 2.1-13,14
+> [!TIP] +2.1-13,14
 >
 > <center><img src = "./figures/ads/2.1-1314.png" style = "zoom:60%"/></center>
 >
@@ -458,7 +458,7 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 >
 > 第2题的反例是101001这棵树，考虑min指向的是最高位子树的root，那么merge过程是11111+1011，merge次数超过了k.
 
-> [!TIP]+ (2.3-7) Multiple Answers
+> [!TIP] +(2.3-7) Multiple Answers
 >
 > Right after we perform some operation (Merging, Insertion or DeleteMin) on a Binomial queue, we may have to merge some pairs of the resulting Binomial trees to make the resulting forest a Binomial queue.<br>
 > Suppose that $B_{i1},B_{i2},B_{i3}$ of size $2^{k−1},2^{k-1},2^k(k\geq 1)$ respectively are Binomial trees to merge. Consider the case that $B_{i1}$ is merged with $B_{i2}$, and the resulting Binomial tree is then merged with $B_{i3}$. We call this case “cascading merge”.<br>
@@ -471,7 +471,7 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 >
 > 答案是AD，B不可能出现cascading，因为
 
-> [!TIP]+ (2.3-8) Multiple Answers
+> [!TIP] +(2.3-8) Multiple Answers
 >
 > Consider a binomial queue Q of n nodes with binomial trees $B_1,\cdots,B_k$. To delete the minimum key from Q, there are the following four steps to go.
 >
@@ -484,7 +484,7 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 >
 > A. Step 1.$\quad$ B. Step 2.$\quad$ C. Step 3.$\quad$ D. Step 4.
 
-> [!TIP]+ xyx-1
+> [!TIP] +xyx-1
 >
 > <center><img src = "./figures/ads/xyx1-7.png" style = "zoom:50%"/></center>
 >
@@ -496,13 +496,13 @@ If the smallest nonexistent binomial tree is $B_i$ , then $Tp = Const \times (i 
 >
 > 其他三个都是 O(log N)；在空 binomial queue 上连续插入 N 个是 O(N) 的
 
-> [!TIP]+ 2025fall-yy-mid
+> [!TIP] +2025fall-yy-mid
 >
 > In a binomial queue with 180 nodes, how many nodes have depth 1(the root has depth 0)?
 >
 > 应该是18个，只需要将180转化成$2^2+2^4+2^5+2^7$，并算出$2+4+5+7$即可.
 
-> [!TIP]+ 2021mid
+> [!TIP] +2021mid
 >
 > To implement a binomial queue, left-child-next-sibling structure is used to represent each binomial tree.
 >

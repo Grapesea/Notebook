@@ -1,4 +1,4 @@
-> [!TIP]+ 资源与工具
+> [!TIP] +资源与工具
 >
 > [CTF101_2025-公钥密码学](https://courses.zjusec.com/slides/crypto-lec2)
 >
@@ -39,7 +39,7 @@ print(g)
 
 根据[cryptohack](https://cryptohack.org/challenges/rsa/)的指导，按部就班学习一下RSA加密算法的过程：
 
-> [!TIP]+ RSA基础知识
+> [!TIP] +RSA基础知识
 >
 > * RSA概念与定义：
 >
@@ -100,7 +100,7 @@ print(g)
 >
 >     使用自己的公钥$(N_1,e_1)$解密：如果$H'(m) = S^{e_1} \pmod  N_1)$与$H(m)$相等，则验证通过.
 
-> [!TIP]- PoW板子
+> [!TIP] +PoW板子
 >
 > ```python
 > ''' 第一次交互的内容：
@@ -173,7 +173,7 @@ m=flag的每个字节按16进制拼起来的大数
 
 非常简单的低指数攻击，只要暴力枚举再开根号就行. payload如下：
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > import gmpy2
@@ -195,7 +195,7 @@ m=flag的每个字节按16进制拼起来的大数
 
 ### [modulus_inutilis](https://cryptohack.org/courses/public-key/modulus_inutilis/)
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > from Crypto.Util.number import getPrime, inverse, bytes_to_long, long_to_bytes
@@ -231,7 +231,7 @@ m=flag的每个字节按16进制拼起来的大数
 @@@ m = 
 ```
 
-> [!TIP]- 扩展欧几里得算法
+> [!TIP] +扩展欧几里得算法
 >
 > extend_gcd是利用递归回溯，在计算gcd的过程中找到符合Bezout等式的$x,y$的过程.
 >
@@ -243,7 +243,7 @@ m=flag的每个字节按16进制拼起来的大数
 
 所以书写：
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > def egcd(a, b):
@@ -274,7 +274,7 @@ m=flag的每个字节按16进制拼起来的大数
 
 ### 连分数展开
 
-> [!TIP]- Wiener Theorem
+> [!TIP] +Wiener Theorem
 >
 > 如果$N = p*q (q < p < 2p), d < \dfrac{1}{3}N^{\frac{1}{4}}$，则在已知$(N,e)$的情况下，$d$是可以恢复的.
 
@@ -304,7 +304,7 @@ Received 0x35d bytes:
 
 也就是说，难度相较于Level 1又升级了，虽然$n,e$仍然是已知的固定数，但数量级大了很多以至于难以分解（都是1024bits）这道题的方法跟下面的1.2.3一致，均使用了连分数展开，所以不赘述.
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > def continued_fractions(n, d): #计算n/d的连分数展开
@@ -391,7 +391,7 @@ $$m' = mr^e\pmod N) \Longrightarrow s' = (m')^d = (mr^e)^d=m^dr^{de}\equiv m^dr\
 
 所以想要知道$s=m^d\pmod  N)$，只需要计算$s'/r\pmod  N)$ 即可.
 
-> [!TIP]- 攻击者角度的payload
+> [!TIP] +攻击者角度的payload
 >
 > ```python
 > N = #
@@ -447,7 +447,7 @@ Maybe one can make use of it?
 
 首先nc目标ip，然后分别输入$d = 3,5,7$，将获得的$e_1,e_2,e_3$列出来，凑一下$\phi(N)$的结果.
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > import hashlib
@@ -522,13 +522,13 @@ Maybe one can make use of it?
 
 这里$gcd(e,p-1) \neq 1, gcd(e,q-1) \neq 1$，所以考虑有限域开方解密：
 
-> [!TIP]+ 有限域开方解密
+> [!TIP] +有限域开方解密
 
 
 
 payload:
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > n = p*q
@@ -562,7 +562,7 @@ payload:
 
 水，yafu分解一下就行了.
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > n = 0x4a471ffda8b4d8d223f6b64884b798a8a8356e6d024f92c46a9171c8841b
@@ -673,7 +673,7 @@ payload略
 
 我觉得我是比较愚钝的（哭），可以看出来相关消息攻击讲了之后印象也不深刻，忘完了.
 
-> [!TIP]+ 相关消息攻击
+> [!TIP] +相关消息攻击
 >
 > 如果加密的多条消息具有线性相关性，产生的攻击称为相关消息攻击.
 >
@@ -689,7 +689,7 @@ $$\begin{cases} m^2+m \equiv r_1 & \pmod  n) \\ m^4 + 4m^3 + 4m^2 \equiv r_2 & \
 
 （这部分比较特殊，使用了子过程处理sagemath环境的运算，再传递回python代码中）
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > print("\033[91m这是交互第5轮\033[0m")
@@ -780,7 +780,7 @@ Well done! Here is the flag: ACTF{e3ea2c418757d09a123753de5d865771}
 
 ### 2024长城杯-rasnd
 
-> [!INFO]- Problem
+> [!IMPORTANT] +Problem
 >
 > ```python
 > from Crypto.Util.number import getPrime, bytes_to_long
@@ -852,7 +852,7 @@ $$ hint = (514p - 114q)^{n - p - q} \equiv (514p - 114q)^{-1} \pmod  n)\Longrigh
 
 直接sagemath调用`roots()`就能解决了.
 
-> [!TIP]- [NSSCTF-Writeup](https://www.nssctf.cn/note/set/9943)
+> [!TIP] +[NSSCTF-Writeup](https://www.nssctf.cn/note/set/9943)
 >
 > ```python
 > from pwn import *
@@ -906,7 +906,7 @@ $$ hint = (514p - 114q)^{n - p - q} \equiv (514p - 114q)^{-1} \pmod  n)\Longrigh
 
 [Ref](https://blog.5dbwat4.top/arch/CSACTF2025-Writeup#babyRsa)
 
-> [!INFO]- Problem
+> [!IMPORTANT] +Problem
 >
 > ```python
 > from Crypto.Util.number import *
@@ -951,7 +951,7 @@ $$ hint = (514p - 114q)^{n - p - q} \equiv (514p - 114q)^{-1} \pmod  n)\Longrigh
 
 由于 $ed = k\phi(N) + 1$ 中的 $k$ 不会很大，所以可以枚举 $1 < k < e$ 找到有解的情况：
 
-> [!TIP]- Writeup-1
+> [!TIP] +Writeup-1
 >
 > ```python
 > from Crypto.Util.number import long_to_bytes
@@ -977,7 +977,7 @@ $$ hint = (514p - 114q)^{n - p - q} \equiv (514p - 114q)^{-1} \pmod  n)\Longrigh
 >             break
 > ```
 
-> [!TIP]- Writeup-2
+> [!TIP] +Writeup-2
 >
 > ```python
 > import math

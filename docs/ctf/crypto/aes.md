@@ -32,7 +32,7 @@ AES是一种块加密算法，大致流程如下图所示（图源CTFwiki）：
 
 Included is a `bytes2matrix` function for converting our initial plaintext block into a state matrix. Write a `matrix2bytes` function to turn that matrix back into bytes, and submit the resulting plaintext as the flag.
 
-> [!TIP]- bytes2matrix 以及 [matrix2byte](https://cryptohack.org/courses/symmetric/aes2/) 函数
+> [!TIP] +bytes2matrix 以及 [matrix2byte](https://cryptohack.org/courses/symmetric/aes2/) 函数
 >
 > ```python
 > def bytes2matrix(text):
@@ -61,7 +61,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 
 制作完成S-Box之后，如果能求出S_Box_invert，则可以反向破译，但正如这个算法本身所保证的那样，破解难度是极其大的.
 
-> [!TIP]- subbox
+> [!TIP] +subbox
 >
 > ```python
 > s_box = (
@@ -130,7 +130,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 > print(sub_bytes(state, sbox=inv_s_box))
 > ```
 
-> [!TIP]- diffusion
+> [!TIP] +diffusion
 >
 > ```python
 > def shift_rows(s):
@@ -195,7 +195,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 > print(matrix2bytes(state))
 > ```
 
-> [!TIP]- Bring all Together
+> [!TIP] +Bring all Together
 >
 > 代码量看起来很宏伟，实际上只是把先前的模块拼在了一起.
 >
@@ -386,7 +386,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 
 ## cryptohack-block_cipher
 
-> [!TIP]- 题干
+> [!TIP] +题干
 >
 > ```python
 > from Crypto.Cipher import AES
@@ -421,7 +421,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 
 [第二关](https://aes.cryptohack.org/passwords_as_keys/)需要学一点交互知识和AES调库了：
 
-> [!TIP]- writeup
+> [!TIP] +writeup
 >
 > ```python
 > from Crypto.Cipher import AES
@@ -460,7 +460,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 
 这个题目根本没想到是逐byte爆破，看了题解才知道是怎么回事.当然，看的题解其实是需要一点修正的，不能完全复现出来情况.
 
-> [!TIP]- [题解1](https://lianjinlll.cn/2025/02/18/Cryptohack-SymmetricCiphers-wp-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/)的修改版
+> [!TIP] +[题解1](https://lianjinlll.cn/2025/02/18/Cryptohack-SymmetricCiphers-wp-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/)的修改版
 >
 > ```python
 > from Crypto.Cipher import AES
@@ -519,7 +519,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 > # 所以一种方法是，不断修改前面的flag和函数循环参数直到flag完整.
 > ```
 
-> [!TIP]- 题解2:retroid，有修改
+> [!TIP] +题解2:retroid，有修改
 >
 > ```python
 > import requests
@@ -600,7 +600,7 @@ SubBytes是AES每一轮的第一步，将状态矩阵的每个元素通过一个
 
 <center><img src="./photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
 
-> [!TIP]- 题解
+> [!TIP] +题解
 >
 > ```python
 > from Crypto.Util.number import *
@@ -643,7 +643,7 @@ $$\begin{cases}
     \Longrightarrow 
     iv_{\text{new}} = iv_{\text{old}} \oplus m_{\text{old}} \oplus m_{\text{new}}$$
 
-> [!TIP]- 题解
+> [!TIP] +题解
 >
 > ```python
 > import requests
@@ -672,7 +672,7 @@ $$\begin{cases}
 
 <center><img src="./photos/cryptohack/cbc.png" style="zoom: 50%;" /></center>
 
-> [!TIP]- 题解
+> [!TIP] +题解
 >
 > 实际上极其简单，需要注意到最后一步plaintext和ciphertext是可以换位的，则把cipher当作plaintext输入，可以轻松获得flag.
 >
@@ -702,7 +702,7 @@ $$\begin{cases}
 
 <center><img src="./photos/cryptohack/ctr.png" style="zoom: 100%;" /></center>
 
-> [!TIP]- 题解
+> [!TIP] +题解
 >
 > ```python
 > import requests
@@ -762,7 +762,7 @@ $$
 
 首先是一个从正常原理上做但是做得稍显麻烦的方法. 一开始我没看懂作者为什么要调用encrypt函数，还以为自己理解错了，后来意识到作者只是构思了一个中间全0，$C_2 = C_0$的输入，但大可不必如此的：
 
-> [!TIP]- Writeup-1
+> [!TIP] +Writeup-1
 >
 > ```python
 > from Crypto.Cipher import AES
@@ -797,7 +797,7 @@ $$
 
 接下来是最佳办法，依照的就是上面写的数学推导：
 
-> [!TIP]- Writeup-2
+> [!TIP] +Writeup-2
 >
 > ```python
 > from Crypto.Cipher import AES

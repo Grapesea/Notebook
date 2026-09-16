@@ -1,4 +1,4 @@
-> [!INFO]+ 参考资料
+> [!IMPORTANT] +参考资料
 >
 > [修佬的笔记](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/Lec07)
 
@@ -10,7 +10,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 ## 时间复杂度递推计算
 
-> [!TIP]+ 举例
+> [!TIP] +举例
 >
 > $T(N) = 2T(N/2)+cN \Longrightarrow T(N) = O(N\log N).$
 >
@@ -20,7 +20,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 对于比较简单的情况是采用“先猜后证”的思路，首先估计出数量级然后放缩.
 
-> [!NOTE]+ eg.
+> [!NOTE] +eg.
 >
 > 求出$T(n)$的时间复杂度:
 >
@@ -56,7 +56,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 ### PTA习题
 
-> [!TIP]+ 3.2-3
+> [!TIP] +3.2-3
 >
 > Assume that $T(1) = \Theta(1)$. Given $T(n) = T(\sqrt{n}) + T(\sqrt[3]n) + T(\sqrt[6]n) + \log n$, which of the following statements is correct?
 >
@@ -69,7 +69,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 >
 > 选E.
 
-> [!TIP]+ 2025fall-ch-mid
+> [!TIP] +2025fall-ch-mid
 >
 > Which of the following asymptotic upper bounds is correct?<br>
 > A.$T(n)=2T(n−1)+1$. Then $T(n)=O(n^2)$.<br>
@@ -77,7 +77,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 > C.$T(n)=4T(n/2)+n^2/\log n$. Then $T(n)=O(n^2)$<br>
 > D.$T(n)=3T(n/3)+n/\log n$. Then $T(n)=O(n\log \log n)$
 
-> [!TIP]+ xyx-1
+> [!TIP] +xyx-1
 >
 > <center><img src = "./figures/dc/xyx-1.png" style = "zoom:60%"/></center>
 >
@@ -85,7 +85,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 >
 > <center><img src = "./figures/dc/xyx-2.png" style = "zoom:60%"/></center>
 
-> [!TIP]+ Final Practice 2 2-2
+> [!TIP] +Final Practice 2 2-2
 >
 > <center><img src = "./figures/dc/f2.2-2.png" style = "zoom:60%"/></center>
 >
@@ -95,11 +95,11 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 
 ### PTA习题
 
-> [!TIP]+ 3.3-1
+> [!TIP] +3.3-1
 >
 > <center><img src = "./figures/dc/1.png" style = "zoom:60%"/></center>
 
-> [!TIP]+ 2024mid
+> [!TIP] +2024mid
 >
 > <center><img src = "./figures/dc/2024mid4-1.png" style = "zoom:60%"/></center>
 >
@@ -141,7 +141,7 @@ $$T(n) = aT(\dfrac{n}{b}) + f(n) \qquad f(n) = [\text{Work for the merge}],a \ge
 >
 > 综上，这些填空围绕**归并排序的分治逻辑**和**逆序对的统计规则**展开，最终将时间复杂度从暴力法的 $O(n^2)$ 优化到 $O(n\log n)$，体现了分治算法的高效性。
 
-> [!TIP]+ 2021mid
+> [!TIP] +2021mid
 >
 > <center><img src = "./figures/dc/2021mid-1.png" style = "zoom:60%"/></center>
 >

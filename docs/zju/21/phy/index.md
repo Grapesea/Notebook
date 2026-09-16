@@ -2,7 +2,7 @@
 
 实时更新的[课堂小测题目整理](https://www.overleaf.com/read/fsgjdnmbhyxd#5498f3)
 
-> [!TIP]+ 资源汇总
+> [!TIP] +资源汇总
 >
 > 24级：
 >

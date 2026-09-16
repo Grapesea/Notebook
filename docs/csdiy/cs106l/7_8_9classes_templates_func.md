@@ -6,7 +6,7 @@
 
 Class 可以设定 private 和 public 2个部分，使得功能与参数能够被分置设定好.
 
-> [!TIP]+ eg. Student.h
+> [!TIP] +eg. Student.h
 >
 > ```cpp
 > // Student.h
@@ -145,7 +145,7 @@ class Vector{
 
 举个例子（OOP的[lab6](../../zju/21/oop/lab/6.md)）：
 
-> [!TIP]+ Vector.h
+> [!TIP] +Vector.h
 >
 > ```cpp
 > #ifndef VECTOR_H
@@ -234,7 +234,7 @@ class Vector{
 
 模板代码的调用示例：
 
-> [!TIP]- Vector.cpp
+> [!TIP] +Vector.cpp
 >
 > ```cpp
 > #include "Vector.h"
@@ -319,7 +319,7 @@ class Vector{
 
 template class的另一些例子：
 
-> [!TIP]+ mypair
+> [!TIP] +mypair
 >
 > ```cpp
 > #include "mypair.h"
@@ -386,7 +386,7 @@ min<int>(106, 107);
 min<double>(1.2, 3.4);
 ```
 
-> [!WARNING]+ Pitfall-1
+> [!WARNING] +Pitfall-1
 >
 > 在隐式推导时，传入的“字符串”不会被自动推导成`std::string`，而是`const char*`，如：
 >
@@ -408,7 +408,7 @@ min<double>(1.2, 3.4);
 > min<std::string>("Thomas", "Rachel");  // const char* 被轉換為 std::string
 > ```
 
-> [!WARNING]+ Pitfall-2
+> [!WARNING] +Pitfall-2
 >
 > 第二个需要注意的问题是类别匹配问题：
 >
@@ -502,7 +502,7 @@ std::cout << Factorial<7>::value;  // output: 5040
 
 `Factorial<7>::value` 在编译时就已经是 5040 了！执行之后直接输出常数5040.
 
-> [!TIP]+ `constexpr`和`consteval`
+> [!TIP] +`constexpr`和`consteval`
 >
 > C++20引入了`constexpr`和`consteval`，这进一步简化了求值：
 >

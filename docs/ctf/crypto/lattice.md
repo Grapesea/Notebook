@@ -1,6 +1,6 @@
 ## Lattice, LWE, NTRU etc.
 
-> [!INFO]+ 资源总结
+> [!IMPORTANT] +资源总结
 
     
 
@@ -8,7 +8,7 @@
 
 ### [NTRU](https://courses.zjusec.com/slides/crypto-lec3/#/4/1)
 
-> [!INFO]- 参考资源
+> [!IMPORTANT] +参考资源
 >
 > [NTRU密码系统 - 卓越成就的文章 - 知乎](https://zhuanlan.zhihu.com/p/664635742) $\quad$
 > [独奏的blog](https://hasegawaazusa.github.io/NTRU-note.html)
@@ -23,7 +23,7 @@
 
 沉寂已久的Coppersmith出现了，我以为lab2就会用到的，然后想得过于复杂折磨死了自己，但现在还在做单变量Coppersmith的阅读理解.
 
-> [!TIP]+ Coppersmith方法的理论基础
+> [!TIP] +Coppersmith方法的理论基础
 >
 > * Coppersmith引理：
 >
@@ -54,7 +54,7 @@
 
 Coppersmith下的RSA，但是题目描述很谜语人：
 
-> [!TIP]+ 题干
+> [!TIP] +题干
 >
 > Et en amour, il est plus facile de renoncer à un sentiment que de perdre une habitude.
 > 在爱情中，放弃一种感情比改掉一个习惯更容易。

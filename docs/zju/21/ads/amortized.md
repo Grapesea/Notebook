@@ -19,7 +19,7 @@ $$\text{zig-zig}: \hat{c_i} \leq 3(R_2(X)-R_1(X))$$
 
 推导如下：
 
-> [!TIP]+ 手写的推导过程
+> [!TIP] +手写的推导过程
 > <center><img src = "./figures/ads/zig1.jpg" style="zoom: 25%;"/></center>
 > <center><img src = "./figures/ads/zigzag.jpg" style="zoom: 30%;"/></center>
 > <center><img src = "./figures/ads/zigzig.jpg" style="zoom: 30%;"/></center>
@@ -38,7 +38,7 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 ### PTA作业题整理
 
-> [!NOTE]+ 1.1-3
+> [!NOTE] +1.1-3
 >
 > For a Splay tree that is non-empty in the initial state, the amortized cost of $m$ finite operations is $O(m \log n)$, assuming that the maximum number of nodes in the Splay tree is $n$.
 >
@@ -48,7 +48,7 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 >
 > 所以，对于任意初始状态的Splay树（包含 $n_0 \leq n$个节点），$m$次操作的摊还代价是$O((m + n) \log n)$.
 
-> [!NOTE]+ 1.2-3
+> [!NOTE] +1.2-3
 >
 > For a Splay tree contains $k$ nodes in the initial state, assuming that the maximum number of nodes in the Splay tree is $n$. What’s the amortized cost of $m$ operations? ($k \gg m$)
 >
@@ -61,19 +61,19 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 
 ## 杂题
 
-> [!TIP]+ 1.2-2
+> [!TIP] +1.2-2
 >
 > <center><img src = "./figures/ads/1.2-2.png" style="zoom: 60%;"/></center>
 
     
 
-> [!TIP]+ 2025fall-yy-mid
+> [!TIP] +2025fall-yy-mid
 >
 > <center><img src = "./figures/ads/yymid4.png" style="zoom: 60%;"/></center>
 >
 > 答案是D，因为
 
-> [!TIP]+ 2024mid
+> [!TIP] +2024mid
 >
 > <center><img src = "./figures/ads/2024mid1.png" style="zoom: 60%;"/></center>
 >
@@ -83,13 +83,13 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 > 平均成本（Average Cost）：通常基于随机输入模型，是操作在 “随机输入” 下的期望时间成本，属于概率驱动的期望分析。<br>
 > 两者没有 “摊还成本从不小于平均成本” 的必然关系。例如，某些场景下摊还成本可能低于平均成本（若平均成本是基于高概率坏情况的期望，而摊还分析通过操作间的成本摊分得到了更优的最坏平均）。因此题目说法错误，答案为F。
 
-> [!TIP]+ 2025fall-zgc-mid
+> [!TIP] +2025fall-zgc-mid
 >
 > <center><img src = "./figures/ads/zgc-mid-5.png" style="zoom: 60%;"/></center>
 >
 > 答案是全选.
 
-> [!TIP]+ Final Practice 2 2-4
+> [!TIP] +Final Practice 2 2-4
 >
 > <center><img src = "./figures/amor/f2.2-4.png" style="zoom: 60%;"/></center>
 >
@@ -97,7 +97,7 @@ $$k = \begin{cases} \dfrac{H(X)}{2} & H(X)\text{是偶数}\\ \dfrac{H(X)-1}{2} +
 >
 > 按照这个原理，在正常的cost = 1的insertion操作下，nums增长应该要快于1；在size扩充的insertion下，size应该是减号，以释放势能，所以选B.
 
-> [!TIP]+ Final Practice 2 2-18
+> [!TIP] +Final Practice 2 2-18
 >
 > <center><img src = "./figures/amor/f2.2-18.png" style = "zoom:60%"/></center>
 >

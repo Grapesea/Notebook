@@ -1,6 +1,6 @@
 # node2vec
 
-> [!INFO]+ 论文信息
+> [!IMPORTANT] +论文信息
 >
 > 论文地址：[arxiv: 1607.00653](https://arxiv.org/abs/1607.00653)
 >
@@ -63,7 +63,7 @@ $$\alpha_{pq}(t,x) = \begin{cases} \dfrac1p & (dist(t,x) = 0)\\ 1 & (dist(t,x) =
 
 ## Node2vec算法
 
-> [!INFO]+ 代码仓库
+> [!IMPORTANT] +代码仓库
 >
 > [node2vec](https://github.com/aditya-grover/node2vec)
 >

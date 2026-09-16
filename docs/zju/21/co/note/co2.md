@@ -1,6 +1,6 @@
 ## Chapter 2
 
-> [!INFO]+ 资源链接
+> [!IMPORTANT] +资源链接
 >
 > [NoughtQ的笔记](https://note.noughtq.top/system/co/2)
 >
@@ -14,7 +14,7 @@
 
 #### Arithmetic
 
-> [!NOTE]- Jumping Table
+> [!NOTE] +Jumping Table
 >
 > 想要表示C语言的switch-case语句，可以使用分支地址的方法，如图：
 >

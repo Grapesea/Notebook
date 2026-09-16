@@ -1,8 +1,8 @@
-> [!INFO]+ 课程信息
+> [!IMPORTANT] +课程信息
 >
 > 郑乾老师
 
-> [!INFO]+ 课程资源
+> [!IMPORTANT] +课程资源
 >
 > [咸鱼暄](https://note.xecades.xyz/cs/tcs)
 >

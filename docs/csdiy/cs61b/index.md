@@ -1,6 +1,6 @@
 ## CS61B-2024 Spring
 
-> [!TIP]+ 课程资源
+> [!TIP] +课程资源
 > [课程网站-2024 Spring](https://sp24.datastructur.es/)
 >
 > 官方推荐Java刷题网站：[codingbat](https://codingbat.com/java/AP-1)

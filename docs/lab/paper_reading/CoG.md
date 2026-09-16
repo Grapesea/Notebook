@@ -4,6 +4,13 @@
 >
 > * Github仓库: https://github.com/zjukg/CoG
 
+原先工作的Problem: 现有 LLM-driven graph agent 范式（ToG、PoG 等）采用 **plan–retrieve–generate** 循环迭代扩展证据链，但在复杂场景下表现不稳定，作者将其归因为 cognitive rigidity（认知刚性）——不论任务不确定性如何，都套用同质化（homogeneous）的搜索策略。这种刚性具体表现为两类相互强化的问题：
+
+1. 无偏探索导致错误的展开（Error Cascading from Indiscriminate Exploration）：无差别探索无法区分高价值信号与噪声，一次早期的关系选择失误（如选 *contains* 而非 *adjoins*）会将 agent 暴露给规模大得多的候选集，噪声主导推理分支，导致不可逆的轨迹偏离
+2. 短视决策导致结构性不匹配（Structural Misalignment from Myopic Decisions）：过度依赖局部语义匹配而忽视全局逻辑约束，选中"看似相关但结构错误"的关系（如 *actor* 而非 *director*），使得下游约束（如 runtime 检查）无法满足，被迫过早终止
+
+---
+
 CoG是一个针对**在知识图谱上做可控推理**的无需训练的框架，分为以下两层：
 
 * Relational Blueprint Guidance （Planning）
@@ -60,17 +67,11 @@ CoG是一个针对**在知识图谱上做可控推理**的无需训练的框架�
     * 当检测到失败信号（如停滞或证据不足）时，LLM 结合working memory中的推理轨迹 $\mathcal{T}=[e_0,r_1,e_1,\dots]$ 以及被剪枝分支的摘要，定位到应对偏差负责的决策点 $t_{\text{err}}$；随后执行有针对性的回溯：将 frontier 还原到 $t_{\text{err}}$ 之前的状态，召回此前被过早剪枝但结构相关的候选，恢复扩展；
     * Grounded Inference（兜底机制）：极端情况下（KG 缺失关键边），若重路由仍无法恢复可验证证据链，CoG 聚合已验证路径片段与未满足约束，提示 LLM 在这一受限有效上下文内合成答案，而非自由生成，从而在避免过早终止的同时抑制参数化幻觉.
 
-
 ---
-
-原先工作的Problem: 现有 LLM-driven graph agent 范式（ToG、PoG 等）采用 **plan–retrieve–generate** 循环迭代扩展证据链，但在复杂场景下表现不稳定，作者将其归因为 cognitive rigidity（认知刚性）——不论任务不确定性如何，都套用同质化（homogeneous）的搜索策略。这种刚性具体表现为两类相互强化的问题：
-
-1. 无偏探索导致错误的展开（Error Cascading from Indiscriminate Exploration）：无差别探索无法区分高价值信号与噪声，一次早期的关系选择失误（如选 *contains* 而非 *adjoins*）会将 agent 暴露给规模大得多的候选集，噪声主导推理分支，导致不可逆的轨迹偏离
-2. 短视决策导致结构性不匹配（Structural Misalignment from Myopic Decisions）：过度依赖局部语义匹配而忽视全局逻辑约束，选中"看似相关但结构错误"的关系（如 *actor* 而非 *director*），使得下游约束（如 runtime 检查）无法满足，被迫过早终止
 
 本文架构优势：取代现有 LLM-driven graph agent 中"千篇一律"的搜索策略，在不训练任何参数的前提下，同时缓解了多跳 KGQA 中的 error cascading（噪声主导错误分支）与 structural misalignment （局部语义匹配导致的全局结构错位）两大顽疾.
 
 ---
 
-考虑一个 case study：
+Case study：
 

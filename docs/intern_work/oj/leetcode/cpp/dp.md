@@ -1,6 +1,6 @@
 # Dynamic Programming
 
-> [!INFO]+ 教程地址
+> [!IMPORTANT] +教程地址
 >
 > [动态规划理论基础](https://www.programmercarl.com/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html)
 
@@ -14,7 +14,7 @@
 
 ## 基础1-10
 
-> [!TIP]- [509.斐波那契](https://leetcode.com/problems/fibonacci-number/)
+> [!TIP] +[509.斐波那契](https://leetcode.com/problems/fibonacci-number/)
 >
 > ```cpp
 > class Solution {
@@ -36,7 +36,7 @@
 >
 > 70.同理，略.
 
-> [!TIP]- [746.Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/description/)
+> [!TIP] +[746.Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/description/)
 >
 > 首先，可以把cost数组理解成跳跃后的花费.
 >
@@ -57,7 +57,7 @@
 >
 > 时间空间复杂度均为\(O(n)\).
 
-> [!TIP]- [62.Unique Path I](https://leetcode.com/problems/unique-paths) & [63. Unique Path II](https://leetcode.com/problems/unique-paths-ii/)
+> [!TIP] +[62.Unique Path I](https://leetcode.com/problems/unique-paths) & [63. Unique Path II](https://leetcode.com/problems/unique-paths-ii/)
 >
 > 这2个是较为简单的动规.
 >
@@ -132,7 +132,7 @@
 > };
 > ```
 
-> [!TIP]- [343.Integer Break](https://leetcode.com/problems/integer-break/)
+> [!TIP] +[343.Integer Break](https://leetcode.com/problems/integer-break/)
 >
 > ```cpp
 > class Solution {
@@ -148,7 +148,7 @@
 > };
 > ```
 
-> [!TIP]- [96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
+> [!TIP] +[96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
 >
 > ```cpp
 > class Solution {
@@ -169,7 +169,7 @@
 
 ## 0-1背包问题
 
-> [!TIP]- ADS-hw5-PTA
+> [!TIP] +ADS-hw5-PTA
 >
 > 这是0-1背包的基础板子.
 >
@@ -210,7 +210,7 @@
 
 [198. House Robber](https://leetcode.com/problems/house-robber/)
 
-> [!TIP]- sol
+> [!TIP] +sol
 > ```c
 > int rob(vector<int>& nums) {
 >     int n = nums.size();
@@ -229,7 +229,7 @@
 
 这里需要注意的是max函数传入时`st`参数也需进入，否则会丢失信息造成样例错误.
 
-> [!TIP]- sol
+> [!TIP] +sol
 >
 > ```c
 > int max(int* nums, int st, int* sum, int pos){
@@ -285,7 +285,7 @@
 
 树形dp：用`size=2`的sum数组进行dp，sum[0]表示不取，sum[1]表示取走，后序遍历整棵树来获得最终信息.
 
-> [!TIP]- sol
+> [!TIP] +sol
 >
 > ```c
 > /**
@@ -322,7 +322,7 @@
 
 创建了一个二维dp数组，其中pricesSize个行，2个列. 列用于表示交易或者不交易之后的最优利润值.
 
-> [!TIP]- sol
+> [!TIP] +sol
 >
 > ```c
 > int maxProfit(int* prices, int pricesSize) {
@@ -345,7 +345,7 @@
 
 [122. 买卖股票的最佳时机II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
 
-> [!TIP]- sol
+> [!TIP] +sol
 >
 > ```c
 >

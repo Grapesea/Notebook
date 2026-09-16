@@ -5,7 +5,7 @@
 > $\quad$
 > [教程手册](http://www.datawhale.cn/learn/summary/85)
 
-> [!TIP]+ 课程大纲
+> [!TIP] +课程大纲
 > Chap 1:解析方法与几何模型<br>
 > Chap 2:微分方程与动力系统<br>
 > Chap 3:函数极值与规划模型<br>

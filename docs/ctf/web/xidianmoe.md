@@ -27,7 +27,7 @@ if (isset($_GET['data'])) {
 }
 ```
 
-> [!TIP]+ php反序列化方法
+> [!TIP] +php反序列化方法
 > > [参考链接](https://xz.aliyun.com/news/11953)
 
 这题需要做的事是

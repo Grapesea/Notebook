@@ -7,7 +7,7 @@
 1. 生成置换段（Runs）： 将大文件切成内存能处理的小块，在内存中排好序，写回外存.  
 2. 归并段（Merging）： 将多个已排序的段合并成更大的有序段，直到整个文件有序.
 
-> [!TIP]+ 举例
+> [!TIP] +举例
 >
 > <center><img src = "./figures/exsort/eg.png" style="zoom: 60%;"/></center>
 >
@@ -94,7 +94,7 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{N-1} F_{N-i}^{(k)}$$
 
 以某年期末涉及到的题目举例：
 
-> [!TIP]+ Final Exercise 1.1-5
+> [!TIP] +Final Exercise 1.1-5
 >
 > <center><img src = "./figures/exsort/f1.1-5.png" style="zoom: 60%;"/></center>
 >
@@ -102,7 +102,7 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{N-1} F_{N-i}^{(k)}$$
 
 ## PTA习题
 
-> [!TIP]+ 8.1-5~8
+> [!TIP] +8.1-5~8
 >
 > <center><img src = "./figures/exsort/1-5,8.png" style="zoom: 60%;"/></center>
 >
@@ -112,7 +112,7 @@ $$F_N^{(k)} = \sum\limits_{i=1}^{N-1} F_{N-i}^{(k)}$$
 >
 > 事实上，将输入输出缓冲区分开不能降低pass数，而是便于进行并行操作从而提升处理效率.
 
-> [!TIP]+ Final Practice 2 2-16
+> [!TIP] +Final Practice 2 2-16
 >
 > <center><img src = "./figures/exsort/f2.2-16.png" style = "zoom:60%"/></center>
 >

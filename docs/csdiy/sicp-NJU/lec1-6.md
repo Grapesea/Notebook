@@ -1,6 +1,6 @@
 > 记录了lec1-6的零碎内容.
 
-> [!TIP]- hw与lab运行方式
+> [!TIP] +hw与lab运行方式
 >
 > lab-Test:
 >

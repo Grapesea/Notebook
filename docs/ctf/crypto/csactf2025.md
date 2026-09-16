@@ -61,7 +61,7 @@ flag: `CSACTF{Go0d_JoB!_We1C0mE_t0_oUR_csACtF_2o25!}`
 
 先看problem：
 
-> [!INFO]- Problem
+> [!IMPORTANT] +Problem
 >
 > ```python
 > from Crypto.Util.number import *
@@ -100,7 +100,7 @@ flag: `CSACTF{Go0d_JoB!_We1C0mE_t0_oUR_csACtF_2o25!}`
 
 两个部分分别分析：
 
-> [!TIP]- writeup-sage
+> [!TIP] +writeup-sage
 >
 > ```python
 > from Crypto.Util.number import long_to_bytes

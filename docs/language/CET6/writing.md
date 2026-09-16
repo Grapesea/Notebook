@@ -1,4 +1,4 @@
-> [!NOTE]+ [bilibili: 一个视频让你高分拿下六级写作 写译197分高手超详细分解教学](https://www.bilibili.com/video/BV14FCgBLEck/)
+> [!NOTE] +[bilibili: 一个视频让你高分拿下六级写作 写译197分高手超详细分解教学](https://www.bilibili.com/video/BV14FCgBLEck/)
 >
 > 需要着重关注的关键采分点：
 >
@@ -22,7 +22,7 @@
 >
 > * 第二段：2-3个观点
 
-> [!NOTE]+ [bilibili: 四六级写作模板课（全集） 四级写作 四级作文 六级写作 六级作文 作文模板](https://www.bilibili.com/video/BV1vK4y1e7A6)
+> [!NOTE] +[bilibili: 四六级写作模板课（全集） 四级写作 四级作文 六级写作 六级作文 作文模板](https://www.bilibili.com/video/BV1vK4y1e7A6)
 >
 > Paragraph 1: 1-2 提出问题； 3 过渡句
 >

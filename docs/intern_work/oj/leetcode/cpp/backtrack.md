@@ -19,7 +19,7 @@ void backtracking(参数) {
 }
 ```
 
-> [!TIP]- 77.Combinations
+> [!TIP] +77.Combinations
 >
 > [地址](https://leetcode.com/problems/combinations/)
 >
@@ -55,7 +55,7 @@ void backtracking(参数) {
 >
 > 于是可以将for的终止条件改成`i <= n - (k - path.size()) + 1`.
 
-> [!TIP]- 216.Combination Sum III
+> [!TIP] +216.Combination Sum III
 >
 > [地址](https://leetcode.com/problems/combination-sum-iii/)
 >

@@ -224,6 +224,7 @@ nav:
         - 概述: zju/31/os/index.md
       - 计算机网络:         
         - 概述: zju/31/web/index.md
+        - Lab1 <此处替换为实验名称>: zju/31/web/lab1.md
       - B/S体系软件设计: 
         - 概述: zju/31/bs/index.md
       - 自然语言处理: 
@@ -323,8 +324,10 @@ nav:
       - 实验记录:
         - Lab00: csdiy/mit6.1810/labs/00.md
         - Lab01: csdiy/mit6.1810/labs/01.md
+        - Lab02: csdiy/mit6.1810/labs/02.md
       - xv6文档阅读:
         - Chap 01: csdiy/mit6.1810/xv6/01.md
+      - Homework: csdiy/mit6.1810/homework.md
     - Stanford CS144 & UCB CS168 Computer Network:
       - 课程计划: csdiy/cs144/index.md
       - Introduction: csdiy/cs144/1.md
@@ -338,9 +341,9 @@ nav:
         - Project 1: csdiy/cs168/labs/proj01.md
     - 生成式软件工程 (南京大学 蒋炎岩, 2026):
       - 课程计划: csdiy/gse-NJU/index.md
-      - "1": "csdiy/gse-NJU/1.md"  # mkdocs-nav-sync
-      - "2": "csdiy/gse-NJU/2.md"  # mkdocs-nav-sync
-      - "3": "csdiy/gse-NJU/3.md"  # mkdocs-nav-sync
+      - 1: csdiy/gse-NJU/1.md
+      - 2: csdiy/gse-NJU/2.md
+      - 3: csdiy/gse-NJU/3.md
     - CS571:React(UW-Madison):
       - 课程计划: intern_work/web_develop/cs571/index.md
     - CS188 (UCB): 
@@ -357,6 +360,7 @@ nav:
       - 课程计划: lab/cs224n/index.md
     - CS224W:
       - 课程计划: lab/cs224w/index.md
+      - Lec 18-19：Deep generative models for graphs & Conclusion: lab/cs224w/18-19.md
     - Datawhale Hello-agent:
       - 课程计划: csdiy/datawhale_hello_agent/index.md
     - 斋藤康毅-深度学习(鱼书):
@@ -414,6 +418,7 @@ nav:
         - colab0: lab/cs224w/labs/colab0.md
         - colab1: lab/cs224w/labs/colab1.md
         - colab2: lab/cs224w/labs/colab2.md
+        - Colab 3: lab/cs224w/labs/colab3.md
     - 工具:
       - AutoFigure: lab/tools/autofigure.md
       - RAGFlow: lab/tools/ragflow.md
@@ -425,7 +430,8 @@ nav:
       - 日志: lab/paper_reading/log.md
       - CoG: lab/paper_reading/CoG.md
       - Temp-R1: lab/paper_reading/Temp_r1.md
-      - "GNN-RAG": "lab/paper_reading/GNN_RAG.md"
+      - GNN-RAG: lab/paper_reading/GNN_RAG.md
+      - 【xxx 20xx】: lab/paper_reading/template.md
   - 实习&工作: 
     - 导航: intern_work/index.md
     - 笔试机试: 
@@ -485,7 +491,7 @@ nav:
       - 导航: ctf/web/index.md
       - SQL注入: ctf/web/sql.md
       - 西电CTF平台: ctf/web/xidianmoe.md
-      - "info": "ctf/web/info.md"  # mkdocs-nav-sync
+      - 信息搜集: ctf/web/info.md
     - Crypto笔记: 
       - 导航: ctf/crypto/index.md
       - CTF101课程遗留问题探索: ctf/crypto/ctf101.md

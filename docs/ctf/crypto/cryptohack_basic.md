@@ -1,6 +1,6 @@
 ## Introduction
 
-> [!TIP]- 传递json
+> [!TIP] +传递json
 >
 > Several of the challenges are dynamic and require you to talk to our challenge servers over the network. This allows you to perform man-in-the-middle attacks on people trying to communicate, or directly attack a vulnerable service. To keep things consistent, our interactive servers always send and receive JSON objects.
 >
@@ -51,7 +51,7 @@
 
 主要是需要温习一下各种加解码的代码书写.
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > from pwn import * # pip install pwntools
@@ -104,7 +104,7 @@
 
 ### [You either know, XOR you don't](https://cryptohack.org/challenges/general/)
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```plaintext
 > I've encrypted the flag with my secret key, you'll never be able to guess it.
@@ -126,7 +126,7 @@
 
 是图片RGB异或的隐写，可以用stegsolve或者书写以下代码直接转化：
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 >
@@ -169,7 +169,7 @@
 
 这个题是Legendre的应用.
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > lis = # too long to display
@@ -205,7 +205,7 @@ $$ \Longrightarrow d = (15^{e_1e_2}-14^{e_1e_2})q^{e_1e_2} \equiv 5^{e_1e_2}c_1^
 
 所以只需要计算$gcd(d,N)$即可得到$q$.
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 >
 > ```python
 > from math import gcd
@@ -239,7 +239,7 @@ MIIBCgKC... (a whole bunch of base64)
 
 想要从中提取出RSA私钥有两种手段，一是**openssl command line tool**，二是**PyCryptodome**.
 
-> [!TIP]- Writeup
+> [!TIP] +Writeup
 > 法一：
 >
 > ```bash
@@ -293,7 +293,7 @@ SSH的RSA密钥格式可能如下：
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtPLqba+GFvDHdFVs1Vvdk56cKqqw5cdomlu034666UsoFIqkig8H5kNsNefSpaR/iU7G0ZKCiWRRuAbTsuHN+Cz526XhQvzgKTBkTGYXdF/WdG/6/umou3Z0+wJvTZgvEmeEclvitBrPZkzhAK1M5ypgNR4p8scJplTgSSb84Ckqul/Dj/Sh+fwo6sU3S3j92qc27BVGChpQiGwjjut4CkHauzQA/gKCBIiLyzoFcLEHhjOBOEErnvrRPWCIAJhALkwV2rUbD4g1IWa7QI2q3nB0nlnjPnjjwaR7TpH4gy2NSIYNDdC1PZ8reBaFnGTXgzhQ2t0ROBNb+ZDgH8Fy+KTG+gEakpu20bRqB86NN6frDLOkZ9x3w32tJtqqrJTALy4Oi3MW0XPO61UBT133VNqAbNYGE2gx+mXBVOezbsY46C/V2fmxBJJKY/SFNs8wOVOHKwqRH0GI5VsG1YZClX3fqk8GDJYREaoyoL3HKQt1Ue/ZW7TlPRYzAoIB62C0= bschneier@facts
 ```
 
-> [!TIP]- [Writeup](https://github.com/ltduc147/Cryptohack/blob/master/GENERAL/SSH_Keys/solution.py)
+> [!TIP] +[Writeup](https://github.com/ltduc147/Cryptohack/blob/master/GENERAL/SSH_Keys/solution.py)
 >
 > ```python
 > from Crypto.PublicKey import RSA

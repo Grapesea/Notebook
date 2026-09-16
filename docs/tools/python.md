@@ -1,6 +1,6 @@
 ## 语法和库函数汇总
 
-> [!TIP]- re模块（正则表达式）
+> [!TIP] +re模块（正则表达式）
 >
 > 可以使用正则表达式，用于处理字符串。
 >
@@ -21,7 +21,7 @@
 >     print("Wrong")
 > ```
 
-> [!TIP]- Encode & Decode
+> [!TIP] +Encode & Decode
 >
 > `encode()`是将`str`变成bytes，`decode()`是将bytes变成`str`.
 >
@@ -54,7 +54,7 @@
 
 ## 文档与图片处理
 
-> [!TIP]- 提取pdf首页的图片:Python方法
+> [!TIP] +提取pdf首页的图片:Python方法
 >
 > ```bash
 > pip install PyMuPDF Pillow

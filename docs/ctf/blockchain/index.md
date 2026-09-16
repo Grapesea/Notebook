@@ -1,6 +1,6 @@
 # 区块链技术
 
-> [!INFO]+ 参考资料
+> [!IMPORTANT] +参考资料
 >
 > [CTF101 2024 MISC Lec3](https://courses.zjusec.com/2024/slides/misc-lec3/#/)
 >

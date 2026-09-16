@@ -6,34 +6,34 @@ import re
 from pathlib import Path
 
 
-# Map Typora/GitHub/Obsidian names to built-in Material admonition styles.
+# Map accepted and legacy names to the five Typora/GitHub callout styles.
 CALLOUT_STYLES = {
     "note": "note",
-    "abstract": "abstract",
-    "summary": "abstract",
-    "tldr": "abstract",
-    "info": "info",
-    "todo": "info",
+    "abstract": "note",
+    "summary": "note",
+    "tldr": "note",
+    "info": "warning",
+    "todo": "tip",
     "tip": "tip",
     "hint": "tip",
     "important": "warning",
-    "success": "success",
-    "check": "success",
-    "done": "success",
-    "question": "question",
-    "help": "question",
-    "faq": "question",
+    "success": "tip",
+    "check": "tip",
+    "done": "tip",
+    "question": "note",
+    "help": "note",
+    "faq": "note",
     "warning": "warning",
     "caution": "danger",
-    "failure": "failure",
-    "fail": "failure",
-    "missing": "failure",
+    "failure": "danger",
+    "fail": "danger",
+    "missing": "danger",
     "danger": "danger",
     "error": "danger",
-    "bug": "bug",
-    "example": "example",
-    "quote": "quote",
-    "cite": "quote",
+    "bug": "danger",
+    "example": "note",
+    "quote": "note",
+    "cite": "note",
 }
 
 CALLOUT_MARKER_RE = re.compile(
@@ -55,34 +55,66 @@ ADMONITION_CALLOUT_TYPES = {
     "note": "NOTE",
     "notes": "NOTE",
     "note1": "NOTE",
-    "abstract": "ABSTRACT",
-    "summary": "ABSTRACT",
-    "tldr": "ABSTRACT",
-    "info": "INFO",
-    "into": "INFO",
-    "todo": "INFO",
+    "abstract": "NOTE",
+    "summary": "NOTE",
+    "tldr": "NOTE",
+    "info": "IMPORTANT",
+    "into": "IMPORTANT",
+    "todo": "TIP",
     "tip": "TIP",
     "tips": "TIP",
     "hint": "TIP",
     "important": "IMPORTANT",
-    "success": "SUCCESS",
-    "check": "SUCCESS",
-    "done": "SUCCESS",
-    "question": "QUESTION",
-    "questions": "QUESTION",
-    "help": "QUESTION",
-    "faq": "QUESTION",
+    "success": "TIP",
+    "check": "TIP",
+    "done": "TIP",
+    "question": "NOTE",
+    "questions": "NOTE",
+    "help": "NOTE",
+    "faq": "NOTE",
     "warning": "WARNING",
     "caution": "CAUTION",
-    "failure": "FAILURE",
-    "fail": "FAILURE",
-    "missing": "FAILURE",
+    "failure": "CAUTION",
+    "fail": "CAUTION",
+    "missing": "CAUTION",
     "danger": "CAUTION",
     "error": "CAUTION",
-    "bug": "BUG",
-    "example": "EXAMPLE",
-    "quote": "QUOTE",
-    "cite": "QUOTE",
+    "bug": "CAUTION",
+    "example": "NOTE",
+    "quote": "NOTE",
+    "cite": "NOTE",
+}
+
+CALLOUT_TYPES = {
+    "note": "NOTE",
+    "abstract": "NOTE",
+    "summary": "NOTE",
+    "tldr": "NOTE",
+    "question": "NOTE",
+    "questions": "NOTE",
+    "help": "NOTE",
+    "faq": "NOTE",
+    "example": "NOTE",
+    "quote": "NOTE",
+    "cite": "NOTE",
+    "tip": "TIP",
+    "tips": "TIP",
+    "hint": "TIP",
+    "todo": "TIP",
+    "success": "TIP",
+    "check": "TIP",
+    "done": "TIP",
+    "info": "IMPORTANT",
+    "into": "IMPORTANT",
+    "important": "IMPORTANT",
+    "warning": "WARNING",
+    "caution": "CAUTION",
+    "failure": "CAUTION",
+    "fail": "CAUTION",
+    "missing": "CAUTION",
+    "danger": "CAUTION",
+    "error": "CAUTION",
+    "bug": "CAUTION",
 }
 
 
@@ -132,6 +164,13 @@ def convert_callouts(markdown: str) -> str:
             title = kind.replace("-", " ").replace("_", " ").title()
         title = title.replace("\\", "\\\\").replace('"', '\\"')
         collapse = marker.group("collapse")
+        # Typora requires the type marker itself to end after `]`.  Its
+        # optional leading +/- title convention still preserves MkDocs's
+        # expanded/collapsed details behaviour.
+        if collapse is None and title.startswith("+"):
+            collapse, title = title[0], title[1:].lstrip()
+            if not title:
+                title = kind.replace("-", " ").replace("_", " ").title()
         directive = "???+" if collapse == "+" else "???" if collapse == "-" else "!!!"
         output.append(f'{indent}{directive} {style} "{title}"')
 
@@ -207,11 +246,13 @@ def migrate_admonitions(markdown: str) -> str:
 
         indent = admonition.group("indent")
         marker = admonition.group("marker")
-        suffix = "+" if marker == "???+" else "-" if marker == "???" else ""
+        # Typora only needs the `+` convention.  Both legacy MkDocs details
+        # forms become an expanded, collapsible Typora callout.
+        suffix = "+" if marker in {"???+", "???"} else ""
         title = _unquote_title(admonition.group("title"))
-        header = f"{indent}> [!{callout_type}]{suffix}"
-        if title:
-            header += f" {title}"
+        header = f"{indent}> [!{callout_type}]"
+        if suffix or title:
+            header += f" {suffix}{title}"
         output.append(header)
 
         content_indent = len(indent) + 4
@@ -242,6 +283,51 @@ def migrate_admonitions(markdown: str) -> str:
     if trailing_newline:
         result += "\n"
     return result
+
+
+def normalize_callouts(markdown: str) -> str:
+    """Restrict source callouts to Typora's five types and move +/- to titles."""
+    trailing_newline = markdown.endswith(("\n", "\r"))
+    lines = markdown.splitlines()
+    output: list[str] = []
+    fence_character = ""
+    fence_length = 0
+
+    for line in lines:
+        fence_match = FENCE_RE.match(line)
+        if fence_character:
+            output.append(line)
+            if fence_match:
+                fence = fence_match.group("fence")
+                if fence[0] == fence_character and len(fence) >= fence_length and not fence_match.group("rest").strip():
+                    fence_character = ""
+                    fence_length = 0
+            continue
+        if fence_match:
+            fence = fence_match.group("fence")
+            fence_character = fence[0]
+            fence_length = len(fence)
+            output.append(line)
+            continue
+
+        marker = CALLOUT_MARKER_RE.match(line)
+        target = CALLOUT_TYPES.get(marker.group("kind").casefold()) if marker else None
+        if not marker or not target:
+            output.append(line)
+            continue
+        # `-` was an earlier compatibility convention.  Normalize it to the
+        # only supported extension: `+` means a collapsible callout.
+        title = marker.group("title").strip()
+        prefix = "+" if marker.group("collapse") in {"+", "-"} or title[:1] in {"+", "-"} else ""
+        if title[:1] in {"+", "-"}:
+            title = title[1:].lstrip()
+        header = f'{marker.group("indent")}> [!{target}]'
+        if prefix or title:
+            header += f" {prefix}{title}"
+        output.append(header)
+
+    result = "\n".join(output)
+    return result + "\n" if trailing_newline else result
 
 
 def migrate_file(path: Path, *, check: bool = False) -> bool:

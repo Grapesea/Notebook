@@ -1,4 +1,4 @@
-> [!TIP]+
+> [!TIP] +
 >
 > 课程网址：[CS 188 Spring 2025 Introduction to Artificial Intelligence at UC Berkeley](https://inst.eecs.berkeley.edu/~cs188/sp25/)
 >

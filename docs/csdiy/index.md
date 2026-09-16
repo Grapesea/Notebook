@@ -97,7 +97,7 @@
 </tbody>
 </table>
 
-> [!TIP]- UCB课程资源访问
+> [!TIP] +UCB课程资源访问
 > 以下tips来自CC98用户：@曲终人散场 和 @77携爱敬上，[链接](https://www.cc98.org/topic/6096168)
 >
 > > 在访问UCB的课程（如CS61A）时会发现，Berkeley把前面几次的网站都锁掉了，想看需要有Berkeley账号，提供两个解决方法：

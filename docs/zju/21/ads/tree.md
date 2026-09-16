@@ -1,4 +1,4 @@
-> [!WARNING]+ 数值规模Cheating List
+> [!WARNING] +数值规模Cheating List
 > 以下是Cheating List，是对4种树的各类数值规模的总结：
 >
 > |                    | AVL Tree                    | Splay Tree                  | RB Tree               | B+ Tree（$M-\text{order}$）                          |
@@ -155,13 +155,13 @@ AVLNode* rlRotation(AVLNode* root){
 
 #### PTA作业题整理
 
-> [!NOTE]+ 1.1-1
+> [!NOTE] +1.1-1
 >
 > Consider an AVL tree. Immediately after we insert a node (without restoring the tree balance), the parent of the newly inserted node may become imbalanced. 
 >
 > 是错的，因为新插入的节点本身是叶子节点，其平衡因子为0（左右子树高度都是0），父节点不会立即出现问题. 失衡只可能发生在祖先节点上（祖父节点或更高层），而不是直接父节点
 
-> [!NOTE]+ 1.1-2
+> [!NOTE] +1.1-2
 >
 > For every AVL tree, there exists a sequence of nodes such that we can obtain this AVL tree by inserting the nodes in the sequence one by one into an initiallly empty tree.
 >
@@ -179,7 +179,7 @@ AVLNode* rlRotation(AVLNode* root){
 >
 > 考虑前序遍历的方式，按4,2,6,1,3,5,7就能得到这棵树.
 
-> [!NOTE]+ 1.3-2
+> [!NOTE] +1.3-2
 >
 > <center><img src="./figures/ads/1.3-2.png" style="zoom: 60%;" /></center>
 >
@@ -187,18 +187,18 @@ AVLNode* rlRotation(AVLNode* root){
 >
 > After inserting a node, we need to perform at most 1 rotation to rebalance the tree.<br>
 
-> [!NOTE]+ xyx-1
+> [!NOTE] +xyx-1
 > <center><img src="./figures/ads/xyx1-1.png" style="zoom: 60%;" /></center>
 >
 > 举一个例子.
 
-> [!TIP]+ 2021mid
+> [!TIP] +2021mid
 >
 > <center><img src="./figures/ads/2021mid-avl.png" style="zoom: 60%;" /></center>
 >
 > iff是“当且仅当”的意思.
 
-> [!TIP]+ Final Practice 1 Code Completion
+> [!TIP] +Final Practice 1 Code Completion
 >
 > An AVL tree is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more than one, rebalancing is done to restore this property. Figures 1-4 illustrate the rotation rules.
 >
@@ -563,13 +563,13 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 #### PTA习题
 
-> [!TIP]+ 1.3-3
+> [!TIP] +1.3-3
 >
 > <center><img src = "./figures/ads/1.3-3.png" style="zoom: 60%;"/></center>
 >
 > 全选.
 
-> [!TIP]+ [xyx-1](https://www.yuque.com/xianyuxuan/coding/ads_exam_1)
+> [!TIP] +[xyx-1](https://www.yuque.com/xianyuxuan/coding/ads_exam_1)
 >
 > <center><img src = "./figures/ads/xyx1-2.png" style="zoom: 60%;"/></center>
 >
@@ -588,13 +588,13 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 >
 > <center><img src = "./figures/ads/xyx1-6.jpg" style="zoom: 60%;"/></center>
 
-> [!TIP]+ 2025fall-ch-mid
+> [!TIP] +2025fall-ch-mid
 >
 > <center><img src = "./figures/ads/2025midch-1.png" style="zoom: 60%;"/></center>
 >
 > <center><img src = "./figures/ads/2025midch-1.jpg" style="zoom: 50%;"/></center>
 
-> [!TIP]+ Final Practice 2 2-17
+> [!TIP] +Final Practice 2 2-17
 >
 > <center><img src = "./figures/ads/f2.2-17.png" style = "zoom:60%"/></center>
 >
@@ -608,7 +608,7 @@ Splaying Operation：是由一系列的Splaying Step构成的，每一步都使�
 
 ## Lec 2 Red-Black Tree & B+ Tree
 
-> [!INFO] 资源
+> [!IMPORTANT] 资源
 > [OI wiki](https://oi-wiki.org/ds/rbtree/)
 > $\quad$
 > wyy的ADS讲义，这似乎指示着我需要去看看算法导论的讲解.
@@ -719,7 +719,7 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 
 #### PTA习题
 
-> [!TIP]+ 2025fall-yy-mid
+> [!TIP] +2025fall-yy-mid
 >
 > After deleting 10 from the red-black tree given in the figure, which one of the following statements must be FALSE?
 >
@@ -734,26 +734,26 @@ Red-Black Tree 是一个满足以下red-black property的BST：
 >
 > <center><img src = "./figures/ads/yymid1-1.jpg" style="zoom: 30%;"/></center>
 
-> [!TIP]+ xyx-1
+> [!TIP] +xyx-1
 >
 > <center><img src = "./figures/ads/xyx15.png" style="zoom: 50%;"/></center>
 >
 > <center><img src = "./figures/ads/xyx1-5.png" style="zoom: 50%;"/></center>
 
-> [!TIP]+ 2021mid
+> [!TIP] +2021mid
 >
 > In a red-black tree, if an internal black node is of degree 1, then it must have only 1 descendant node.
 >
 > 对.
 
-> [!TIP]+ Final Practice 2 2-6
+> [!TIP] +Final Practice 2 2-6
 >
 > <center><img src = "./figures/ads/f2.2-6.png" style = "zoom:60%"/></center>
 >
 > self-adjusting structure指的是splay, skew/leftist heap这些，balanced指的是AVL, rb tree.
 > **注意审题.**
 
-> [!TIP]+ 23-24Final
+> [!TIP] +23-24Final
 >
 > The teacher wants to write the `IsBpT` function to check if the trees submitted by students satisfy the definition of the B+ tree of a given order (e.g., order 4) learned in our class. The B+ tree structure is defined as follows:
 >
@@ -851,7 +851,7 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 
 过程图如下：
 
-> [!TIP]+ B+树搜索插入操作
+> [!TIP] +B+树搜索插入操作
 > <center><img src = "./figures/ads/bplus0.jpg" style="zoom: 80%;"/></center>
 > <center><img src = "./figures/ads/bplus1.jpg" style="zoom: 80%;"/></center>
 > <center><img src = "./figures/ads/bplus2.jpg" style="zoom: 80%;"/></center>
@@ -863,21 +863,21 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 
 #### PTA作业题整理
 
-> [!NOTE]+ 2.1-2
+> [!NOTE] +2.1-2
 >
 > Consider an insertion in a B+ tree. We may need to update some keys stored in some internal nodes even if no leaf is split during the insertion.
 
-> [!NOTE]+ 2.1-3
+> [!NOTE] +2.1-3
 >
 > Consider an initially empty B+ tree of order $M$. Whatever the value of $M$, after inserting $n$ keys, the cost of a findkey operation on the resulting B+ tree is $\Theta(\log n)$.
 >
 > 这显然是对的，不知道为啥做错了.
 
-> [!NOTE]+ 2.1-9
+> [!NOTE] +2.1-9
 >
 > After inserting a node into a Leftist heap $H$ (which is equivalent to merging a one-node Leftist heap with $H$), we need to swap the children of at most $1$ node to make the resulting tree a Leftist heap.
 
-> [!NOTE]+ 2.2-2
+> [!NOTE] +2.2-2
 >
 > Insert 1,6,7,3,5,2 one by one into an initially empty 2-3 tree (B+ tree of order 3). Which of the following statements is true? We assume that the height of a single node is 1.
 >
@@ -888,7 +888,7 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 >
 > 选D
 
-> [!NOTE]+ 2.3-2
+> [!NOTE] +2.3-2
 >
 > Consider a 2-3 tree. Initially, it has 2 leaves, with keys 1,2,5 and 11,17,19 respectively. Now we perform the following operations one by one:
 > <center>Insert 15;  Insert 21;  Insert 22;  Delete 15;  Delete 5.</center>
@@ -901,13 +901,13 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 > E.Some key in some internal node changes after 15 is deleted.<br>
 > F.The height of the tree decreases after 5 is deleted.
 
-> [!NOTE]+ 2025fall-yy-mid
+> [!NOTE] +2025fall-yy-mid
 >
 > In a B+ tree, internal nodes store both index keys and actual data records.
 >
 > 这是错的，不包含data records.
 
-> [!NOTE]+ 2025fall-yy-mid
+> [!NOTE] +2025fall-yy-mid
 >
 > Insert 10, 20, 30, 40, 50, 60, 70, 80 into an initially empty 3-order B+ tree (i.e., each internal node can hold at most 2 keys). After all insertions, which of the following statements is TRUE?
 >
@@ -922,7 +922,7 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 >
 > 来源：[USFCA可视化板-B+树](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
 
-> [!TIP]+ xyx-1
+> [!TIP] +xyx-1
 >
 > A B+ tree of order 3 with 21 numbers has at least __ nodes of degree 2. 
 >
@@ -938,7 +938,7 @@ B+树的深度是$O(\lceil \log_{\lceil \frac{M}{2} \rceil}N\rceil)$，因为最
 > A: The root is either a leaf or has between $2$ and $M$ children.<br>
 > D: All nonleaf nodes (except the root) have between $\lceil M/2 \rceil$ and $M$ children.
 
-> [!TIP]+ Final Practice 填空
+> [!TIP] +Final Practice 填空
 >
 > ```c
 > static int order = DEFAULT_ORDER;

@@ -518,7 +518,7 @@ RAM your_instance_name (
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 ```
 
-> [!QUESTION]+
+> [!NOTE] +
 >
 > RAM IP Core的生成过程中有一个问题，为什么不能勾选`Primitives Output Register`？
 >

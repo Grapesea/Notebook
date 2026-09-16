@@ -23,8 +23,7 @@ from typing import Iterable
 from pathspec import GitIgnoreSpec
 
 
-MANAGED_MARKER = "mkdocs-nav-sync"
-MARKER_COMMENT = f"  # {MANAGED_MARKER}"
+LEGACY_MANAGED_MARKER = "mkdocs-nav-sync"
 LEAF_RE = re.compile(
     r"^(?P<indent>\s*)-\s+(?P<label>.+):\s+"
     r"(?P<path>(?:\"[^\"]+\.md\"|'[^']+\.md'|[^\s#]+\.md))"
@@ -40,9 +39,23 @@ FRONT_MATTER_TITLE_RE = re.compile(r"^title\s*:\s*(.+?)\s*$", re.IGNORECASE)
 H1_RE = re.compile(r"^#\s+(.+?)\s*#*\s*$")
 
 
-def yaml_string(value: str) -> str:
-    """JSON strings are valid YAML and avoid scalar edge cases."""
-    return json.dumps(value, ensure_ascii=False)
+def yaml_plain(value: str) -> str:
+    """Use the concise, human-editable form requested for generated nav items."""
+    # A plain YAML scalar cannot contain ``: ``: it starts a new mapping
+    # value.  Use a visually equivalent full-width colon so generated titles
+    # remain unquoted while keeping mkdocs.yml valid.
+    value = re.sub(r":(?=\s)", "：", value.replace("\n", " ").strip())
+    # Do not quote generated labels; replace YAML's leading flow-collection
+    # markers with their visually equivalent full-width forms instead.
+    if value.startswith("["):
+        value = "【" + value[1:]
+        if value.endswith("]"):
+            value = value[:-1] + "】"
+    elif value.startswith("{"):
+        value = "｛" + value[1:]
+        if value.endswith("}"):
+            value = value[:-1] + "｝"
+    return value
 
 
 def unquote_yaml_scalar(value: str) -> str:
@@ -115,7 +128,7 @@ class Container:
     item_indent: int
     parent: "Container | None" = None
     group_line: int | None = None
-    managed: bool = False
+    label: str | None = None
     children: list["Leaf | Container"] = field(default_factory=list)
     end_line: int = 0
 
@@ -138,11 +151,6 @@ class Leaf:
     tail: str
     parent: Container
     bare: bool = False
-
-    @property
-    def managed(self) -> bool:
-        return MANAGED_MARKER in self.tail
-
 
 @dataclass
 class ParsedNav:
@@ -218,7 +226,7 @@ def parse_nav(raw: bytes) -> ParsedNav:
             item_indent=indent + 2,
             parent=stack[-1],
             group_line=index,
-            managed=MANAGED_MARKER in (group_match.group("tail") or ""),
+            label=unquote_yaml_scalar(group_match.group("label")),
             end_line=nav_end,
         )
         stack[-1].children.append(child_container)
@@ -327,7 +335,7 @@ def choose_container(root: Container, target_dir: PurePosixPath, live_paths: set
 
 
 def render_leaf(indent: int, title: str, relative_path: str) -> str:
-    return f"{' ' * indent}- {yaml_string(title)}: {yaml_string(relative_path)}{MARKER_COMMENT}"
+    return f"{' ' * indent}- {yaml_plain(title)}: {yaml_plain(relative_path)}"
 
 
 def render_new_tree(indent: int, base: PurePosixPath, paths: list[str], docs: dict[str, Path]) -> list[str]:
@@ -350,18 +358,15 @@ def render_new_tree(indent: int, base: PurePosixPath, paths: list[str], docs: di
         for name, child in node.items():
             if name == "__files__":
                 continue
-            output.append(f"{' ' * level}- {yaml_string(name)}:{MARKER_COMMENT}")
+            output.append(f"{' ' * level}- {yaml_plain(name)}:")
             emit(child, level + 2)  # type: ignore[arg-type]
 
     emit(tree, indent)
     return output
 
 
-def replace_leaf_line(leaf: Leaf, title: str, path: str, managed: bool | None = None) -> str:
-    if managed is None:
-        managed = leaf.managed
-    marker = MARKER_COMMENT if managed else (leaf.tail if leaf.tail else "")
-    return f"{' ' * leaf.indent}- {yaml_string(title)}: {yaml_string(path)}{marker}"
+def replace_leaf_line(leaf: Leaf, title: str, path: str) -> str:
+    return f"{' ' * leaf.indent}- {yaml_plain(title)}: {yaml_plain(path)}"
 
 
 def sync(config_path: Path, docs_dir: Path, ignore_path: Path, explicit_renames: dict[str, str] | None = None, check: bool = False) -> bool:
@@ -388,6 +393,17 @@ def sync(config_path: Path, docs_dir: Path, ignore_path: Path, explicit_renames:
     deletions: set[int] = set()
     effective_paths: set[str] = set()
 
+    # Older script versions marked generated items with a comment. Remove
+    # those legacy markers and their generated quoting too.
+    def clean_legacy_groups(container: Container) -> None:
+        if container.group_line is not None and LEGACY_MANAGED_MARKER in parsed.lines[container.group_line]:
+            replacements[container.group_line] = f"{' ' * (container.item_indent - 2)}- {yaml_plain(container.label or '')}:"
+        for child in container.children:
+            if isinstance(child, Container):
+                clean_legacy_groups(child)
+
+    clean_legacy_groups(parsed.root)
+
     for leaf in parsed.leaves:
         new_path = renames.get(leaf.path, leaf.path)
         if new_path not in live_paths:
@@ -395,11 +411,10 @@ def sync(config_path: Path, docs_dir: Path, ignore_path: Path, explicit_renames:
             continue
         effective_paths.add(new_path)
         if new_path != leaf.path:
-            title = page_title(docs[new_path], new_path) if leaf.managed else leaf.label
+            title = leaf.label
             replacements[leaf.line] = replace_leaf_line(leaf, title, new_path)
-        elif leaf.managed:
-            title = page_title(docs[new_path], new_path)
-            replacements[leaf.line] = replace_leaf_line(leaf, title, new_path, managed=True)
+        elif LEGACY_MANAGED_MARKER in leaf.tail:
+            replacements[leaf.line] = replace_leaf_line(leaf, leaf.label, leaf.path)
 
     missing = sorted(live_paths - effective_paths, key=str.casefold)
     additions: dict[int, list[str]] = defaultdict(list)
@@ -413,10 +428,8 @@ def sync(config_path: Path, docs_dir: Path, ignore_path: Path, explicit_renames:
         by_target[key].append(relative)
 
     pending_additions: dict[int, list[tuple[int, list[str]]]] = defaultdict(list)
-    containers_with_additions: set[int] = set()
     for (container_id, base), paths in by_target.items():
         container = containers_by_id[container_id]
-        containers_with_additions.add(container_id)
         rendered = render_new_tree(container.item_indent, base, paths, docs)
         pending_additions[container.end_line].append((container_depth(container), rendered))
     for line, batches in pending_additions.items():
@@ -424,23 +437,6 @@ def sync(config_path: Path, docs_dir: Path, ignore_path: Path, explicit_renames:
         # items must be emitted from deepest to shallowest to remain siblings.
         for _, rendered in sorted(batches, key=lambda item: item[0], reverse=True):
             additions[line].extend(rendered)
-
-    # Remove generated groups that have no surviving leaves. Manual groups are kept.
-    def prune_generated(container: Container) -> bool:
-        has_live_leaf = False
-        for child in container.children:
-            if isinstance(child, Leaf):
-                if child.line not in deletions:
-                    has_live_leaf = True
-            elif prune_generated(child):
-                has_live_leaf = True
-        has_additions = id(container) in containers_with_additions
-        if container.managed and not has_live_leaf and not has_additions and container.group_line is not None:
-            deletions.add(container.group_line)
-            return False
-        return has_live_leaf or has_additions
-
-    prune_generated(parsed.root)
 
     output: list[str] = []
     for index, line in enumerate(parsed.lines):

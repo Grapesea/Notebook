@@ -1,4 +1,4 @@
-> [!INFO]+ 参考资源
+> [!IMPORTANT] +参考资源
 >
 > 《算法导论》[P359开始（英文版）](https://www.cs.mcgill.ca/~akroit/math/compsci/Cormen%20Introduction%20to%20Algorithms.pdf)或者P204开始（中文版）.
 >
@@ -23,7 +23,7 @@ $$W_{n} = \max \{W_{n-1},W_{n-2}+\omega_n\} \Longrightarrow W_{i} = \max \{W_{i-
 
 时间复杂度：$O(n)$.
 
-> [!TIP]+ 代码
+> [!TIP] +代码
 >
 > ```cpp
 > class Solution{
@@ -55,13 +55,13 @@ $$W_{n} = \max \{W_{n-1},W_{n-2}+\omega_n\} \Longrightarrow W_{i} = \max \{W_{i-
 > }
 > ```
 
-> [!TIP]+ 思考题1
+> [!TIP] +思考题1
 >
 > 算法递推仍然正确，只需要考虑初始条件的修改：$W_0 = 0; W_1 = \max\{W_0,\omega_1\}$ 
 >
 > 最终答案会变成$\max(0, W_n)$（允许空集）
 
-> [!TIP]+ 思考题2
+> [!TIP] +思考题2
 >
 > <center><img src = "./figures/dp/1.png" style = "zoom:60%"/></center>
 >
@@ -69,7 +69,7 @@ $$W_{n} = \max \{W_{n-1},W_{n-2}+\omega_n\} \Longrightarrow W_{i} = \max \{W_{i-
 
 ### PTA习题
 
-> [!TIP]+ 4.7-1 Missile Interception(最长递减子序列问题)
+> [!TIP] +4.7-1 Missile Interception(最长递减子序列问题)
 >
 > ```cpp
 > #include<iostream>
@@ -145,7 +145,7 @@ void OptMatrix( const long r[ ], int N, TwoDimArray M )
 
 ### PTA习题
 
-> [!TIP]+ 2025fall-zgc-mid
+> [!TIP] +2025fall-zgc-mid
 >
 > <center><img src = "./figures/dp/zgcmid-4.png" style="zoom: 50%;"/></center>
 >
@@ -189,7 +189,7 @@ $T(N) = O(N^3)$，但是在稠密图中速度更快一点.
 
 代码：
 
-> [!TIP]+ DP代码以及路径重建代码
+> [!TIP] +DP代码以及路径重建代码
 > ```cpp
 > vector<vector<int>> f(2,vector<int>(N+1));
 > f[0][0] = 0; f[1][0] = 0;
@@ -221,13 +221,13 @@ $T(N) = O(N^3)$，但是在稠密图中速度更快一点.
 
 ## PTA习题
 
-> [!TIP]+ 2025fall-ch-mid
+> [!TIP] +2025fall-ch-mid
 >
 > <center><img src = "./figures/dp/chmid3-3.png" style="zoom: 50%;"/></center>
 >
 > 答案：`int j = 0; j < i; j++`, `dp[i] = max(dp[i], dp[j]+1)`
 
-> [!TIP]+ 2025fall-zgc-mid
+> [!TIP] +2025fall-zgc-mid
 >
 > <center><img src = "./figures/dp/zgcmid-1.png" style="zoom: 50%;"/></center>
 >
@@ -266,7 +266,7 @@ $T(N) = O(N^3)$，但是在稠密图中速度更快一点.
 > }
 > ```
 
-> [!TIP]+ Final Practice 2 Code Completion
+> [!TIP] +Final Practice 2 Code Completion
 >
 > Suppose you are a baker planning to bake some hand-made cream breads.
 >

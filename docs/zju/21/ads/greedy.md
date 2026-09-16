@@ -1,4 +1,4 @@
-> [!WARNING]+ 期末补天tips from [xyx-2](https://www.yuque.com/xianyuxuan/coding/ads_exam_2)
+> [!WARNING] +期末补天tips from [xyx-2](https://www.yuque.com/xianyuxuan/coding/ads_exam_2)
 
 ## 概述
 
@@ -9,7 +9,7 @@
 * 首先证明 greedy choice 的正确性，即证明总存在一个 optimal solution，它当前做的选择与贪心选择相同. 可以考虑的方法是将 optimal solution 转化为一个贪心选择，或者证明贪心选择此时不差于某一个最优解.
 * 其次证明，子问题的一个最优解与当前贪心选择结合后的解是原问题的一个最优解
 
-> [!TIP]+ 概念辨析
+> [!TIP] +概念辨析
 >
 > * Greedy algorithm works only if the local optimum is equal to the global optimum. (T)
 > * In a greedy algorithm, a decision made in one stage is not changed in a later stage. (T)
@@ -28,7 +28,7 @@ DP思路：$O(N^2)$.
 
 **定理**：如果$a_m$是子问题$S_k$中最早结束的，那么$a_m$一定属于$S_k$的某个最大兼容子序列.
 
-> [!TIP]+ 证明
+> [!TIP] +证明
 >
 > Let $A_k$ be the optimal solution set, and aef is the activity in $A_k$ with the earliest finish time.
 >
@@ -61,7 +61,7 @@ Huffman Code(哈夫曼编码)是用于文件压缩的一种前缀码(Prefix code
 
 Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\text{字符深度}\times\text{字符频率})$（深度即编码长度）. 通过将高频字符分配短编码 、低频字符分配长编码 ，实现总代价最小. 例如，字符`a`频率为 $10$（深度 $3$）、`e`频率为 $15$（深度 $2$），则代价为 $3\times 10 + 2\times 15 = 60$.
 
-> [!TIP]+ pseudocode
+> [!TIP] +pseudocode
 > ```c
 > void Huffman ( PriorityQueue  heap[ ],  int  C )
 > {   consider the C characters as C single node binary trees,
@@ -82,11 +82,11 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 
 <center><img src = "./figures/greedy/huffeg.png" style="zoom: 50%;"/></center>
 
-> [!TIP]+ 贪心正确性证明
+> [!TIP] +贪心正确性证明
 > <center><img src = "./figures/greedy/pr1.png" style="zoom: 50%;"/></center>
 > <center><img src = "./figures/greedy/pr2.png" style="zoom: 50%;"/></center>
 
-> [!TIP]+ 2025fall-zgc-mid
+> [!TIP] +2025fall-zgc-mid
 >
 > <center><img src = "./figures/greedy/zgcmid-1.png" style="zoom: 50%;"/></center>
 >
@@ -94,13 +94,13 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 
 ## PTA习题
 
-> [!TIP]+ xyx-2
+> [!TIP] +xyx-2
 >
 > <center><img src = "./figures/greedy/xyx-2-1.png" style="zoom: 50%;"/></center>
 >
 > 反例：$[1,2], [4,5], [1,3], [2,5,6]$，如果按照Greedy 1的思路走是$[1,2], [4,5] \quad [1,3] \quad [2.5,6]$三组，但是按照Greedy 2的思路只需要2组：$[1,2], [2.5,6]\quad [1,3], [4,5]$.
 
-> [!TIP]+ 5.2-1
+> [!TIP] +5.2-1
 >
 > <center><img src = "./figures/greedy/5.2-1.png" style="zoom: 50%;"/></center>
 >
@@ -112,7 +112,7 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 >
 > 最优解： 选 $4, 4$. 方案：4, 4 (共 2 枚硬币). 由于贪心算法给出的解 (4枚) 不是最优解 (2枚)，所以陈述 (III) 是错误的.
 
-> [!TIP]+ 5.5-1
+> [!TIP] +5.5-1
 > 设有 $n$ 个独立的作业 $\{1,2,\cdots,n\}$ ，由 $m$ 台相同的机器 $\{1,2,\cdots,m\}$ 进行加工处理；作业 $i$ 所需的处理时间为 $t_i (1\leq i\leq n)$，每个作业均可在任何一台机器上加工处理，但未完工前不允许中断，任何作业也不能拆分成更小的子作业.
 >
 > 该多机调度问题要求给出一种贪心法作业调度方案，把$n$个作业按用时长从大到小顺序安排在最先空闲的机器上加工处理.
@@ -214,7 +214,7 @@ Huffman 码的核心是**最小化总编码代价**，其计算公式为 $\sum(\
 > 答案：
 > 1.`index = i` 2.`get_min(machine)` 3.`+= A[j].t`
 
-> [!TIP]+ 2020mid
+> [!TIP] +2020mid
 >
 > <center><img src = "./figures/greedy/2020mid1.png" style="zoom: 50%;"/></center>
 > <center><img src = "./figures/greedy/2020mid2.png" style="zoom: 50%;"/></center>

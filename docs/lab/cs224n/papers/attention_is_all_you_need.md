@@ -1,6 +1,6 @@
 # Attention is all you need
 
-> [!INFO]+ 论文信息
+> [!IMPORTANT] +论文信息
 >
 > 论文地址：[arxiv: 1706.03762](https://arxiv.org/abs/1706.03762)
 >

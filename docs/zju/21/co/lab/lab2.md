@@ -1,4 +1,4 @@
-> [!TIP]- 验收要求
+> [!TIP] +验收要求
 >
 > 实验目的：建立一个调试CPU模块的环境，后续lab4会对SCPU模块单独构造，然后替换lab2实验中的SCPU部分，再在本实验中搭建的环境中测试SCPU功能.即lab2只需要在顶层模块中组织各子模块即可，各子模块功能只需要大概了解即可.
 >
@@ -22,7 +22,7 @@
 
 参考文献：[瓜豪的2024CO文档](https://guahao31.github.io/2024_CO/Lab2/Lab2/)
 
-> [!NOTE]- 如何使用Tcl Console进行综合
+> [!NOTE] +如何使用Tcl Console进行综合
 >
 > Synthesis:
 >
@@ -82,7 +82,7 @@
 
 写了一份demo，眼睛快花了，这个应该是没问题的版本：
 
-> [!TIP]- CSSTE.v完整代码
+> [!TIP] +CSSTE.v完整代码
 > ```verilog
 > module CSSTE(
 >         input         clk_100mhz,
@@ -290,7 +290,7 @@
 
 打开`VGAdisplay.v`:
 
-> [!TIP]- VGAdisplay.v代码
+> [!TIP] +VGAdisplay.v代码
 > ```verilog
 > module VgaDisplay(
 >     input wire clk,
@@ -341,7 +341,7 @@
 
 ## 下板
 
-> [!TIP]+ 按钮说明
+> [!TIP] +按钮说明
 >
 > SW[8]SW[2] 用于控制 CPU 时钟.
 >

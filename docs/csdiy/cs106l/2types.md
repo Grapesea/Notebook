@@ -1,4 +1,4 @@
-> [!INFO] slides地址
+> [!IMPORTANT] slides地址
 >
 > [Lec 2: Types and Structs](https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1226/lectures/lecture2_spr.pdf)
 

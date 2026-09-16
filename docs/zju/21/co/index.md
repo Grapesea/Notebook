@@ -1,6 +1,6 @@
 本文将依照林芃老师授课以及教材等材料进行整理.
 
-> [!TIP]+ 前人经验
+> [!TIP] +前人经验
 >
 > 摘编自[Miracle96的经验帖](https://www.cc98.org/topic/6082358)：
 >
@@ -22,7 +22,7 @@
 >
 > > I/O抄了 三种方式(polling,interrupt-driven,DMA)的定义, 硬盘读取时间的计算，Amdahl's Law, 同步和异步总线
 
-> [!TIP]+ 资源汇总
+> [!TIP] +资源汇总
 >
 > * 笔记
 >
@@ -50,7 +50,7 @@
 >
 >     [【学习天地】计算机组成 / 计组 A4 参考](https://www.cc98.org/topic/6092970)
 
-> [!TIP]+ 课程大纲
+> [!TIP] +课程大纲
 > Outline：
 >
 > <center><img src="co/sche0.png" alt="rr" style="zoom: 40%;" /></center>

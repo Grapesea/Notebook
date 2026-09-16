@@ -1,4 +1,4 @@
-> [!INFO] 资源汇总
+> [!IMPORTANT] 资源汇总
 > 名称：Standard C++ Programming，
 > [课程网站(2022 Spring)](https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1226/)
 >

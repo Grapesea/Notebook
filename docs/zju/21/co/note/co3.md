@@ -2,7 +2,7 @@
 
 Computer words are composed of bits, thus one word is a vector of binary numbers. In RISC-V, there are 32bit/word or 64bits/word, in which 32 bits contains 4 bytes.
 
-> [!TIP]+ 资源
+> [!TIP] +资源
 > [NoughtQ佬的笔记](https://note.noughtq.top/system/co/3)，讲得非常清晰，感觉比听智云效率高很多.
 > 但是需要注意一个问题，其中的Improved Version除法器原理图中，remainder寄存器在lp老师的slides上面是128bits而非129bits.
 >

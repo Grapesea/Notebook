@@ -1,6 +1,6 @@
 直到开学第一天也没有数据库课程的我应该怎么办……
 
-> [!INFO]+ 课程资源
+> [!IMPORTANT] +课程资源
 >
 > [SQL刷题网站1: hackerrank](https://www.hackerrank.com/domains/sql)
 > $\quad$
@@ -10,7 +10,7 @@
 >
 > [期末卷](https://www.cc98.org/topic/6205468)
 
-> [!INFO]+ 课程信息
+> [!IMPORTANT] +课程信息
 >
 > 课程范围是 Chap 1-7, 12-19.
 >

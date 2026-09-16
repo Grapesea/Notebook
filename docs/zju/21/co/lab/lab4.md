@@ -1,4 +1,4 @@
-> [!INFO]+ 参考资料与验收要求
+> [!IMPORTANT] +参考资料与验收要求
 >
 > [Wintermelon的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/computer_organization/lab/lab4/)
 > $\quad$
@@ -16,7 +16,7 @@
 
 `SCPU.v`如下：
 
-> [!TIP]- `SCPU.v`
+> [!TIP] +`SCPU.v`
 > ```verilog
 > module SCPU(
 >     input wire MIO_ready,
@@ -86,7 +86,7 @@
 <center><img src = "./lab4/4-1-1.png" style = "zoom:50%"/></center>
 <center><img src = "./lab4/4-1-2.png" style = "zoom:50%"/></center>
 
-> [!TIP]- `PC.v`
+> [!TIP] +`PC.v`
 > ```verilog
 > module PC(
 >     input clk,
@@ -112,7 +112,7 @@
 
 ImmSel 为 0 时，生成 I-Type 指令的立即数；为 1 时，生成 S-Type 指令的立即数；为 2 时，生成 B-Type 指令的立即数；为 3 时，生成 J-Type 指令的立即数.
 
-> [!TIP]- `ImmGen.v`
+> [!TIP] +`ImmGen.v`
 > ```verilog
 > module ImmGen(
 >     input [1:0]   ImmSel,
@@ -158,7 +158,7 @@ ImmSel 为 0 时，生成 I-Type 指令的立即数；为 1 时，生成 S-Type 
 > // 为 3 时，生成 J-Type 指令的立即数
 > ```
 
-> [!TIP]- `Data_Path.v`
+> [!TIP] +`Data_Path.v`
 >
 > ```verilog
 > module DataPath(
@@ -271,7 +271,7 @@ ImmSel 为 0 时，生成 I-Type 指令的立即数；为 1 时，生成 S-Type 
 
 `SCPU_ctrl.v`部分的接口定义使用了瓜豪文档的定义，在此引用列举的功能：
 
-> [!TIP]- `SCPU_ctrl.v`信号功能
+> [!TIP] +`SCPU_ctrl.v`信号功能
 > ImmSel 用于选择生成立即数的方式，0 为 I-Type，1 为 S-Type，2 为 B-Type，3 为 J-Type.<br>
 > ALUSrc_B 用于选择 ALU 的 B 输入口，0 为寄存器值，1 为立即数.<br>
 > MemtoReg 用于选择写回寄存器的数据来源，0 为 ALU 输出，1 为存储器读出的值，2 为 PC+4.<br>
@@ -306,7 +306,7 @@ ImmSel 为 0 时，生成 I-Type 指令的立即数；为 1 时，生成 S-Type 
 
 以下是连线写出来的代码：
 
-> [!TIP]- `SCPU_ctrl.v`
+> [!TIP] +`SCPU_ctrl.v`
 >
 > ```verilog
 >
@@ -316,7 +316,7 @@ ImmSel 为 0 时，生成 I-Type 指令的立即数；为 1 时，生成 S-Type 
 
 首先我需要根据给出的仿真平台示例进行功能仿真，先书写顶层代码进行搭建：
 
-> [!TIP]- `SCPU_top.v`
+> [!TIP] +`SCPU_top.v`
 >
 > ```verilog
 >

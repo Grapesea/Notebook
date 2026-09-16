@@ -39,7 +39,7 @@ blah0
 
 `cin`单独使用的时候容易出问题，比如：
 
-> [!WARNING]- `cin` errors
+> [!WARNING] +`cin` errors
 >
 > ```cpp
 > // input = 2.17
@@ -90,7 +90,7 @@ in >> str; // first word in out.txt goes into str
 
 File streams require explicit initialization with filenames.
 
-> [!NOTE]+ 文件流读取代码示例
+> [!NOTE] +文件流读取代码示例
 >
 > Slides:
 >
@@ -135,7 +135,7 @@ Output stream: `std::ostringstream`. make an ostringstream out of a string, read
 
 The same as the other i/ostreams (应该？我看slides语气比较笃定).
 
-> [!NOTE]+ 举例
+> [!NOTE] +举例
 >
 > ostringstreams:
 >
@@ -327,7 +327,7 @@ Reference: An alias (another name) for a named variable.
 
 以下2个实例代码可以清晰看出引用符号的作用. 它是对原变量的重命名，实际上还是同一个东西，所做的修改会覆盖原变量.
 
-> [!NOTE]+ 示例
+> [!NOTE] +示例
 >
 > 1.
 >
@@ -364,7 +364,7 @@ Reference: An alias (another name) for a named variable.
 
 这一小节指出了reference的一些误用：
 
-> [!NOTE]+ reference-copy bug
+> [!NOTE] +reference-copy bug
 >
 > ```cpp
 > void shift(vector<std::pair<int, int>>& nums) {
@@ -419,7 +419,7 @@ cpp有两种参数，l-value与r-value.
 
 这就会在使用不当的时候导致reference-rvalue error:
 
-> [!NOTE]+ reference-rvalue error
+> [!NOTE] +reference-rvalue error
 >
 > ```cpp
 > void shift(vector<std::pair<int, int>>& nums) {
@@ -449,7 +449,7 @@ cpp有两种参数，l-value与r-value.
 
 const indicates a variable can't be modified.
 
-> [!WARNING]+ 错误用法举例
+> [!WARNING] +错误用法举例
 > 1. 这段代码里面2,4的`push_back()`函数是无法通过编译的，因为const定义下，`push_back()`无法用于修改内部变量值.
 >
 > ```cpp
@@ -476,7 +476,7 @@ const indicates a variable can't be modified.
 > const std::vector<int>& bad_ref = c_vec;
 > ```
 
-> [!NOTE]+ 总结（const & subtleties）
+> [!NOTE] +总结（const & subtleties）
 >
 > ```cpp
 > const std::vector<int> c_vec{7, 8};

@@ -8,7 +8,7 @@
 
 ## 经验
 
-> [!INFO]+ [Kasa_ZYY: 雅思自学流程介绍，以及一些奇技淫巧-bilibili](https://www.bilibili.com/video/BV1cyDKBLEXY)
+> [!IMPORTANT] +[Kasa_ZYY: 雅思自学流程介绍，以及一些奇技淫巧-bilibili](https://www.bilibili.com/video/BV1cyDKBLEXY)
 >
 > 剑桥雅思是最好的备考资料.
 >
@@ -54,7 +54,7 @@
 > * 建议先做18-20，同时不忽视老题
 > * 远离手机
 
-> [!INFO]+ [医疗废物：雅思首考8.0屠鸭攻略分享 - CC98论坛](https://www.cc98.org/topic/6455542)
+> [!IMPORTANT] +[医疗废物：雅思首考8.0屠鸭攻略分享 - CC98论坛](https://www.cc98.org/topic/6455542)
 >
 > （熟悉各模块的题型、做题技巧等）既可以靠报班，也可以靠自学。对于像我这种自控力并不好的uu，可以考虑报班来点外力辅助，但实话说性价比并不高。自学完全可以，98资源帖，加上一些b站视频，基本够用了（详情可以在版内以雅思为关键词找一些自学经验帖~）
 >
@@ -66,23 +66,23 @@
 >
 > 听力方面，个人认为地图题的读题顺序有必要专门学一下。如果是一个公园、博物馆等场所，从入口处开始看（一般在图的正下方）；如果是交通类的，沿着主干道来读，再把那些选项字母的位置的走一遍.
 
-> [!INFO]+ [番茄杀西瓜：速通口写的雅思7.5经验贴 - CC98论坛](https://www.cc98.org/topic/6493947)
+> [!IMPORTANT] +[番茄杀西瓜：速通口写的雅思7.5经验贴 - CC98论坛](https://www.cc98.org/topic/6493947)
 
-> [!INFO]+ [道理尿尿：首考雅思7.0经验帖 - CC98论坛](https://www.cc98.org/topic/6465985)
+> [!IMPORTANT] +[道理尿尿：首考雅思7.0经验帖 - CC98论坛](https://www.cc98.org/topic/6465985)
 
-> [!INFO]+ [Arp_273：雅思备考一个月7.0经验分享 - CC98论坛](https://www.cc98.org/topic/6452525)
+> [!IMPORTANT] +[Arp_273：雅思备考一个月7.0经验分享 - CC98论坛](https://www.cc98.org/topic/6452525)
 
-> [!INFO]+ [Maggie0515：雅思一个月从0到8.0--完全新手零氪首考备考经验（阅读9，听力8.5，口写7） - CC98论坛](https://www.cc98.org/topic/6450254)
+> [!IMPORTANT] +[Maggie0515：雅思一个月从0到8.0--完全新手零氪首考备考经验（阅读9，听力8.5，口写7） - CC98论坛](https://www.cc98.org/topic/6450254)
 
-> [!INFO]+ [十二二：基础一般的零氪从零自学2个月雅思首考8.0经验杂谈 - CC98论坛](https://www.cc98.org/topic/6219713)
+> [!IMPORTANT] +[十二二：基础一般的零氪从零自学2个月雅思首考8.0经验杂谈 - CC98论坛](https://www.cc98.org/topic/6219713)
 
-> [!INFO]+ [山的耳朵：三周备考雅思成功！ 内含阅读9.0和口语6.5经验 - CC98论坛](https://www.cc98.org/topic/5921311)
+> [!IMPORTANT] +[山的耳朵：三周备考雅思成功！ 内含阅读9.0和口语6.5经验 - CC98论坛](https://www.cc98.org/topic/5921311)
 
-> [!INFO]+ [十年码农雅思7.0备考经验 - 绝尘的文章 - 知乎](https://zhuanlan.zhihu.com/p/1944346731966891712)
+> [!IMPORTANT] +[十年码农雅思7.0备考经验 - 绝尘的文章 - 知乎](https://zhuanlan.zhihu.com/p/1944346731966891712)
 
-> [!INFO]+ [怎样自学雅思? 万字长文/雅思备考保姆式攻略 - 平凡的文章 - 知乎](https://zhuanlan.zhihu.com/p/478502122)
+> [!IMPORTANT] +[怎样自学雅思? 万字长文/雅思备考保姆式攻略 - 平凡的文章 - 知乎](https://zhuanlan.zhihu.com/p/478502122)
 
-> [!INFO]+ [从迷茫到总分7分——我的雅思真实备考记录（附雅思作文批改网站） - Florida的文章 - 知乎](https://zhuanlan.zhihu.com/p/1986395682488197855)
+> [!IMPORTANT] +[从迷茫到总分7分——我的雅思真实备考记录（附雅思作文批改网站） - Florida的文章 - 知乎](https://zhuanlan.zhihu.com/p/1986395682488197855)
 
 雅思目前只能选择机考一种形式，所以还要练习打字速度.
 

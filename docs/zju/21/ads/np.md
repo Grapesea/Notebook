@@ -1,4 +1,4 @@
-> [!INFO]+ 参考资源
+> [!IMPORTANT] +参考资源
 >
 > 这章节云里雾里，我的笔记也做得乱七八糟.
 >
@@ -10,7 +10,7 @@
 >
 > [希尔伯特问题、图灵判定问题与DNA中的「自指」 - gwave的文章 - 知乎](https://zhuanlan.zhihu.com/p/452735420)
 
-> [!WARNING]+ 期末补天
+> [!WARNING] +期末补天
 >
 > 是$\textbf{NP-complete}$: Vertex cover problem & Hamiltonian cycle problem & Satisfiability problem.
 > Halting problem是$\textbf{NP-hard}$，但是并非$\textbf{NP}$.
@@ -51,7 +51,7 @@ $\textbf{NP-hard}$: 如果对于所有的$Y \in \textbf{NP}$，都存在规约�
 
 <center><img src = "./figures/np/np.png" style="zoom: 70%;"/></center>
 
-> [!TIP]+ 举例: Traveling salesman problem/ Hamiltonian cycle problem
+> [!TIP] +举例: Traveling salesman problem/ Hamiltonian cycle problem
 > Hamilton cycle problem: Given a graph $G=(V, E)$, is there a simple cycle that visits all vertices?
 >
 > Traveling salesman problem: Given a **complete** graph $G=(V, E)$, with edge costs $w_i$, and an integer $K$, is there a simple cycle that visits all vertices and has total cost $K$?
@@ -169,7 +169,7 @@ We call the function $f$ the **reduction function**, and a polynomial-time algor
 
 记复杂度类$\textbf{co-NP} = \{L \mid \bar{L} \in \textbf{NP}\}$, 其中$\bar{L} = \Sigma^{*}-L$是$L$的补语言.
 
-> [!TIP]+ 直观理解
+> [!TIP] +直观理解
 >
 > 这里的`co`是complement的意思.
 >
@@ -225,7 +225,7 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 
 假设我们已经知道了Clique Problem是 $\textbf{NP-complete}$，如何规约证明Vertex Cover Problem也是 $\textbf{NP-complete}$？
 
-> [!TIP]+ Proof
+> [!TIP] +Proof
 >
 > <center><img src = "./figures/np/pr2.png" style="zoom: 78%;"/></center>
 > <center><img src = "./figures/np/pr1.png" style="zoom: 70%;"/></center>
@@ -246,11 +246,11 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 
 ## PTA习题
 
-> [!TIP]+ xyx-2
+> [!TIP] +xyx-2
 >
 > <center><img src = "./figures/np/xyx-2-1.png" style="zoom: 70%;"/></center>
 
-> [!TIP]+ Final Practice 2 2-11
+> [!TIP] +Final Practice 2 2-11
 >
 > <center><img src = "./figures/np/f2.2-11.png" style = "zoom:60%"/></center>
 >
@@ -263,7 +263,7 @@ $\textbf{co-NP}$ 版本："图$G$没有哈密顿回路吗？"(不知道是否属
 >
 > D对，因为Decidable只意味着存在算法可以判定，不限制时间复杂度.
 
-> [!TIP]+ Final Practice 3 2-19,20
+> [!TIP] +Final Practice 3 2-19,20
 >
 > <center><img src = "./figures/np/f3.2-19.png" style = "zoom:60%"/></center>
 >

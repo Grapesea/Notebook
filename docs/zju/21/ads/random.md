@@ -1,4 +1,4 @@
-> [!INFO]+ 参考资源
+> [!IMPORTANT] +参考资源
 >
 > [Starstone的笔记本](https://starstone3.github.io/incourse/ADS/Random/)
 > $\quad$
@@ -14,7 +14,7 @@
 * Monte Carlo算法：randomized algorithms that are always correct, and run efficiently in expectation
     有概率$P$输出的答案是错误，运行时间固定为$T$.
 
-> [!TIP]+ 23-24Final
+> [!TIP] +23-24Final
 > <center><img src = "./figures/random/cy.png" style="zoom: 50%;"/></center>
 >
 > 只有当**验证（Verification）**一个解的正确性的复杂度不高于算法本身的复杂度时，这种转换才成立.
@@ -33,7 +33,7 @@
 
 直接遍历，考虑最坏情形是后一个人始终比前一个人优秀，从而不得不花费$NC_h$的成本.
 
-> [!TIP]+ pseudocode
+> [!TIP] +pseudocode
 >
 > ```pseudocode
 > int Hiring ( EventType C[ ], int N )
@@ -78,7 +78,7 @@ void PermuteBySorting ( ElemType A[ ], int N )
 
 于是我们引入了截断准则，即在前$k$个人里面选择一个最好的，只要后面的人中有比他更优秀的，我们就结束面试.
 
-> [!TIP]+ pseudocode
+> [!TIP] +pseudocode
 >
 > ```C
 > int OnlineHiring ( EventType C[ ], int N, int k )
@@ -123,7 +123,7 @@ $$\dfrac{k}{N}\ln \dfrac{N-1}{k-1}<\sum\limits_{i=k}^{N-1} \dfrac{1}{i}< \dfrac{
 
 我们已经学过deterministic quicksort，可以通过[usfca画板](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)和[资料1](https://www.geeksforgeeks.org/dsa/quick-sort-algorithm/),[wiki]()回顾一下.
 
-> [!TIP]+ C++代码
+> [!TIP] +C++代码
 >
 > ```cpp
 > int partition(vector<int>& arr, int low, int high){
@@ -181,13 +181,13 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
 
 ## PTA习题
 
-> [!TIP]+ 7.1-4,5
+> [!TIP] +7.1-4,5
 >
 > <center><img src = "./figures/random/7.1-4,5.png" style="zoom: 50%;"/></center>
 >
 > 4的正确表述是，如果$b = (b_1,b_2,\cdots,b_n)$表示$a$排完序之后的结果，那么任意两个元素被比较过的次数最多是1，并且$b_i$和$b_j$被比较过的概率是$\dfrac{2}{j−i+1}, j>i$,如果$b_i$或者$b_j$被当作了pivot.
 
-> [!TIP]+ 7.3-1
+> [!TIP] +7.3-1
 >
 > <center><img src = "./figures/random/7.3-1.png" style="zoom: 50%;"/></center>
 >
@@ -197,7 +197,7 @@ $$P(X = k) = (\dfrac12)^k \Longrightarrow E(X) = \sum\limits_{i=1}^{+\infty} i(\
 >
 > $$P(\text{Find Max}) = $$
 
-> [!TIP]+ Final Practice 1 1-1
+> [!TIP] +Final Practice 1 1-1
 >
 > <center><img src = "./figures/random/f1-1.png" style="zoom: 50%;"/></center>
 >

@@ -31,7 +31,7 @@
 </tbody>
 </table>
 
-> [!INFO]+ 刷题网站
+> [!IMPORTANT] +刷题网站
 >
 > [BUUCTF](https://buuoj.cn/challenges)
 > $\quad$
@@ -39,13 +39,13 @@
 > $\quad$
 > [攻防世界](https://adworld.xctf.org.cn/home/index)
 
-> [!INFO]+ 一些价值极高的密码学博客/文章
+> [!IMPORTANT] +一些价值极高的密码学博客/文章
 >
 > [稀有气体(Higashi)-zhihu](https://www.zhihu.com/column/c_1190932930565013504)，主讲格密码与同态加密
 > $\quad$
 > [RSA攻击的不全收集](https://blog.csdn.net/wuyunfeng233/article/details/142326133)
 
-> [!TIP]- 新电脑环境说明
+> [!TIP] +新电脑环境说明
 >
 > sagemath环境配在WSL中，进入后先：
 >
@@ -57,7 +57,7 @@
 >
 > 就可以使用了.
 
-> [!TIP]- 环境准备
+> [!TIP] +环境准备
 >
 > 不知道为什么本地网络经常刷新，有时一下子不能连接上靶机.
 >

@@ -1,4 +1,4 @@
-> [!INFO]+ 课程信息
+> [!IMPORTANT] +课程信息
 >
 > 浙江大学HPC101短学期，大二我才着手修读.
 >
@@ -24,7 +24,7 @@
 > * [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
 
 
-> [!INFO]+ 评分标准
+> [!IMPORTANT] +评分标准
 >
 > * 课堂表现（10%）
 > * 个人实验（65%）：每年有所变化

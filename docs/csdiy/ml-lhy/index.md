@@ -1,4 +1,4 @@
-> [!NOTE]+ 课程信息
+> [!NOTE] +课程信息
 >
 > [网站](https://speech.ee.ntu.edu.tw/~hylee/ml/2025-spring.php)
 >

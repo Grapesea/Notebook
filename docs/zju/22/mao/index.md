@@ -1,4 +1,4 @@
-> [!INFO]+ 课程资源
+> [!IMPORTANT] +课程资源
 >
 > [【学习天地】毛概提纲分享](https://www.cc98.org/topic/6450641)
 >

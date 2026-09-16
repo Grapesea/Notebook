@@ -1,6 +1,6 @@
 > 从0开始的 LLM & RAG & Knowledge Graph 学习.
 
-> [!INFO]+ 科研入门读物
+> [!IMPORTANT] +科研入门读物
 >
 > [彭思达老师：Learning Research](https://github.com/pengsida/learning_research)
 >

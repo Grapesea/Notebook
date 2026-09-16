@@ -14,7 +14,7 @@
 
 伪代码如下：
 
-> [!TIP]+ 关键函数
+> [!TIP] +关键函数
 >
 > ```c
 > bool Reconstruct ( DistType X[ ], DistSet D, int N, int left, int right ){ 
@@ -63,7 +63,7 @@
 
 ### PTA习题
 
-> [!NOTE]+ 3.3-2
+> [!NOTE] +3.3-2
 > In a turnpike reconstruction problem, the distance set is given as $\{1, 1, 2, 4, 4, 5, 5, 5, 6, 6, 7, 9, 10, 11, 12\}$. In now backtracking state(a node in the backtracking tree), we temporarily identify four points: $x_1=0,x_2=12,x_3=1,x_4=2$, which next try is possible？
 >
 > A.$x_5=3$ $\quad$ B.$x_5=4$ $\quad$ C.$x_5=5$ $\quad$ D.$x_5=6$ $\quad$ E.$x_5=7$ $\quad$ F.$x_5=8$ $\quad$ G.$x_5=9$ $\quad$ 
@@ -96,7 +96,7 @@ $\beta$-pruning: 修剪掉min一层的节点.
 
 当二者同时被使用的时候，搜索的复杂度会被降低到 $O(\sqrt{N})$.
 
-> [!TIP]+ 算法伪代码
+> [!TIP] +算法伪代码
 >
 > ```python
 > function AlphaBeta(state, depth, α, β, isMaxPlayer):
@@ -125,7 +125,7 @@ $\beta$-pruning: 修剪掉min一层的节点.
 
 ### PTA习题
 
-> [!TIP]+ xyx-1
+> [!TIP] +xyx-1
 >
 > <center><img src = "./figures/bt/xyx-1.png" style="zoom: 50%;"/></center>
 >
@@ -139,7 +139,7 @@ $\beta$-pruning: 修剪掉min一层的节点.
 
 ### PTA习题
 
-> [!TIP]+ 2025fall-yy-mid
+> [!TIP] +2025fall-yy-mid
 >
 > <center><img src = "./figures/bt/yymid3-1.png" style="zoom: 50%;"/></center>
 >
@@ -147,7 +147,7 @@ $\beta$-pruning: 修剪掉min一层的节点.
 >
 > 答案是`fabs(2 * sum - total)`和`sum -= a[p]`
 
-> [!TIP]+ 2025fall-ch-mid
+> [!TIP] +2025fall-ch-mid
 >
 > <center><img src = "./figures/bt/chmid3-1.png" style="zoom: 70%;"/></center>
 >

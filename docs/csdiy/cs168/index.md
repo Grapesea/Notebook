@@ -1,4 +1,4 @@
-> [!INFO]+ 课程资源
+> [!IMPORTANT] +课程资源
 >
 > [UCB CS168: Computer Network, 2025 Spring](https://sp25.cs168.io/)
 >

@@ -1,4 +1,4 @@
-> [!INFO]+ 课程信息
+> [!IMPORTANT] +课程信息
 >
 > 寿黎但老师的OS课程.
 >
@@ -6,7 +6,7 @@
 > > 
 
 
-> [!INFO]+ 课程资源
+> [!IMPORTANT] +课程资源
 >
 > [Wintermelon的资源汇总](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/operating_system/)
 >

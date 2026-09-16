@@ -1,4 +1,4 @@
-> [!TIP]+ 环境配置
+> [!TIP] +环境配置
 >
 > 本地安装：使用conda/miniconda环境
 >

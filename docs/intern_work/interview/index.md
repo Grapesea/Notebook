@@ -1,4 +1,4 @@
-> [!INFO]+ 面经整理-AI Agent
+> [!IMPORTANT] +面经整理-AI Agent
 >
 > [【一路走来】[CS | 面经 | 暑期] 暑期实习记录贴](https://www.cc98.org/topic/6449350)
 >
@@ -6,11 +6,11 @@
 >
 > [【求职广场】CS菜菜暑期实习自救- AI Agent入坑指南](https://www.cc98.org/topic/6526254)
 
-> [!INFO]+ 面经整理-LLM
+> [!IMPORTANT] +面经整理-LLM
 >
 > [【求职广场】新鲜大模型面经：适用于大语言模型LLM/多模态大模型MLLM面试](https://www.cc98.org/topic/6238482)
 
-> [!INFO]+ 面经整理-后端开发
+> [!IMPORTANT] +面经整理-后端开发
 >
 > [【求职广场】操作系统&C++面试常见问题和回答要点](https://www.cc98.org/topic/5570591)
 >
@@ -22,15 +22,15 @@
 >
 > [【求职广场】百度一面凉经](https://www.cc98.org/topic/6143646)
 
-> [!INFO]+ 面经整理-Rust 开发
+> [!IMPORTANT] +面经整理-Rust 开发
 >
 > [【求职广场】rust开发面经](https://www.cc98.org/topic/6273057)
 
-> [!INFO]+ 面经整理-网安
+> [!IMPORTANT] +面经整理-网安
 >
 > [【一路走来】网络安全暑期实习面经&思考](https://www.cc98.org/topic/6503365)
 
-> [!INFO]+ 面经整理-产品
+> [!IMPORTANT] +面经整理-产品
 >
 > [【求职广场】产品秋招面经分享（关键词：产品面经/互联网/非技术岗/暑期实习/26届）](https://www.cc98.org/topic/6372277)
 >

@@ -3,7 +3,7 @@
 > [!TIP] 课程资源列表
 > [课程网站](https://datawhalechina.github.io/math-for-ai/#)
 
-> [!TIP]+ 课程大纲
+> [!TIP] +课程大纲
 > Chap 2:线性代数<br>
 > Chap 3:解析几何<br>
 > Chap 4:矩阵分解<br>
