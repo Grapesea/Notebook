@@ -13,7 +13,8 @@ mkdocs build
 ```
 
 `scripts/optimize_images.py` 通过 MkDocs hook 处理 JPG/JPEG、PNG、GIF、BMP、TIFF，
-保留 `docs/` 中的原图和 Markdown，输出站点使用 `原文件名.webp`（例如 `photo.jpg.webp`）。
+保留 `docs/` 中的原图和 Markdown，输出站点将扩展名替换为 `.webp`（例如 `2.png` → `2.webp`）。
+仅当同目录下有同名图片或已有同名 WebP 时，使用 `photo-png.webp` 等名称避免覆盖。
 Markdown 图片、HTML 图片/链接、主题 logo/favicon 和 CSS 图片地址会自动更新。
 SVG、ICO、已有 WebP 和外链图片保留原样；无法转换的图片会保留原图并输出警告。
 

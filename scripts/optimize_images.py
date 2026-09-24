@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+from collections import Counter
 from html.parser import HTMLParser
 import logging
 import os
@@ -196,15 +197,26 @@ def on_files(files, *, config):
     cache = root / ".cache" / "webp"
     converted = cached = before = after = 0
     occupied = {file.dest_uri for file in files}
-    for file in files:
+    preferred = Counter(
+        posixpath.splitext(file.dest_uri)[0] + ".webp"
+        for file in files
+        if Path(file.src_uri).suffix.lower() in EXTENSIONS and file.abs_src_path
+    )
+    for file in sorted(files, key=lambda file: file.src_uri):
         if Path(file.src_uri).suffix.lower() not in EXTENSIONS or not file.abs_src_path:
             continue
         source = Path(file.abs_src_path)
         old_uri = file.dest_uri
-        # Keep the original extension to avoid collisions between foo.jpg and foo.png.
-        new_uri = old_uri + ".webp"
-        while new_uri in occupied:
-            new_uri += ".webp"
+        stem, extension = posixpath.splitext(old_uri)
+        new_uri = stem + ".webp"
+        if preferred[new_uri] > 1 or new_uri in occupied:
+            # Disambiguate only actual collisions, without producing double extensions.
+            fallback = f"{stem}-{extension[1:].lower()}"
+            new_uri = fallback + ".webp"
+            number = 2
+            while new_uri in occupied or new_uri in preferred:
+                new_uri = f"{fallback}-{number}.webp"
+                number += 1
         try:
             result, hit = convert_image(source, cache)
         except (OSError, ValueError, RuntimeError, Image.DecompressionBombError) as error:
