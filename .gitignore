@@ -8,3 +8,4 @@ sx_hb_1.md
 docs/inspiration.md
 tests/
 __pycache__/
+.cache/webp/

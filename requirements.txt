@@ -3,3 +3,4 @@ mkdocs-material
 mkdocs-git-revision-date-localized-plugin
 pathspec
 watchdog
+Pillow>=10.0

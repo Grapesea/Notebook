@@ -52,6 +52,7 @@ plugins:
 
 hooks:
   - scripts/mkdocs_nav_hook.py
+  - scripts/optimize_images.py
 
 markdown_extensions:
   - admonition
@@ -222,6 +223,9 @@ nav:
         - 概述: zju/31/toc/index.md
       - 操作系统: 
         - 概述: zju/31/os/index.md
+        - labs:
+          - lab0: zju/31/os/labs/lab0.md
+          - Lab 0： Linux 内核调试: zju/31/os/labs/lab1.md
       - 计算机网络:         
         - 概述: zju/31/web/index.md
         - Lab1 <此处替换为实验名称>: zju/31/web/lab1.md
@@ -231,6 +235,52 @@ nav:
         - 概述: zju/31/nlp/index.md
       - 习概: 
         - 概述: zju/31/xjp/index.md
+  - 科研学习:
+    - 收集帖: lab/index.md
+    - 沉思录: lab/think.md
+    - Datawhale All-in-RAG:
+      - 课程计划: lab/datawhale-rag/index.md
+      - Chap 1-3: lab/datawhale-rag/1-3.md
+    - CS224N:
+      - 课程计划: lab/cs224n/index.md
+      - 笔记:
+        - Lec1: lab/cs224n/notes/1.md
+        - Lec2: lab/cs224n/notes/2.md
+        - Lec3: lab/cs224n/notes/3.md
+        - Lec5: lab/cs224n/notes/5.md
+      - labs:
+        - Huggingface Transformer Tutorial: lab/cs224n/labs/hf.md
+      - 论文阅读:
+        - bert: lab/cs224n/papers/bert.md
+        - Transformer: lab/cs224n/papers/attention_is_all_you_need.md
+    - CS224W:
+      - 课程计划: lab/cs224w/index.md
+      - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
+      - Lec03-05 (GNN): lab/cs224w/03-05.md
+      - Lec06-08 (GNN Theory and Graph Transformer 1): lab/cs224w/06-08.md
+      - Lec09-10 (Heterogenous graphs & Knowledge graphs): lab/cs224w/09-10.md
+      - Lec15-17 (KG Foundation Models & LLMs and GNNs & Agents and Graphs): lab/cs224w/15-17.md
+      - Lec18-19 (Deep generative models for graphs & Conclusion): lab/cs224w/18-19.md
+      - 论文阅读:
+        - node2vec: lab/cs224w/papers/node2vec.md
+      - lab: 
+        - colab0: lab/cs224w/labs/colab0.md
+        - colab1: lab/cs224w/labs/colab1.md
+        - colab2: lab/cs224w/labs/colab2.md
+        - Colab3: lab/cs224w/labs/colab3.md
+    - 工具:
+      - AutoFigure: lab/tools/autofigure.md
+      - RAGFlow: lab/tools/ragflow.md
+      - EasySpider: lab/tools/easyspider.md
+    - Skills:
+      - 论文阅读-维度分析: lab/skills/dim_db.md
+      - 论文阅读-内容分析: lab/skills/read_inst.md
+    - 论文阅读:
+      - 日志: lab/paper_reading/log.md
+      - CoG: lab/paper_reading/CoG.md
+      - GNN-RAG: lab/paper_reading/GNN_RAG.md
+      - Temp-R1: lab/paper_reading/Temp_r1.md
+      - template: lab/paper_reading/template.md
   - 语言学习:
     - 导航栏: language/index.md
     - IELTS:
@@ -360,7 +410,6 @@ nav:
       - 课程计划: lab/cs224n/index.md
     - CS224W:
       - 课程计划: lab/cs224w/index.md
-      - Lec 18-19：Deep generative models for graphs & Conclusion: lab/cs224w/18-19.md
     - Datawhale Hello-agent:
       - 课程计划: csdiy/datawhale_hello_agent/index.md
     - 斋藤康毅-深度学习(鱼书):
@@ -391,47 +440,6 @@ nav:
         - Chap 8:时间序列与投资模型: csdiy/datawhale_mm/8.md
         - Chap 9:机器学习与统计模型: csdiy/datawhale_mm/9.md
         - Chap 10:图像、文本与信号数据: csdiy/datawhale_mm/10.md
-  - 科研学习:
-    - 收集帖: lab/index.md
-    - 沉思录: lab/think.md
-    - Datawhale All-in-RAG:
-      - 课程计划: lab/datawhale-rag/index.md
-      - Chap 1-3: lab/datawhale-rag/1-3.md
-    - CS224N:
-      - 课程计划: lab/cs224n/index.md
-      - 笔记:
-        - Lec1: lab/cs224n/notes/1.md
-        - Lec2: lab/cs224n/notes/2.md
-        - Lec3: lab/cs224n/notes/3.md
-        - Lec5: lab/cs224n/notes/5.md
-      - 论文阅读:
-        - bert: lab/cs224n/papers/bert.md
-        - Transformer: lab/cs224n/papers/attention_is_all_you_need.md
-    - CS224W:
-      - 课程计划: lab/cs224w/index.md
-      - Lec01-02 (Introduction & Node Embedding): lab/cs224w/01-02.md
-      - Lec03-05 (GNN): lab/cs224w/03-05.md
-      - Lec06-08 (GNN Theory and Graph Transformer 1): lab/cs224w/06-08.md
-      - 论文阅读:
-        - node2vec: lab/cs224w/papers/node2vec.md
-      - lab: 
-        - colab0: lab/cs224w/labs/colab0.md
-        - colab1: lab/cs224w/labs/colab1.md
-        - colab2: lab/cs224w/labs/colab2.md
-        - Colab 3: lab/cs224w/labs/colab3.md
-    - 工具:
-      - AutoFigure: lab/tools/autofigure.md
-      - RAGFlow: lab/tools/ragflow.md
-      - EasySpider: lab/tools/easyspider.md
-    - Skills:
-      - 论文阅读-维度分析: lab/skills/dim_db.md
-      - 论文阅读-内容分析: lab/skills/read_inst.md
-    - 论文阅读:
-      - 日志: lab/paper_reading/log.md
-      - CoG: lab/paper_reading/CoG.md
-      - Temp-R1: lab/paper_reading/Temp_r1.md
-      - GNN-RAG: lab/paper_reading/GNN_RAG.md
-      - 【xxx 20xx】: lab/paper_reading/template.md
   - 实习&工作: 
     - 导航: intern_work/index.md
     - 笔试机试: 
@@ -526,6 +534,7 @@ nav:
       - 2026个人向新年展望: gadgets/article/2026ny.md
     - 摄影从0开始:
       - 资源目录: gadgets/photography/index.md
+      - Photoshop & Lightroom 使用: gadgets/photography/ps_lr.md
     - 旅途记录:
       - 上海1日游: gadgets/travel/shanghai_1.md
       - 苏州1.5日游: gadgets/travel/suzhou_1.md
@@ -533,6 +542,7 @@ nav:
       - 临安太子尖(20260426): gadgets/travel/taizijian20260426.md
       - 丽水3日游: gadgets/travel/lishui_1.md
       - 温哥华2周旅行见闻: gadgets/travel/vancouver.md
+      - 旅游目的地清单: gadgets/travel/bucketlist.md
   - 友链:
     - Grapesea的朋友们: friends/friends.md
     - Grapesea的其他联系方式: friends/contact.md

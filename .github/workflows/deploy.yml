@@ -40,6 +40,14 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Cache converted WebP images
+        uses: actions/cache@v4
+        with:
+          path: .cache/webp
+          key: ${{ runner.os }}-webp-${{ hashFiles('scripts/optimize_images.py', 'requirements.txt') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-webp-${{ hashFiles('scripts/optimize_images.py', 'requirements.txt') }}-
           
       - name: Verify MkDocs installation
         run: |

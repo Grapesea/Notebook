@@ -25,6 +25,15 @@
   margin-bottom: 0;
 }
 
+/* Render all images from Markdown at 80% of their containing page width. */
+.md-typeset img {
+  display: block !important;
+  width: 80% !important;
+  max-width: 80% !important;
+  height: auto !important;
+  margin-inline: auto !important;
+}
+
 /* Keep inline code and code blocks monospaced inside blockquotes. */
 .md-typeset blockquote code,
 .md-typeset blockquote pre,
