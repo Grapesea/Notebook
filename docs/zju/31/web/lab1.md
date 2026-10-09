@@ -1,5 +1,7 @@
 # Lab1 WireShark & Web Basics
 
+> [Lab1 - 2026 计算机网络实验文档](https://zju-zhiyi.github.io/2026netlab/lab1/)
+
 ## 实验目的和要求
 
 - 初步了解WireShark软件的界面和功能

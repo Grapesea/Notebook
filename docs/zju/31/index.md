@@ -23,12 +23,14 @@
 
 <br/>
 
-???+ "资源整合"
-
-    
-
-
+> [!NOTE] +资源整合
+>
+> 经验帖整合：
+>
+> * [【学习天地】CS 大三秋冬 课程回忆录（tag：计算理论，操作系统（OS），计算机网络（计网），汇编与接口，Java 应用技术，B/S 体系软件设计，量子计算理论基础与软件系统）](https://www.cc98.org/topic/6425001)
+>
+> * [软工 大三上课程回忆&学习总结（OS，计网，软工管，B/S，软测，毛概，物联网，区块链）](https://www.cc98.org/topic/6109417)
 
 好好活着吧xd，这没招了.
 
-<center><img src="ca.png" style="zoom: 50%;" /></center>`
+<center><img src="ca.png" style="zoom: 60%;" /></center>
