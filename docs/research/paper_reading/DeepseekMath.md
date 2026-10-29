@@ -36,7 +36,7 @@ DeepSeekMath 是一个针对**数学推理能力训练**的完整 pipeline，可
 
     **Recall → Domain Discovery → URL Annotation → Expand Seed → Retrain Classifier**
 
-    当某个 domain 中超过 10% 页面被第一轮分类器召回时，将其视为 math-related domain；人工进一步标注其中数学相关 URL path，将漏召回页面加入新的 seed corpus。经过四轮迭代，最终获得 $35.5\text{M webpages},\,120\text{B tokens}$ （第四轮中约 98% 数据已经在第三轮被发现，因此停止继续迭代）
+    当某个 domain 中超过 10% 页面被第一轮分类器召回时，将其视为 math-related domain；人工进一步标注其中数学相关 URL path，将漏召回页面加入新的 seed corpus。经过四轮迭代，最终获得 35.5M webpages, 120B tokens（第四轮中约 98% 数据已经在第三轮被发现，因此停止继续迭代）
 
     为降低 benchmark contamination，若训练文本中存在与 GSM8K、MATH、CMATH、AGIEval 等 benchmark 的 **10-gram exact match**，对应文本会被过滤. 最终 DeepSeekMath-Base 7B 从 **DeepSeek-Coder-Base-v1.5 7B** 初始化，并继续训练 500B tokens：
 
@@ -117,7 +117,7 @@ DeepSeekMath 是一个针对**数学推理能力训练**的完整 pipeline，可
 
 DeepSeekMath-RL 从 **DeepSeekMath-Instruct 7B** 开始训练。
 
-训练数据只采用 SFT 中与 GSM8K、MATH 相关的 CoT questions，共约 $144K\text{ questions}$.
+训练数据只采用 SFT 中与 GSM8K、MATH 相关的 CoT questions，共约 144K questions.
 
 关键配置：
 

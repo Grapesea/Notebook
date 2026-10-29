@@ -4,7 +4,7 @@
 
 **对齐目标：** 本维度库服务于“论文阅读文档实例”的输出骨架。论文研读报告应优先按照以下顺序组织：
 
-1. Header & TL;DR
+1. Header
 2. 原先工作的 Problem
 3. 方法总览（框架分层与核心定位）
 4. 构建方法论（Offline Construction / System 1 / System 2，或论文真实 pipeline）

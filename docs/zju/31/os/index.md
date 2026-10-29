@@ -28,3 +28,7 @@
 > [【学习天地】操作系统（tag:OS）](https://www.cc98.org/topic/6404410) 有回忆题
 >
 > [NoughtQ的笔记](https://note.noughtq.top/sys/os/)
+>
+> [Operating System Concepts - Practice Exercises](https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/index-solu.html)
+>
+> [OPERATING SYSTEMS I: Junfeng Yang](https://www.cs.columbia.edu/~junfeng/09sp-w4118/homeworks.html)

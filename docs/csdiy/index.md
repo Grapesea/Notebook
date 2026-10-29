@@ -55,6 +55,10 @@
         <td>NJU-SICP: 2025 Fall, 程序的构造与解释</td>
     </tr>
     <tr>
+        <td><a href="cs220-rust-KAIST/">KAIST-Rust（+）</a></td>
+        <td>CS220: Programming Principles，Rust入门</td>
+    </tr>
+    <tr>
         <td><a href="icspa-NJU/">NJU-ICSPA（-）</a></td>
         <td>NJU-ICSPA: 2025 Spring，计算机系统概论</td>
     </tr>
@@ -96,6 +100,7 @@
     </tr>
 </tbody>
 </table>
+
 
 > [!TIP] +UCB课程资源访问
 > 以下tips来自CC98用户：@曲终人散场 和 @77携爱敬上，[链接](https://www.cc98.org/topic/6096168)

@@ -1,127 +1,168 @@
 # [ASPLOS 2025] vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention
 
-> 实际上这是OS课的bonus，跟实验室的工作没什么关系.
->
-> * 论文地址：[ACM DOI](https://doi.org/10.1145/3669940.3707256)
-> * Github 仓库：[microsoft/vattention](https://github.com/microsoft/vattention)
+> - 论文地址：[ACM DOI](https://doi.org/10.1145/3669940.3707256)
+> - Github 仓库：[microsoft/vattention](https://github.com/microsoft/vattention)
+> - **更简洁的摘要：** vAttention 将虚拟地址预留与物理显存映射解耦，使 KV cache 保持虚拟连续、物理按需增长；结合异步映射、内存复用与小页分配，减少碎片并直接复用普通 attention kernel。
 
-📌 **Paper Type: LLM Serving / KV Cache Memory Management / System & Infrastructure Co-design**
+原先工作的 Problem：
 
-**TL;DR：vAttention 通过分离虚拟地址预留与物理显存映射，让 KV cache 在虚拟地址上保持连续、在物理显存上按需增长，从而复用未经分页改写的 attention kernel；再通过异步映射、延迟回收和小页支持控制管理开销与碎片。**
+1. **静态分配 KV cache 导致严重的内部碎片。** 请求的最终输出长度事先未知，按最大 context length 预留物理显存会让大量空间长期闲置，限制 batch size 和 serving throughput。
+2. **PagedAttention 将内存管理复杂性传递给 attention kernel。** 按需分配的 KV blocks 通常在虚拟地址上不连续，服务框架需要维护 Block-Tables，kernel 也必须增加跨块寻址逻辑。新 kernel 因而需要额外进行 paging adaptation。
+3. **Block-Table 管理与分页寻址增加 CPU/GPU 开销。** CPU 需要构造和传递映射信息；GPU 增加索引查询、分支和寄存器占用。内存分配粒度还与 kernel performance 耦合，调整 block size 可能同时影响碎片与计算效率。
 
-## 原先工作的 Problem
+<center><img src="./figures/vAttention/1.png" style="zoom:60%;" /></center>
 
-1. **静态预留物理显存导致内部碎片。** 请求的输出长度事先未知；若按模型最大 context length 为每个请求分配 KV cache，大量已分配显存在请求生命周期中并未使用，限制 batch size 和吞吐。
-2. **PagedAttention 缓解碎片，但改变了 kernel 看到的内存布局。** KV cache 分块后，块之间的虚拟地址通常不连续，需要在服务框架中维护 Block-Table，并改写 kernel 来定位各块。逻辑块到虚拟地址的映射之外，仍有系统的虚拟到物理地址转换。
-3. **分页适配增加开发与运行开销。** 论文测得 FA2 和 FlashInfer 的 paged prefill kernel 最多分别慢 37% 和 42%；额外指令、page index 与寄存器压力影响 GPU 路径，Block-Table 构造影响 CPU 路径。不同 block size 也会改变性能。
+左侧 Block-Tables 将逻辑 KV blocks 映射到不连续的虚拟地址；右侧 Page-Tables 再将虚拟地址映射到物理页。vAttention 的切入点是：**利用底层虚拟内存机制管理物理页，使 kernel 继续看到连续的 KV tensor。**
 
-> 🖼️ **[Figure 1: PagedAttention 的两层内存管理]**
+------
 
-![Figure 1](./D:/Downloads/figures/vAttention/1.png)
+vAttention 是一个面向 **LLM serving 的动态 KV cache 内存管理框架**，核心包含三个部分：
 
-读图：Block-Tables 连接逻辑 KV blocks 与其虚拟地址；Page-Tables 再连接虚拟地址与物理页。作者希望把动态物理页管理放在下层，消除 attention kernel 对第一层的依赖。
+- **Virtual Tensor Reservation：** 提前预留覆盖最大 batch size 和 context length 的虚拟地址空间，为每个请求提供稳定的 KV cache 地址区间。
+- **Dynamic Physical Mapping：** 根据请求的实际长度，将物理显存页映射到对应区间，让 KV cache 按需增长。
+- **Allocation Optimizations：** 利用 decode 的增长规律提前映射，并通过延迟回收、预先分配和小页支持降低延迟与碎片。
 
----
+**连续的虚拟地址不要求连续的物理显存。** 因此，可以保留普通 attention kernel 的寻址方式，同时获得动态分配的空间效率。这里的“预留最大容量”主要指虚拟地址空间，不意味着按最大容量占用物理显存。
 
-## 框架 Overview
+<center><img src="./figures/vAttention/6.png" style="zoom:60%;" /></center>
 
-vAttention 是一个用于 LLM serving 的 **KV cache allocator**，不是新的 attention 数学算法，也不训练模型。方法可拆为三个协同部分：
+KV cache 经由 vAttention 管理；模型权重和其他 activations 仍由普通 PyTorch allocator 管理。优化集中在 KV cache 的分配路径。
 
-* **Virtual tensors：** 为各层 K/V 预留覆盖最大 batch size 和 context length 的连续虚拟地址区间，用固定 reqId 定位每个请求。
-* **Dynamic physical mapping：** 初始化准备物理页池，在执行前按各请求当前长度映射需要的页；kernel 仍通过普通 tensor 地址访问 KV cache。
-* **LLM-specific optimizations：** 利用 decode 每轮增长一个 token 的规律提前映射；prefill 复用结束请求留下的映射，并进行 eager allocation；用更小 page-groups 减少页尾碎片。
-
-关键在于：**连续的虚拟地址不要求连续的物理显存。** 大块虚拟地址预留不会按同样大小占用物理显存；物理页可以分散，再映射到连续虚拟区间。kernel 因而保留原来的寻址方式，内存管理模块承担动态增长。
-
-但这里也不能简单理解成“访问到缺页时自动分配”：vAttention 会在 kernel 执行前通过 `step` 确保映射充分，并在可能时提前完成下一轮的映射。
+<center><img src="./figures/vAttention/2.png" style="zoom:60%;" /></center>
 
 ## 构建方法论（Methodology）
 
-### 1. System & Infrastructure Co-design：虚拟与物理内存解耦（§5）
+### 1. Virtual tensors 与请求槽位：解耦地址预留和物理分配
 
-传统 `cudaMalloc` 同时分配虚拟地址和物理显存。vAttention 利用 CUDA VMM 区分地址预留、物理页准备、映射和释放，并扩展 PyTorch allocator 来创建 **virtual tensors**。
+传统 `cudaMalloc` 同时提供虚拟地址与物理显存。vAttention 利用 CUDA Virtual Memory Management（VMM）接口，将地址预留、物理页分配和地址映射分开，并扩展 PyTorch allocator 创建 **virtual tensors**。
 
-一个 worker 有 $N$ 层，每层分别维护 K 和 V，因此预留 $2N$ 个 virtual tensors。定义：
-
+每个 worker 负责 $N$ 层，每层分别维护 K 和 V，因此预留 $2N$ 个 virtual tensors。单请求、单层、单个 K 或 V 的最大容量为：
 $$
-S=L\times H\times D\times P,\qquad V_{\mathrm{total}}=2NBS.
+S=L\times H\times D\times P
 $$
+其中：
 
-$L$ 是模型最大 context length，$H$ 是该 worker 上的 KV heads 数，$D$ 是 head dimension，$P$ 是每个元素的字节数，$B$ 是最大 batch size；$S$ 是单请求、单层、单个 K 或 V 的最大容量。
+- $L$：最大 context length；
+- $H$：当前 worker 上的 KV heads 数量；
+- $D$：每个 head 的 dimension；
+- $P$：每个元素的字节数。
 
-每个请求占据不重叠的地址区间，起点为：
-
+若最大 batch size 为 $B$，每个 tensor 预留 $BS$ 字节，所有层合计：
 $$
-\operatorname{offset}(\mathrm{reqId})=\mathrm{reqId}\times S,\qquad 0\le\mathrm{reqId}<B.
+V_{\mathrm{total}}=2NBS
 $$
+每个请求获得一个固定的 `reqId`，其 K/V 子区间起点为：
+$$
+\operatorname{offset}(\mathrm{reqId})=\mathrm{reqId}\times S, \qquad 0\leq\mathrm{reqId}<B
+$$
+例如 Yi-34B、FP16、TP-2 下，$N=60,H=4,D=128,P=2,L=200K$；若 $B=500$，单 worker 需要约 **12 TB 虚拟地址空间**。物理显存只需为实际使用的部分提供映射。
 
-论文示例：Yi-34B、FP16、TP-2 时，$N=60,H=4,D=128,P=2,L=200K$；取 $B=500$，单 worker 预留约 **12 TB 虚拟地址**。这不是 12 TB 物理显存。
+运行时通过四个接口管理请求生命周期：
 
-> 🖼️ **[Figure 5: 从地址预留、按需映射到请求槽位复用]**
+| API           | 作用                                       |
+| ------------- | ------------------------------------------ |
+| `init`        | 预留 virtual tensors，准备物理页池         |
+| `alloc_reqid` | 分配一个空闲请求槽位                       |
+| `step`        | 按各请求当前长度，确保执行所需物理页已映射 |
+| `free_reqid`  | 标记请求结束，允许后续复用或回收           |
 
-![Figure 5](./D:/Downloads/figures/vAttention/5.png)
+**`step` 在 GPU 执行前完成必要检查与映射。** 因而不是等待 kernel 访问未映射地址后，再依靠缺页处理临时分配。
 
-(a) 仅预留 R1/R2 的地址空间；(b)(c) 请求增长时映射物理页；(d) R1 结束后暂不回收映射；(e) R3 复用 R1 的槽位及物理页。复用的是内存资源，新请求仍须写入自己的 KV 数据。
+Continuous batching 会使固定 KV 槽位出现空洞。通过 FlashAttention 的 `cache_batch_idx`，当前 query batch 可以映射到各请求实际使用的 KV 槽位，无须移动完整 KV cache。
 
-### 2. Memory & Long-Context Management：小页降低碎片（§6.2、§8.2）
+### 2. Allocation-compute overlap 与内存复用：隐藏映射延迟
 
-按层分配的 K/V 都可能留下页尾空间。若使用 2 MB 大页，这些余量会跨层、跨请求累积。论文中的标准 CUDA VMM 路径使用 2 MB 分配粒度，作者通过修改开源 NVIDIA unified memory driver，增加 **64 KB、128 KB、256 KB page-groups**。
+Decode 阶段，每个活跃请求每轮仅增加一个 token，因此下一轮的 KV cache 增量可以提前确定。尽管请求的最终长度未知，**每轮是否将耗尽已有物理页是可预测的**。
 
-这里 page-group 是一次分配的一组物理页；不能把它与 PagedAttention 的 token block 直接等同。两者关系取决于模型的 KV heads、precision 和 TP degree。例：Llama-3-8B、TP-2 时，64 KB page-group 在单层 K 或 V 中容纳 64 tokens，2 MB 容纳 2048 tokens（Table 8）。
+vAttention 据此采用两类策略：
 
-对每个独立、按页向上取整的 K/V 请求区间，页尾余量小于一个 page-group。由此可推导单请求所有层的余量上界约为 $2Ng$，其中 $g$ 为 page-group 大小；这是根据布局的推导，不是论文另列的公式。
+**Decode：将下一轮映射与当前轮计算重叠。**
 
-作者也提供无需修改 driver 的 **Tensor Slicing**：创建形状为 $[B,L,N,H,D]$ 的 K/V tensors，再按层取 slice，使一页容纳多层 KV。论文将碎片降低到原设计的约 $1/N$。代价是单层 slice 不再连续，需要 kernel 支持 stride；论文中的早期 FlashInfer 缺乏该支持，因此主实现采用小页 driver 扩展。
+在 iteration $i-1$ 调用 `step` 时，检查 iteration $i$ 是否需要新 page-groups；若需要，后台线程提前建立映射，同时 GPU 执行当前轮计算。这样，CUDA VMM 调用尽量离开推理的关键路径。
 
-### 3. Test-Time Compute & Allocation Scheduling：隐藏映射延迟（§4、§6.1）
+**Prefill：通过 deferred reclamation 和 eager allocation 减少首次映射。**
 
-这里自适应的是显存分配时机。依据两条 workload 观察：decode 每轮每请求仅增长一个 token；实测内存增长速率最高约 750 MB/s，并不会随 batch size 无限增长。
+请求结束后，暂不立即撤销其物理页映射。新请求复用相同 `reqId` 时，可以直接使用已映射的地址区间；只有新 prompt 超出已有容量时才需要补充页。同时，为一个待使用的 inactive 槽位预先映射部分页，减少新请求到达时的分配工作。
 
-* **Decode：allocation-compute overlap。** 在 iteration $i-1$ 调用 `step` 时判断 iteration $i$ 是否需要新页，用后台线程将映射与当前 GPU 计算重叠。若当前轮确实缺少映射，仍须先补齐才能执行。
-* **Prefill：deferred reclamation。** 请求结束后暂留其映射，新请求可复用同一 reqId。若新 prompt 更长，只需补充不足部分。
-* **Prefill：eager allocation。** 预先为一个待使用的 inactive reqId 映射部分页，减少新请求进入时的临界路径开销。
-* **回收策略。** 页池空闲资源下降到阈值时，再在后台回收 inactive 请求占用的页。论文举例阈值为 GPU memory 的 10%。
+物理页池资源不足时，再后台回收 inactive 请求的映射。
 
-这些优化相互补充：小页减少浪费但可能增加映射次数；异步处理和复用减少频繁映射对推理延迟的影响。
+<center><img src="./figures/vAttention/5.png" style="zoom:60%;" /></center>
 
----
+图中过程对应：
 
-## Training / Construction vs. Inference Pipeline
+(a) 为 R1、R2 预留虚拟地址，尚未映射物理页；
+(b)(c) 随请求增长补充物理页；
+(d) R1 结束后保留其映射；
+(e) R3 复用 R1 的槽位和已映射物理页。
 
-### Construction / Initialization
+**复用的是内存资源。** R3 仍需要写入自己的 KV 数据，不能直接继承 R1 的 KV 内容。
 
-本论文没有 SFT、RL、loss function 或训练数据构造，优化对象是 serving runtime。
+### 3. Small page-groups：减少跨层累积的页尾碎片
 
-1. 配置 $N,B,L,H,D,P$ 与 page-group size。
-2. `init` 预留 virtual tensors，并准备尚未映射到各请求 KV tensors 的物理页池。
-3. 在服务框架中接入 vAttention API；小页路线使用作者的 driver 扩展。
-4. 模型权重和其他 activations 继续由普通 PyTorch allocator 管理。
+即使按需分配，若分配粒度较大，每个请求、每层 K/V 末尾仍可能留下未使用空间。这些余量会随着层数和并发请求数累积。
 
-> 🖼️ **[Figure 6: vAttention 与 serving framework、PyTorch 和 CUDA 的关系]**
+标准 CUDA VMM 分配路径采用 2 MB 粒度。vAttention 修改开源 NVIDIA unified memory driver，增加 **64 KB、128 KB 和 256 KB page-groups**，使物理分配更贴近实际 KV cache 长度。
 
-![Figure 6](./D:/Downloads/figures/vAttention/6.png)
+page-group 容纳的 token 数取决于 KV heads、precision 和 TP degree。例如 Llama-3-8B、TP-2 下，单层 K 或 V：
 
-### Inference / Serving（Algorithm 1、Table 4）
+| Page-group 大小 | 容纳的 tokens |
+| --------------- | ------------- |
+| 64 KB           | 64            |
+| 128 KB          | 128           |
+| 256 KB          | 256           |
+| 2 MB            | 2048          |
 
-| 阶段           | API / 操作            | 作用                                              |
-| -------------- | --------------------- | ------------------------------------------------- |
-| 接收并调度请求 | `alloc_reqid()`       | 分配空闲 KV cache 槽位                            |
-| 执行前         | `step(cache_seq_len)` | 根据当前长度保证所需物理页已映射；返回成功或失败  |
-| GPU 执行       | `model.forward()`     | 使用普通 non-paged attention kernel 访问 KV cache |
-| Decode 推进    | 更新 sequence length  | 为下一轮判断是否需要补充页                        |
-| 请求结束       | `free_reqid(reqId)`   | 标记 inactive，映射可延后回收或复用               |
+小页提高空间利用率，但会增加映射频率，因此需要与异步映射、延迟回收共同使用。
 
-**Continuous batching：** 请求结束后 KV cache 的 batch 维可能出现空槽。FlashAttention 的 `cache_batch_idx` 将紧凑的 query batch 映射到固定 reqId 对应的 KV 槽位，避免搬动整段 KV cache。
+另一个无需修改 driver 的方案是 **Tensor Slicing**：创建形状为 $B,L,N,H,D$ 的 K/V tensors，再按层取 slice，使单个物理页存放多个层的数据，将碎片降低到原布局的约 $1/N$。
 
-若 `step` 无法满足显存需求，框架可以 preempt 请求。作者将更复杂的 CPU KV swapping 策略留作 future work。
+其代价是单层 slice 不再连续，需要 kernel 支持 stride。早期 FlashInfer 缺少这一支持，因此采用小页 driver 扩展作为主要方案；两种方案也可以结合。
 
-**核心创新：把 KV cache 的动态物理管理与 attention kernel 的地址布局解耦。**
-
----
+------
 
 ## 本文架构优势
 
-1. **减少 kernel 与 allocator 的耦合。** 更新 attention kernel 时不必重复加入 Block-Table 寻址逻辑；Figure 16 展示少量框架代码即可替换 prefill kernel。
-2. **兼顾空间效率与连续地址。** 不必在静态大块物理预留和不连续虚拟 KV 布局之间选择。
-3. **优化与 workload 特征对应。** 用单 token 增长规律预测映射，用请求更替复用映射，用小页提高最大 batch size。
-4. **主要性能收益有边界。** 长 context、较高 P:D ratio 的 workload 收益更大；短 context 的 FA2 prefill 和同库 decode 收益有限。
+- **将内存管理与 kernel 实现解耦。** 动态分配不再要求每个 attention kernel 都实现 Block-Table 寻址，降低替换和接入新 kernel 的成本。
+- **同时保留连续地址与按需分配。** 大容量虚拟地址预留提供稳定布局，动态物理映射控制实际显存占用。
+- **让内存优化对应请求生命周期。** Decode 利用可预测增长提前映射，prefill 利用请求更替复用已有映射，小页控制剩余碎片。
+
+## Experiments & SOTA Comparison
+
+### 实验配置
+
+| 项目                | 配置                                        |
+| ------------------- | ------------------------------------------- |
+| Yi-6B               | 1×A100 80 GB，TP-1                          |
+| Llama-3-8B、Yi-34B  | 2×NVLink-connected A100 80 GB，TP-2         |
+| FA3 portability     | 1–2×H100                                    |
+| Serving framework   | vLLM v0.2.7                                 |
+| Attention libraries | FlashAttention-2 v2.5.9、FlashInfer v0.4.0  |
+| Artifact 环境       | CUDA 12.1、Python 3.10、PyTorch 2.3.0       |
+| Paged block size    | vLLM、FlashInfer：16；FlashAttention-2：256 |
+
+实验分为 prefill、decode、offline serving、online serving，以及 allocation overlap、deferred reclamation、page size 和 allocation bandwidth 的消融。
+
+- **Prefill：** 覆盖 1K–192K context length，指标为 prompt tokens/s。
+- **Decode：** 初始 context 为 16K，使用 400 轮 decode 的平均延迟计算 output tokens/s。
+- **Offline：** 427 条 arXiv-Summarization 请求，context 为 64K–192K，指标为 requests/min。
+- **Online：** 512 条请求，input 为 22K–45K；Poisson arrivals、FCFS 调度，指标为 request latency CDF。
+
+### Comparison 概要
+
+主要对照是 **同一 attention library 的 paged kernel 与 vAttention 支持的 non-paged kernel**，另包含旧版 vLLM decode kernel。
+
+长上下文 serving 的端到端吞吐相对 FA2_Paged、FI_Paged 最高分别达到 **1.18×、1.23×**。同库 FA2 的 decode 吞吐基本相当；相对旧版 vLLM 的最高 **1.99×** 还包含 kernel 实现差异，不能全部归因于内存管理。
+
+FA3 portability 实验展示了无需 paging adaptation 即可接入新 kernel 的能力。
+
+<center><img src="./figures/vAttention/7.png" style="zoom:40%;" /></center>
+
+<center><img src="./figures/vAttention/8.png" style="zoom:40%;" /></center>
+
+<center><img src="./figures/vAttention/11.png" style="zoom:40%;" /></center>
+
+## Limitations & Future Work
+
+- **Small-page driver 依赖：** 细粒度分配需要 NVIDIA driver 扩展；Tensor Slicing 可以避免修改 driver，但要求 kernel 支持 stride。
+- **内存不足处理：** `step` 无法满足需求时，服务框架可以 preempt 请求；更复杂的 CPU KV cache swapping 策略留作 future work。
+- **性能依赖具体 kernel：** FlashInfer non-paged decode kernel 的延迟较高，因此未纳入 decode 对照。连续地址布局本身不能保证任意 kernel 都更快。

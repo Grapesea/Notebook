@@ -22,7 +22,7 @@ Search-R1 是一个面向**推理与多轮搜索联合学习**的 RL 框架，�
 
 这里优化的是**搜索引擎的使用策略**，而非搜索引擎本身：retriever 提供外部知识，policy 学习如何通过多轮查询获取并利用这些知识. 
 
-> 🖼️ **[Figure 1: PPO 与 GRPO 的 Search-R1 训练架构；重点观察搜索引擎进入 rollout 的位置，以及 value model 与组内 reward 比较的区别]**
+<center><img src="./figures/Search-R1/1.png" style="zoom:60%;" /></center>
 
 ---
 
@@ -57,7 +57,7 @@ Search-R1 是一个面向**推理与多轮搜索联合学习**的 RL 框架，�
 
     训练模板只要求输出遵循上述结构，不指定具体解题内容，也不强制执行反思或搜索. **搜索查询能够依赖前一轮找到的新实体与证据，因此可以形成跨步骤的检索链. **
 
-    > 🖼️ **[Table 1 / Algorithm 1: 标签模板与多轮搜索执行流程；适合放在 rollout 解释之后]**
+    <center><img src="./figures/Search-R1/2.png" style="zoom:60%;" /></center>
 
 2. Search-augmented Policy Optimization: PPO / GRPO 与 token masking
 
@@ -129,9 +129,7 @@ Search-R1 是一个面向**推理与多轮搜索联合学习**的 RL 框架，�
 
     PPO 与 GRPO 的核心区别在于 advantage 的估计方式；两者都通过 masking 区分模型动作与环境观察.
 
-    🖼️ **[Figure 1: 对照 PPO 的 Value LLM → GAE 与 GRPO 的 Group Computation 两条分支]**
-
-
+    <center><img src="./figures/Search-R1/1.png" style="zoom:60%;" /></center>
 
 3. Outcome-based Reward：用答案反馈训练搜索与推理
 
@@ -213,4 +211,4 @@ Search-R1 是一个面向**推理与多轮搜索联合学习**的 RL 框架，�
 
 关键在于：第二次查询使用第一次检索得到的歌手名字，后续查询继续依赖已获得的出生地信息，形成**由中间证据驱动的多轮搜索**. 
 
-> 🖼️ **[Table 9: Curious → Britney Spears → McComb, Mississippi 的完整交互案例]**
+<center><img src="./figures/Search-R1/9.png" style="zoom:60%;" /></center>
