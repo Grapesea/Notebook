@@ -224,21 +224,21 @@ nav:
       - 操作系统: 
         - 概述: zju/31/os/index.md
         - labs:
-          - lab0: zju/31/os/labs/lab0.md
-          - lab1: zju/31/os/labs/lab1.md
-          - Lab 2： 抢占式内核线程调度: zju/31/os/labs/lab2.md
+          - lab0 (Linux内核调试): zju/31/os/labs/lab0.md
+          - lab1 (内核启动与时钟中断): zju/31/os/labs/lab1.md
+          - lab2 (抢占式内核线程调度): zju/31/os/labs/lab2.md
       - 计算机网络:         
         - 概述: zju/31/web/index.md
         - Lab1: zju/31/web/lab1.md
         - Lab2: zju/31/web/lab2.md
-        - Lab3 网络接口与 IP 路由器: zju/31/web/lab3.md
+        - Lab3 (网络接口与 IP 路由器): zju/31/web/lab3.md
       - B/S体系软件设计: 
         - 概述: zju/31/bs/index.md
       - 自然语言处理: 
         - 概述: zju/31/nlp/index.md
         - labs:
-          - 1: zju/31/nlp/labs/1.md
-          - Assignment 2： 机器翻译实验: zju/31/nlp/labs/2.md
+          - 1.Word2vec实验: zju/31/nlp/labs/1.md
+          - 2.机器翻译实验: zju/31/nlp/labs/2.md
       - 习概: 
         - 概述: zju/31/xjp/index.md
   - 科研学习:
@@ -270,8 +270,8 @@ nav:
       - STAR(CN): research/paper_reading/STAR.md
       - LPPO: research/paper_reading/LPPO.md
       - CaRR: research/paper_reading/CaRR.md
-      - 【ACL 2026] Graph-S³： Enhancing Agentic Textual Graph Retrieval with Synthetic Stepwise Supervision: research/paper_reading/Graph-S3.md
-      - 【SOSP 2023] vLLM： Efficient Memory Management for Large Language Model Serving with PagedAttention: research/paper_reading/PagedAttention.md
+      - Graph-S³: research/paper_reading/Graph-S3.md
+      - vLLM(PagedAttention): research/paper_reading/PagedAttention.md
     - Datawhale All-in-RAG:
       - 课程计划: research/datawhale-rag/index.md
       - Chap 1-3: research/datawhale-rag/1-3.md
@@ -356,7 +356,7 @@ nav:
         - Lec10~12-Functions, Lambda Functions, Operators and Special Member Functions: csdiy/cs106l/10_11_12function_operator_special.md
         - Lec13~15-Move Semantics, std::optional, type safety, RAII, smart poiters: csdiy/cs106l/13_14_15move_semantics_optional_smart_pointer_raii.md
       - cs220-rust-KAIST:
-        - cs220-rust-KAIST: csdiy/cs220-rust-KAIST/index.md
+        - 课程资源: csdiy/cs220-rust-KAIST/index.md
     - CS61C (UCB):
       - 课程计划: csdiy/cs61c/index.md
     - NJU-ICSPA:

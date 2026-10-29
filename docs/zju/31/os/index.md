@@ -29,6 +29,9 @@
 >
 > [NoughtQ的笔记](https://note.noughtq.top/sys/os/)
 >
-> [Operating System Concepts - Practice Exercises](https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/index-solu.html)
+> 一些值得参考的csdiy资源：
 >
-> [OPERATING SYSTEMS I: Junfeng Yang](https://www.cs.columbia.edu/~junfeng/09sp-w4118/homeworks.html)
+> * [Operating System Concepts - Practice Exercises](https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/index-solu.html)
+>
+> * [OPERATING SYSTEMS I: Junfeng Yang](https://www.cs.columbia.edu/~junfeng/09sp-w4118/homeworks.html)
+> * 

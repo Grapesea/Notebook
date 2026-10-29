@@ -9,6 +9,7 @@
 > 计算理论笔记（计科）：
 >
 > * [鹤翔gg的计算理论资料](https://note.tonycrane.cc/cs/tcs/toc/)
+> * [咸鱼暄前辈的复习帖](https://open-xuan.github.io/other_courses/theory_of_computation)
 > * [计算理论2025年辅学资料](https://codeberg.org/LoctStrider/ZJU-2025AW-Theory-of-Computation-Peer-Tutoring)
 > * [一份前辈们集思广益的文档](https://alidocs.dingtalk.com/i/nodes/Qnp9zOoBVBZzdjPYc0GOGpDwV1DK0g6l)
 > * [计算理论资源分享](https://www.cc98.org/topic/5485312)
