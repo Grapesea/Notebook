@@ -9,9 +9,9 @@
 > csdiy资源：
 >
 > * [Computer Networking: a Top Down Approach](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm) 值得一提的是每一小节都有 Knowledge Checks，有即时学习反馈
-> * 
+> * [USTC-计算机网络](https://csdiy.wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/topdown_ustc)
 >
-> 资源：
+> 资源合订本：
 >
 > * [计算机网络 - 浙江大学课程攻略共享计划](https://qsctech.github.io/zju-icicles/计算机网络/)
 > * [Wintermelonc学长的笔记](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/computer_network/)
@@ -23,6 +23,8 @@
 > * [期末速通（？） - NoughtQ的笔记本](https://note.noughtq.top/web/cn/review)
 >
 > * [OS笔记-Isshiki修's Notebook](https://note.isshikih.top/cour_note/D3QD_OperatingSystem/Unit0/)
+>
+> * [一份学长的Notion笔记](https://yinwhe.notion.site/e6ac49277d534ee899161aaa730bd122)
 >
 > 期末回忆卷：
 >
@@ -43,37 +45,3 @@
 > * [大三上 cs 课程回忆&学习总结（计算机体系结构/体系结构/CA，汇编与接口，编程语言原理/PPL，计算理论，操作系统/OS，计算机网络/CN）](https://www.cc98.org/topic/6094368)
 > * [大三上cs课程回忆&学习总结（计算机体系结构、操作系统/os、毛概、计算机网络/计网、计算机系统概论、计算理论和b/s）](https://www.cc98.org/topic/5810789)
 > * [软工24-25秋冬课程经验：OS（操作系统）、CN（计算机网络/计网）、软工管（软件工程管理）、物联网、毛概、软测、BS](https://www.cc98.org/topic/6112954)
-> * 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://www.cc98.org/topic/6413639 期末极限补天记录：CSer的幸存经验分享（tags：操作系统 OS / 计算理论 TOC / 计算机网络 计网）
-
-
-
-https://www.cc98.org/topic/5814347 计科大三上总结（计算理论、计算机网络、计算机体系结构、机器学习、数据可视化导论、操作系统OS、BS体系软件设计）
-
-
-
-https://www.cc98.org/topic/6410846 计算机网络 2025-2026 秋冬学期课程总结 笔记分享 历年题整理（计网）
-
-
-
-
-
