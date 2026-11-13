@@ -357,63 +357,48 @@ Search-R1补完笔记，GTA-RAG和RouteRAG还没跑完，codex崩了.
 
 * 自己的 idea 怎么细化和深入探索比较好？confidence 这个信号感觉太模糊了，即使选了几种辅助的信号也没有特别好
 
+---
 
+(2026.10.29-30)
 
+开组会，得到的信息是：
 
-
-
+1. 先去统计bad case的分布，看自己的架构对某一类或者几类的解决和可解释性是否好；
+2. 算力不足应该是因为近期的CVPR，再等一段时间会好一点；
+3. 添加过程信号来看情况，看指标问题
+4. 看论文的目的性：去看motivation是如何去驱动reward函数设计的，怎么得出的方法论
+5. confidence函数的建模和处理是一大难点，我对“合适的方案”压根没有基本概念
 
 ---
 
-## 任务清单
+(2026.11.1-11.5)
 
-### 知识
+排查了轨迹问题. 专业课事情太多，烦死了.
 
-- [x] 赵世钰 Chap 7-10
-  
-- [x] CS224N：按需补充 softmax、反向传播、Transformer 与语言建模
-  
-- 教材：[赵世钰《强化学习的数学原理》](https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning)
-- 视频：[强化学习的数学原理-课程主页](https://www.shiyuzhao.net/opencourse)
-- 课程：[CS224N](https://web.stanford.edu/class/cs224n/)
+[【学习天地】如何写好一篇科技论文](https://www.cc98.org/topic/6681907)
 
-### 需要补的论文
+看的论文：
 
-- [x] **PPO**：[Proximal Policy Optimization Algorithms](https://arxiv.org/pdf/1707.06347)
-  - 时间：9/27，1.5—2h
-  - 重点：§2、§3、§5
-  - 补充材料：[PPO算法详解 - 李宇的文章 - 知乎](https://zhuanlan.zhihu.com/p/689524878)
-- [x] **GAE**：[Generalized Advantage Estimation](https://arxiv.org/abs/1506.02438)
-  - 时间：9/28，1h
-  - 重点：优势计算、γ 与 λ；证明后补
-- [x] **DeepSeekMath**：[DeepSeekMath](https://arxiv.org/pdf/2402.03300)
-  - 时间：9/28，1.5—2h
-  - 重点：§4.1 GRPO
-- [x] **Search-R1**：[Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning](https://arxiv.org/pdf/2503.09516)
-  - 时间：10/1，2h
-  - 重点：搜索交互、奖励、训练 mask
-- [ ] **Search-R1 实证研究**：[An Empirical Study on Reinforcement Learning for Reasoning-Search Interleaved LLM Agents](https://arxiv.org/abs/2505.15117)
-  - 时间：10/3—10/4，1.5h
-  - 重点：初始化、奖励与检索环境
-- [ ] **ReSearch**：[Learning to Reason with Search for LLMs via Reinforcement Learning](https://arxiv.org/abs/2503.19470)
-  - 时间：10/5—10/7，1h
-  - 重点：与 Search-R1 比较
-- [x] **DPO**：[Direct Preference Optimization](https://arxiv.org/pdf/2305.18290)
-  - 时间：10/7 后，2h；有余力可提前
-  - 重点：§3—§4；不作为 Search-R1 前置任务
-- [ ] [**CaRR**](https://arxiv.org/abs/2601.06021v1)
-- [ ] [**MRE 框架 (T-GRPO)**](http://arxiv.org/abs/2601.01195v1)
-- [x] GAT-RAG
+* [ICLR 2026] IGPO： [Information Gain-based Policy Optimization: A Simple and Effective Approach for Multi-Turn Search Agents](https://arxiv.org/pdf/2510.14967)
 
-### 投稿计划
+* [arxiv 2026] KnowGPO：[KnowGPO: Knowledge-Grouped Policy Optimization for Search Agents](https://arxiv.org/pdf/2610.22331)
 
-|                | 截稿ddl                         | 结果       | Track                                                        |
-| -------------- | ------------------------------- | ---------- | ------------------------------------------------------------ |
-| DASFAA 2027    | 2026.11.25                      | 2027.1.25  | **Data Science & Intelligence and Advanced Applications**: Data science, artificial intelligence, and intelligent data management techniques for knowledge discovery, analytics, and advanced applications. |
-| COLT 2027      | ~ 2027.2.5                      | ~ 2027.5.4 |                                                              |
-|                |                                 |            |                                                              |
-| ~~IJCAI 2027~~ | ~~摘要2027.1.4; 全文2027.1.11~~ |            |                                                              |
-| ACL 2027 (ARR) | 北京时间 2027.1.5 19:59:59      |            |                                                              |
+* [ACL 2026 Findings] CriticSearch：[CriticSearch: Fine-Grained Credit Assignment for Search Agents via a Retrospective Critic](https://aclanthology.org/2026.findings-acl.596.pdf)
+* [ACL 2026 Main] CaRR：[Chaining the Evidence: Robust Reinforcement Learning for Deep Search Agents with Citation-Aware Rubric Rewards](https://aclanthology.org/2026.acl-long.950/)
+
+---
+
+## 投稿计划
+
+|                 | 分级 | 截稿ddl                         | 结果          | Track                                                        |
+| --------------- | ---- | ------------------------------- | ------------- | ------------------------------------------------------------ |
+| ~~DASFAA 2027~~ | B    | ~~2026.11.25~~                  | ~~2027.1.25~~ | ~~**Data Science & Intelligence and Advanced Applications**: Data science, artificial intelligence, and intelligent data management techniques for knowledge discovery, analytics, and advanced applications.~~ |
+| COLT 2027       | B    | 2027.1.30 20:00                 |               |                                                              |
+|                 |      |                                 |               |                                                              |
+| ~~IJCAI 2027~~  | B    | ~~摘要2027.1.4; 全文2027.1.11~~ |               |                                                              |
+| ACL 2027 (ARR)  | A    | 2027.1.5 20:00                  |               |                                                              |
+| SIGIR 2027      | A    | 2027.1.22 20:00                 |               |                                                              |
+| KR 2027         | B    | 2027.4.29 20:00                 |               |                                                              |
 
 ARR: 1年4次 1/5/8/10月 可投 NAACL / EMNLP / ACL / ...
 

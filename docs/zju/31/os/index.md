@@ -29,9 +29,18 @@
 >
 > [NoughtQ的笔记](https://note.noughtq.top/sys/os/)
 >
+> [Undertree前辈的笔记](https://undtree.github.io/Notes/CS/OS/)
+>
 > 一些值得参考的csdiy资源：
 >
 > * [Operating System Concepts - Practice Exercises](https://codex.cs.yale.edu/avi/os-book/OS10/practice-exercises/index-solu.html)
 >
 > * [OPERATING SYSTEMS I: Junfeng Yang](https://www.cs.columbia.edu/~junfeng/09sp-w4118/homeworks.html)
+>
+> * [南京大学蒋炎岩老师的OS课程-bilibili-2026年](https://www.bilibili.com/video/BV1opAfzpEf9)
+>
+> 八股：
+>
+> * [lansongxx](https://lansongxx.github.io/MyStudyNote/handbook/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html)
 > * 
+

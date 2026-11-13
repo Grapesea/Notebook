@@ -2,7 +2,7 @@
 
 > - 论文地址：[arXiv:2402.03300](https://arxiv.org/abs/2402.03300)
 > - Github仓库：[deepseek-ai/DeepSeek-Math](https://github.com/deepseek-ai/DeepSeek-Math)
-> - **更简洁的摘要：** 通过高质量大规模数学继续预训练、数学 SFT 与 GRPO 三阶段提升 7B 模型数学推理能力；其中 GRPO 用**同一问题多条采样答案的组内相对 reward**替代 PPO 的 Critic/Value Model，在降低训练资源的同时实现有效 RL. **保留 PPO 的 clipped policy optimization 框架，同时重新设计 Advantage Estimation，利用同一 prompt 的多次 rollout 直接构造 baseline，从而移除 Critic**
+> - **更简洁的摘要：** 通过高质量大规模数学继续预训练、数学 SFT 与 GRPO 三阶段提升 7B 模型数学推理能力；其中 GRPO 用**同一问题多条采样答案的组内相对 reward**替代 PPO 的 Critic/Value Model，在降低训练资源的同时实现有效 RL. **保留 PPO 的 clipped policy optimization 框架，同时重新设计 Advantage Estimation，利用同一 prompt 的多次 rollout 直接构造 baseline，从而移除 Critic (评价模型)**
 
 原先工作的 Problem：
 
@@ -40,10 +40,9 @@ DeepSeekMath 是一个针对**数学推理能力训练**的完整 pipeline，可
 
     为降低 benchmark contamination，若训练文本中存在与 GSM8K、MATH、CMATH、AGIEval 等 benchmark 的 **10-gram exact match**，对应文本会被过滤. 最终 DeepSeekMath-Base 7B 从 **DeepSeek-Coder-Base-v1.5 7B** 初始化，并继续训练 500B tokens：
 
-    $$ \begin{aligned} 56\% &: \text{DeepSeekMath Corpus}\\ 4\% &: \text{AlgebraicStack}\\ 10\% &: \text{arXiv}\\ 20\% &: \text{GitHub Code}\\ 10\% &: \text{General Natural Language} \end{aligned} $$
+    $$\begin{aligned} 56\% &: \text{DeepSeekMath Corpus}\\ 4\% &: \text{AlgebraicStack}\\ 10\% &: \text{arXiv}\\ 20\% &: \text{GitHub Code}\\ 10\% &: \text{General Natural Language} \end{aligned}$$
 
     这里一个重要发现是：**Code → Math 的两阶段训练明显优于 General → Math**. 实验显示 code training 不仅增强 Python-assisted reasoning，还能提升不使用工具时的数学推理；作者据此认为 code training 至少在数学领域能够促进 reasoning capability.
-
 
 ------
 
@@ -82,7 +81,7 @@ DeepSeekMath 是一个针对**数学推理能力训练**的完整 pipeline，可
     **Outcome Supervision**：直接进行组内标准化：
 
     $$
-        \hat A_{i,t} = \tilde r_i = \frac{r_i-\operatorname{mean}(\mathbf r)} {\operatorname{std}(\mathbf r)}.
+    \hat A_{i,t} = \tilde r_i = \frac{r_i-\operatorname{mean}(\mathbf r)} {\operatorname{std}(\mathbf r)}.
     $$
 
     同一个 response 内所有 token 使用相同 relative advantage.
@@ -108,7 +107,7 @@ DeepSeekMath 是一个针对**数学推理能力训练**的完整 pipeline，可
     GRPO 还研究了 **Process Supervision**：在每个 reasoning step 末端产生 reward，并令某 token 的 advantage 为其之后所有 step reward 的累计：
 
     $$
-        \hat A_{i,t} = \sum_{\operatorname{index}(j)\ge t} \tilde r^{\,\operatorname{index}(j)}_i
+    \hat A_{i,t} = \sum_{\operatorname{index}(j)\ge t} \tilde r^{\,\operatorname{index}(j)}_i
     $$
 
     因此相比只判断最终答案正确与否的 Outcome Supervision，Process Supervision 可以提供更细粒度的 reasoning signal.
@@ -217,16 +216,15 @@ $$
 
     它同时说明：**高质量 domain data、reasoning-formatted SFT 与 online RL 是相互叠加，而不是互相替代的**.
 
-
 ------
 
 ## Limitations & Future Work
 
 1. GRPO 当前的数据探索仍较弱
 
-    RL questions 仍来自 instruction tuning data，且只使用较简单的 nucleus sampling。
+    RL questions 仍来自 instruction tuning data，且只使用较简单的 nucleus sampling.
 
-    作者认为这可能正是 **Maj@K 提升而 Pass@K 不提升**的原因之一，并提出未来探索：
+    作者认为这可能正是 **Maj@K 提升而 Pass@K 不提升** 的原因之一，并提出未来探索：
 
     - Out-of-Distribution questions；
     - Tree-search based decoding；

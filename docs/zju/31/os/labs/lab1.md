@@ -98,7 +98,7 @@ git submodule update --init --recursive
 >     
 >         ```c++
 >         long long func(int a, double b){return (long long)a+b;}
->                                 
+>                                     
 >         int main() {
 >           long long r = func(10, 20);
 >           return r + 1;
@@ -339,17 +339,17 @@ all:
 >     
 >
 >     **请你思考：为什么 `Image` 文件的大小会小于链接脚本中定义的内核大小？在上面，我们已经知道 `Image` 文件的内存布局和运行时是一致的，理论上它应当符合链接脚本和符号表中的定义. （提示：你需要理解链接脚本中各个段存放的数据类型）**
->        
+>            
 >     > `.bss` 段的大小不会反映在 `Image` 文件中.
->        
+>            
 >     **事实上，由于 `.data` 段存放有初始值的变量，这些初始值本身必须被保存在镜像中，而 `.bss` 段存放未初始化的变量，我们只需要在镜像中记录这个段的大小，而不需要存储其实际内容. 内核启动时，加载器会为它分配空间并直接清零内存. 因此，`.bss` 段的大小不会反映在 `Image` 文件中. **
 >
 >     
 >
 >     **接下来，请你寻找 `vmlinux.lds` 中栈空间在哪里被定义，并指出具体的代码. 我们为什么选择在 `.bss` 段开辟栈空间，而不是 `.data` 段呢？**
->        
+>            
 >     在`kernel/arch/riscv/kernel/vmlinux.lds:52-55`写了栈空间的定义：
->        
+>            
 >     ```assembly
 >         .bss : ALIGN(0x1000) {
 >             *(.bss.stack)       /* 这个位置 */
@@ -357,7 +357,7 @@ all:
 >             _sbss = .;
 >             ...
 >     ```
->        
+>            
 >     之所以在`.bss`段开辟栈空间，是因为栈是未初始化数据，不需要初始值； `.bss` 段专门存放未初始化/零初始化数据，不占 Image 文件空间.
 
 ### Task 1: 为 `start_kernel()` 准备运行环境
@@ -733,18 +733,18 @@ struct sbiret sbi_debug_console_write_byte(uint8_t byte)
 >         
 >
 >     * **`medeleg` 和 `mideleg` 寄存器的作用分别是什么？**
->        
+>            
 >     * **当一个 trap 被委派到 S 模式后，下面这些地方的值会如何变化？**
->        
+>            
 >         - **`scause`**: 
 >         - **`stval`**
 >         - **`sepc`**
 >         - **`mstatus.SPP`**
 >         - **`mstatus.SPIE`**
 >         - **`mstatus.SIE`**
->        
+>            
 >     * **如果一个 trap 是在 M 模式下发生的，但它在 medeleg 中已被设置委派给 S 模式，会在哪里处理？**
->        
+>            
 >     * **mideleg 中的某一位被设置后，这个中断在 M 模式下会被触发吗？**
 
 > [!IMPORTANT]

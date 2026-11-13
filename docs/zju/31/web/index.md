@@ -26,6 +26,8 @@
 >
 > * [一份学长的Notion笔记](https://yinwhe.notion.site/e6ac49277d534ee899161aaa730bd122)
 >
+> * [Undertree前辈的复习总结](https://undtree.github.io/Notes/Web/cn/review/)
+>
 > 期末回忆卷：
 >
 > * [2025-2026 秋冬学期 计算机网络 部分期末回忆卷](https://www.cc98.org/topic/6407310)

@@ -227,6 +227,7 @@ nav:
           - lab0 (Linux内核调试): zju/31/os/labs/lab0.md
           - lab1 (内核启动与时钟中断): zju/31/os/labs/lab1.md
           - lab2 (抢占式内核线程调度): zju/31/os/labs/lab2.md
+          - Lab3： Sv39 分页式虚拟内存系统: zju/31/os/labs/lab3.md
       - 计算机网络:         
         - 概述: zju/31/web/index.md
         - Lab1: zju/31/web/lab1.md
@@ -256,22 +257,30 @@ nav:
     - 论文阅读:
       - 日志: research/paper_reading/log.md
       - template: research/paper_reading/template.md 
-      - CoG: research/paper_reading/CoG.md
-      - GNN-RAG: research/paper_reading/GNN-RAG.md
-      - Temp-R1: research/paper_reading/Temp-R1.md
-      - PPO: research/paper_reading/PPO.md
-      - DPO: research/paper_reading/DPO.md
-      - DeepseekMath: research/paper_reading/DeepseekMath.md
-      - GAE: research/paper_reading/GAE.md
-      - Search-R1: research/paper_reading/Search-R1.md
-      - Search-o1: research/paper_reading/Search-o1.md
-      - GTA-RAG: research/paper_reading/GTA-RAG.md
-      - vAttention(OS): research/paper_reading/vAttention.md
-      - STAR(CN): research/paper_reading/STAR.md
-      - LPPO: research/paper_reading/LPPO.md
-      - CaRR: research/paper_reading/CaRR.md
-      - Graph-S³: research/paper_reading/Graph-S3.md
-      - vLLM(PagedAttention): research/paper_reading/PagedAttention.md
+      - kg:
+        - Temp-R1: research/paper_reading/kg/Temp-R1.md
+        - CoG: research/paper_reading/kg/CoG.md
+      - rl:
+        - PPO: research/paper_reading/rl/PPO.md
+        - DPO: research/paper_reading/rl/DPO.md
+        - GAE: research/paper_reading/rl/GAE.md
+        - DeepSeekMath (GRPO): research/paper_reading/rl/DeepseekMath.md
+        - LPPO: research/paper_reading/rl/LPPO.md
+        - Search-o1: research/paper_reading/rl/Search-o1.md
+        - Search-R1: research/paper_reading/rl/Search-R1.md
+        - CCA-MFRL: research/paper_reading/rl/CCA-MFRL.md
+        - IGPO: research/paper_reading/rl/IGPO.md
+        - KnowGPO: research/paper_reading/rl/KnowGPO.md
+      - rag:
+        - CaRR: research/paper_reading/rag/CaRR.md
+        - GNN-RAG: research/paper_reading/rag/GNN-RAG.md
+        - Graph-S³: research/paper_reading/rag/Graph-S3.md
+        - GTA-RAG: research/paper_reading/rag/GTA-RAG.md
+        - DecomposeR: research/paper_reading/rag/DecomposeR.md
+      - others:
+        - vAttention - OS: research/paper_reading/others/vAttention.md
+        - PagedAttention - OS: research/paper_reading/others/PagedAttention.md
+        - STAR - 计网: research/paper_reading/others/STAR.md
     - Datawhale All-in-RAG:
       - 课程计划: research/datawhale-rag/index.md
       - Chap 1-3: research/datawhale-rag/1-3.md
@@ -402,7 +411,7 @@ nav:
         - Lab00: csdiy/mit6.1810/labs/00.md
         - Lab01: csdiy/mit6.1810/labs/01.md
         - Lab02: csdiy/mit6.1810/labs/02.md
-        - 03: csdiy/mit6.1810/labs/03.md
+        - Lab03: csdiy/mit6.1810/labs/03.md
       - xv6文档阅读:
         - Chap 01: csdiy/mit6.1810/xv6/01.md
       - Homework: csdiy/mit6.1810/homework.md
@@ -423,6 +432,9 @@ nav:
       - 2: csdiy/gse-NJU/2.md
       - 3: csdiy/gse-NJU/3.md
       - 4: csdiy/gse-NJU/4.md
+      - 5: csdiy/gse-NJU/5.md
+      - 6: csdiy/gse-NJU/6.md
+      - 7: csdiy/gse-NJU/7.md
     - CS571:React(UW-Madison):
       - 课程计划: intern_work/web_develop/cs571/index.md
     - CS188 (UCB): 
@@ -561,6 +573,7 @@ nav:
       - 目录: gadgets/article/index.md
       - 2025个人向新年献词: gadgets/article/2025ny.md
       - 2026个人向新年展望: gadgets/article/2026ny.md
+      - 我现在就想吃这个橘子: gadgets/article/orange.md
     - 摄影从0开始:
       - 资源目录: gadgets/photography/index.md
       - Photoshop & Lightroom 使用: gadgets/photography/ps_lr.md

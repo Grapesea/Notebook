@@ -1,5 +1,7 @@
 # 科研沉思录
 
+[TOC]
+
 > 记录一些科研学习中的思考和经验.
 
 ## 彭思达老师的talk
@@ -119,5 +121,12 @@ Goal-Driven Research 指的是**在这个领域，我最终想实现什么样的
 >
 > * 
 
+## 如何写科技论文
 
+> 最近在看 https://www.sophielwang.com/  mit 非常优秀的一位00后硕士生的一篇论文，在我看来这是今年读到的最好的论文了， https://arxiv.org/abs/2610.06851（Base Models Can Reason By Taking a Cue From Training Data）（ 这篇论文绝对能中顶会，另外看到了 作者分享的一篇博客，是怎么写好这篇论文的，作者还分享了 自己学习怎么写好论文的方法: https://www.sophielwang.com/blog/paper-writing, See Simon Peyton Jones’s How to Write a Great Research Paper, Zachary Lipton’s Heuristics for Scientific Writing (a Machine Learning Perspective), Pat Langley’s Crafting Papers on Machine Learning, and Neel Nanda’s Highly Opinionated Advice on How to Write ML Papers. 链接放在下面:  https://www.microsoft.com/en-us/research/academic-program/write-great-research-paper/ ， https://www.approximatelycorrect.com/2018/01/29/heuristics-technical-scientific-writing-machine-learning-perspective/， https://icml.cc/Conferences/2002/craft.html 和 https://www.alignmentforum.org/posts/eJGptPbbFPZGLpjsp/highly-opinionated-advice-on-how-to-write-ml-papers
+>
+> 出处：[如何写好一篇科技论文 - CC98论坛](https://www.cc98.org/topic/6681907)
 
+以下是个人阅读笔记：
+
+### [Highly Opinionated Advice on How to Write ML Papers](https://www.alignmentforum.org/posts/eJGptPbbFPZGLpjsp/highly-opinionated-advice-on-how-to-write-ml-papers)
