@@ -90,15 +90,15 @@ print(g)
 >
 >     我们引入Hash函数$H(m)$（常用的有SHA256, MD5 etc.）
 >
->     首先用朋友的公钥$(N_0,e_0)$加密出$c$：$c = m^{e_0} \pmod  N_0)$
+>     首先用朋友的公钥$(N_0,e_0)$加密出$c$：$c = m^{e_0} \pmod N_0$
 >
->     然后“签名”：对$H(m)$使用自己的私钥$(N_1,d_1)$加密出新信息$S$：$S = H(m)^{d_1} \pmod  N_1)$
+>     然后“签名”：对$H(m)$使用自己的私钥$(N_1,d_1)$加密出新信息$S$：$S = H(m)^{d_1} \pmod N_1$
 >
->     此时对方如果想要解密，可以：$m = c^{d_0} \pmod  N_0)$
+>     此时对方如果想要解密，可以：$m = c^{d_0} \pmod N_0$
 >
 > * 验证：
 >
->     使用自己的公钥$(N_1,e_1)$解密：如果$H'(m) = S^{e_1} \pmod  N_1)$与$H(m)$相等，则验证通过.
+>     使用自己的公钥$(N_1,e_1)$解密：如果$H'(m) = S^{e_1} \pmod N_1$与$H(m)$相等，则验证通过.
 
 > [!TIP] +PoW板子
 >
@@ -235,9 +235,9 @@ m=flag的每个字节按16进制拼起来的大数
 >
 > extend_gcd是利用递归回溯，在计算gcd的过程中找到符合Bezout等式的$x,y$的过程.
 >
-> 在辗转相除的过程中，其中一环是$gcd(a,b) = gcd(b,a\pmod b)) (*)$
+> 在辗转相除的过程中，其中一环是$gcd(a,b) = gcd(b,a\pmod b) (*)$
 >
-> 现在设已经计算出下一层的解：$bx'+a\pmod b)y' = gcd(b,a\pmod b)) (**)$
+> 现在设已经计算出下一层的解：$bx' + (a\pmod b)y' = gcd(b,a\pmod b) (**)$
 >
 > 则把(*)带入到(**)中，有：
 
@@ -381,15 +381,15 @@ Received 0x35d bytes:
 
 假设我的私钥：$(N,d)$，公钥：$(N,e)$，攻击者希望被我签名的信息是$m$.
 
-现在攻击者挑选了一个随机的$r$，并经过了以下处理把$m' = r^em\pmod N)$传给我.
+现在攻击者挑选了一个随机的$r$，并经过了以下处理把$m' = r^em\pmod N$传给我.
 
 于是我提供了对$m'$的签名$s'$，但这样一来就会被攻击从而获取正常签名的$s$，这是因为：
 
-$$m' = mr^e\pmod N) \Longrightarrow s' = (m')^d = (mr^e)^d=m^dr^{de}\equiv m^dr\pmod N)$$
+$$m' = mr^e\pmod N \Longrightarrow s' = (m')^d = (mr^e)^d=m^dr^{de}\equiv m^dr\pmod N$$
 
-（欧拉定理，$$de \equiv 1\pmod  \phi(N) \Longrightarrow r^{ed-1}\equiv 1 \pmod  N)$）
+（欧拉定理，$de \equiv 1\pmod  \phi(N) \Longrightarrow r^{ed-1}\equiv 1 \pmod N$）
 
-所以想要知道$s=m^d\pmod  N)$，只需要计算$s'/r\pmod  N)$ 即可.
+所以想要知道$s=m^d\pmod N$，只需要计算$s'/r\pmod N$ 即可.
 
 > [!TIP] +攻击者角度的payload
 >
@@ -597,7 +597,7 @@ $n,e,d_p$都不变，只有$c$在变化.
 
 $$\begin{cases} de = 1 + k(p-1)(q-1) \\ d = d_p + k_1(p-1) \end{cases} \Longrightarrow de = 1 + k(p-1)(q-1) = ed_p+ek_1(p-1)$$
 
-$$\Longrightarrow ed_p\equiv 1 \pmod p-1)$$
+$$\Longrightarrow ed_p\equiv 1 \pmod{p-1}$$
 
 接下来对$ed_p-1$进行质因数分解. 使用yafu：
 
@@ -677,13 +677,13 @@ payload略
 >
 > 如果加密的多条消息具有线性相关性，产生的攻击称为相关消息攻击.
 >
-> 例子：假设$\begin{cases}m^e \equiv c_1 \pmod  n) \\ (m+t)^e \equiv c_2 \pmod  n)\end{cases}$，$t$已知，那么可以定义$\pmod  N)$下的多项式$f_1 = x^e-c_1,f_2=(x+t)^e-c_2$.
+> 例子：假设$\begin{cases}m^e \equiv c_1 \pmod n \\ (m+t)^e \equiv c_2 \pmod n\end{cases}$，$t$已知，那么可以定义$\pmod N$下的多项式$f_1 = x^e-c_1,f_2=(x+t)^e-c_2$.
 >
 > 容易知道$m$是$f_1,f_2$的根，所以$f_1,f_2$由公因式$(x-m)$，因此求公因式就可以得到$gcd(f_1,f_2)=x-m\Longrightarrow \boxed{m}$.
 
 这里试了一下赋值$k = 1,2$：
 
-$$\begin{cases} m^2+m \equiv r_1 & \pmod  n) \\ m^4 + 4m^3 + 4m^2 \equiv r_2 & \pmod  n) \end{cases}$$
+$$\begin{cases} m^2+m \equiv r_1 & \pmod n \\ m^4 + 4m^3 + 4m^2 \equiv r_2 & \pmod n \end{cases}$$
 
 于是只需要将两个多项式求出(mod n)意义下的公因式即可，payload如下：
 
@@ -839,7 +839,7 @@ $$\begin{cases}
 a(hint_1 + 0x114) = ax_1 p + ay_1 q \\
 b(hint_2 + 0x514) = bx_2 p + by_2 q
 \end{cases} \overset{ax_1=bx_2}\Longrightarrow 
-res = a(hint_1 + \text{0x}114) - b(hint_2 + \text{0x}514) = (ay_1 - by_2) q \equiv 0\pmod  q)$$
+res = a(hint_1 + \text{0x}114) - b(hint_2 + \text{0x}514) = (ay_1 - by_2) q \equiv 0\pmod q$$
 
 于是求出$q = \operatorname{gcd}(res,n)$. 这题就基本完成了.
 
@@ -847,8 +847,8 @@ res = a(hint_1 + \text{0x}114) - b(hint_2 + \text{0x}514) = (ay_1 - by_2) q \equ
 
 注意到$n-p-q = \phi(n) - 1$，而且很明显$\operatorname{gcd}(514p - 114q, n) = 1$，所以直接使用费马小定理得到：
 
-$$ hint = (514p - 114q)^{n - p - q} \equiv (514p - 114q)^{-1} \pmod  n)\Longrightarrow (514p - 114q)hint \equiv 1 \pmod  n) 
-\Longrightarrow 514p^2 - hint^{-1} p - 114 n \equiv 0 \pmod  n)$$
+$$ hint = (514p - 114q)^{n - p - q} \equiv (514p - 114q)^{-1} \pmod n\Longrightarrow (514p - 114q)hint \equiv 1 \pmod n 
+\Longrightarrow 514p^2 - hint^{-1} p - 114 n \equiv 0 \pmod n$$
 
 直接sagemath调用`roots()`就能解决了.
 

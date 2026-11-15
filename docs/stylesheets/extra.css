@@ -3,6 +3,24 @@
   margin-block: 0.7em;
 }
 
+/* Keep both sidebars fixed while letting the article use the remaining width. */
+@media screen and (min-width: 60em) {
+  .md-main__inner.md-grid {
+    max-width: none;
+    width: 100%;
+  }
+
+  .md-main__inner > .md-sidebar {
+    flex: 0 0 12.1rem;
+    width: 12.1rem;
+  }
+
+  .md-main__inner > .md-content {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
 /* Use Kai-style serif fonts for Markdown blockquotes across the site. */
 .md-typeset blockquote,
 .md-typeset blockquote p,

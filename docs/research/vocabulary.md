@@ -19,7 +19,7 @@
 
 衍生指标：
 
-* precision: $ = \dfrac{TP}{TP+FP}$
+* precision: $= \dfrac{TP}{TP+FP}$
 * recall: $= \dfrac{TP}{TP+FN}$
 * accuracy: $= \dfrac{TP+TN}{TP+FN+TN+FP}$
 

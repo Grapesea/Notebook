@@ -23,6 +23,7 @@ Decoder-only 语言模型把序列概率分解为 $p(x_1,\ldots,x_L)=\prod_{t=1}
 推理包括两个阶段：Prefill 一次处理 prompt 中的全部 token，并生成各层的 KV Cache；Decode 每轮只输入一个新 token，复用历史 KV Cache 计算下一个 token. Prefill 通常包含较大的矩阵乘，偏计算密集；Decode 的矩阵乘退化为矩阵向量乘，反复读取全部权重，通常更受显存带宽和 kernel 发射开销限制. 
 
 Gemma 4 的缩放点积注意力为
+
 $$
 A=\frac{QK^T}{\sqrt{d_h}}+M,\qquad
 P=\operatorname{softmax}(A),\qquad O=PV.
@@ -32,6 +33,7 @@ $$
 $L\times L$ 分数矩阵再加掩码. 
 
 Grouped Query Attention 令多个 Query heads 共享一个 KV head. 若 Query head 数为 $H_q$、KV head 数为 $H_{kv}$，则Query head $h$ 使用
+
 $$
 h_{kv}=\left\lfloor\frac{h}{H_q/H_{kv}}\right\rfloor.
 $$
@@ -50,6 +52,7 @@ $$
 ### 权重与 KV Cache 显存
 
 设模型有 $N$ 层，隐藏维度 $D$，Query heads 为 $H_q$，KV heads 为 $H_{kv}$，head dimension 为 $D_h$，FFN 中间维度为 $F$，词表为 $V$. 忽略 Norm 等小参数，参数量近似为
+
 $$
 P\approx 2VD+ND(2H_qD_h+2H_{kv}D_h+3F).
 $$
@@ -94,6 +97,7 @@ q_{min},q_{max}\right),\qquad
 $$
 
 本框架每个输出通道、每 `group_size` 个输入列共享一组量化参数. 对称 INT4 使用有符号值 $[-8,7]$，checkpoint 中编码为 $[0,15]$，反量化为
+
 $$
 \hat r=s(q_{code}-8),\qquad
 s=\frac{\max |r|}{7}.
@@ -111,6 +115,7 @@ $$
 ### 从 RTN 到 GPTQ
 
 RTN 只最小化权重数值误差 $\lVert W-Q\rVert$，没有考虑输入分布. 设校准激活为 $X\in\mathbb R^{N\times d_{in}}$，线性层权重$W\in\mathbb R^{d_{out}\times d_{in}}$，更有意义的层重构目标是
+
 $$
 \min_Q\lVert XW^T-XQ^T\rVert_F^2
 =\min_Q\lVert X(W-Q)^T\rVert_F^2.

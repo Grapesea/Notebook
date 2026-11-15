@@ -8,11 +8,19 @@ from pathlib import Path
 import yaml
 
 from markdown_callouts import convert_callouts
+from normalize_math import normalize_file, normalize_text
 from sync_mkdocs_nav import parse_nav, sync
 
 
 log = logging.getLogger("mkdocs.nav-sync")
 _serve_active = False
+
+# These pages intentionally appear in both CSDIY and Research. MkDocs assigns
+# their parent from the last occurrence, so pin the canonical navigation branch.
+_PREFERRED_NAV_PARENTS = {
+    "research/cs224n/index.md": "CS224N",
+    "research/cs224w/index.md": "CS224W",
+}
 
 
 def on_startup(*, command: str, dirty: bool) -> None:
@@ -57,9 +65,45 @@ def on_serve(server, *, config, builder):
     return server
 
 
+def on_nav(nav, *, config, files):
+    """Keep intentionally duplicated course pages under their canonical section."""
+    del config, files
+    sections = {}
+
+    def collect(items):
+        for item in items:
+            if item.is_section:
+                sections.setdefault(item.title, item)
+                collect(item.children)
+
+    collect(nav.items)
+    for page in nav.pages:
+        section_title = _PREFERRED_NAV_PARENTS.get(page.file.src_uri)
+        section = sections.get(section_title)
+        if section is not None and page.parent is not section:
+            page.parent = section
+            log.info("Pinned %s to %s", page.file.src_uri, section_title)
+    return nav
+
+
 def on_page_markdown(markdown: str, *, page, config, files) -> str:
-    """Render Typora/GitHub ``> [!TYPE]`` blocks as MkDocs admonitions."""
-    del page, config, files
+    """Normalize formula delimiters and render Typora/GitHub callouts."""
+    del config, files
+    normalized, warnings = normalize_text(markdown)
+
+    source_path = getattr(page.file, "abs_src_path", None)
+    if _serve_active and source_path:
+        changed, file_warnings, unrendered = normalize_file(Path(source_path))
+        warnings.extend(file_warnings)
+        if changed:
+            log.info("Normalized math formatting in %s", page.file.src_uri)
+        if unrendered:
+            warnings.append(f"{unrendered} literal '$$' token(s) remain unrendered")
+
+    for warning in dict.fromkeys(warnings):
+        log.warning("%s: %s", page.file.src_uri, warning)
+
+    markdown = normalized
     return convert_callouts(markdown)
 
 

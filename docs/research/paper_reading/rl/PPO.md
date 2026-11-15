@@ -32,11 +32,13 @@ PPO 采用「用旧策略采样 → 估计 advantage → 在固定数据上进�
     * $\pi_\theta$: 当前策略，即当前正在更新的Actor 模型（新策略）
 
     定义同一状态和动作下的概率比：
+
     $$
     r_t(\theta)=
     \frac{\pi_\theta(a_t\mid s_t)}
     {\pi_{\theta_{\mathrm{old}}}(a_t\mid s_t)}.
     $$
+
     用来衡量参数更新后，产生当前动作的概率变成了原来的多少. 
 
     设 $\hat A_t$ 是时刻 $t$ 的 advantage 估计：

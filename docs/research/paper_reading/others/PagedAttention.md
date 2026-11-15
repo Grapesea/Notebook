@@ -40,34 +40,34 @@ PagedAttention 与 OS paging 的对应关系可以理解为：
 
 1. **PagedAttention：非连续 KV cache 上的 Attention**
 
-   将 sequence 的 KV cache 按固定 block size \(B\) 划分：
+    将 sequence 的 KV cache 按固定 block size \(B\) 划分：
 
-   $$
-   K_j=(k_{(j-1)B+1},\ldots,k_{jB}),\qquad
-   V_j=(v_{(j-1)B+1},\ldots,v_{jB})
-   $$
+    $$
+    K_j=(k_{(j-1)B+1},\ldots,k_{jB}),\qquad
+    V_j=(v_{(j-1)B+1},\ldots,v_{jB})
+    $$
 
-   Attention 不再假定所有 \(K,V\) 位于连续显存，而是逐 block 根据 block table 找到对应 physical KV block，再完成 attention score 和 value aggregation. 这样 logical sequence 保持连续语义，而 physical memory 可以任意分散. 
+    Attention 不再假定所有 \(K,V\) 位于连续显存，而是逐 block 根据 block table 找到对应 physical KV block，再完成 attention score 和 value aggregation. 这样 logical sequence 保持连续语义，而 physical memory 可以任意分散. 
 
-   <center><img src="./figures/PagedAttention/5.png" alt="token" style="zoom:60%;" /></center>
+    <center><img src="./figures/PagedAttention/5.png" alt="token" style="zoom:60%;" /></center>
 
 2. **Paged KV Cache Manager：按需分配 + KV sharing**
 
-   每条 sequence 持有自己的 logical blocks 与 block table. 系统只为已经产生的 token 分配 physical block；只有当前 block 填满后，生成新 token 时才申请下一个 physical block，因此单条 request 的显存浪费被限制在 **最后一个未填满 block** 内. 
+    每条 sequence 持有自己的 logical blocks 与 block table. 系统只为已经产生的 token 分配 physical block；只有当前 block 填满后，生成新 token 时才申请下一个 physical block，因此单条 request 的显存浪费被限制在 **最后一个未填满 block** 内. 
 
-   对具有公共前缀的 sequence，多个 logical block 可以指向同一个 physical block，并通过 **reference count** 管理共享关系；某条 sequence 首次修改共享 block 时执行 **copy-on-write**，复制一个 block 后再进行写入. Parallel sampling 可以共享 prompt KV cache，beam search 还可以动态共享更长的生成前缀. 
+    对具有公共前缀的 sequence，多个 logical block 可以指向同一个 physical block，并通过 **reference count** 管理共享关系；某条 sequence 首次修改共享 block 时执行 **copy-on-write**，复制一个 block 后再进行写入. Parallel sampling 可以共享 prompt KV cache，beam search 还可以动态共享更长的生成前缀. 
 
-   <center><img src="./figures/PagedAttention/6.png" alt="token" style="zoom:60%;" /></center>
+    <center><img src="./figures/PagedAttention/6.png" alt="token" style="zoom:60%;" /></center>
 
-   <center><img src="./figures/PagedAttention/8.png" alt="token" style="zoom:60%;" /></center>
+    <center><img src="./figures/PagedAttention/8.png" alt="token" style="zoom:60%;" /></center>
 
-   <center><img src="./figures/PagedAttention/9.png" alt="token" style="zoom:60%;" /></center>
+    <center><img src="./figures/PagedAttention/9.png" alt="token" style="zoom:60%;" /></center>
 
 3. **Scheduling / Preemption / Distributed Execution：围绕 paged KV cache 的 serving co-design**
 
-   vLLM 使用 **FCFS** 调度；显存 block 不足时优先 preempt 后到达的 request，并以 sequence group 为单位共同调度具有共享 KV cache 的 sequences. 被驱逐 KV cache 可通过两种方式恢复：**Swapping** 将 block 移到 CPU RAM，**Recomputation** 则把已有 tokens 重新作为 prompt，通过一次并行 prompt computation 重建 KV cache. 
+    vLLM 使用 **FCFS** 调度；显存 block 不足时优先 preempt 后到达的 request，并以 sequence group 为单位共同调度具有共享 KV cache 的 sequences. 被驱逐 KV cache 可通过两种方式恢复：**Swapping** 将 block 移到 CPU RAM，**Recomputation** 则把已有 tokens 重新作为 prompt，通过一次并行 prompt computation 重建 KV cache. 
 
-   多 GPU 场景采用 Megatron-LM 风格 tensor model parallelism. 中央 scheduler 维护统一 block mapping，各 GPU worker 获得相同的 physical block IDs，但只保存自己负责的 attention heads 对应 KV cache；每个 decoding iteration 只需广播 token IDs 与 block tables. 
+    多 GPU 场景采用 Megatron-LM 风格 tensor model parallelism. 中央 scheduler 维护统一 block mapping，各 GPU worker 获得相同的 physical block IDs，但只保存自己负责的 attention heads 对应 KV cache；每个 decoding iteration 只需广播 token IDs 与 block tables. 
 
 ---
 

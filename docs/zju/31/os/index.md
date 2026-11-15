@@ -21,15 +21,24 @@
 
 > [!IMPORTANT] +课程资源
 >
-> [操作系统 - 浙江大学课程攻略共享计划](https://qsctech.github.io/zju-icicles/操作系统/)
+> 操作系统：
 >
-> [Wintermelon的资源汇总](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/operating_system/)
+> * [操作系统 - 浙江大学课程攻略共享计划](https://qsctech.github.io/zju-icicles/操作系统/)
 >
-> [【学习天地】操作系统（tag:OS）](https://www.cc98.org/topic/6404410) 有回忆题
+> * [Wintermelon的资源汇总](https://wintermelonc.github.io/WintermelonC_Docs/zju/compulsory_courses/operating_system/)
 >
-> [NoughtQ的笔记](https://note.noughtq.top/sys/os/)
+> * [【学习天地】操作系统（tag:OS）](https://www.cc98.org/topic/6404410) 有回忆题
 >
-> [Undertree前辈的笔记](https://undtree.github.io/Notes/CS/OS/)
+> * [NoughtQ的笔记](https://note.noughtq.top/sys/os/)
+>
+> * [Undertree前辈的笔记](https://undtree.github.io/Notes/CS/OS/)
+>
+> 计算机系统II（操作系统部分）：
+>
+> * [25-26秋冬 计算机系统II 填空题与大题（tag：sys2）](https://www.cc98.org/topic/6404832)
+> * [计算机系统 II (sys2-fa25) 期末考试回忆考点](https://www.cc98.org/topic/6404841)
+> * [计算机系统2部分我在考场上看不懂的选择题](https://www.cc98.org/topic/6404882)
+> * [计算机系统Ⅱ - 现实的荒原](https://nest.shrike505.cc/notes/ComputerScience/ComputerSystem2/#operating-system)
 >
 > 一些值得参考的csdiy资源：
 >

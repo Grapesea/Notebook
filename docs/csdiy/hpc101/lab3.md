@@ -50,7 +50,9 @@ Gated DeltaNet这里的数学推导着实复杂，我研究了几个小时，把
 > $$
 > S_t = \alpha_t (I-\beta_tk_tk_t^T)S_{t-1} + \beta_tk_tv_t^T \quad \alpha_t = \exp(\text{raw}\_g_t)
 > $$
+>
 > 记此时输出为$o_t$，得到：
+>
 > $$
 > o_t = \dfrac1{\sqrt{d_k}}q_t^TS_t
 > $$
@@ -122,6 +124,7 @@ $B$表示`batch_size`，$T$表示`num_tokens`，
 > $$
 > 
 > **利用行堆叠把$(2)$写成矩阵形式**：
+>
 >$$
 > \underbrace{\Big[I+\mathrm{StrictLower}\big(B\Gamma KK^T\Gamma^{-1}\big)\Big]}_{M}\hat W = BV-B\Gamma K S_0 \tag{3}
 >$$
@@ -356,7 +359,7 @@ hotspot:
 
 上面的过程其实也相当于做了一个kernel fusion，把W/U放到了final_state的残差计算过程中，变成了现在的`_tilelang_residual_state`, `_tilelang_chunk_output`两个核中.
 
-Residual state负责计算$\hat W$和$S_{[c+1]}$，Output负责计算$O_{[c]}$.
+Residual state 负责计算 $\hat W$ 和 $S_{[c+1]}$，Output负责计算$O_{[c]}$.
 
 由于$O_{[c]}$的计算过程可以看出它只依赖于$S_{[c]}$，所以可以考虑融合成1个kernel：
 
@@ -416,9 +419,9 @@ shared memory本身的分配也很奇怪，容易压低occupancy. 这里利用�
 | gate、beta和decay | 1 KiB |
 | 合计 | 约89 KiB |
 
-另外`g_cumsum`也只从global memory读取一次，先写进`gate_shared`，$\gamma_r=\exp(g_r^{\text{cumsum}})$以及后续的gate ratio都从这份shared copy计算.
+另外`g_cumsum`也只从 global memory 读取一次，先写进 `gate_shared`，$\gamma_r=\exp(g_r^{\text{cumsum}})$ 以及后续的 gate ratio 都从这份 shared copy 计算.
 
-修改后所有case都能通过，`parallel_gva`在`warmup=10,repetitions=100`下从fused-64的1.467 ms降低到fused-128的1.036 ms，大约提升了29.4%. 这个提升不全来自内存，因为$QK^T$也从两次变成了一次；但是从数据流上看，减少重复global read确实是这一步优化的核心.
+修改后所有case都能通过，`parallel_gva`在`warmup=10,repetitions=100`下从fused-64的1.467 ms降低到fused-128的1.036 ms，大约提升了29.4%. 这个提升不全来自内存，因为 $QK^T$ 也从两次变成了一次；但是从数据流上看，减少重复global read确实是这一步优化的核心.
 
 在这里我提交了第一次OJ，想看看hidden cases的情况，得到了71分：
 

@@ -53,12 +53,15 @@ DecomposeR 是以 Planner（规划器）为中心的深度研究框架，包含�
         $$
         Q_{\mathrm{search}}=0.5C_{\mathrm{search}}+0.5D_{\mathrm{search}}.
         $$
+
         前者衡量搜索查询覆盖评分标准的程度，后者根据搜索查询间的余弦相似度衡量非冗余性. 
 
     * **Graph Expressiveness（图结构表达能力）**：
+
         $$
         E_{\mathrm{graph}}=0.4B_{\mathrm{synth}}+0.4I_{\mathrm{cross}}+0.2B_{\mathrm{search}}.
         $$
+
         分别鼓励最终答案拥有多样化的综合分支、跨分支证据复用及足够的搜索广度. 计数相关项采用边际收益递减函数 $f(k)=1-1/k$（$k\geq 1$），避免单纯增加节点数量. 
 
 3. **Answerer RL：分别优化分支执行与最终综合**
@@ -70,9 +73,11 @@ DecomposeR 是以 Planner（规划器）为中心的深度研究框架，包含�
     $$
 
     * **Execution Reward（执行奖励）**：逐个 Aggregate 节点评价输出是否覆盖规划中的关键点：
+
         $$
         r_v=0.5K_{\mathrm{emb}}(v)+0.5K_{\mathrm{lex}}(v).
         $$
+
         其中 $K_{\mathrm{emb}}$ 使用语义匹配，$K_{\mathrm{lex}}$ 使用关键点内容词的召回率；节点分数通过移位调和平均（Shifted Harmonic Mean）整合. 
 
     * **Synthesis Reward（综合奖励）**：
@@ -80,6 +85,7 @@ DecomposeR 是以 Planner（规划器）为中心的深度研究框架，包含�
         $$
         R_{\mathrm{synth}}=0.5J_{\mathrm{rub}}+0.5U_{\mathrm{branch}}.
         $$
+
         $J_{\mathrm{rub}}$ 是外部模型的评分标准判分，$U_{\mathrm{branch}}$ 衡量最终报告对中间分支内容词的复用比例. 
 
     两个 RL 阶段均采用 GRPO（Group Relative Policy Optimization，组相对策略优化），每个提示采样 6 条轨迹；搜索结果、抓取页面等环境文本被屏蔽，不参与策略梯度（Policy Gradient）更新. 

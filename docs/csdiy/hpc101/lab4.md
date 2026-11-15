@@ -387,9 +387,11 @@ $$
 3. **确定性负载均衡. ** 在 15×4 实验中按 block 的 cell 数（含 ghost）分配 owner，避免少数 rank 获得三个大块. 只改变 rank 归属，不改变 block 内运算顺序；严格运行 `Total Evolve Time=282.026 s`、轨迹 RMS $7.68\times10^{-9}$. 
 
 4. **六阶插值计划. ** `MPatch.C` 预计算 stencil 起点、镜像符号和 Lagrange 权重. 对
+
     $$
     I(x,y,z)=\sum_{a,b,c=0}^{5}w_a^xw_b^yw_c^z f_{abc}
     $$
+
     而言，几何部分只算一次，多个变量共享同一计划，并把权重放入一次归约，减少索引计算和 MPI Allreduce. 固定插值 kernel 在 profile 中已降到约 0.2%. 
 
 5. **通信和输出. ** 合并 surface-integral 的多次标量归约，关闭不参与评分的绘图，仍保留全部`.dat` 文件和 level-0 约束. 这样减少 collective 与 Python 尾部开销，不改变结果. 

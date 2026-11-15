@@ -25,4 +25,17 @@ GitHub Pages 部署工作流也会复用这份缓存。
 调整脚本中的 `QUALITY` 可修改照片质量，缓存会自动失效。
 首次启用或改变转换设置后请运行 `mkdocs build` 完整构建，避免旧的增量构建产物残留。
 
+## 公式格式自动修正
 
+`mkdocs serve` 会在每次页面重建时自动运行公式规范化；开发预览期间修正结果会写回源文件。
+`mkdocs build` 也会在内存中应用修正，但不会改动 `docs/` 源文件。
+
+需要手动批量检查或修复时，可运行：
+
+```bash
+python scripts/normalize_math.py docs --check
+python scripts/normalize_math.py docs
+```
+
+脚本会处理 `$$` 公式块边界、块引用和列表中的空行、误用的行内分隔符以及重复包裹，
+并跳过代码围栏中的 `$$`。

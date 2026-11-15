@@ -75,9 +75,11 @@ Communication Model 一共有2种：
 此处介绍的是LogP / Hockney Model，内容：
 
 > 每次P2P传输的时间可以被近似看成：
+>
 > $$
 > T = \alpha + n \beta, \quad \beta = \dfrac1B
 > $$
+>
 > 其中$\alpha$是 fixed setup overhead（固定配置开销），$B$是 link bandwidth（链路带宽），$n$是message size（消息大小，单位为Bytes）.
 
 基于2种现实情况可以做一些近似：
@@ -101,9 +103,11 @@ Communication Model 一共有2种：
 <center><img src="./figures/dist_train/4.png" alt="01" style="zoom:35%;" /></center>
 
 开销计算：
+
 $$
 T_{\text{ring-allreduce}}=2(P−1) \alpha +2 \dfrac{P}{P−1} \cdot n \beta
 $$
+
 其中的Bandwidth term是$2 \dfrac{P}{P−1} \cdot n \beta$，不管有多少个GPU这一项都会饱和.
 
 ### Communication-Computation Overlap

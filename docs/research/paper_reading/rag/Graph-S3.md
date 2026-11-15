@@ -32,83 +32,83 @@ Graph-S³ 是一个面向 **agentic textual graph retrieval / graph-based QA** �
 
 * **Synthetic trajectory generation 与 golden subgraph refinement**
 
-  将 textual graph 写为三元组集合：
+    将 textual graph 写为三元组集合：
 
-  $$
-  G=\{t_i\}_{i=1}^{m},\qquad
-  t_i=(e_i^h,r_i,e_i^t)
-  $$
+    $$
+    G=\{t_i\}_{i=1}^{m},\qquad
+    t_i=(e_i^h,r_i,e_i^t)
+    $$
 
-  retriever 使用三个显式 action：
+    retriever 使用三个显式 action：
 
-  - `Explore Entity(x)`：扩展实体 $x$ 的邻接三元组，将信息加入 perception window $G^p$；
-  - `Choose Relation`：从 $G^p$ 中筛选与 query 相关的 triples，写入 focused subgraph $G^{sub}$；
-  - `Finish`：认为已有 sufficient evidence，终止检索并基于 $G^{sub}$ 回答问题。:chatgpt-content-reference{index="3"}
+    - `Explore Entity(x)`：扩展实体 $x$ 的邻接三元组，将信息加入 perception window $G^p$；
+    - `Choose Relation`：从 $G^p$ 中筛选与 query 相关的 triples，写入 focused subgraph $G^{sub}$；
+    - `Finish`：认为已有 sufficient evidence，终止检索并基于 $G^{sub}$ 回答问题。:chatgpt-content-reference{index="3"}
 
-  State 定义为：
+    State 定义为：
 
-  $$
-  s_t=(q,G_t^p,G_t^{sub},h_t)
-  $$
+    $$
+    s_t=(q,G_t^p,G_t^{sub},h_t)
+    $$
 
-  其中 $h_t=(a_1,\ldots,a_{t-1})$ 保存过去 action history，使下一步决策同时依赖当前 graph state 与已有 reasoning trajectory。GPT-4o 作为 behavior model 在图中执行这些 action，并生成 reasoning trace。只有最终答案正确的 trajectory 才会保留，其原始 state-action pair 直接形成 SFT 数据。:chatgpt-content-reference{index="4"}
+    其中 $h_t=(a_1,\ldots,a_{t-1})$ 保存过去 action history，使下一步决策同时依赖当前 graph state 与已有 reasoning trajectory。GPT-4o 作为 behavior model 在图中执行这些 action，并生成 reasoning trace。只有最终答案正确的 trajectory 才会保留，其原始 state-action pair 直接形成 SFT 数据。:chatgpt-content-reference{index="4"}
 
-  对正确 trajectory 进一步执行 **trajectory refinement**：寻找仍能保持相同正确答案的最短可行子序列，
+    对正确 trajectory 进一步执行 **trajectory refinement**：寻找仍能保持相同正确答案的最短可行子序列，
 
-  $$
-  \tau_i^*
-  =
-  \arg\min_{\tau\in\mathcal F_i}|\tau|
-  $$
+    $$
+    \tau_i^*
+    =
+    \arg\min_{\tau\in\mathcal F_i}|\tau|
+    $$
 
-  删除无必要的 detour，并将 refined trajectory 对应的 subgraph 作为后续 RL 的 golden reference。这样 reward 所依据的目标本身已经经过 compactness refinement，而非直接奖励一条可能包含大量冗余操作的“正确轨迹”。:chatgpt-content-reference{index="5"}
+    删除无必要的 detour，并将 refined trajectory 对应的 subgraph 作为后续 RL 的 golden reference。这样 reward 所依据的目标本身已经经过 compactness refinement，而非直接奖励一条可能包含大量冗余操作的“正确轨迹”。:chatgpt-content-reference{index="5"}
 
 * **Stage I SFT → Stage II GRPO with Synthetic Stepwise Reward**
 
-  Stage I 使用 raw successful trajectories 做 SFT，让 retriever 先学会基本的 graph navigation、action syntax 与 reasoning pattern：
+    Stage I 使用 raw successful trajectories 做 SFT，让 retriever 先学会基本的 graph navigation、action syntax 与 reasoning pattern：
 
-  $$
-  \mathcal L_{\mathrm{SFT}}
-  =
-  -\mathbb E_{(s_t,y_t)\sim D_{\mathrm{SFT}}}
-  \left[
-  \sum_l
-  \log\pi_\theta
-  (y_t^l\mid I(s_t),y_t^{<l})
-  \right]
-  $$
+    $$
+    \mathcal L_{\mathrm{SFT}}
+    =
+    -\mathbb E_{(s_t,y_t)\sim D_{\mathrm{SFT}}}
+    \left[
+    \sum_l
+    \log\pi_\theta
+    (y_t^l\mid I(s_t),y_t^{<l})
+    \right]
+    $$
 
-  Stage II 使用 refined trajectory 构造 **process-level reward**。核心变化是 reward 从：
+    Stage II 使用 refined trajectory 构造 **process-level reward**。核心变化是 reward 从：
 
-  `整个 trajectory → final answer correct / wrong`
+    `整个 trajectory → final answer correct / wrong`
 
-  转为：
+    转为：
 
-  `每个 action → 它对 golden subgraph 的贡献程度`
+    `每个 action → 它对 golden subgraph 的贡献程度`
 
-  reward 形式为：
+    reward 形式为：
 
-  $$
-  \ell_t=
-  \begin{cases}
-  0,&\mathrm{Inv}(a_t)\\
-  c_1,&\mathrm{Fmt}(a_t)=1\land\mathrm{Corr}(a_t)=0\\
-  c_2,&\mathrm{Part}(a_t)=1\\
-  1,&a_t=a_t^*
-  \end{cases}
-  $$
+    $$
+    \ell_t=
+    \begin{cases}
+    0,&\mathrm{Inv}(a_t)\\
+    c_1,&\mathrm{Fmt}(a_t)=1\land\mathrm{Corr}(a_t)=0\\
+    c_2,&\mathrm{Part}(a_t)=1\\
+    1,&a_t=a_t^*
+    \end{cases}
+    $$
 
-  分别评价 action validity、format correctness、partial correctness 和完全正确的 action，并使用 **GRPO** 进行训练。这样早期 retrieval decision 同样能够获得 dense supervision。:chatgpt-content-reference{index="6"}
+    分别评价 action validity、format correctness、partial correctness 和完全正确的 action，并使用 **GRPO** 进行训练。这样早期 retrieval decision 同样能够获得 dense supervision。:chatgpt-content-reference{index="6"}
 
 * **Interactive Retrieval**
 
-  inference 阶段不再固定做 `k-hop expansion`，而是不断执行：
+    inference 阶段不再固定做 `k-hop expansion`，而是不断执行：
 
-  `Explore Entity → Choose Relation → Explore Entity → ... → Finish`
+    `Explore Entity → Choose Relation → Explore Entity → ... → Finish`
 
-  `Explore` 负责提高 recall，`Choose` 持续压缩 perception window、控制 noise，`Finish` 自适应决定检索深度。
+    `Explore` 负责提高 recall，`Choose` 持续压缩 perception window、控制 noise，`Finish` 自适应决定检索深度。
 
-  因而 retrieval depth 由 learned policy 动态决定，可以避免固定 k-hop RAG 随 hop 增大迅速引入大量无关邻居。:chatgpt-content-reference{index="7"}
+    因而 retrieval depth 由 learned policy 动态决定，可以避免固定 k-hop RAG 随 hop 增大迅速引入大量无关邻居。:chatgpt-content-reference{index="7"}
 
 ---
 

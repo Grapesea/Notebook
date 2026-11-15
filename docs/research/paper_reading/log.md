@@ -388,6 +388,16 @@ Search-R1补完笔记，GTA-RAG和RouteRAG还没跑完，codex崩了.
 
 ---
 
+(2026.11.13)
+
+DecomposeR
+
+[ACL2025] Structure-aware Domain Knowledge Injection for Large Language Models
+
+[ACL2026] KoCo: Conditioning Language Model Pre-training on Knowledge Coordinates
+
+---
+
 ## 投稿计划
 
 |                 | 分级 | 截稿ddl                         | 结果          | Track                                                        |

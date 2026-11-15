@@ -994,9 +994,11 @@ void clear_ssip(void)
 > - 也就是说，要将 `clock()` 返回的值转换为秒，需要用返回值除以 `CLOCKS_PER_SEC` 宏的值
 
 所以经过大概：
+
 $$
 2^{64} / (10^6 \times 24 \times 60 \times 60 \times 365) \approx 584942 \text{年}
 $$
+
 会回绕.
 
 ---

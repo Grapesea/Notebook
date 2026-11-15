@@ -37,9 +37,11 @@ KV cache 经由 vAttention 管理；模型权重和其他 activations 仍由普�
 传统 `cudaMalloc` 同时提供虚拟地址与物理显存。vAttention 利用 CUDA Virtual Memory Management（VMM）接口，将地址预留、物理页分配和地址映射分开，并扩展 PyTorch allocator 创建 **virtual tensors**。
 
 每个 worker 负责 $N$ 层，每层分别维护 K 和 V，因此预留 $2N$ 个 virtual tensors。单请求、单层、单个 K 或 V 的最大容量为：
+
 $$
 S=L\times H\times D\times P
 $$
+
 其中：
 
 - $L$：最大 context length；
@@ -48,13 +50,17 @@ $$
 - $P$：每个元素的字节数。
 
 若最大 batch size 为 $B$，每个 tensor 预留 $BS$ 字节，所有层合计：
+
 $$
 V_{\mathrm{total}}=2NBS
 $$
+
 每个请求获得一个固定的 `reqId`，其 K/V 子区间起点为：
+
 $$
 \operatorname{offset}(\mathrm{reqId})=\mathrm{reqId}\times S, \qquad 0\leq\mathrm{reqId}<B
 $$
+
 例如 Yi-34B、FP16、TP-2 下，$N=60,H=4,D=128,P=2,L=200K$；若 $B=500$，单 worker 需要约 **12 TB 虚拟地址空间**。物理显存只需为实际使用的部分提供映射。
 
 运行时通过四个接口管理请求生命周期：
