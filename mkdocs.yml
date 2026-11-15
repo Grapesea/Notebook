@@ -477,6 +477,7 @@ nav:
         - colab2: research/cs224w/labs/colab2.md
         - colab3: research/cs224w/labs/colab3.md
         - colab4: research/cs224w/labs/colab4.md
+        - colab5: research/cs224w/labs/colab5.md
     - CS336:
       - 资源整合: research/cs336/index.md
       - labs:

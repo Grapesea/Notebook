@@ -73,7 +73,7 @@ def on_nav(nav, *, config, files):
     def collect(items):
         for item in items:
             if item.is_section:
-                sections.setdefault(item.title, item)
+                sections[item.title] = item
                 collect(item.children)
 
     collect(nav.items)
